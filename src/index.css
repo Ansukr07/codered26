@@ -1,4 +1,5 @@
 body{overflow-x:clip}
+@media(max-width:600px){.hero .bubbles{display:none}}
 @font-face{font-family:Gottak;src:url('/codered2026/codered2026/fonts/Gottak-SemiBold.otf') format('opentype');font-weight:600;font-display:swap}
 @font-face{font-family:Grotesk;src:url('/codered2026/codered2026/fonts/Typo Grotesk Rounded/Typo Grotesk Rounded Demo.otf') format('opentype');font-display:swap}
 @font-face{font-family:Vivaldi;src:url('/codered2026/codered2026/fonts/Vivaldi Regular.ttf') format('truetype');font-display:swap}

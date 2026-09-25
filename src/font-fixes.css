@@ -1,0 +1,19 @@
+.faq-index{font-family:ui-monospace,Consolas,monospace}
+.faq .faq-answer p{font-family:Arial,sans-serif}
+.nav-marquee span{transform:translate3d(0,0,0);will-change:transform}
+@keyframes navcrawl{to{transform:translate3d(-50%,0,0)}}
+
+.nav-shell{top:2px;width:min(516px,calc(100vw - 24px));height:76px;padding:7px 7px 21px;border-radius:5px;background:#191919;border-color:#4e4e4e;box-shadow:0 4px 12px #0008}
+.nav-shell{outline:1px dotted #777;outline-offset:2px}
+.nav-shell .brand{position:relative;width:35px;height:32px;margin-right:4px;padding:0;border-right:1px solid #444;overflow:hidden;background:repeating-linear-gradient(135deg,#888 0 1px,transparent 1px 4px),#303030}
+.nav-shell .brand-symbol{position:absolute;inset:0;width:auto;display:grid;place-items:center;color:#c5c5c5;font:600 18px/1 Gottak,sans-serif;letter-spacing:-5px;text-shadow:0 1px #222}
+.nav-shell .brand-symbol span{color:#ddd}
+.nav-shell .nav{justify-content:space-around;gap:0;height:32px;font:12px/1 Grotesk,Arial,sans-serif}
+.nav-shell .nav a{padding:0 10px;color:#aaa;white-space:nowrap}
+.nav-shell .nav a.nav-active{background:#3b3b3b;color:#fff;border-radius:2px}
+.nav-shell .nav a.nav-active::after{top:1px;right:3px;width:4px;height:4px;background:#e59f25}
+.nav-register{display:none}
+.nav-marquee{left:7px;right:7px;bottom:14px;height:16px;background:#d5d5d5;color:#191919;border-top:1px solid #999;font:10px/16px Grotesk,Arial,sans-serif}
+.nav-marquee span{animation-duration:24s}
+@media(max-width:600px){.nav-shell{top:2px;height:62px;width:calc(100vw - 12px);padding:6px;grid-template-columns:1fr auto;overflow:visible}.nav-shell .brand{width:auto;height:42px;background:none;border:0}.nav-shell .brand-symbol{position:relative;inset:auto;width:30px}.nav-shell .brand-name{display:block}.nav-shell .menu-toggle{width:40px;height:40px}.nav-shell .nav{top:57px}.nav-marquee{display:none}}
+@media(prefers-reduced-motion:reduce){.nav-marquee span{animation:none;transform:none}}
