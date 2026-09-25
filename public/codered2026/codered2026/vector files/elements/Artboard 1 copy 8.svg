@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="59.09" y1="540" x2="1020.91" y2="540" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ed2224"/>
+      <stop offset=".14" stop-color="#ec2a24"/>
+      <stop offset=".37" stop-color="#ea4224"/>
+      <stop offset=".65" stop-color="#e86825"/>
+      <stop offset=".98" stop-color="#e59c25"/>
+      <stop offset="1" stop-color="#e5a026"/>
+    </linearGradient>
+  </defs>
+  <ellipse class="cls-1" cx="540" cy="540" rx="480.91" ry="476.47"/>
+</svg>
