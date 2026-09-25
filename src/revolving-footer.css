@@ -111,7 +111,7 @@
 
 .cosmos-footer-giant {
   width: 100%;
-  font-size: 11.5vw;
+  font-size: 14.5vw;
   font-weight: 700;
   font-family: Gottak, Arial, sans-serif;
   line-height: 0.75;
@@ -125,7 +125,7 @@
 
 @media (max-width: 768px) {
   .cosmos-footer-giant {
-    font-size: 13vw;
+    font-size: 17vw;
     margin-bottom: -1vw;
   }
 }
