@@ -28,8 +28,8 @@
           const isMobile = window.innerWidth <= 768;
           const columns = isMobile ? 6 : 10; 
           
-          const squareSize = window.innerWidth / columns;
-          const rows = Math.ceil(window.innerHeight / squareSize);
+          const squareSize = preloader.offsetWidth / columns;
+          const rows = Math.ceil(preloader.offsetHeight / squareSize);
           const totalBlocks = columns * rows;
 
           preloader.style.gridTemplateColumns = `repeat(${columns}, ${squareSize}px)`;
