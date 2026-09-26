@@ -59,7 +59,7 @@ const questions = [
 
 function App() {
  const [menuOpen,setMenuOpen]=useState(false)
- const [openFaq,setOpenFaq]=useState(0)
+ const [openFaq,setOpenFaq]=useState(null)
  const dialog=useRef(null)
  const register=()=>dialog.current.showModal()
  return <>
@@ -73,7 +73,7 @@ function App() {
    <section id="timeline" className="section timeline"><div className="section-label"><span>03 / THE JOURNEY</span><span>ONE IDEA. ENDLESS POSSIBILITIES.</span></div><div className="timeline-grid"><div><h2>From <span className="script">hello</span><br/>to launch.</h2><p>The journey is taking shape.<br/>Official dates and timings coming soon.</p><span className="pill"><i className="status-dot"/> 2026 EDITION · STAY TUNED</span></div><ol className="steps">{[['01','Answer the call','Registrations open','Bring your curiosity. Find your team. Take the first step.'],['02','Enter build mode','Hackathon kicks off','Explore your idea, connect the dots, and bring it to life.'],['03','Show what’s next','Demos & closing','Share your creation and celebrate everything you’ve built.']].map(([n,title,label,text])=><li key={n}><span className="step-number">{n}</span><div><span className="eyebrow">{label}</span><h3>{title}</h3><p>{text}</p></div><span className="step-arrow">↗</span></li>)}</ol></div></section>
    <section id="faqs" className="section faq" style={{ padding: 0 }}>
      <CurrencySkyBackground style={{ padding: '94px 6% 150px' }}>
-       <div className="faq-noise" aria-hidden="true">CODERED BUILD CREATE QUESTION EXPLORE HACK LEARN SHIP CODERED BUILD CREATE QUESTION EXPLORE HACK LEARN SHIP</div><div className="faq-grid"><div className="faq-intro"><span className="faq-kicker">QUESTIONS / ANSWERS</span><h2>Before<br/>you <span className="script red">build.</span></h2><button className="faq-cta" onClick={register}><span>GET</span><span>ACCESS</span></button></div><div className="faq-list">{questions.map(([q,answer],i)=><div className={`faq-item ${openFaq===i?'is-open':''}`} key={q}><h3><button aria-expanded={openFaq===i} aria-controls={`answer-${i}`} onClick={()=>setOpenFaq(openFaq===i?null:i)}><span className="faq-index">Q.{String(i+1).padStart(3,'0')} <i>/</i></span><span className="faq-question">{q}</span><span className="faq-toggle">{openFaq===i?'−':'+'}</span></button></h3><div className="faq-answer" id={`answer-${i}`} hidden={openFaq!==i}><p>{answer}</p></div></div>)}</div></div>
+       <div className="faq-grid"><div className="faq-intro"><span className="faq-kicker">QUESTIONS / ANSWERS</span><h2>Before<br/>you <span className="script red">build.</span></h2><button className="faq-cta" onClick={register}><span>GET</span><span>ACCESS</span></button></div><div className="faq-list">{questions.map(([q,answer],i)=><div className={`faq-item ${openFaq===i?'is-open':''}`} key={q}><h3><button aria-expanded={openFaq===i} aria-controls={`answer-${i}`} onClick={()=>setOpenFaq(openFaq===i?null:i)}><span className="faq-index">Q.{String(i+1).padStart(3,'0')} <i>/</i></span><span className="faq-question">{q}</span><span className="faq-toggle">{openFaq===i?'−':'+'}</span></button></h3><div className="faq-answer" id={`answer-${i}`} hidden={openFaq!==i}><p>{answer}</p></div></div>)}</div></div>
      </CurrencySkyBackground>
    </section>
    <RevolvingFooter register={register} />

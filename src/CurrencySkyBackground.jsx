@@ -1,11 +1,14 @@
 import { useEffect, useRef } from "react";
 
-const GLYPHS = [
-  { min: 15, char: "·", color: "#1a1918" },
-  { min: 50, char: "/", color: "#2c2a28" },
-  { min: 100, char: "$", color: "#524e4a" },
-  { min: 160, char: "£", color: "#959089" },
+const TIERS = [
+  { min: 160, color: "#23211f" },
+  { min: 100, color: "#23211f" },
+  { min: 50, color: "#23211f" },
+  { min: 15, color: "#23211f" },
 ];
+
+const PARAGRAPH = "CODERED '26  /  THE  NEXT  WAVE  OF  BUILDERS  /  IDEAS  DON'T  BUILD  THEMSELVES  /  LESS  WHAT  IF,  MORE  WHAT'S  NEXT  /  A  COLLISION  OF  CODE,  CREATIVITY,  AND  CAFFEINE  /  THINK  BOLD  /  BREAK  THE  ORDINARY  /  ";
+const GLITCH_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
 
 function waves(x, y, time) {
   return Math.sin(0.8 * x + 0.3 * time) * Math.cos(0.6 * y + 0.2 * time) * 0.5
@@ -32,8 +35,8 @@ function brightness(x, y, time, spacing) {
 }
 
 export default function CurrencySkyBackground({
-  children, className = "", style, speed = 0.9, opacity = 1,
-  cellWidth = 12, cellHeight = 14, fontSize = 12,
+  children, className = "", style, speed = 0.15, opacity = 1,
+  cellWidth = 12, cellHeight = 14, fontSize = 11.5,
   fontFamily = "ui-monospace, monospace", terrainScale = 0.13,
   contourSpacing = 0.08, paused = false,
 }) {
@@ -62,39 +65,66 @@ export default function CurrencySkyBackground({
     let previous = 0;
     let elapsed = 0;
     let visible = false;
-    const buckets = GLYPHS.map(() => []);
+    
+    // Create buckets for each color tier. 
+    // Each bucket is a flat array: [char, x, y, char, x, y, ...]
+    const buckets = TIERS.map(() => []);
+    
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
       ctx.font = `400 ${size}px ${fontFamily}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.globalAlpha = alpha;
+      
       buckets.forEach((bucket) => { bucket.length = 0; });
+      
       const columns = Math.ceil(width / cw) + 1;
       const rows = Math.ceil(height / ch) + 1;
+      
       for (let row = 0; row < rows; row++) {
         for (let column = 0; column < columns; column++) {
           const value = brightness((column + 0.5) * scale, (row + 0.5) * scale, elapsed, spacing);
-          for (let i = GLYPHS.length - 1; i >= 0; i--) {
-            if (value >= GLYPHS[i].min) {
-              buckets[i].push(column * cw + cw / 2, row * ch + ch / 2);
+          
+          for (let i = 0; i < TIERS.length; i++) {
+            if (value >= TIERS[i].min) {
+              const charIndex = (row * columns + column) % PARAGRAPH.length;
+              let char = PARAGRAPH[charIndex];
+              
+              if (char !== ' ') {
+                 const glitchTime = Math.floor(Date.now() / 250); // Updates every 250ms
+                 const pseudoRandom = (row * 13.37 + column * 42.1 + glitchTime * 0.13) % 1;
+                 if (pseudoRandom > 0.85) {
+                    const charHash = (row * 7.1 + column * 3.3 + glitchTime * 0.27) % 1;
+                    char = GLITCH_CHARS[Math.floor(charHash * GLITCH_CHARS.length)];
+                 }
+              }
+              
+              buckets[i].push(char, column * cw + cw / 2, row * ch + ch / 2);
               break;
             }
           }
         }
       }
+      
       buckets.forEach((bucket, index) => {
-        ctx.fillStyle = GLYPHS[index].color;
-        for (let i = 0; i < bucket.length; i += 2) ctx.fillText(GLYPHS[index].char, bucket[i], bucket[i + 1]);
+        if (bucket.length === 0) return;
+        ctx.fillStyle = TIERS[index].color;
+        for (let i = 0; i < bucket.length; i += 3) {
+           ctx.fillText(bucket[i], bucket[i + 1], bucket[i + 2]);
+        }
       });
+      
       ctx.globalAlpha = 1;
     };
+    
     const tick = (now) => {
       elapsed += Math.min((now - previous) / 1000, 0.1) * rate;
       previous = now;
       if (++frameNumber % 2 === 0) draw();
       frame = requestAnimationFrame(tick);
     };
+    
     const update = () => {
       cancelAnimationFrame(frame);
       frame = 0;
@@ -105,6 +135,7 @@ export default function CurrencySkyBackground({
         frame = requestAnimationFrame(tick);
       }
     };
+    
     const resize = () => {
       width = host.clientWidth;
       height = host.clientHeight;
@@ -114,11 +145,14 @@ export default function CurrencySkyBackground({
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       draw();
     };
+    
     const observer = new ResizeObserver(resize);
     observer.observe(host);
     resize();
+    
     const intersection = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); });
     intersection.observe(host);
+    
     reducedMotion.addEventListener("change", update);
     document.addEventListener("visibilitychange", update);
     return () => {
@@ -132,7 +166,7 @@ export default function CurrencySkyBackground({
 
   return (
     <div ref={hostRef} className={className} style={{ position: 'relative', height: '100%', width: '100%', overflow: 'hidden', backgroundColor: "#0c0c0b", ...style }}>
-      <canvas ref={canvasRef} aria-hidden="true" style={{ pointerEvents: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', filter: 'blur(1px)' }} />
+      <canvas ref={canvasRef} aria-hidden="true" style={{ pointerEvents: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }} />
       {children && <div style={{ position: 'relative', zIndex: 10, height: '100%', width: '100%' }}>{children}</div>}
     </div>
   );
