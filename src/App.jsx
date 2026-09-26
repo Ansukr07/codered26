@@ -7,14 +7,11 @@ import './revolving-footer.css'
 const base = '/codered2026/codered2026'
 const art = (name) => `${base}/vector files/elements/${name}.svg`
 
-const revolvingImagesList = [
-  'Artboard 1', 'Artboard 1 copy', 'Artboard 1 copy 2', 'Artboard 1 copy 3',
-  'Artboard 1 copy 4', 'Artboard 1 copy 5', 'Artboard 1 copy 6', 'Artboard 1 copy 7',
-  'Artboard 1 copy 8', 'Artboard 9', 'Artboard 10', 'Artboard 11', 'Artboard 12'
-];
+const revolvingImagesList = Array.from({ length: 12 }, (_, i) => `img${i}`);
+const getWebp = (name) => `/images/${name}.webp`;
 
 // Define the structure of the spiral
-const totalElements = 90; 
+const totalElements = 72; 
 const turns = 4;
 const minRadius = 180;
 const maxRadius = 850;
@@ -74,7 +71,7 @@ function App() {
   </main>
   <footer>
     <div className="cosmos-footer-giant">
-      CODERED 4.0
+      CODERED’ 26
     </div>
     <a href="#" className="footer-brand">CODERED’ 26</a>
     <span>A little chaos. A lot of possibility.</span>
@@ -99,33 +96,51 @@ function RevolvingFooter({ register }) {
   const speedBoostTimeRef = useRef(0)
   const currentSpeedRef = useRef(1)
 
+  const sectionRef = useRef(null)
+  const isVisibleRef = useRef(true)
+
   useEffect(() => {
-    let lastTime = performance.now()
+    // Pause animation entirely when scrolled off-screen
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting && !rafRef.current) {
+          lastTimeRef.current = performance.now();
+          rafRef.current = requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    const lastTimeRef = { current: performance.now() };
+    let smoothedDt = 0.016;
 
     const animate = (now) => {
-      const dt = (now - lastTime) / 1000 // seconds
-      lastTime = now
-      
-      // Determine target speed multiplier
-      let targetSpeed = 1; // Normal speed
-      if (speedBoostTimeRef.current > 0) {
-        speedBoostTimeRef.current -= dt;
-        targetSpeed = 4; // 4x speed burst! (reduced from 8x)
-      }
-      
-      // Smoothly interpolate current speed towards target speed
-      currentSpeedRef.current += (targetSpeed - currentSpeedRef.current) * dt * 5;
-      
-      // Rotate the entire container slowly (0.5 degree per second base)
-      containerAngleRef.current += dt * 0.5 * currentSpeedRef.current;
-      if (orbitRef.current) {
-        orbitRef.current.style.transform = `rotate(${containerAngleRef.current}deg)`
+      if (!isVisibleRef.current) {
+        rafRef.current = null;
+        return; // Completely stop the loop when off-screen
       }
 
-      // Flow speed: slowed down to 90 seconds for a dreamy, relaxed base feel
-      progressRef.current -= (dt / 90) * currentSpeedRef.current;
+      let rawDt = (now - lastTimeRef.current) / 1000;
+      lastTimeRef.current = now;
       
-      // Loop seamlessly
+      if (rawDt > 0.1) rawDt = 0.016;
+      smoothedDt = smoothedDt * 0.9 + rawDt * 0.1;
+      const dt = smoothedDt;
+      
+      let targetSpeed = 1;
+      if (speedBoostTimeRef.current > 0) {
+        speedBoostTimeRef.current -= dt;
+        targetSpeed = 2.5;
+      }
+      
+      currentSpeedRef.current += (targetSpeed - currentSpeedRef.current) * dt * 2.5;
+      
+      containerAngleRef.current += dt * 0.5 * currentSpeedRef.current;
+      const currentGlobalAngleRad = containerAngleRef.current * (Math.PI / 180);
+
+      progressRef.current -= (dt / 90) * currentSpeedRef.current;
       if (progressRef.current < 0) progressRef.current += 1;
 
       itemsRef.current.forEach((node, i) => {
@@ -141,16 +156,13 @@ function RevolvingFooter({ register }) {
         const baseAngle = -(mapped_p * Math.PI * 2 * turns);
         const baseRadius = minRadius + mapped_p * (maxRadius - minRadius);
         
-        const jitterAngle = baseAngle + el.angleJitter;
+        const jitterAngle = baseAngle + el.angleJitter + currentGlobalAngleRad;
         const jitterRadius = baseRadius + el.radiusJitter;
         
         const x = Math.cos(jitterAngle) * jitterRadius;
         const y = Math.sin(jitterAngle) * jitterRadius;
         
         const sizeScale = 0.5 + 0.5 * mapped_p;
-        const width = el.widthBase * sizeScale;
-        const height = width * el.heightRatio;
-        
         const radialAngleDeg = ((jitterAngle % (2 * Math.PI)) * 180 / Math.PI);
         const tilt = radialAngleDeg + 90 + el.tiltJitter;
 
@@ -158,38 +170,46 @@ function RevolvingFooter({ register }) {
         if (mapped_p < 0.05) opacity = mapped_p / 0.05;
         else if (mapped_p > 0.95) opacity = (1 - mapped_p) / 0.05;
 
-        node.style.width = width + 'px';
-        node.style.height = height + 'px';
-        node.style.left = x + 'px';
-        node.style.top = y + 'px';
         node.style.opacity = opacity;
-        node.style.transform = `translate(-50%, -50%) rotate(${tilt}deg)`;
+        node.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) scale(${sizeScale}) rotate(${tilt}deg)`;
       });
 
       rafRef.current = requestAnimationFrame(animate)
     }
 
     rafRef.current = requestAnimationFrame(animate)
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      observer.disconnect();
+    }
   }, [])
 
   return (
-    <section className="revolving-cta">
+    <section className="revolving-cta" ref={sectionRef}>
       <div className="revolving-orbit-container">
         <div className="revolving-orbit" ref={orbitRef}>
-          {baseElements.map((el, i) => (
-            <div
-              key={i}
-              ref={node => itemsRef.current[i] = node}
-              className="revolving-item"
-              style={{
-                backgroundColor: el.bg,
-                willChange: 'left, top, transform, width, height, opacity',
-              }}
-            >
-              <img src={art(el.img)} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} />
-            </div>
-          ))}
+          {baseElements.map((el, i) => {
+            const baseWidth = el.widthBase;
+            const baseHeight = el.widthBase * el.heightRatio;
+            
+            return (
+              <div
+                key={i}
+                ref={node => itemsRef.current[i] = node}
+                className="revolving-item"
+                style={{
+                  width: baseWidth + 'px',
+                  height: baseHeight + 'px',
+                  backgroundColor: el.bg,
+                  willChange: 'transform, opacity',
+                  left: 0,
+                  top: 0
+                }}
+              >
+                <img src={getWebp(el.img)} alt="" loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} />
+              </div>
+            )
+          })}
         </div>
       </div>
       <div className="revolving-content">
