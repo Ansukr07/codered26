@@ -1,9 +1,10 @@
-import { useRef, useState, useEffect, useCallback } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import './App.css'
 import './reference-components.css'
 import './font-fixes.css'
 import './revolving-footer.css'
 import Navbar from './Navbar.jsx'
+import EditorialSections from './EditorialSections.jsx'
 import CurrencySkyBackground from './CurrencySkyBackground.jsx'
 
 const base = '/codered2026/codered2026'
@@ -58,7 +59,6 @@ const questions = [
 ]
 
 function App() {
- const [menuOpen,setMenuOpen]=useState(false)
  const [openFaq,setOpenFaq]=useState(null)
  const dialog=useRef(null)
  const register=()=>dialog.current.showModal()
@@ -66,11 +66,7 @@ function App() {
   <a className="skip-link" href="#main">Skip to content</a>
   <Navbar />
   <main id="main">
-   <section className="hero" aria-labelledby="hero-title"><div className="hero-top"><span><i className="status-dot"/> THE NEXT WAVE OF BUILDERS</span><span>EDITION 2026 <b>✳</b></span></div><div className="hero-title-wrap"><h1 id="hero-title">CODERED<span className="year">’ 26</span></h1><span className="script hero-script">Make a little chaos.</span></div><img className="hero-art flower" src={art('Artboard 1')} alt=""/><img className="hero-art ribbon" src={art('Artboard 1 copy')} alt=""/><img className="hero-art bubbles" src={art('Artboard 1 copy 2')} alt=""/><div className="hero-content"><span className="eyebrow">IDEAS DON’T BUILD THEMSELVES.</span><h2>Less what if.<br/>More <span className="serif-italic">what’s next.</span></h2><p>A collision of code, creativity, and caffeine.<br/>Bring your wildest idea. Let’s make it real.</p><div className="hero-actions"><button className="button primary" onClick={register}>I’m in. Let’s build <span>↗</span></button><a className="text-link" href="#about">Explore the hackathon <span>↓</span></a></div></div><div className="hero-bottom"><span>FOR THE CURIOUS. THE RESTLESS. THE BUILDERS.</span><a href="#about">SCROLL TO DISCOVER <span>↓</span></a></div></section>
-   <div className="ticker" aria-label="Think bold. Build together. Break the ordinary."><div>{Array.from({length:4},(_,i)=><span key={i} aria-hidden="true">THINK BOLD <b>✳</b> BUILD TOGETHER <b>✳</b> BREAK THE ORDINARY <b>✳</b> </span>)}</div></div>
-   <section id="about" className="section about"><div className="section-label"><span>01 / THE IDEA</span><span>NOT YOUR AVERAGE HACKATHON ↙</span></div><div className="about-grid"><h2>Good ideas start<br/>with <span className="script red">a spark.</span><br/>Great ones start<br/>with <span className="outline">you.</span></h2><div className="about-copy"><img src={art('Artboard 1 copy 3')} alt=""/><p className="large-copy">A space for big swings.<br/>And unexpected possibilities.</p><p>CODERED’ 26 brings curious minds together to push past the obvious. Mix perspectives, challenge an idea, and turn a blank canvas into something that matters.</p><p>You bring the imagination.<br/>We’ll meet you at the starting line.</p><a href="#experience" className="text-link">Find your reason to build <span>↗</span></a></div></div></section>
-   <section id="experience" className="section experience"><div className="section-label"><span>02 / THE EXPERIENCE</span><span>COME FOR THE CODE. STAY FOR THE PEOPLE.</span></div><div className="section-heading"><h2>Built for your<br/><span className="script">next big thing.</span></h2><p>Get out of your comfort zone.<br/>Get into your element.</p></div><div className="experience-grid">{[['01','Find your people.','Different skills. Shared curiosity. Meet the people who make your next idea better.','Artboard 1','red-card'],['02','Make the leap.','Take that “someday” project and give it a first commit. Experiment, learn, and keep moving.','Artboard 1 copy','blue-card'],['03','Own your moment.','Put your work out there. Tell its story. Leave with something that didn’t exist before.','Artboard 1 copy 2','gold-card']].map(([num,title,text,asset,color])=><article className={`experience-card ${color}`} key={num}><div className="card-top"><span>{num} /</span><span>↗</span></div><img src={art(asset)} alt="" loading="lazy"/><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-   <section id="timeline" className="section timeline"><div className="section-label"><span>03 / THE JOURNEY</span><span>ONE IDEA. ENDLESS POSSIBILITIES.</span></div><div className="timeline-grid"><div><h2>From <span className="script">hello</span><br/>to launch.</h2><p>The journey is taking shape.<br/>Official dates and timings coming soon.</p><span className="pill"><i className="status-dot"/> 2026 EDITION · STAY TUNED</span></div><ol className="steps">{[['01','Answer the call','Registrations open','Bring your curiosity. Find your team. Take the first step.'],['02','Enter build mode','Hackathon kicks off','Explore your idea, connect the dots, and bring it to life.'],['03','Show what’s next','Demos & closing','Share your creation and celebrate everything you’ve built.']].map(([n,title,label,text])=><li key={n}><span className="step-number">{n}</span><div><span className="eyebrow">{label}</span><h3>{title}</h3><p>{text}</p></div><span className="step-arrow">↗</span></li>)}</ol></div></section>
+   <EditorialSections />
    <section id="faqs" className="section faq" style={{ padding: 0 }}>
      <CurrencySkyBackground style={{ padding: '94px 6% 150px' }}>
        <div className="faq-grid"><div className="faq-intro"><span className="faq-kicker">QUESTIONS / ANSWERS</span><h2>Before<br/>you <span className="script red">build.</span></h2><button className="faq-cta" onClick={register}><span>GET</span><span>ACCESS</span></button></div><div className="faq-list">{questions.map(([q,answer],i)=><div className={`faq-item ${openFaq===i?'is-open':''}`} key={q}><h3><button aria-expanded={openFaq===i} aria-controls={`answer-${i}`} onClick={()=>setOpenFaq(openFaq===i?null:i)}><span className="faq-index">Q.{String(i+1).padStart(3,'0')} <i>/</i></span><span className="faq-question">{q}</span><span className="faq-toggle">{openFaq===i?'−':'+'}</span></button></h3><div className="faq-answer" id={`answer-${i}`} hidden={openFaq!==i}><p>{answer}</p></div></div>)}</div></div>
