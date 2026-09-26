@@ -15,6 +15,34 @@ body{overflow-x:clip}
     z-index: 9999;
     display: grid;
 }
+
+/* Intro text: centered over the red screen */
+#intro-text {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+#intro-text-inner {
+    margin: 0;
+    padding: 0 1rem;
+    text-align: center;
+    color: #0a0600;
+    font-family: Gottak, Arial, sans-serif;
+    font-size: clamp(2.5rem, 10vw, 8rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.intro-char {
+    display: inline-block;
+    will-change: opacity;
+}
 #preloader .block {
     background-color: var(--red);
     width: 100%;

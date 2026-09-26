@@ -1,77 +1,178 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/codered2026/codered2026/vector%20files/elements/Artboard%201.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#101010" />
-    <meta name="description" content="CODERED’ 26 — a collision of code, creativity, and curiosity. Bring your wildest idea. Let’s make it real. Hackathon details coming soon." />
-    <title>CODERED’ 26 — Make a little chaos.</title>
-  </head>
-  <body>
+    <meta name="description"
+        content="CODERED' 26 — a collision of code, creativity, and curiosity. Bring your wildest idea. Let's make it real. Hackathon details coming soon." />
+    <title>CODERED' 26 — Make a little chaos.</title>
+</head>
+
+<body>
     <!-- Preloader Overlay -->
     <div id="preloader"></div>
+
+    <!-- Intro text: centered over the red screen -->
+    <div id="intro-text" aria-hidden="true">
+        <span id="intro-text-inner">CODERED'26</span>
+    </div>
+
+    <!-- React App Root -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 
     <!-- Preloader Logic -->
     <script>
-      // Add class to html so scrollbar turns red during preloader
-      document.documentElement.classList.add('preloader-active');
+        // ── Add class so scrollbar turns red during preloader ──
+        document.documentElement.classList.add('preloader-active');
 
-      // Prevent scrolling while preloader is running (on body, not html)
-      document.body.style.overflow = 'hidden';
-      
-      document.addEventListener("DOMContentLoaded", () => {
-          const preloader = document.getElementById("preloader");
-          
-          const isMobile = window.innerWidth <= 768;
-          const columns = isMobile ? 6 : 10; 
-          
-          const squareSize = preloader.offsetWidth / columns;
-          const rows = Math.ceil(preloader.offsetHeight / squareSize);
-          const totalBlocks = columns * rows;
+        // ── Prevent scrolling while preloader is running ──
+        document.body.style.overflow = 'hidden';
 
-          preloader.style.gridTemplateColumns = `repeat(${columns}, ${squareSize}px)`;
-          preloader.style.gridTemplateRows = `repeat(${rows}, ${squareSize}px)`;
+        // ── Check tab memory immediately ──
+        let isFirstVisit = false;
+        if (!sessionStorage.getItem('CR_TAB_MEMORY')) {
+            isFirstVisit = true;
+            sessionStorage.setItem('CR_TAB_MEMORY', 'true');
+        }
 
-          const blocks = [];
+        document.addEventListener("DOMContentLoaded", () => {
+            const preloader = document.getElementById("preloader");
 
-          for (let i = 0; i < totalBlocks; i++) {
-              const block = document.createElement("div");
-              block.classList.add("block");
-              preloader.appendChild(block);
-              blocks.push(block);
-          }
+            // ── Build pixel grid ──
+            const isMobile = window.innerWidth <= 768;
+            const columns = isMobile ? 6 : 10;
+            const squareSize = preloader.offsetWidth / columns;
+            const rows = Math.ceil(preloader.offsetHeight / squareSize);
+            const totalBlocks = columns * rows;
 
-          function shuffle(array) {
-              let currentIndex = array.length, randomIndex;
-              while (currentIndex !== 0) {
-                  randomIndex = Math.floor(Math.random() * currentIndex);
-                  currentIndex--;
-                  [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-              }
-              return array;
-          }
+            preloader.style.gridTemplateColumns = `repeat(${columns}, ${squareSize}px)`;
+            preloader.style.gridTemplateRows = `repeat(${rows}, ${squareSize}px)`;
 
-          const shuffledBlocks = shuffle([...blocks]);
+            const blocks = [];
+            for (let i = 0; i < totalBlocks; i++) {
+                const block = document.createElement("div");
+                block.classList.add("block");
+                preloader.appendChild(block);
+                blocks.push(block);
+            }
 
-          setTimeout(() => {
-              shuffledBlocks.forEach((block, index) => {
-                  setTimeout(() => {
-                      block.classList.add("hide");
-                  }, index * 25); 
-              });
+            // ── Fisher-Yates shuffle ──
+            function shuffle(array) {
+                let currentIndex = array.length, randomIndex;
+                while (currentIndex !== 0) {
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex--;
+                    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+                }
+                return array;
+            }
 
-              const totalAnimationTime = (totalBlocks * 25) + 300; 
-              setTimeout(() => {
-                  preloader.style.display = "none";
-                  document.documentElement.classList.remove('preloader-active');
-                  document.body.style.overflow = ""; // Restore scrolling
-              }, totalAnimationTime);
-              
-          }, 400); 
-      });
+            // ── Glitch a set of chars in or out ──
+            function glitchChars(chars, out, duration) {
+                return new Promise(resolve => {
+                    chars.forEach(char => {
+                        const flashes = 2 + Math.floor(Math.random() * 4);
+                        const startDelay = Math.random() * duration * 0.65;
+                        const flashInterval = (duration * 0.35) / flashes;
+                        setTimeout(() => {
+                            let step = 0;
+                            const interval = setInterval(() => {
+                                char.style.opacity = Math.random() < 0.5 ? '0' : '1';
+                                step++;
+                                if (step >= flashes) {
+                                    clearInterval(interval);
+                                    char.style.opacity = out ? '0' : '1';
+                                }
+                            }, flashInterval);
+                        }, startDelay);
+                    });
+                    setTimeout(resolve, duration);
+                });
+            }
+
+            // ── Subtle residual flickers while text is held ──
+            function holdWithResidual(chars, duration) {
+                return new Promise(resolve => {
+                    const blinks = Math.round((duration / 1000) * 15);
+                    for (let i = 0; i < blinks; i++) {
+                        const at = Math.random() * duration;
+                        const char = chars[Math.floor(Math.random() * chars.length)];
+                        setTimeout(() => {
+                            char.style.opacity = (0.1 + Math.random() * 0.4).toString();
+                            setTimeout(() => { char.style.opacity = '1'; }, 20 + Math.random() * 40);
+                        }, at);
+                    }
+                    setTimeout(resolve, duration);
+                });
+            }
+
+            // ── Intro text animation (first visit only) ──
+            function runIntro() {
+                return new Promise(async resolve => {
+                    const introText = document.getElementById('intro-text');
+                    const inner = document.getElementById('intro-text-inner');
+
+                    // Split text into individual character spans
+                    const text = inner.textContent;
+                    inner.textContent = '';
+                    const chars = [];
+                    [...text].forEach(ch => {
+                        const span = document.createElement('span');
+                        span.className = 'intro-char';
+                        span.textContent = ch;
+                        span.style.opacity = '0';
+                        inner.appendChild(span);
+                        chars.push(span);
+                    });
+
+                    // Show intro text layer
+                    introText.style.display = 'flex';
+
+                    // 1. Glitch IN
+                    await glitchChars(chars, false, 500);
+
+                    // 2. Hold with residual flickers
+                    await holdWithResidual(chars, 800);
+
+                    // 3. Glitch OUT
+                    await glitchChars(chars, true, 300);
+
+                    // Hide intro text
+                    introText.style.display = 'none';
+                    resolve();
+                });
+            }
+
+            // ── Pixel dissolution ──
+            function runDissolution() {
+                const shuffledBlocks = shuffle([...blocks]);
+                setTimeout(() => {
+                    shuffledBlocks.forEach((block, index) => {
+                        setTimeout(() => {
+                            block.classList.add("hide");
+                        }, index * 25);
+                    });
+                    const totalAnimationTime = (totalBlocks * 25) + 300;
+                    setTimeout(() => {
+                        preloader.style.display = "none";
+                        document.documentElement.classList.remove('preloader-active');
+                        document.body.style.overflow = "";
+                    }, totalAnimationTime);
+                }, 400);
+            }
+
+            // ── Sequence: intro (if first visit) → dissolution ──
+            if (isFirstVisit) {
+                runIntro().then(runDissolution);
+            } else {
+                runDissolution();
+            }
+        });
     </script>
-  </body>
+</body>
+
 </html>
