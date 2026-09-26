@@ -16,7 +16,10 @@
 
     <!-- Preloader Logic -->
     <script>
-      // Prevent scrolling while preloader is running
+      // Add class to html so scrollbar turns red during preloader
+      document.documentElement.classList.add('preloader-active');
+
+      // Prevent scrolling while preloader is running (on body, not html)
       document.body.style.overflow = 'hidden';
       
       document.addEventListener("DOMContentLoaded", () => {
@@ -63,7 +66,8 @@
               const totalAnimationTime = (totalBlocks * 25) + 300; 
               setTimeout(() => {
                   preloader.style.display = "none";
-                  document.body.style.overflow = ""; // Restore original scrolling
+                  document.documentElement.classList.remove('preloader-active');
+                  document.body.style.overflow = ""; // Restore scrolling
               }, totalAnimationTime);
               
           }, 400); 
