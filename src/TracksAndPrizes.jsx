@@ -80,7 +80,7 @@ export function TracksSection() {
       const rightCards = e.querySelectorAll('.track-card:nth-child(2n)');
       gsap.fromTo(rightCards,
         { yPercent: 75 },
-        { yPercent: 0, ease: "none", scrollTrigger: { trigger: e, start: "top bottom", end: "bottom center", scrub: 1 } }
+        { yPercent: 0, ease: "none", scrollTrigger: { trigger: e, start: "top bottom", end: "bottom bottom", scrub: 1 } }
       );
     });
 
