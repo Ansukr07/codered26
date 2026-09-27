@@ -16,7 +16,7 @@
   padding: 8rem 2.5rem;
   background-color: #c8c8c8; /* Light gray base to break up the dark */
   color: #1e1b18;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Grotesk, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
@@ -35,18 +35,18 @@
 .tp-title-row { margin-bottom: 3.5rem; }
 
 .tp-h-large {
-  font-family: Valentine, Georgia, serif;
+  font-family: Gottak, Arial, sans-serif;
   font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 400;
+  font-weight: 600;
   margin: 0;
   letter-spacing: 0;
   line-height: 1;
 }
 
 .tp-h-medium {
-  font-family: Valentine, Georgia, serif;
+  font-family: Gottak, Arial, sans-serif;
   font-size: clamp(1.8rem, 3.5vw, 2.7rem);
-  font-weight: 400 !important;
+  font-weight: 600 !important;
   margin: 0;
   padding: 0;
   letter-spacing: 0;
@@ -58,8 +58,9 @@
 }
 
 .tp-h-regular {
+  font-family: Gottak, Arial, sans-serif;
   font-size: 1.2rem;
-  font-weight: 500;
+  font-weight: 600;
   margin: 0;
   letter-spacing: -0.02em;
 }
@@ -114,7 +115,7 @@
   border: 1px solid #ffffff33;
 }
 .track-card-2 .track-card-body {
-  background-color: #ff503e;
+  background-color: #ED2024;
   color: #f1eeeb;
   border: 1px solid #ffffff33;
 }
@@ -171,7 +172,7 @@
 .track-top-flag {
   display: inline-block;
   width: max-content;
-  background-color: #ff503e;
+  background-color: #ED2024;
   border: 1px solid #ffffff55;
   padding: 0.5em 0.7em;
   font-family: Consolas, monospace;
@@ -185,7 +186,7 @@
 }
 .track-card-2 .track-top-flag {
   background-color: #1e1b18;
-  border: 1px solid #ff503e;
+  border: 1px solid #ED2024;
   border-bottom: 0;
 }
 
@@ -237,7 +238,7 @@
   box-sizing: border-box;
 }
 .track-card-1 .tp-inner-icon { background-color: #1e1b18; color: #f1eeeb; }
-.track-card-2 .tp-inner-icon { background-color: #ff503e; color: #f1eeeb; }
+.track-card-2 .tp-inner-icon { background-color: #ED2024; color: #f1eeeb; }
 .track-card-3 .tp-inner-icon { background-color: #f1eeeb; color: #1e1b18; }
 .track-card-4 .tp-inner-icon { background-color: #c8c8c8; color: #1e1b18; }
 .tp-icon-svg { width: 60%; height: auto; }
@@ -259,8 +260,8 @@
 
 .track-ghost-number {
   --stripe: #f1eeeb;
-  font: 400 clamp(100px, 15vw, 250px)/0.8 Arial, Helvetica, sans-serif;
-  letter-spacing: -0.11em;
+  font: 600 clamp(100px, 15vw, 250px)/0.8 Gottak, Arial, sans-serif;
+  letter-spacing: -0.05em;
   white-space: nowrap;
   color: transparent;
   background: repeating-linear-gradient(to bottom, var(--stripe) 0 4px, transparent 4px 10px);
@@ -276,10 +277,13 @@
 /* =============================================
    PRIZES SECTION
    ============================================= */
-.prizes-title-row { margin-top: 1rem; margin-bottom: 3rem; display: flex; flex-direction: column; gap: 1rem; }
+.prizes-title-row { margin-top: 5rem; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; }
 .prizes-title-line { width: 100%; height: 2px; background: #1e1b18; opacity: 0.2; }
-.prizes-title-text { display: flex; flex-direction: column; gap: 0.2rem; }
-.prizes-title-main { font-weight: 500 !important; }
+.prizes-title-text { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.2rem; }
+.prizes-title-text h3 { font-family: Grotesk, Arial, sans-serif !important; }
+.prizes-title-main { 
+  font-weight: 600 !important; 
+}
 
 .prize-outer-container {
   display: flex;
@@ -300,9 +304,9 @@
 .prize-card:last-child { border-right: none; }
 
 /* The 4 Alternating Colors */
-.prize-card-1 { --p-bg: #1e1b18; --p-text: #f1eeeb; --p-border: #ffffff33; --p-accent: #ff503e; }
-.prize-card-2 { --p-bg: #ff503e; --p-text: #f1eeeb; --p-border: #ffffff55; --p-accent: #1e1b18; }
-.prize-card-3 { --p-bg: #f1eeeb; --p-text: #1e1b18; --p-border: #1e1b1833; --p-accent: #ff503e; }
+.prize-card-1 { --p-bg: #1e1b18; --p-text: #f1eeeb; --p-border: #ffffff33; --p-accent: #ED2024; }
+.prize-card-2 { --p-bg: #ED2024; --p-text: #f1eeeb; --p-border: #ffffff55; --p-accent: #1e1b18; }
+.prize-card-3 { --p-bg: #f1eeeb; --p-text: #1e1b18; --p-border: #1e1b1833; --p-accent: #ED2024; }
 .prize-card-4 { --p-bg: #c8c8c8; --p-text: #1e1b18; --p-border: #1e1b1833; --p-accent: #1e1b18; }
 
 .prize-card-top {
