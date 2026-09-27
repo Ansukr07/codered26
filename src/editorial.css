@@ -93,7 +93,6 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
   cursor: default;
 }
 .shift-info-grid article:hover {
-  
   background-color: #d1d1d1;
   transition-delay: 0s !important;
 }
@@ -149,6 +148,7 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 
 /* Dark television static on the event information cards. */
 .shift-info-grid article{position:relative;isolation:isolate;overflow:hidden;transition:color .18s ease}
+.shift-info-grid{border-bottom:1px solid #777}
 .shift-info-grid article::before{content:"";position:absolute;inset:-40px;z-index:0;background:#242424 url('/static-noise.svg') repeat;background-size:192px 192px;opacity:0;transition:opacity .18s ease;pointer-events:none;will-change:transform}
 .shift-info-grid article>*{position:relative;z-index:1}
 .shift-info-grid article:hover,.shift-info-grid article:focus-within{color:#f1eeeb}
@@ -265,9 +265,6 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-timeline-intro span,.shift-round-index,.shift-timeline .shift-mono{font-family:Grotesk,Arial,sans-serif;font-weight:600;letter-spacing:.03em}
 .shift-timeline .shift-rounds h3{font-family:Valentine,Georgia,serif;font-weight:400;letter-spacing:0;line-height:.92}
 .shift-timeline .shift-rounds p{font-family:Arial,Helvetica,sans-serif;font-weight:400;letter-spacing:-.01em;line-height:1.35}
-
-
-
 @media(max-width:700px) {
   .shift-timeline .shift-rounds {
     display: flex !important;

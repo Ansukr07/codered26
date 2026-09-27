@@ -1,69 +1,70 @@
-import React, { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Navbar.css';
 import logoImage from './assets/logo.png';
 
+const registrationUrl = 'https://unstop.com/o/qjIA3CN?utm_medium=Share&utm_source=ecell-bmsitm&utm_campaign=Online_coding_challenge';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [notice, setNotice] = useState('');
+  const navRef = useRef(null);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+    const onPointerDown = (event) => {
+      if (!navRef.current?.contains(event.target)) setIsOpen(false);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('pointerdown', onPointerDown);
+    };
+  }, [isOpen]);
+
+  const closeMenu = () => setIsOpen(false);
+  const showNotice = (message) => {
+    setNotice(message);
+    closeMenu();
   };
 
   return (
-    <div className={`custom-navbar ${isOpen ? 'open' : ''}`}>
-      <div className="navbar-header">
-        <div className="nav-logo">
-          <img src={logoImage} alt="CODERED Logo" className="nav-logo-img" />
+    <>
+      <nav ref={navRef} className={`custom-navbar ${isOpen ? 'open' : ''}`} aria-label="Main navigation">
+        <div className="navbar-header">
+          <a className="nav-identity" href="#home" onClick={closeMenu} aria-label="CODERED home">
+            <img src={logoImage} alt="" className="nav-logo-img" />
+            <span className="nav-title">CODERED<span style={{ color: '#D90A16' }}>’26</span></span>
+          </a>
+          <button className={`nav-toggle ${isOpen ? 'open' : ''}`} type="button" aria-label={isOpen ? 'Close menu' : 'Open menu'} aria-expanded={isOpen} aria-controls="navbar-dropdown" onClick={() => setIsOpen(open => !open)}>
+            <span className="toggle-line line-1" />
+            <span className="toggle-line line-2" />
+          </button>
         </div>
-        <div className="nav-title">CODERED<span style={{color: '#D90A16'}}>’26</span></div>
-        
-        <button className={`nav-toggle ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
-          <div className="toggle-line line-1"></div>
-          <div className="toggle-line line-2"></div>
-        </button>
-      </div>
 
-      <div className={`navbar-dropdown ${isOpen ? 'show' : ''}`}>
-        <ul className="nav-menu-list">
-          <li className="nav-menu-item">
-            <span>Home</span>
-          </li>
-          <li className="nav-menu-item">
-            <span>Prizes</span>
-            <svg className="menu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <rect x="6" y="2" width="3" height="3" fill="white" />
-              <rect x="6" y="6" width="3" height="3" fill="white" />
-              <rect x="6" y="10" width="3" height="3" fill="white" />
-              <rect x="2" y="6" width="3" height="3" fill="white" />
-              <rect x="10" y="6" width="3" height="3" fill="white" />
-            </svg>
-          </li>
-          <li className="nav-menu-item">
-            <span>Problem statements</span>
-          </li>
-          <li className="nav-menu-item">
-            <span>Sponsors</span>
-            <svg className="menu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <rect x="10" y="2" width="3" height="3" fill="white" />
-              <rect x="6" y="2" width="3" height="3" fill="white" />
-              <rect x="10" y="6" width="3" height="3" fill="white" />
-              <rect x="2" y="10" width="3" height="3" fill="white" />
-            </svg>
-          </li>
-          <li className="nav-menu-item">
-            <span>FAQ</span>
-          </li>
-        </ul>
+        <div id="navbar-dropdown" className={`navbar-dropdown ${isOpen ? 'show' : ''}`} inert={!isOpen}>
+          <ul className="nav-menu-list">
+            <li className="nav-menu-item"><a href="#home" onClick={closeMenu}>Home</a></li>
+            <li className="nav-menu-item"><a href="#prizes" onClick={closeMenu}>Prizes</a></li>
+            <li className="nav-menu-item"><a href="#tracks" onClick={closeMenu}>Problem statements</a></li>
+            <li className="nav-menu-item"><button type="button" onClick={() => showNotice('Sponsor information will be announced here soon.')}>Sponsors</button></li>
+            <li className="nav-menu-item"><a href="#faqs" onClick={closeMenu}>FAQ</a></li>
+          </ul>
 
-        <div className="nav-footer">
-          <button className="nav-btn-pitchdeck">PPT TEMPLATE</button>
-          <div className="nav-footer-row">
-            <button className="nav-btn-action">REGISTER NOW</button>
-            <button className="nav-btn-action">BROCHURE</button>
+          <div className="nav-footer">
+            <button type="button" className="nav-btn-pitchdeck" onClick={() => showNotice('The PPT template is not available yet. Please check back for the official download.')}>PPT TEMPLATE</button>
+            <div className="nav-footer-row">
+              <a className="nav-btn-action" href={registrationUrl} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>REGISTER NOW</a>
+              <button type="button" className="nav-btn-action" onClick={() => showNotice('The brochure is not available yet. Please check back for the official download.')}>BROCHURE</button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </nav>
+      {notice && <div className="nav-notice" role="status"><span>{notice}</span><button type="button" onClick={() => setNotice('')} aria-label="Dismiss notice">×</button></div>}
+    </>
   );
 };
 

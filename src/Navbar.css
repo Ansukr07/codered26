@@ -36,12 +36,14 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: border-radius 0.3s;
   }
+  .nav-title { font-size: clamp(12px, 3.2vw, 16px); }
   .custom-navbar.open .navbar-header {
     border-radius: 12px 12px 0 0;
   }
 }
 
 .navbar-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,6 +57,14 @@
   align-items: center;
 }
 
+.nav-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
 .nav-logo-img {
   height: 32px;
   width: auto;
@@ -62,6 +72,10 @@
 }
 
 .nav-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -202,6 +216,29 @@
   transform: translateX(-5px) scale(1.1);
 }
 
+.nav-menu-item { padding: 0; }
+.nav-menu-item a,
+.nav-menu-item button {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  background: none;
+  border: 0;
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
+}
+.nav-menu-item a:hover,
+.nav-menu-item button:hover { color: #D90A16; }
+.nav-menu-item a:focus-visible,
+.nav-menu-item button:focus-visible,
+.nav-identity:focus-visible,
+.nav-toggle:focus-visible,
+.nav-footer a:focus-visible,
+.nav-footer button:focus-visible { outline: 2px solid #D90A16; outline-offset: -2px; }
+
 .nav-footer {
   padding: 20px;
   display: flex;
@@ -284,4 +321,42 @@
 
 .nav-btn-action:hover {
   opacity: 0.9;
+}
+
+.nav-footer a.nav-btn-action {
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  text-align: center;
+}
+
+.nav-notice {
+  position: fixed;
+  z-index: 1001;
+  top: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, calc(100vw - 24px));
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid #ffffff33;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  box-shadow: 0 12px 30px #0008;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.nav-notice button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
 }

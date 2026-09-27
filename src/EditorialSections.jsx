@@ -51,7 +51,7 @@ export default function EditorialSections() {
   }, []);
 
   return <div ref={containerRef}>
-    <section className="shift-hero" aria-labelledby="hero-title">
+    <section id="home" className="shift-hero" aria-labelledby="hero-title">
       <div className="shift-hero-main anim-slide-down">
         <img className="shift-hero-corner-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" />
         <img className="shift-hero-ribbon" src="/codered2026/codered2026/vector%20files/elements/Asset%2018.svg" alt="" aria-hidden="true" />
@@ -105,4 +105,3 @@ export default function EditorialSections() {
     </section>
   </div>
 }
-
