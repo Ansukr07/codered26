@@ -213,7 +213,7 @@ export function PrizesSection() {
   return (
     <section id="prizes" className="tp-section tp-section--prizes">
       <div className="tp-container">
-        <div className="tp-title-row">
+        <div className="tp-title-row" style={{ textAlign: "center" }}>
           <h2 className="tp-h-large" style={{ fontFamily: "Valentine, Georgia, serif", fontWeight: 400, textTransform: "none" }}>Prizes</h2>
         </div>
 
