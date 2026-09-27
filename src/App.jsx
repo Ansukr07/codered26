@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import { ReactLenis } from 'lenis/react'
 import './App.css'
 import './reference-components.css'
 import './font-fixes.css'
@@ -63,7 +64,6 @@ function App() {
  const dialog=useRef(null)
  const appRef=useRef(null)
  const register=()=>dialog.current.showModal()
-
  useEffect(() => {
    const observer = new IntersectionObserver((entries) => {
      entries.forEach(entry => {
@@ -79,8 +79,10 @@ function App() {
    return () => observer.disconnect();
  }, []);
 
- return <div ref={appRef}>
-    <Navbar />
+ return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: true }}>
+  <div ref={appRef}>
+   <a className="skip-link" href="#main">Skip to content</a>
+   <Navbar />
   <main id="main">
    <EditorialSections />
    <section id="faqs" className="section faq" style={{ padding: 0 }}>
@@ -102,8 +104,9 @@ function App() {
       <span>CODE. CREATE. REPEAT.</span>
     </div>
   </footer>
-  <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e=>{if(e.target===dialog.current)dialog.current.close()}}><button className="dialog-close" onClick={()=>dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt=""/><span className="eyebrow">THE NEXT WAVE IS COMING</span><h2 id="registration-title">You’re early.<br/><span className="script red">We like that.</span></h2><p>Registration for CODERED'26 hasn’t opened yet. The application link, dates, and venue will be announced here.</p><p className="dialog-note">No sign-up is being collected yet. Bookmark this page and check back for the launch.</p><button className="button primary" onClick={()=>dialog.current.close()}>Got it <span>↗</span></button></dialog>
+  <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e=>{if(e.target===dialog.current)dialog.current.close()}}><button className="dialog-close" onClick={()=>dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt=""/><span className="eyebrow">THE NEXT WAVE IS COMING</span><h2 id="registration-title">You’re early.<br/><span className="script red">We like that.</span></h2><p>Registration for CODERED’ 26 hasn’t opened yet. The application link, dates, and venue will be announced here.</p><p className="dialog-note">No sign-up is being collected yet. Bookmark this page and check back for the launch.</p><button className="button primary" onClick={()=>dialog.current.close()}>Got it <span>↗</span></button></dialog>
  </div>
+ </ReactLenis>
 }
 
 function RevolvingFooter({ register }) {
