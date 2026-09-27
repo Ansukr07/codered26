@@ -1,0 +1,447 @@
+/* =============================================
+   TRACKS & PRIZES — tracks-prizes.css
+   Codered26 Deep Integration Theme
+   ============================================= */
+
+/* Keyframe for TV Static hover effect */
+@keyframes tp-static {
+  0%   { transform: translate3d(0,0,0) }
+  25%  { transform: translate3d(-31px,17px,0) }
+  50%  { transform: translate3d(24px,-22px,0) }
+  75%  { transform: translate3d(-13px,-8px,0) }
+  100% { transform: translate3d(19px,29px,0) }
+}
+
+.tp-section {
+  padding: 8rem 2.5rem;
+  background-color: #c8c8c8; /* Light gray base to break up the dark */
+  color: #1e1b18;
+  font-family: Grotesk, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+}
+
+.tp-section--prizes {
+  background-color: #f1eeeb; /* Off-white base */
+}
+
+.tp-container {
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+/* ---- Typography ---- */
+.tp-title-row { margin-bottom: 3.5rem; }
+
+.tp-h-large {
+  font-family: Gottak, Arial, sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.tp-h-medium {
+  font-family: Gottak, Arial, sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+  font-weight: 600 !important;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+  transform: translateY(0.06em);
+}
+
+.tp-h-regular {
+  font-family: Gottak, Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.tp-p-medium {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.tp-p-medium strong {
+  font-weight: 600;
+}
+
+.tp-opacity-50 { opacity: 0.5; }
+
+/* =============================================
+   TRACKS SECTION
+   ============================================= */
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+@media (max-width: 700px) {
+  .tracks-grid { grid-template-columns: 1fr; }
+}
+
+.track-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+}
+
+.track-card-body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-color: #242424;
+  flex: 1; /* Fix 2: Equal height cards */
+}
+
+/* Base card coloring */
+.track-card-1 .track-card-body {
+  background-color: #1e1b18;
+  color: #f1eeeb;
+  border: 1px solid #ffffff33;
+}
+.track-card-2 .track-card-body {
+  background-color: #ED2024;
+  color: #f1eeeb;
+  border: 1px solid #ffffff33;
+}
+.track-card-3 .track-card-body {
+  background-color: #f1eeeb;
+  color: #1e1b18;
+  border: 1px solid #1e1b1833;
+}
+.track-card-4 .track-card-body {
+  background-color: #c8c8c8;
+  color: #1e1b18;
+  border: 1px solid #1e1b1833;
+}
+
+/* Ghost number uses dark stripe on light cards */
+.track-card-3 .track-ghost-number,
+.track-card-4 .track-ghost-number {
+  --stripe: #1e1b18;
+}
+
+/* Flag color override for light cards */
+.track-card-3 .track-top-flag,
+.track-card-4 .track-top-flag {
+  background-color: #1e1b18;
+  border-color: #1e1b18;
+  color: #f1eeeb;
+}
+
+/* Static Noise Hover */
+.track-card-body::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  z-index: 0;
+  background: url('/static-noise.svg') repeat;
+  background-size: 192px 192px;
+  mix-blend-mode: overlay;
+  opacity: 0.4;
+  transition: opacity 0.18s ease;
+  pointer-events: none;
+  will-change: transform;
+}
+.track-card:hover .track-card-body::before {
+  opacity: 1;
+  animation: tp-static 0.22s steps(1, end) infinite;
+}
+
+.track-card-body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Flag sits on top */
+.track-top-flag {
+  display: inline-block;
+  width: max-content;
+  background-color: #ED2024;
+  border: 1px solid #ffffff55;
+  padding: 0.5em 0.7em;
+  font-family: Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1;
+  color: #f1eeeb;
+  margin-bottom: -1px;
+  z-index: 5;
+  border-bottom: 0;
+}
+.track-card-2 .track-top-flag {
+  background-color: #1e1b18;
+  border: 1px solid #ED2024;
+  border-bottom: 0;
+}
+
+/* Pixel Grid Strip */
+.tp-card-grid-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+.tp-block-row { width: 100%; flex: 1; display: flex; flex-direction: row; margin-bottom: -1px; }
+.tp-block-row--split { justify-content: space-between; }
+.tp-block {
+  flex: 1; height: 100%;
+  border: 1px solid rgba(255,255,255,0.15);
+  margin-right: -1px; box-sizing: border-box;
+}
+.tp-block-row--split .tp-block { flex: 0 0 calc(100% / 22); max-width: calc(100% / 22); }
+.track-card-2 .tp-block { border: 1px solid rgba(255,255,255,0.3); }
+.track-card-3 .tp-block { border: 1px solid rgba(0,0,0,0.12); }
+.track-card-4 .tp-block { border: 1px solid rgba(0,0,0,0.12); }
+
+.tp-card-top {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 22 / 4;
+  overflow: hidden;
+  border-bottom: 1px solid #ffffff33;
+}
+.track-card-3 .tp-card-top { border-bottom: 1px solid #1e1b1820; }
+.track-card-4 .tp-card-top { border-bottom: 1px solid #1e1b1820; }
+
+.tp-inner-box {
+  position: absolute;
+  top: 25%; left: calc(1 / 22 * 100%); width: calc(20 / 22 * 100%); height: 50%;
+  background-color: #1e1b18;
+  display: flex; align-items: stretch; z-index: 2; box-sizing: border-box;
+  border: 1px solid #ffffff33;
+}
+.track-card-1 .tp-inner-box { background-color: #050505; }
+.track-card-2 .tp-inner-box { background-color: #1e1b18; border: 1px solid #ffffff33; }
+.track-card-3 .tp-inner-box { background-color: #1e1b18; border: 1px solid #1e1b1833; color: #f1eeeb; } /* Fix 3: Keep text light */
+.track-card-4 .tp-inner-box { background-color: #1e1b18; border: 1px solid #1e1b1833; color: #f1eeeb; } /* Fix 3: Keep text light */
+
+.tp-inner-icon {
+  flex: 0 0 calc(2 / 20 * 100%);
+  display: flex; justify-content: center; align-items: center;
+  box-sizing: border-box;
+}
+.track-card-1 .tp-inner-icon { background-color: #1e1b18; color: #f1eeeb; }
+.track-card-2 .tp-inner-icon { background-color: #ED2024; color: #f1eeeb; }
+.track-card-3 .tp-inner-icon { background-color: #f1eeeb; color: #1e1b18; }
+.track-card-4 .tp-inner-icon { background-color: #c8c8c8; color: #1e1b18; }
+.tp-icon-svg { width: 60%; height: auto; }
+.tp-inner-text {
+  flex: 1; display: flex; align-items: center;
+  padding-left: calc(1 / 20 * 100%); padding-right: 1%; overflow: hidden;
+}
+
+/* Body text */
+.track-card-content {
+  min-height: 15rem;
+  padding: 3rem 2.5rem;
+  background-color: transparent;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.track-ghost-number {
+  --stripe: #f1eeeb;
+  font: 600 clamp(100px, 15vw, 250px)/0.8 Gottak, Arial, sans-serif;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  color: transparent;
+  background: repeating-linear-gradient(to bottom, var(--stripe) 0 4px, transparent 4px 10px);
+  -webkit-background-clip: text;
+  background-clip: text;
+  opacity: 0.2;
+  align-self: flex-end;
+  margin-top: -20px;
+  margin-bottom: -30px;
+  padding-right: 0.15em; /* Fix 4: Prevent number clipping */
+}
+
+/* =============================================
+   PRIZES SECTION
+   ============================================= */
+.prizes-title-row { margin-top: 5rem; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; }
+.prizes-title-line { width: 100%; height: 2px; background: #1e1b18; opacity: 0.2; }
+.prizes-title-text { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.2rem; }
+.prizes-title-text h3 { font-family: Grotesk, Arial, sans-serif !important; }
+.prizes-title-main { 
+  font-weight: 600 !important; 
+}
+
+.prize-outer-container {
+  display: flex;
+  border: 1px solid #1e1b18; /* Sharp dark border */
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.prize-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #1e1b18; /* Sharp dark divider */
+  position: relative;
+  isolation: isolate;
+}
+.prize-card:last-child { border-right: none; }
+
+/* The 4 Alternating Colors */
+.prize-card-1 { --p-bg: #1e1b18; --p-text: #f1eeeb; --p-border: #ffffff33; --p-accent: #ED2024; }
+.prize-card-2 { --p-bg: #ED2024; --p-text: #f1eeeb; --p-border: #ffffff55; --p-accent: #1e1b18; }
+.prize-card-3 { --p-bg: #f1eeeb; --p-text: #1e1b18; --p-border: #1e1b1833; --p-accent: #ED2024; }
+.prize-card-4 { --p-bg: #c8c8c8; --p-text: #1e1b18; --p-border: #1e1b1833; --p-accent: #1e1b18; }
+
+.prize-card-top {
+  position: relative;
+  background-color: var(--p-bg);
+  aspect-ratio: 1.25 / 1;
+  overflow: hidden;
+  border-bottom: 1px solid #1e1b18; /* Sharp dark line above amount box */
+}
+
+.prize-card-top::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  z-index: 0;
+  background: url('/static-noise.svg') repeat;
+  background-size: 192px 192px;
+  mix-blend-mode: overlay;
+  opacity: 0.4;
+  transition: opacity 0.18s ease;
+  pointer-events: none;
+}
+.prize-card:hover .prize-card-top::before {
+  opacity: 1;
+  animation: tp-static 0.22s steps(1, end) infinite;
+}
+
+.prize-grid-bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  display: flex; flex-direction: column; background-color: transparent; z-index: 1;
+}
+.prize-block-row { width: 100%; flex: 1; display: flex; flex-direction: row; margin-bottom: -1px; }
+.prize-block-row--split { justify-content: space-between; }
+.prize-block { flex: 1; height: 100%; border: 1px solid var(--p-border); margin-right: -1px; box-sizing: border-box; }
+.prize-block-row--split .prize-block { flex: 0 0 calc(100% / 12); max-width: calc(100% / 12); }
+
+/* --- Top-Left Floating Tag --- */
+.prize-tag-container {
+  position: absolute; top: 0; left: 0; width: 55%; aspect-ratio: 12 / 4; z-index: 2;
+}
+.prize-tag-inner {
+  position: absolute; top: 25%; left: calc(1 / 12 * 100%); width: calc(10 / 12 * 100%); height: 50%;
+  display: flex; align-items: stretch; z-index: 2; box-sizing: border-box;
+  font-family: Consolas, monospace; font-size: clamp(0.6rem, 1vw, 0.85rem);
+}
+.prize-tag-hash {
+  flex: 0 0 calc(2 / 10 * 100%); background-color: var(--p-accent); border: 1px solid var(--p-border);
+  margin-right: -1px; display: flex; justify-content: center; align-items: center;
+  color: var(--p-bg); font-weight: 500;
+}
+.prize-tag-text {
+  flex: 1; background-color: var(--p-bg); border: 1px solid var(--p-border);
+  margin-right: -1px; display: flex; align-items: center; justify-content: center;
+  color: var(--p-text); font-weight: 500; text-transform: uppercase;
+}
+.prize-tag-bracket {
+  flex: 0 0 calc(1.5 / 10 * 100%); background-color: var(--p-accent); border: 1px solid var(--p-border);
+  display: flex; justify-content: center; align-items: center; color: var(--p-bg); font-weight: 500;
+}
+
+/* --- Center Illustrations & Animations --- */
+@keyframes prize-float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+@keyframes prize-twinkle {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(0.6); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.prize-illustration {
+  position: absolute; inset: 0; display: flex; justify-content: center; align-items: center;
+  pointer-events: none; z-index: 5;
+}
+.prize-layer { position: absolute; width: 50%; height: auto; transition: transform 0.3s ease; }
+.prize-card:hover .prize-layer { animation: prize-float 4s ease-in-out infinite; }
+
+/* 1st Place */
+.p1-diamond { width: 35%; top: 15%; left: 15%; z-index: 1; animation-delay: 0.2s; animation-duration: 3.5s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+.p1-bills { width: 75%; bottom: 5%; left: 5%; z-index: 4; animation-delay: 0s; animation-duration: 4.2s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+.p1-cb { width: 45%; bottom: 15%; right: 5%; z-index: 2; animation-delay: 0.5s; animation-duration: 4s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+.p1-ct { width: 45%; bottom: 21%; right: 7%; z-index: 3; animation-delay: 0.5s; animation-duration: 4s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+
+/* 2nd Place */
+.p2-left { width: 60%; bottom: 10%; left: 10%; z-index: 2; animation-delay: 0s; animation-duration: 4.5s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+.p2-top { width: 25%; top: 15%; right: 20%; z-index: 1; animation-delay: 0.4s; animation-duration: 3.2s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+.p2-bottom { width: 40%; bottom: 15%; right: 15%; z-index: 3; animation-delay: 0.8s; animation-duration: 3.8s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+
+/* 3rd Place */
+.p3-bottom { width: 45%; bottom: 10%; left: 30%; z-index: 1; animation-delay: 0s; animation-duration: 4s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+.p3-middle { width: 45%; bottom: 14%; left: 28%; z-index: 2; animation-delay: 0s; animation-duration: 4s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+.p3-top { width: 45%; bottom: 18%; left: 26%; z-index: 3; animation-delay: 0s; animation-duration: 4s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+
+/* 4th Place */
+.p4-bottom { width: 70%; bottom: 10%; left: 15%; z-index: 1; animation-delay: 0s; animation-duration: 4s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+.p4-middle { width: 70%; bottom: 12.5%; left: 15%; z-index: 2; animation-delay: 0s; animation-duration: 4s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+.p4-top { width: 70%; bottom: 15%; left: 15%; z-index: 3; animation-delay: 0s; animation-duration: 4s; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5)); }
+
+/* Sparkles */
+.sparkle-svg {
+  position: absolute; width: 15px; height: 15px; z-index: 10; pointer-events: none; opacity: 0; transition: opacity 0.3s ease;
+}
+.prize-card:hover .sparkle-svg { opacity: 1; animation: prize-twinkle 3s ease-in-out infinite; }
+.s1 { top: 15%; left: 40%; animation-delay: 0s; animation-duration: 2s; }
+.s2 { top: 60%; right: 15%; width: 10px; height: 10px; animation-delay: 0.5s; animation-duration: 3s; }
+.s3 { top: 30%; left: 30%; animation-delay: 0.2s; animation-duration: 2.5s; }
+.s4 { bottom: 20%; right: 25%; width: 20px; height: 20px; animation-delay: 0.8s; animation-duration: 2s; }
+.s5 { top: 20%; right: 40%; width: 25px; height: 25px; animation-delay: 0.4s; animation-duration: 3.5s; }
+.s6 { bottom: 30%; left: 20%; animation-delay: 0s; animation-duration: 2s; }
+.s7 { top: 15%; right: 25%; animation-delay: 0.7s; animation-duration: 2.8s; }
+.s8 { bottom: 40%; left: 30%; animation-delay: 0.3s; animation-duration: 2.2s; }
+
+/* --- Bottom Section --- */
+.prize-card-bottom {
+  background-color: #f1eeeb; /* Force off-white background */
+  color: #1e1b18; /* Force dark text so it's readable */
+  padding: 2.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.prize-amount {
+  font-family: Valentine, Georgia, serif;
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--p-bg);
+}
+
+@media (max-width: 900px) {
+  .prize-outer-container { flex-direction: column; }
+  .prize-card { border-right: none; border-bottom: 1px solid #ffffff33; }
+  .prize-card:last-child { border-bottom: none; }
+}
+
