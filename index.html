@@ -160,6 +160,7 @@
                     setTimeout(() => {
                         preloader.style.display = "none";
                         document.documentElement.classList.remove('preloader-active');
+                        window.dispatchEvent(new Event('preloaderComplete'));
                         document.body.style.overflow = "";
                     }, totalAnimationTime);
                 }, 400);

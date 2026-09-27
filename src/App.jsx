@@ -61,21 +61,38 @@ const questions = [
 function App() {
  const [openFaq,setOpenFaq]=useState(null)
  const dialog=useRef(null)
+ const appRef=useRef(null)
  const register=()=>dialog.current.showModal()
- return <>
+
+ useEffect(() => {
+   const observer = new IntersectionObserver((entries) => {
+     entries.forEach(entry => {
+       if (entry.isIntersecting) {
+         entry.target.classList.add('is-visible');
+       }
+     });
+   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+   if (appRef.current) {
+     appRef.current.querySelectorAll('.anim-slide-up').forEach(el => observer.observe(el));
+   }
+   return () => observer.disconnect();
+ }, []);
+
+ return <div ref={appRef}>
   <a className="skip-link" href="#main">Skip to content</a>
   <Navbar />
   <main id="main">
    <EditorialSections />
    <section id="faqs" className="section faq" style={{ padding: 0 }}>
      <CurrencySkyBackground style={{ padding: '94px 6% 150px' }}>
-       <div className="faq-grid"><div className="faq-intro"><span className="faq-kicker">QUESTIONS / ANSWERS</span><h2>Before<br/>you <span className="script red">build.</span></h2><button className="faq-cta" onClick={register}><span>GET</span><span>ACCESS</span></button></div><div className="faq-list">{questions.map(([q,answer],i)=><div className={`faq-item ${openFaq===i?'is-open':''}`} key={q}><h3><button aria-expanded={openFaq===i} aria-controls={`answer-${i}`} onClick={()=>setOpenFaq(openFaq===i?null:i)}><span className="faq-index">Q.{String(i+1).padStart(3,'0')} <i>/</i></span><span className="faq-question">{q}</span><span className="faq-toggle">{openFaq===i?'−':'+'}</span></button></h3><div className="faq-answer" id={`answer-${i}`} hidden={openFaq!==i}><p>{answer}</p></div></div>)}</div></div>
+       <div className="faq-grid"><div className="faq-intro"><span className="faq-kicker anim-slide-up">QUESTIONS / ANSWERS</span><h2 className="anim-slide-up" style={{transitionDelay: '0.1s'}}>Before<br/>you <span className="script red">build.</span></h2></div><div className="faq-list">{questions.map(([q,answer],i)=><div className={`faq-item anim-slide-up ${openFaq===i?'is-open':''}`} style={{transitionDelay: `${i * 0.15}s`}} key={q}><h3><button aria-expanded={openFaq===i} aria-controls={`answer-${i}`} onClick={()=>setOpenFaq(openFaq===i?null:i)}><span className="faq-index">Q.{String(i+1).padStart(3,'0')} <i>/</i></span><span className="faq-question">{q}</span><span className="faq-toggle">{openFaq===i?'−':'+'}</span></button></h3><div className="faq-answer" id={`answer-${i}`} hidden={openFaq!==i}><p>{answer}</p></div></div>)}</div></div>
      </CurrencySkyBackground>
    </section>
    <RevolvingFooter register={register} />
   </main>
   <footer>
-    <div className="cosmos-footer-giant">
+    <div className="cosmos-footer-giant anim-slide-up">
       CODERED’ 26
     </div>
     <a href="#" className="footer-brand">CODERED’ 26</a>
@@ -87,7 +104,7 @@ function App() {
     </div>
   </footer>
   <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e=>{if(e.target===dialog.current)dialog.current.close()}}><button className="dialog-close" onClick={()=>dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt=""/><span className="eyebrow">THE NEXT WAVE IS COMING</span><h2 id="registration-title">You’re early.<br/><span className="script red">We like that.</span></h2><p>Registration for CODERED’ 26 hasn’t opened yet. The application link, dates, and venue will be announced here.</p><p className="dialog-note">No sign-up is being collected yet. Bookmark this page and check back for the launch.</p><button className="button primary" onClick={()=>dialog.current.close()}>Got it <span>↗</span></button></dialog>
- </>
+ </div>
 }
 
 function RevolvingFooter({ register }) {

@@ -48,6 +48,58 @@
 .shift-timeline .shift-rounds article{height:max(610px,calc(100svh - 112px))}
 @media(max-width:700px){.shift-about-top{min-height:0}.shift-about-copy{min-height:350px;padding:60px 5% 45px}.shift-about-copy p{font-size:21px;max-width:100%}.shift-about-side{min-height:150px}.shift-about-plus{font-size:120px}.shift-info-grid article{min-height:310px;padding:30px 6% 35px}.shift-card-plus{font-size:48px}.shift-info-grid h3{font-size:42px;margin:30px 0 18px}.shift-info-grid ul{font-size:19px}.shift-gallery-grid .shift-photo{height:auto}.shift-timeline .shift-rounds article{height:480px}}
 
+/* --- Scroll & Hover Animations --- */
+.anim-slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.anim-slide-down {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.anim-slide-down.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.anim-blur-reveal {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(20px);
+}
+html:not(.preloader-active) .anim-blur-reveal {
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html:not(.preloader-active) .anim-blur-reveal.is-visible {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+}
+
+html:not(.preloader-active) .anim-slide-up {
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html:not(.preloader-active) .anim-slide-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.shift-info-grid article, .shift-rounds article {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s;
+  cursor: default;
+}
+.shift-info-grid article:hover {
+  transform: translateY(-10px);
+  background-color: #d1d1d1;
+  transition-delay: 0s !important;
+}
+.shift-timeline .shift-rounds article:hover {
+  transform: translateY(-10px);
+  filter: brightness(1.1);
+  transition-delay: 0s !important;
+}
 .shift-hero-heading{justify-content:end;padding-bottom:clamp(70px,11vh,150px)}
 .shift-hero-title{display:flex;align-items:flex-start;gap:.18em;font:400 clamp(92px,10.8vw,185px)/.9 Arial,Helvetica,sans-serif;letter-spacing:-.075em;white-space:nowrap}
 .shift-hero-title sup{font:400 .32em/1 Arial,Helvetica,sans-serif;letter-spacing:-.05em;position:relative;top:.05em}
