@@ -77,6 +77,7 @@ export default function EditorialSections() {
           <div className="shift-hero-bottom-action anim-slide-up" style={{transitionDelay: '0.2s'}}><a href="https://unstop.com/o/qjIA3CN?utm_medium=Share&amp;utm_source=ecell-bmsitm&amp;utm_campaign=Online_coding_challenge" target="_blank" rel="noopener noreferrer">REGISTER NOW <span aria-hidden="true">↗</span></a></div>
         </div>
       </div>
+
       <aside className="shift-hero-rail anim-slide-down" style={{transitionDelay: '0.2s'}}>
         <div className="shift-rail-intro anim-slide-up" style={{transitionDelay: '0.3s'}}><strong>National Level<br/>24-Hour Hackathon.</strong><img className="shift-rail-tagline" src="/vivaldi-tagline.png" alt="Code Till You Drop." /></div>
         <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{transitionDelay: '0.4s'}}><div className="shift-countdown-heading"><span>UNTIL THE BUILD BEGINS</span><h2>12 / 12 / 26</h2></div><Countdown /></div>
