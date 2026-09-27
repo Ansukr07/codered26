@@ -27,18 +27,18 @@
     transform: none;
   }
   .navbar-dropdown {
-    border-radius: 0 0 12px 12px;
+    border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: none;
   }
   .navbar-header {
-    border-radius: 12px;
+    border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: border-radius 0.3s;
   }
   .nav-title { font-size: clamp(12px, 3.2vw, 16px); }
   .custom-navbar.open .navbar-header {
-    border-radius: 12px 12px 0 0;
+    border-radius: 0;
   }
 }
 
