@@ -213,6 +213,55 @@ export function PrizesSection() {
           <h2 className="tp-h-large">Prizes</h2>
         </div>
 
+        {/* Massive Centered Prize Pool Banner (Single Solid Dark Color) */}
+        <div className="prize-card prize-card-1" style={{ 
+          maxWidth: '900px', 
+          margin: '0 auto 2.5rem', 
+          border: '1px solid #1e1b18' 
+        }}>
+          
+          {/* ENTIRE BANNER (Dark background, Tag, Illustrations, and Amount) */}
+          <div className="prize-card-top" style={{ 
+            aspectRatio: 'auto', 
+            minHeight: '320px',
+            borderBottom: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '8rem 2rem 4rem'
+          }}>
+            
+            {/* Tag - locked to a fixed size so it matches the other cards perfectly without stretching or breaking the grid! */}
+            <div className="prize-tag-container" style={{ width: '320px', aspectRatio: '12 / 4' }}>
+              <PrizePixelGrid />
+              <div className="prize-tag-inner">
+                <div className="prize-tag-hash">#</div>
+                <div className="prize-tag-text">TOTAL PRIZE POOL</div>
+                <div className="prize-tag-bracket">{"}"}</div>
+              </div>
+            </div>
+            
+            {/* We position the sparkles manually so they are visible and don't hide behind the wide tag */}
+            <div className="prize-illustration">
+              <SparkleSVG className="s1" style={{ top: '25%', left: '30%', width: '45px' }} />
+              <SparkleSVG className="s2" style={{ top: '65%', right: '20%', width: '60px' }} />
+              <SparkleSVG className="s4" style={{ top: '20%', right: '35%', width: '30px' }} />
+            </div>
+
+            {/* Massive Center Text (Light text on dark background) */}
+            <h4 className="prize-amount" style={{ 
+              fontSize: 'clamp(4rem, 10vw, 7.5rem)', 
+              margin: 0, 
+              color: 'var(--p-text)',
+              position: 'relative',
+              zIndex: 10
+            }}>
+              ₹2,00,000<span style={{ color: 'var(--p-accent)' }}></span>
+            </h4>
+          </div>
+          
+        </div>
+
         <div className="prizes-title-row">
           <div className="prizes-title-line" />
           <div className="prizes-title-text">
