@@ -80,8 +80,7 @@ function App() {
 
   return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: true }}>
     <div ref={appRef}>
-      <a className="skip-link" href="#main">Skip to content</a>
-      <Navbar />
+            <Navbar />
       <main id="main">
         <EditorialSections />
         <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
