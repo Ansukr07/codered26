@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { TracksSection, PrizesSection } from './TracksAndPrizes'
 import './editorial.css'
 
 const eventStart = new Date('2026-12-12T00:00:00+05:30').getTime()
@@ -100,6 +101,8 @@ export default function EditorialSections() {
       </article>)}</div>
     </section>
 
+    <TracksSection />
+    <PrizesSection />
   </div>
 }
 
