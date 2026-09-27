@@ -14,16 +14,16 @@
 
 @media(max-width:700px) {
   .custom-navbar {
-    width: 70%;
+    width: calc(100% - 24px);
     max-width: none;
-    left: auto;
+    left: 12px;
     right: 12px;
     transform: none;
   }
   .custom-navbar.open {
-    width: 70%;
+    width: calc(100% - 24px);
     right: 12px;
-    left: auto;
+    left: 12px;
     transform: none;
   }
   .navbar-dropdown {
