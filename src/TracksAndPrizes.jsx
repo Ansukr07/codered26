@@ -187,7 +187,7 @@ export function PrizesSection() {
   const prizes = [
     {
       place: "1st place",
-      amount: "₹30,000",
+      amount: "Rs. 30,000",
       tagColorClass: "prize-tag-yellow",
       images: [
         { src: "/images/prizes/prize-1-diamond.svg", class: "p1-diamond" },
@@ -199,7 +199,7 @@ export function PrizesSection() {
     },
     {
       place: "2nd place",
-      amount: "₹20,000",
+      amount: "Rs. 20,000",
       tagColorClass: "prize-tag-blue",
       images: [
         { src: "/images/prizes/prize-2-left.svg", class: "p2-left" },
@@ -260,7 +260,7 @@ export function PrizesSection() {
               position: 'relative',
               zIndex: 10
             }}>
-              ₹2,00,000<span style={{ color: 'var(--p-accent)' }}></span>
+              Rs. 2,00,000<span style={{ color: 'var(--p-accent)' }}></span>
             </h4>
           </div>
           
