@@ -55,7 +55,7 @@ export default function EditorialSections() {
         <img className="shift-hero-corner-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" />
         <img className="shift-hero-ribbon" src="/codered2026/codered2026/vector%20files/elements/Asset%2018.svg" alt="" aria-hidden="true" />
         <div className="shift-hero-composition">
-          <div className="shift-hero-topline anim-slide-up"><p className="shift-hero-presented">E-CELL Ã— BMSIT&amp;M PRESENTS</p><a className="shift-mobile-register" href="https://unstop.com/o/qjIA3CN?utm_medium=Share&amp;utm_source=ecell-bmsitm&amp;utm_campaign=Online_coding_challenge" target="_blank" rel="noopener noreferrer">REGISTER NOW â†—</a></div>
+          <div className="shift-hero-topline anim-slide-up"><p className="shift-hero-presented">E-CELL × BMSIT&amp;M PRESENTS</p><a className="shift-mobile-register" href="https://unstop.com/o/qjIA3CN?utm_medium=Share&amp;utm_source=ecell-bmsitm&amp;utm_campaign=Online_coding_challenge" target="_blank" rel="noopener noreferrer">REGISTER NOW ↗</a></div>
           <div className="shift-hero-text-wrapper">
             <div className="shift-hero-first-line" aria-hidden="true">
               <span style={{ display: 'block' }}>
@@ -70,11 +70,11 @@ export default function EditorialSections() {
                 {"RED".split('').map((char, i) => (
                   <span key={i} className="anim-slide-up" style={{ display: 'inline-block', transitionDelay: `${0.32 + i * 0.08}s` }}>{char}</span>
                 ))}
-                <sup className="anim-slide-up" style={{ display: 'inline-block', transitionDelay: `${0.32 + 3 * 0.08}s` }}>â€™26</sup>
+                <sup className="anim-slide-up" style={{ display: 'inline-block', transitionDelay: `${0.32 + 3 * 0.08}s` }}>'26</sup>
               </span>
             </h1>
           </div>
-          <div className="shift-hero-bottom-action anim-slide-up" style={{transitionDelay: '0.2s'}}><a href="https://unstop.com/o/qjIA3CN?utm_medium=Share&amp;utm_source=ecell-bmsitm&amp;utm_campaign=Online_coding_challenge" target="_blank" rel="noopener noreferrer">REGISTER NOW <span aria-hidden="true">â†—</span></a></div>
+          <div className="shift-hero-bottom-action anim-slide-up" style={{transitionDelay: '0.2s'}}><a href="https://unstop.com/o/qjIA3CN?utm_medium=Share&amp;utm_source=ecell-bmsitm&amp;utm_campaign=Online_coding_challenge" target="_blank" rel="noopener noreferrer">REGISTER NOW <span aria-hidden="true">↗</span></a></div>
         </div>
       </div>
       <aside className="shift-hero-rail anim-slide-down" style={{transitionDelay: '0.2s'}}>

@@ -48,12 +48,12 @@ const baseElements = Array.from({ length: totalElements }).map((_, i) => {
 });
 
 const questions = [
-  ['What is CODERED’ 26?', 'A hackathon for curious minds who want to turn ideas into working projects. Come to experiment, collaborate, and build something you’re proud of.'],
+  ["What is CODERED'26?", 'A hackathon for curious minds who want to turn ideas into working projects. Come to experiment, collaborate, and build something you’re proud of.'],
   ['Do I need to be an experienced coder?', 'Bring your curiosity. Developers, designers, and problem-solvers all have a place here. Detailed eligibility requirements will be shared when registration opens.'],
   ['Can I participate with a team?', 'Building together is part of the experience. Team sizes and the team formation process will be announced with the official participant guide.'],
   ['When and where is it happening?', 'The 2026 edition is on its way. Exact dates, venue, and the final schedule will be announced here.'],
   ['How do I register?', 'Registration is not open yet. Check the registration panel for the latest status and return here when applications go live.'],
-  ['Is there a fee to participate?', 'CODERED’ 26 is completely free for all accepted participants. We believe in removing barriers to innovation.'],
+  ['Is there a fee to participate?', "CODERED'26 is completely free for all accepted participants. We believe in removing barriers to innovation."],
   ['What kind of projects can we build?', 'Software, hardware, design—anything goes. We encourage you to build outside your comfort zone and try something completely new.'],
   ['What if I don\'t have a team yet?', 'Don\'t worry! We will host a dedicated team-formation event at the start of the hackathon to help you find teammates with complementary skills.'],
 ]
@@ -80,8 +80,7 @@ function App() {
  }, []);
 
  return <div ref={appRef}>
-  <a className="skip-link" href="#main">Skip to content</a>
-  <Navbar />
+    <Navbar />
   <main id="main">
    <EditorialSections />
    <section id="faqs" className="section faq" style={{ padding: 0 }}>
@@ -93,9 +92,9 @@ function App() {
   </main>
   <footer>
     <div className="cosmos-footer-giant anim-slide-up">
-      CODERED’ 26
+      CODERED'26
     </div>
-    <a href="#" className="footer-brand">CODERED’ 26</a>
+    <a href="#" className="footer-brand">CODERED'26</a>
     <span>A little chaos. A lot of possibility.</span>
     <a href="#">BACK TO TOP ↑</a>
     <div className="footer-bottom">
@@ -103,7 +102,7 @@ function App() {
       <span>CODE. CREATE. REPEAT.</span>
     </div>
   </footer>
-  <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e=>{if(e.target===dialog.current)dialog.current.close()}}><button className="dialog-close" onClick={()=>dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt=""/><span className="eyebrow">THE NEXT WAVE IS COMING</span><h2 id="registration-title">You’re early.<br/><span className="script red">We like that.</span></h2><p>Registration for CODERED’ 26 hasn’t opened yet. The application link, dates, and venue will be announced here.</p><p className="dialog-note">No sign-up is being collected yet. Bookmark this page and check back for the launch.</p><button className="button primary" onClick={()=>dialog.current.close()}>Got it <span>↗</span></button></dialog>
+  <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e=>{if(e.target===dialog.current)dialog.current.close()}}><button className="dialog-close" onClick={()=>dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt=""/><span className="eyebrow">THE NEXT WAVE IS COMING</span><h2 id="registration-title">You’re early.<br/><span className="script red">We like that.</span></h2><p>Registration for CODERED'26 hasn’t opened yet. The application link, dates, and venue will be announced here.</p><p className="dialog-note">No sign-up is being collected yet. Bookmark this page and check back for the launch.</p><button className="button primary" onClick={()=>dialog.current.close()}>Got it <span>↗</span></button></dialog>
  </div>
 }
 
