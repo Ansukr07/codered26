@@ -117,7 +117,7 @@ export function TracksSection() {
     <section id="tracks" className="tp-section" ref={containerRef}>
       <div className="tp-container">
         <div className="tp-title-row">
-          <h2 className="tp-h-large">Tracks</h2>
+          <h2 className="tp-h-large" style={{ fontFamily: "Valentine, Georgia, serif", fontWeight: 400, textTransform: "none" }}>Tracks</h2>
         </div>
         <div className="tracks-grid">
           {tracks.map((track, idx) => (
@@ -214,7 +214,7 @@ export function PrizesSection() {
     <section id="prizes" className="tp-section tp-section--prizes">
       <div className="tp-container">
         <div className="tp-title-row">
-          <h2 className="tp-h-large">Prizes</h2>
+          <h2 className="tp-h-large" style={{ fontFamily: "Valentine, Georgia, serif", fontWeight: 400, textTransform: "none" }}>Prizes</h2>
         </div>
 
         {/* Massive Centered Prize Pool Banner (Single Solid Dark Color) */}
@@ -267,7 +267,6 @@ export function PrizesSection() {
         </div>
 
         <div className="prizes-title-row">
-          <div className="prizes-title-line" />
           <div className="prizes-title-text">
             <h3 className="tp-h-regular prizes-title-main">Prizes per track</h3>
             <h3 className="tp-h-regular tp-opacity-50">Applies to: All 4 tracks</h3>
