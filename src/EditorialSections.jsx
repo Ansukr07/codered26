@@ -26,9 +26,9 @@ function Countdown() {
 }
 
 const rounds = [
-  ['01', 'OPEN CALL', 'Round one: submit the idea', 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. BRING YOUR TEAM, FRAME THE PROBLEM, AND SEND IN YOUR CONCEPT.'],
-  ['02', 'THE BUILD', 'Round two: 24 hours live', 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. SELECTED TEAMS BUILD, TEST, AND REFINE ON THE CLOCK.'],
-  ['03', 'FINAL DEMO', 'Present what you made', 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. SHOW THE WORK, TELL THE STORY, AND CLOSE THE DAY TOGETHER.'],
+  ['01', 'OPEN CALL', 'Round one: submit the idea', 'BRING YOUR TEAM, FRAME THE PROBLEM, AND SEND IN YOUR CONCEPT.'],
+  ['02', 'THE BUILD', 'Round two: 24 hours live', 'SELECTED TEAMS BUILD, TEST, AND REFINE ON THE CLOCK.'],
+  ['03', 'FINAL DEMO', 'Present what you made', 'SHOW THE WORK, TELL THE STORY, AND CLOSE THE DAY TOGETHER.'],
 ]
 
 export default function EditorialSections() {
@@ -93,6 +93,9 @@ export default function EditorialSections() {
       </div>
     </section>
 
+        <TracksSection />
+    <PrizesSection />
+
     <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">
       <div className="shift-timeline-intro anim-slide-up"><h2 id="timeline-title">The whole sequence.</h2><span><span className="shift-mobile-swipe">SWIPE &rarr;&nbsp;&nbsp;</span>01 / 02 / 03</span></div>
       <div className="shift-rounds">{rounds.map(([n, phase, title, detail], i) => <article key={n} className="anim-slide-down" style={{ transitionDelay: `${i * 0.15}s` }}>
@@ -100,9 +103,6 @@ export default function EditorialSections() {
         <div className="shift-round-content"><span className="shift-round-index anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.1}s` }}>{n}</span><span className="shift-mono anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.2}s` }}>{phase}</span><h3 className="anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.3}s` }}>{title}</h3><p className="anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.4}s` }}>{detail}</p></div>
       </article>)}</div>
     </section>
-
-    <TracksSection />
-    <PrizesSection />
   </div>
 }
 

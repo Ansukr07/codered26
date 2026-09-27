@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 
 const TIERS = [
-  { min: 160, color: "#23211f" },
-  { min: 100, color: "#23211f" },
-  { min: 50, color: "#23211f" },
-  { min: 15, color: "#23211f" },
+  { min: 160, color: "#dadada" },
+  { min: 100, color: "#dadada" },
+  { min: 50, color: "#dadada" },
+  { min: 15, color: "#dadada" },
 ];
 
 const PARAGRAPH = "CODERED '26  /  THE  NEXT  WAVE  OF  BUILDERS  /  IDEAS  DON'T  BUILD  THEMSELVES  /  LESS  WHAT  IF,  MORE  WHAT'S  NEXT  /  A  COLLISION  OF  CODE,  CREATIVITY,  AND  CAFFEINE  /  THINK  BOLD  /  BREAK  THE  ORDINARY  /  ";
@@ -165,7 +165,7 @@ export default function CurrencySkyBackground({
   }, [speed, opacity, cellWidth, cellHeight, fontSize, fontFamily, terrainScale, contourSpacing, paused]);
 
   return (
-    <div ref={hostRef} className={className} style={{ position: 'relative', height: '100%', width: '100%', overflow: 'hidden', backgroundColor: "#0c0c0b", ...style }}>
+    <div ref={hostRef} className={className} style={{ position: 'relative', height: '100%', width: '100%', overflow: 'hidden', backgroundColor: "#c8c8c8", ...style }}>
       <canvas ref={canvasRef} aria-hidden="true" style={{ pointerEvents: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }} />
       {children && <div style={{ position: 'relative', zIndex: 10, height: '100%', width: '100%' }}>{children}</div>}
     </div>
