@@ -34,22 +34,23 @@ export default function EditorialSections() {
   return <>
     <section className="shift-hero" aria-labelledby="hero-title">
       <div className="shift-hero-main">
-        <img className="shift-hero-corner-element" src="/codered2026/codered2026/vector%20files/elements/Artboard%201%20copy%205.svg" alt="" aria-hidden="true" />
+        <img className="shift-hero-corner-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" />
+        <img className="shift-hero-ribbon" src="/codered2026/codered2026/vector%20files/elements/Asset%2018.svg" alt="" aria-hidden="true" />
         <div className="shift-hero-composition">
           <div className="shift-hero-topline"><p className="shift-hero-presented">E-CELL × BMSIT&amp;M PRESENTS</p><a className="shift-mobile-register" href="https://unstop.com/o/qjIA3CN?utm_medium=Share&amp;utm_source=ecell-bmsitm&amp;utm_campaign=Online_coding_challenge" target="_blank" rel="noopener noreferrer">REGISTER NOW ↗</a></div>
-          <div className="shift-hero-first-line"><span aria-hidden="true">CODE</span><p>National Level<br/>24-Hour Hackathon.<br/><img className="shift-vivaldi-tagline" src="/vivaldi-tagline.png" alt="Code Till You Drop." /></p></div>
+          <div className="shift-hero-first-line"><span aria-hidden="true">CODE</span></div>
           <h1 id="hero-title" className="shift-hero-display"><span className="sr-only">CODE </span>RED<sup>’26</sup></h1>
           <div className="shift-hero-bottom-action"><a href="https://unstop.com/o/qjIA3CN?utm_medium=Share&amp;utm_source=ecell-bmsitm&amp;utm_campaign=Online_coding_challenge" target="_blank" rel="noopener noreferrer">REGISTER NOW <span aria-hidden="true">↗</span></a></div>
         </div>
       </div>
       <aside className="shift-hero-rail">
-        <div className="shift-rail-intro"><strong aria-hidden="true">24</strong><span>HOURS / ONE LIVE BUILD</span></div>
+        <div className="shift-rail-intro"><strong>National Level<br/>24-Hour Hackathon.</strong><img className="shift-rail-tagline" src="/vivaldi-tagline.png" alt="Code Till You Drop." /></div>
         <div className="shift-rail-status shift-countdown-panel"><div className="shift-countdown-heading"><span>UNTIL THE BUILD BEGINS</span><h2>12 / 12 / 26</h2></div><Countdown /></div>
       </aside>
     </section>
 
     <section id="about" className="shift-about" aria-labelledby="about-title">
-      <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title">What is<br/>CODERED?</h2><p><span className="shift-about-lead">CODERED 3.0</span> is a National Level 24-hour Hackathon where builders, designers, and makers come together to prototype bold ideas<span className="shift-period">.</span></p></div><div className="shift-about-side"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Artboard%201%20copy%205.svg" alt="" aria-hidden="true"/></div></div>
+      <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title">What is<br/>CODERED?</h2><p><span className="shift-about-lead">CODERED 3.0</span> is a National Level 24-hour Hackathon where builders, designers, and makers come together to prototype bold ideas<span className="shift-period">.</span></p></div><div className="shift-about-side"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true"/></div></div>
       <div className="shift-info-grid">
         <article><span className="shift-card-plus" aria-hidden="true">+</span><h3>Tracks</h3><ul><li>Software</li><li>Hardware</li></ul></article>
         <article><span className="shift-card-plus" aria-hidden="true">+</span><h3>Prizes</h3><ul><li>Overall Winner: ₹60,000</li><li>Runner-up: ₹30,000</li><li>Category Winners</li></ul></article>
