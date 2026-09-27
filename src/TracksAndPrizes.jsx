@@ -64,21 +64,25 @@ export function TracksSection() {
     const e = containerRef.current;
     if (!e) return;
 
-    // 1. Fade-Up Reveal (Staggered Wave)
-    const cards = gsap.utils.toArray('.track-card');
-    gsap.fromTo(cards, 
-      { y: 60, autoAlpha: 0 }, 
-      { y: 0, autoAlpha: 1, stagger: 0.15, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: e, start: "top 85%", once: true } }
-    );
+    let mm = gsap.matchMedia();
 
-    // 2. Parallax Scrub on the Right Column (Even cards: 2 and 4)
-    // Creating the uneven floating depth effect that catches up perfectly at the bottom
-    // Re-adding the higher speed (75%) and the GSAP momentum (scrub: 1) for that buttery feel
-    const rightCards = e.querySelectorAll('.track-card:nth-child(2n)');
-    gsap.fromTo(rightCards,
-      { yPercent: 75 },
-      { yPercent: 0, ease: "none", scrollTrigger: { trigger: e, start: "top bottom", end: "bottom center", scrub: 1 } }
-    );
+    mm.add("(min-width: 701px)", () => {
+      // 1. Fade-Up Reveal (Staggered Wave)
+      const cards = gsap.utils.toArray('.track-card');
+      gsap.fromTo(cards, 
+        { y: 60, autoAlpha: 0 }, 
+        { y: 0, autoAlpha: 1, stagger: 0.15, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: e, start: "top 85%", once: true } }
+      );
+
+      // 2. Parallax Scrub on the Right Column (Even cards: 2 and 4)
+      // Creating the uneven floating depth effect that catches up perfectly at the bottom
+      // Re-adding the higher speed (75%) and the GSAP momentum (scrub: 1) for that buttery feel
+      const rightCards = e.querySelectorAll('.track-card:nth-child(2n)');
+      gsap.fromTo(rightCards,
+        { yPercent: 75 },
+        { yPercent: 0, ease: "none", scrollTrigger: { trigger: e, start: "top bottom", end: "bottom center", scrub: 1 } }
+      );
+    });
 
   }, { scope: containerRef });
 
