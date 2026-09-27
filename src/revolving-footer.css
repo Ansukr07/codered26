@@ -56,6 +56,12 @@
   will-change: transform;
 }
 
+@media(max-width: 700px) {
+  .revolving-orbit {
+    transform: scale(0.35);
+  }
+}
+
 .revolving-item {
   position: absolute;
   border-radius: 10px;

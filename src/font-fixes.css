@@ -15,5 +15,5 @@
 .nav-register{display:none}
 .nav-marquee{left:7px;right:7px;bottom:14px;height:16px;background:#d5d5d5;color:#191919;border-top:1px solid #999;font:10px/16px Grotesk,Arial,sans-serif}
 .nav-marquee span{animation-duration:24s}
-@media(max-width:600px){.nav-shell{top:2px;height:62px;width:calc(100vw - 12px);padding:6px;grid-template-columns:1fr auto;overflow:visible}.nav-shell .brand{width:auto;height:42px;background:none;border:0}.nav-shell .brand-symbol{position:relative;inset:auto;width:30px}.nav-shell .brand-name{display:block}.nav-shell .menu-toggle{width:40px;height:40px}.nav-shell .nav{top:57px}.nav-marquee{display:none}}
+@media(max-width:700px){.nav-shell{top:10px;right:10px;left:auto;transform:none;height:62px;width:auto;padding:6px;grid-template-columns:1fr auto;overflow:visible}.nav-shell .brand{width:auto;height:42px;background:none;border:0}.nav-shell .brand-symbol{position:relative;inset:auto;width:30px}.nav-shell .brand-name{display:block}.nav-shell .menu-toggle{width:40px;height:40px}.nav-shell .nav{top:57px}.nav-marquee{display:none}}
 @media(prefers-reduced-motion:reduce){.nav-marquee span{animation:none;transform:none}}
