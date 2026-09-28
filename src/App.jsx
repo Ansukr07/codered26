@@ -15,8 +15,8 @@ const revolvingImagesList = Array.from({ length: 12 }, (_, i) => `img${i}`);
 const getWebp = (name) => `/images/${name}.webp`;
 
 // Define the structure of the spiral
-const totalElements = 72;
-const turns = 4;
+const totalElements = 44;
+const turns = 2.5;
 const minRadius = 180;
 const maxRadius = 850;
 const a = minRadius;
@@ -131,7 +131,7 @@ function App() {
         <div className="cosmos-footer-giant anim-slide-up">
           CODERED'26
         </div>
-        <a href="#/home" className="footer-brand" onClick={(event) => { event.preventDefault(); navigatePage('home'); }}>CODERED'26</a>
+        <div className="footer-address" style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: '1.6', maxWidth: '300px' }}><span style={{ fontSize: '14px', fontWeight: 600, color: '#fff', display: 'block', marginBottom: '4px' }}>BMS Institute of Technology and Management</span>Doddaballapur Main Road, Avalahalli,<br />Yelahanka, Bengaluru, Karnataka 560064</div>
         <span>A little chaos. A lot of possibility.</span>
         <a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>BACK TO TOP ↑</a>
         <div className="footer-bottom">

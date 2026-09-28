@@ -63,6 +63,7 @@
 }
 
 .revolving-item {
+  will-change: transform;
   position: absolute;
   border-radius: 10px;
   opacity: 0.9;
