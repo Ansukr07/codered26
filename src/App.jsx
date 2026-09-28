@@ -6,6 +6,7 @@ import './font-fixes.css'
 import './revolving-footer.css'
 import Navbar from './Navbar.jsx'
 import EditorialSections from './EditorialSections.jsx'
+import './routes.css'
 
 const base = '/codered2026/codered2026'
 const art = (name) => `${base}/vector files/elements/${name}.svg`
@@ -21,6 +22,21 @@ const maxRadius = 850;
 const a = minRadius;
 const b = maxRadius - minRadius;
 const I_max = a * 1 + (b / 2) * 1 * 1;
+
+const pageNames = ['home', 'about', 'tracks', 'prizes', 'schedule', 'faq'];
+const pageTitles = {
+  home: "CODERED'26 — Make a little chaos.",
+  about: "About — CODERED'26",
+  tracks: "Tracks — CODERED'26",
+  prizes: "Prizes — CODERED'26",
+  schedule: "Schedule — CODERED'26",
+  faq: "FAQ — CODERED'26",
+};
+
+function pageFromHash() {
+  const page = window.location.hash.startsWith('#/') ? window.location.hash.slice(2) : 'home';
+  return pageNames.includes(page) ? page : 'home';
+}
 
 const bgColors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c', '#e67e22', '#34495e'];
 
@@ -59,10 +75,33 @@ const questions = [
 ]
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(pageFromHash);
   const [openFaq, setOpenFaq] = useState(null)
   const dialog = useRef(null)
   const appRef = useRef(null)
   const register = () => dialog.current.showModal()
+
+  const navigatePage = (page) => {
+    const nextHash = `#/${page}`;
+    if (window.location.hash !== nextHash) window.history.pushState(null, '', nextHash);
+    setCurrentPage(page);
+    setOpenFaq(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const syncPage = () => setCurrentPage(pageFromHash());
+    window.addEventListener('popstate', syncPage);
+    window.addEventListener('hashchange', syncPage);
+    return () => {
+      window.removeEventListener('popstate', syncPage);
+      window.removeEventListener('hashchange', syncPage);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.title = pageTitles[currentPage];
+  }, [currentPage]);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -79,10 +118,10 @@ function App() {
   }, []);
 
   return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: true }}>
-    <div ref={appRef}>
-            <Navbar />
+    <div ref={appRef} className={`app-page app-page--${currentPage}`}>
+            <Navbar activePage={currentPage} onNavigate={navigatePage} />
       <main id="main">
-        <EditorialSections />
+        <EditorialSections key={currentPage} />
         <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
             <div className="faq-grid"><div className="faq-intro"><h2 className="anim-slide-up" style={{ transitionDelay: '0.1s' }}>Frequently Asked Questions</h2></div><div className="faq-list">{questions.map(([q, answer], i) => <div className="anim-slide-up" style={{ transitionDelay: `${i * 0.15}s` }} key={q}><div className={`faq-item ${openFaq === i ? 'is-open' : ''}`}><h3><button aria-expanded={openFaq === i} aria-controls={`answer-${i}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}><span className="faq-index">Q<span style={{fontFamily: 'Valentine, serif'}}>.</span>{String(i + 1).padStart(3, '0')} <i>/</i></span><span className="faq-question">{q}</span><span className="faq-toggle">{openFaq === i ? '−' : '+'}</span></button></h3><div className="faq-answer" id={`answer-${i}`} hidden={openFaq !== i}><p>{answer.split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{fontFamily: 'Gottak, sans-serif'}}>{part}</span> : part)}</p></div></div></div>)}</div></div>
         </section>
@@ -92,9 +131,9 @@ function App() {
         <div className="cosmos-footer-giant anim-slide-up">
           CODERED'26
         </div>
-        <a href="#" className="footer-brand">CODERED'26</a>
+        <a href="#/home" className="footer-brand" onClick={(event) => { event.preventDefault(); navigatePage('home'); }}>CODERED'26</a>
         <span>A little chaos. A lot of possibility.</span>
-        <a href="#">BACK TO TOP ↑</a>
+        <a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>BACK TO TOP ↑</a>
         <div className="footer-bottom">
           <span>© 2026 CODERED. Built for what’s next.</span>
           <span>CODE. CREATE. REPEAT.</span>

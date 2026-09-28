@@ -4,7 +4,16 @@ import logoImage from './assets/logo.png';
 
 const registrationUrl = 'https://unstop.com/o/qjIA3CN?utm_medium=Share&utm_source=ecell-bmsitm&utm_campaign=Online_coding_challenge';
 
-const Navbar = () => {
+const pageLinks = [
+  ['home', 'Home'],
+  ['about', 'About'],
+  ['tracks', 'Tracks'],
+  ['prizes', 'Prizes'],
+  ['schedule', 'Schedule'],
+  ['faq', 'FAQ'],
+];
+
+const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [notice, setNotice] = useState('');
   const navRef = useRef(null);
@@ -31,11 +40,18 @@ const Navbar = () => {
     closeMenu();
   };
 
+  const followPageLink = (page) => (event) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    closeMenu();
+    onNavigate(page);
+  };
+
   return (
     <>
       <nav ref={navRef} className={`custom-navbar ${isOpen ? 'open' : ''}`} aria-label="Main navigation">
         <div className="navbar-header">
-          <a className="nav-identity" href="#home" onClick={closeMenu} aria-label="CODERED home">
+          <a className="nav-identity" href="#/home" onClick={followPageLink('home')} aria-label="CODERED home">
             <img src={logoImage} alt="" className="nav-logo-img" />
             <span className="nav-title">CODERED<span style={{ color: '#D90A16' }}>’26</span></span>
           </a>
@@ -47,11 +63,12 @@ const Navbar = () => {
 
         <div id="navbar-dropdown" className={`navbar-dropdown ${isOpen ? 'show' : ''}`} inert={!isOpen}>
           <ul className="nav-menu-list">
-            <li className="nav-menu-item"><a href="#home" onClick={closeMenu}>Home</a></li>
-            <li className="nav-menu-item"><a href="#prizes" onClick={closeMenu}>Prizes</a></li>
-            <li className="nav-menu-item"><a href="#tracks" onClick={closeMenu}>Problem statements</a></li>
+            {pageLinks.map(([page, label]) => (
+              <li className="nav-menu-item" key={page}>
+                <a href={`#/${page}`} aria-current={activePage === page ? 'page' : undefined} onClick={followPageLink(page)}>{label}</a>
+              </li>
+            ))}
             <li className="nav-menu-item"><button type="button" onClick={() => showNotice('Sponsor information will be announced here soon.')}>Sponsors</button></li>
-            <li className="nav-menu-item"><a href="#faqs" onClick={closeMenu}>FAQ</a></li>
           </ul>
 
           <div className="nav-footer">

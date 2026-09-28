@@ -1,0 +1,11 @@
+.app-page--about :is(#home, #tracks, #prizes, #timeline, #faqs),
+.app-page--tracks :is(#home, #about, #prizes, #timeline, #faqs),
+.app-page--prizes :is(#home, #about, #tracks, #timeline, #faqs),
+.app-page--schedule :is(#home, #about, #tracks, #prizes, #faqs),
+.app-page--faq :is(#home, #about, #tracks, #prizes, #timeline) {
+  display: none;
+}
+
+.nav-menu-item a[aria-current="page"] {
+  color: #ed2024;
+}
