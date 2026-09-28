@@ -128,11 +128,6 @@ function App() {
         <RevolvingFooter register={register} />
       </main>
       <footer>
-        <div className="cosmos-footer-giant anim-slide-up" style={{ display: 'flex', justifyContent: 'space-between' }}>
-          {Array.from("CODERED'26").map((char, index) => (
-            <span key={index}>{char}</span>
-          ))}
-        </div>
         <div className="footer-links" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '10px', textAlign: 'left', fontSize: '14px', fontWeight: 500 }}>
           <a href="https://maps.app.goo.gl/RyJvsZVLrH41qCJj7" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
           <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
@@ -163,6 +158,12 @@ function App() {
             </a>
           </div>
           <a href="#top" style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '1.2px', color: '#fff', transition: 'color 0.2s' }} onMouseOver={e=>e.currentTarget.style.color='var(--red)'} onMouseOut={e=>e.currentTarget.style.color='#fff'} onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>BACK TO TOP &uarr;</a>
+        </div>
+      
+        <div className="cosmos-footer-giant anim-slide-up" style={{ display: 'flex', justifyContent: 'space-between' }}>
+          {Array.from("CODERED'26").map((char, index) => (
+            <span key={index}>{char}</span>
+          ))}
         </div>
       </footer>
       <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e => { if (e.target === dialog.current) dialog.current.close() }}><button className="dialog-close" onClick={() => dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt="" /><span className="eyebrow">THE NEXT WAVE IS COMING</span><h2 id="registration-title">You’re early.<br /><span className="script red">We like that.</span></h2><p>Registration for CODERED’ 26 hasn’t opened yet. The application link, dates, and venue will be announced here.</p><p className="dialog-note">No sign-up is being collected yet. Bookmark this page and check back for the launch.</p><button className="button primary" onClick={() => dialog.current.close()}>Got it <span>↗</span></button></dialog>
