@@ -1,6 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import { TracksSection, PrizesSection } from './TracksAndPrizes'
 import './editorial.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const eventStart = new Date('2026-12-12T00:00:00+05:30').getTime()
 
@@ -29,6 +34,7 @@ const rounds = [
   ['01', 'OPEN CALL', 'Round one: submit the idea', 'BRING YOUR TEAM, FRAME THE PROBLEM, AND SEND IN YOUR CONCEPT.'],
   ['02', 'THE BUILD', 'Round two: 24 hours live', 'SELECTED TEAMS BUILD, TEST, AND REFINE ON THE CLOCK.'],
   ['03', 'FINAL DEMO', 'Present what you made', 'SHOW THE WORK, TELL THE STORY, AND CLOSE THE DAY TOGETHER.'],
+  ['04', 'THE VERDICT', 'Celebrate the victors', 'THE JUDGES DELIVER THEIR VERDICT AND CHAMPIONS ARE CROWNED.'],
 ]
 
 const DotArrowSVG = () => (
@@ -81,6 +87,35 @@ export default function EditorialSections() {
       }
     }
   };
+
+  useGSAP(() => {
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 701px)", () => {
+      if (!containerRef.current || !roundsRef.current) return;
+      const timelineSection = containerRef.current.querySelector('#timeline');
+      const roundsContainer = roundsRef.current;
+      
+      const getScrollAmount = () => {
+        const cards = roundsContainer.querySelectorAll('article');
+        if (cards.length < 2) return 0;
+        return -(roundsContainer.scrollWidth - timelineSection.offsetWidth);
+      };
+
+      gsap.to(roundsContainer, {
+        x: getScrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: timelineSection,
+          start: "top top",
+          end: () => `+=${(roundsContainer.scrollWidth - timelineSection.offsetWidth) * 1.5}`,
+          pin: true,
+          scrub: 0.5,
+          invalidateOnRefresh: true,
+        }
+      });
+    });
+  }, { scope: containerRef });
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
