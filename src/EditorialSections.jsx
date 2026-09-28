@@ -88,6 +88,7 @@ export default function EditorialSections() {
     }
   };
 
+
   useGSAP(() => {
     let mm = gsap.matchMedia();
 
@@ -95,6 +96,9 @@ export default function EditorialSections() {
       if (!containerRef.current || !roundsRef.current) return;
       const timelineSection = containerRef.current.querySelector('#timeline');
       const roundsContainer = roundsRef.current;
+      
+      gsap.set(timelineSection, { overflow: 'hidden' });
+      gsap.set(roundsContainer, { width: 'max-content', overflow: 'visible', flexWrap: 'nowrap' });
       
       const getScrollAmount = () => {
         const cards = roundsContainer.querySelectorAll('article');
@@ -114,6 +118,11 @@ export default function EditorialSections() {
           invalidateOnRefresh: true,
         }
       });
+      
+      return () => {
+        gsap.set(timelineSection, { clearProps: "overflow" });
+        gsap.set(roundsContainer, { clearProps: "width,overflow,flexWrap,x" });
+      };
     });
   }, { scope: containerRef });
 
