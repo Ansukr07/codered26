@@ -131,13 +131,13 @@ function App() {
         <div className="cosmos-footer-giant anim-slide-up">
           CODERED'26
         </div>
-        <div className="footer-address" style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: '1.6', maxWidth: '300px' }}><span style={{ fontSize: '14px', fontWeight: 600, color: '#fff', display: 'block', marginBottom: '4px' }}>BMS Institute of Technology and Management</span>Doddaballapur Main Road, Avalahalli,<br />Yelahanka, Bengaluru, Karnataka 560064</div>
-        <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '10px', textAlign: 'right', fontSize: '14px', fontWeight: 500 }}>
+        <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '10px', textAlign: 'left', fontSize: '14px', fontWeight: 500 }}>
           <a href="https://maps.app.goo.gl/RyJvsZVLrH41qCJj7" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
           <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
           <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>
         </div>
-        <a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>BACK TO TOP ↑</a>
+        <a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>BACK TO TOP &uarr;</a>
+        <div className="footer-address" style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: '1.6', maxWidth: '300px', textAlign: 'right' }}><span style={{ fontSize: '14px', fontWeight: 600, color: '#fff', display: 'block', marginBottom: '4px' }}>BMS Institute of Technology and Management</span>Doddaballapur Main Road, Avalahalli,<br />Yelahanka, Bengaluru, Karnataka 560064</div>
         <div className="footer-bottom">
           <div className="social-links" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
             <a href="https://www.instagram.com/ecell.bmsit?igsh=dW56aGtuY3pnNTBl" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ color: 'var(--muted)', transition: 'color 0.2s' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>
