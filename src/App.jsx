@@ -138,6 +138,12 @@ function App() {
           <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
           <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>
         </div>
+        <div className="footer-contact" style={{ textAlign: 'center', fontSize: '13px', color: 'var(--muted)', lineHeight: '1.8' }}>
+          <span style={{ fontSize: '14px', fontWeight: 600, color: '#fff', display: 'block', marginBottom: '4px' }}>Contact Us</span>
+          Vaibhav B<br />
+          Gagan<br />
+          Deepthi Jain
+        </div>
         <div className="footer-address" style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: '1.6', maxWidth: '300px', textAlign: 'right' }}><span style={{ fontSize: '14px', fontWeight: 600, color: '#fff', display: 'block', marginBottom: '4px' }}>BMS Institute of Technology and Management</span>Doddaballapur Main Road, Avalahalli,<br />Yelahanka, Bengaluru, Karnataka 560064</div>
         <div className="footer-bottom">
           <div className="social-links" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
