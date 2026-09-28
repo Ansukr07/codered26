@@ -69,8 +69,8 @@ export function TracksSection() {
     mm.add("(min-width: 701px)", () => {
       // 1. Fade-Up Reveal (Staggered Wave)
       const cards = gsap.utils.toArray('.track-card');
-      gsap.fromTo(cards, 
-        { y: 60, autoAlpha: 0 }, 
+      gsap.fromTo(cards,
+        { y: 60, autoAlpha: 0 },
         { y: 0, autoAlpha: 1, stagger: 0.15, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: e, start: "top 85%", once: true } }
       );
 
@@ -82,6 +82,38 @@ export function TracksSection() {
         { yPercent: 75 },
         { yPercent: 0, ease: "none", scrollTrigger: { trigger: e, start: "top bottom", end: "bottom bottom", scrub: 1 } }
       );
+    });
+
+    mm.add("(max-width: 700px)", () => {
+      const trackGrid = e.querySelector('.tracks-grid');
+      const innerContainer = e.querySelector('.tp-container');
+
+      // Calculate how far to scroll to perfectly center the 4th (last) card
+      const getScrollAmount = () => {
+        const cards = trackGrid.querySelectorAll('.track-card');
+        if (cards.length < 2) return 0;
+
+        // The most foolproof way to get the exact width + gap of a single card
+        // is to measure the distance between the start of card 1 and card 2.
+        const shiftPerCard = cards[1].offsetLeft - cards[0].offsetLeft;
+
+        // Since the 1st card starts perfectly centered, we shift the grid left 
+        // by exactly (N-1) times the shift amount!
+        return -((cards.length - 1) * shiftPerCard);
+      };
+
+      gsap.to(trackGrid, {
+        x: getScrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: e,
+          start: "top 10%",
+          end: () => `+=${trackGrid.scrollWidth}`,
+          pin: innerContainer,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        }
+      });
     });
 
   }, { scope: containerRef });
@@ -140,10 +172,10 @@ export function TracksSection() {
 
                 <div className="track-card-content">
                   <p className="tp-p-medium">
-                    <strong>{track.desc.substring(0, track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{fontFamily: 'Gottak, sans-serif'}}>{part}</span> : part)}</strong>
-                    {track.desc.substring(track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{fontFamily: 'Gottak, sans-serif'}}>{part}</span> : part)}
+                    <strong>{track.desc.substring(0, track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{ fontFamily: 'Gottak, sans-serif' }}>{part}</span> : part)}</strong>
+                    {track.desc.substring(track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{ fontFamily: 'Gottak, sans-serif' }}>{part}</span> : part)}
                   </p>
-                  
+
                   {/* Huge striped background number a-la timeline */}
                   <span className="track-ghost-number">{track.ghostText}</span>
                 </div>
@@ -218,23 +250,23 @@ export function PrizesSection() {
         </div>
 
         {/* Massive Centered Prize Pool Banner (Single Solid Dark Color) */}
-        <div className="prize-card prize-card-1" style={{ 
-          maxWidth: '900px', 
-          margin: '0 auto 2.5rem', 
-          border: '1px solid #1e1b18' 
+        <div className="prize-card prize-card-1" style={{
+          maxWidth: '900px',
+          margin: '0 auto 2.5rem',
+          border: '1px solid #1e1b18'
         }}>
-          
+
           {/* ENTIRE BANNER (Dark background, Tag, Illustrations, and Amount) */}
-          <div className="prize-card-top" style={{ 
-            aspectRatio: 'auto', 
-            minHeight: '320px',
+          <div className="prize-card-top" style={{
+            aspectRatio: 'auto',
+            minHeight: '250px',
             borderBottom: 'none',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '8rem 2rem 4rem'
+            padding: '8rem 2rem 3rem'
           }}>
-            
+
             {/* Tag - locked to a fixed size so it matches the other cards perfectly without stretching or breaking the grid! */}
             <div className="prize-tag-container" style={{ width: '320px', aspectRatio: '12 / 4' }}>
               <PrizePixelGrid />
@@ -244,7 +276,7 @@ export function PrizesSection() {
                 <div className="prize-tag-bracket">{"}"}</div>
               </div>
             </div>
-            
+
             {/* We position the sparkles manually so they are visible and don't hide behind the wide tag */}
             <div className="prize-illustration">
               <SparkleSVG className="s1" style={{ top: '25%', left: '30%', width: '45px' }} />
@@ -253,17 +285,18 @@ export function PrizesSection() {
             </div>
 
             {/* Massive Center Text (Light text on dark background) */}
-            <h4 className="prize-amount" style={{ 
-              fontSize: 'clamp(4rem, 10vw, 7.5rem)', 
-              margin: 0, 
+            <h4 className="prize-amount" style={{
+              fontSize: 'clamp(2.5rem, 12vw, 7.5rem)',
+              margin: 0,
               color: 'var(--p-text)',
               position: 'relative',
-              zIndex: 10
+              zIndex: 10,
+              whiteSpace: 'nowrap'
             }}>
-              Rs. 2,00,000<span style={{ color: 'var(--p-accent)' }}></span>
+              Rs.&nbsp;2,00,000<span style={{ color: 'var(--p-accent)' }}></span>
             </h4>
           </div>
-          
+
         </div>
 
         <div className="prizes-title-row">
@@ -272,37 +305,37 @@ export function PrizesSection() {
             <h3 className="tp-h-regular tp-opacity-50">Applies to: All 4 tracks</h3>
           </div>
         </div>
-        
+
         <div className="prize-outer-container">
-        {prizes.map((prize, idx) => (
-          <div key={idx} className={`prize-card prize-card-${idx + 1}`}>
-            <div className="prize-card-top">
-              {/* Top Left Floating Tag Area */}
-              <div className="prize-tag-container">
-                <PrizePixelGrid />
-                <div className="prize-tag-inner">
-                  <div className="prize-tag-hash">#</div>
-                  <div className="prize-tag-text">{prize.place}</div>
-                  <div className="prize-tag-bracket">{"}"}</div>
+          {prizes.map((prize, idx) => (
+            <div key={idx} className={`prize-card prize-card-${idx + 1}`}>
+              <div className="prize-card-top">
+                {/* Top Left Floating Tag Area */}
+                <div className="prize-tag-container">
+                  <PrizePixelGrid />
+                  <div className="prize-tag-inner">
+                    <div className="prize-tag-hash">#</div>
+                    <div className="prize-tag-text">{prize.place}</div>
+                    <div className="prize-tag-bracket">{"}"}</div>
+                  </div>
+                </div>
+
+                {/* Center Illustrations */}
+                <div className="prize-illustration">
+                  {prize.images.map((img, i) => (
+                    <img key={i} src={img.src} alt="" className={`prize-layer ${img.class}`} />
+                  ))}
+                  {prize.sparkles.map((sp, i) => (
+                    <SparkleSVG key={i} className={sp.class} />
+                  ))}
                 </div>
               </div>
-              
-              {/* Center Illustrations */}
-              <div className="prize-illustration">
-                {prize.images.map((img, i) => (
-                  <img key={i} src={img.src} alt="" className={`prize-layer ${img.class}`} />
-                ))}
-                {prize.sparkles.map((sp, i) => (
-                  <SparkleSVG key={i} className={sp.class} />
-                ))}
+
+              <div className="prize-card-bottom">
+                <h4 className="prize-amount">{prize.amount}</h4>
               </div>
             </div>
-
-            <div className="prize-card-bottom">
-              <h4 className="prize-amount">{prize.amount}</h4>
-            </div>
-          </div>
-        ))}
+          ))}
         </div>
       </div>
     </section>
