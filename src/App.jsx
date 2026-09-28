@@ -145,18 +145,22 @@ function PageContent() {
       </main>
       <footer>
         <div className="footer-top-row" style={{ display: "flex", width: "100%", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "20px" }}>
-        <div className="footer-links" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '10px', textAlign: 'left', fontSize: '14px', fontWeight: 500 }}>
+        <div className="footer-links" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'left', fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>
+          <span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Quick Links</span>
           <a href="https://maps.app.goo.gl/RyJvsZVLrH41qCJj7" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
           <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
           <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>
         </div>
-        <div className="footer-contact" style={{ flex: 1, textAlign: 'center', fontSize: '13px', color: 'var(--muted)', lineHeight: '1.8' }}>
+        <div className="footer-contact" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'center', fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>
           <span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Contact Us</span>
-          <a href="tel:+919141194259" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Vaibhav B</a>
-          <a href="tel:+917975959500" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Gagan</a>
-          <a href="tel:+919606295562" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Deepthi Jain</a>
+          <a href="tel:+919141194259" className="footer-link">Vaibhav B - 9141194259</a>
+          <a href="tel:+917975959500" className="footer-link">Gagan - 7975959500</a>
+          <a href="tel:+919606295562" className="footer-link">Deepthi Jain - 9606295562</a>
         </div>
-        <div className="footer-address" style={{ flex: 1, fontSize: '13px', color: 'var(--muted)', lineHeight: '1.6', textAlign: 'right' }}><span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>BMS Institute of Technology and Management</span>Doddaballapur Main Road, Avalahalli,<br />Yelahanka, Bengaluru, Karnataka 560064</div>
+        <div className="footer-address" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px', color: 'var(--muted)', fontWeight: 500, textAlign: 'right' }}>
+          <span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px", lineHeight: 1.4 }}>BMS Institute of Technology<br/>& Management</span>
+          <span style={{ lineHeight: 1.3 }}>Doddaballapur Main Road, Avalahalli,<br/>Yelahanka, Bengaluru,<br/>Karnataka 560064</span>
+        </div>
         </div>
         <div className="footer-bottom">
           <div className="social-links" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>

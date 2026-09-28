@@ -136,7 +136,7 @@
   color: var(--cream, #fff);
   white-space: nowrap;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 25px;
   margin-bottom: 20px;
 }
 
@@ -148,5 +148,5 @@
 }
 
 
-.footer-links a.footer-link { color: #f1eeeb; transition: color 0.2s ease; }
-.footer-links a.footer-link:hover { color: #ED2024; }
+.footer-links a.footer-link, .footer-contact a.footer-link { color: var(--muted); transition: color 0.2s ease; display: inline-block; }
+.footer-links a.footer-link:hover, .footer-contact a.footer-link:hover { color: #ED2024; }
