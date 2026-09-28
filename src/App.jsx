@@ -15,7 +15,7 @@ const revolvingImagesList = Array.from({ length: 12 }, (_, i) => `img${i}`);
 const getWebp = (name) => `/images/${name}.webp`;
 
 // Define the structure of the spiral
-const totalElements = 36;
+const totalElements = 44;
 const turns = 2.5;
 const minRadius = 180;
 const maxRadius = 850;
