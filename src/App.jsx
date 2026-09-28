@@ -150,12 +150,12 @@ function PageContent() {
           <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>
         </div>
         <div className="footer-contact" style={{ flex: 1, textAlign: 'center', fontSize: '13px', color: 'var(--muted)', lineHeight: '1.8' }}>
-          <span style={{ fontSize: '14px', fontWeight: 600, color: '#fff', display: 'block', marginBottom: '4px' }}>Contact Us</span>
+          <span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Contact Us</span>
           <a href="tel:+919141194259" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Vaibhav B</a>
           <a href="tel:+917975959500" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Gagan</a>
           <a href="tel:+919606295562" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Deepthi Jain</a>
         </div>
-        <div className="footer-address" style={{ flex: 1, fontSize: '11px', color: 'var(--muted)', lineHeight: '1.6', textAlign: 'right' }}><span style={{ fontSize: '14px', fontWeight: 600, color: '#fff', display: 'block', marginBottom: '4px' }}>BMS Institute of Technology and Management</span>Doddaballapur Main Road, Avalahalli,<br />Yelahanka, Bengaluru, Karnataka 560064</div>
+        <div className="footer-address" style={{ flex: 1, fontSize: '11px', color: 'var(--muted)', lineHeight: '1.6', textAlign: 'right' }}><span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>BMS Institute of Technology and Management</span>Doddaballapur Main Road, Avalahalli,<br />Yelahanka, Bengaluru, Karnataka 560064</div>
         <div className="footer-bottom">
           <div className="social-links" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
             <a href="https://www.instagram.com/ecell.bmsit?igsh=dW56aGtuY3pnNTBl" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ color: 'var(--muted)', transition: 'color 0.2s' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>
