@@ -230,23 +230,22 @@ function RevolvingFooter({ register }) {
       if (rawDt > 0.1) rawDt = 0.016;
       smoothedDt = smoothedDt * 0.9 + rawDt * 0.1;
       const dt = smoothedDt;
-      const fixedDt = 0.016; // Fix delta time for perfectly smooth visual increments
 
       let targetSpeed = 1;
         if (isHoveringRegisterRef.current) {
-          targetSpeed = 4.5;
+          targetSpeed = 2.0; // Keep the max speed low enough to avoid visual frame-tearing (wagon wheel effect)
         } else if (speedBoostTimeRef.current > 0) {
           speedBoostTimeRef.current -= dt;
-          targetSpeed = 2.5;
+          targetSpeed = 1.5;
         }
 
-      // Use fixedDt for movement to eliminate variable-distance stuttering
-      currentSpeedRef.current += (targetSpeed - currentSpeedRef.current) * fixedDt * 3.0; // Slightly faster transition
+      // Smooth transition
+      currentSpeedRef.current += (targetSpeed - currentSpeedRef.current) * dt * 2.0;
 
-      containerAngleRef.current += fixedDt * 0.5 * currentSpeedRef.current;
+      containerAngleRef.current += dt * 0.4 * currentSpeedRef.current;
       const currentGlobalAngleRad = containerAngleRef.current * (Math.PI / 180);
 
-      progressRef.current -= (fixedDt / 90) * currentSpeedRef.current;
+      progressRef.current -= (dt / 90) * currentSpeedRef.current;
       if (progressRef.current < 0) progressRef.current += 1;
 
       itemsRef.current.forEach((node, i) => {
