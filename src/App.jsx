@@ -128,8 +128,10 @@ function App() {
         <RevolvingFooter register={register} />
       </main>
       <footer>
-        <div className="cosmos-footer-giant anim-slide-up">
-          CODERED'26
+        <div className="cosmos-footer-giant anim-slide-up" style={{ display: 'flex', justifyContent: 'space-between' }}>
+          {Array.from("CODERED'26").map((char, index) => (
+            <span key={index}>{char}</span>
+          ))}
         </div>
         <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '10px', textAlign: 'left', fontSize: '14px', fontWeight: 500 }}>
           <a href="https://maps.app.goo.gl/RyJvsZVLrH41qCJj7" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
