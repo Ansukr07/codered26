@@ -6,7 +6,6 @@ const registrationUrl = 'https://unstop.com/o/qjIA3CN?utm_medium=Share&utm_sourc
 
 const pageLinks = [
   ['home', 'Home'],
-  ['about', 'About'],
   ['tracks', 'Tracks'],
   ['prizes', 'Prizes'],
   ['schedule', 'Schedule'],
@@ -68,7 +67,6 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
                 <a href={`#/${page}`} aria-current={activePage === page ? 'page' : undefined} onClick={followPageLink(page)}>{label}</a>
               </li>
             ))}
-            <li className="nav-menu-item"><button type="button" onClick={() => showNotice('Sponsor information will be announced here soon.')}>Sponsors</button></li>
           </ul>
 
           <div className="nav-footer">

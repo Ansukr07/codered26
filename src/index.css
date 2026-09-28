@@ -23,7 +23,7 @@ body{overflow-x:clip}
     position: fixed;
     inset: 0;
     z-index: 10000;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
@@ -44,6 +44,8 @@ body{overflow-x:clip}
 .intro-char {
     display: inline-block;
     will-change: opacity;
+    opacity: 0;
+    animation: introGlitch 1.6s steps(1, end) var(--char-delay) forwards;
 }
 #preloader .block {
     background-color: var(--red);
@@ -51,7 +53,13 @@ body{overflow-x:clip}
     height: 100%;
 }
 #preloader .block.hide {
-    animation: shadeAway 0.4s ease forwards;
+    animation: shadeAway 0.4s ease var(--block-delay) forwards;
+}
+
+@keyframes introGlitch {
+    0%, 4%, 8% { opacity: 0; }
+    2%, 6%, 10%, 77%, 81%, 86% { opacity: 1; }
+    79%, 83%, 88%, 100% { opacity: 0; }
 }
 
 @keyframes shadeAway {
