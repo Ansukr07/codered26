@@ -136,7 +136,6 @@ function App() {
           <a href="https://maps.app.goo.gl/RyJvsZVLrH41qCJj7" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
           <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
           <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>
-          <a href="https://codered.vercel.app/" target="_blank" rel="noopener noreferrer" className="footer-link">Terms & Conditions</a>
         </div>
         <a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>BACK TO TOP ↑</a>
         <div className="footer-bottom">
