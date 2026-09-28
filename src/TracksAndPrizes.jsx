@@ -140,8 +140,8 @@ export function TracksSection() {
 
                 <div className="track-card-content">
                   <p className="tp-p-medium">
-                    <strong>{track.desc.substring(0, track.desc.indexOf(':') + 1)}</strong>
-                    {track.desc.substring(track.desc.indexOf(':') + 1)}
+                    <strong>{track.desc.substring(0, track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{fontFamily: 'Gottak, sans-serif'}}>{part}</span> : part)}</strong>
+                    {track.desc.substring(track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{fontFamily: 'Gottak, sans-serif'}}>{part}</span> : part)}
                   </p>
                   
                   {/* Huge striped background number a-la timeline */}

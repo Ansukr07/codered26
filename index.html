@@ -154,16 +154,16 @@
                     shuffledBlocks.forEach((block, index) => {
                         setTimeout(() => {
                             block.classList.add("hide");
-                        }, index * 25);
+                        }, index * 12);
                     });
-                    const totalAnimationTime = (totalBlocks * 25) + 300;
+                    const totalAnimationTime = (totalBlocks * 12) + 300;
                     setTimeout(() => {
                         preloader.style.display = "none";
                         document.documentElement.classList.remove('preloader-active');
                         window.dispatchEvent(new Event('preloaderComplete'));
                         document.body.style.overflow = "";
                     }, totalAnimationTime);
-                }, 400);
+                }, 200);
             }
 
             // ── Sequence: intro (if first visit) → dissolution ──

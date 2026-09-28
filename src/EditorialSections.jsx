@@ -79,7 +79,10 @@ export default function EditorialSections() {
         </div>
       </div>
       <aside className="shift-hero-rail anim-slide-down" style={{ transitionDelay: '0.2s' }}>
-        <div className="shift-rail-intro anim-slide-up" style={{ transitionDelay: '0.3s' }}><strong>National Level<br />24-Hour Hackathon.</strong><img className="shift-rail-tagline" src="/vivaldi-tagline.png" alt="Code Till You Drop." /></div>
+        <div className="shift-rail-intro anim-slide-up" style={{ transitionDelay: '0.3s' }}>
+          <strong>National Level<br />24-Hour Hackathon.</strong>
+          <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "2rem", display: "block", marginTop: "1rem", lineHeight: "1" }}>Code Till You Drop.</span>
+        </div>
         <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>UNTIL THE BUILD BEGINS</span><h2>12 / 12 / 26</h2></div><Countdown /></div>
       </aside>
     </section>

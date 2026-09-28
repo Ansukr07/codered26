@@ -1,5 +1,6 @@
-.faq-index{font-family:ui-monospace,Consolas,monospace}
-.faq .faq-answer p{font-family:Arial,sans-serif}
+.faq-index{font-family:Grotesk,sans-serif}
+.faq .faq-answer p{font-family:Grotesk,sans-serif; letter-spacing: -0.01em;}
+.faq h2 { font-family: Valentine, Georgia, serif; font-weight: 400; letter-spacing: 0; }
 .nav-marquee span{transform:translate3d(0,0,0);will-change:transform}
 @keyframes navcrawl{to{transform:translate3d(-50%,0,0)}}
 
