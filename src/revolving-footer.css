@@ -1,6 +1,6 @@
 .revolving-cta {
   position: relative;
-  background-color: #111;
+  background-color: #000;
   color: var(--cream, #fff);
   overflow: hidden;
   display: flex;
@@ -18,8 +18,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100px;
-  background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+  height: 180px;
+  background: linear-gradient(to bottom, var(--cream, #f6f2ea) 0%, rgba(0,0,0,0) 100%);
   pointer-events: none;
   z-index: 5;
 }
@@ -97,29 +97,27 @@
 }
 
 .revolving-content .register-btn {
-  background-color: transparent;
-  color: var(--red, #ED2024);
-  border: 2px solid var(--red, #ED2024);
-  border-radius: 0;
+  background-color: var(--red, #ED2024);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
   padding: 18px 56px;
-  font-size: clamp(20px, 3vw, 32px);
+  font-size: clamp(22px, 3vw, 36px);
   font-family: 'Gottak', Arial, sans-serif;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   white-space: nowrap;
   pointer-events: auto;
-  backdrop-filter: blur(4px);
-  position: relative;
-  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(237, 32, 36, 0.3);
 }
 
 .revolving-content .register-btn:hover {
-  background-color: var(--red, #ED2024);
-  color: #fff;
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(237, 32, 36, 0.4);
+  background-color: #fff;
+  color: var(--red, #ED2024);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
 }
 
 @media (max-width: 600px) {
