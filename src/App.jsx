@@ -233,13 +233,13 @@ function RevolvingFooter({ register }) {
 
       let targetSpeed = 1;
         if (isHoveringRegisterRef.current) {
-          targetSpeed = 10.0;
+          targetSpeed = 4.5;
         } else if (speedBoostTimeRef.current > 0) {
           speedBoostTimeRef.current -= dt;
           targetSpeed = 2.5;
         }
 
-      currentSpeedRef.current += (targetSpeed - currentSpeedRef.current) * dt * 2.5;
+      currentSpeedRef.current += (targetSpeed - currentSpeedRef.current) * dt * 1.5;
 
       containerAngleRef.current += dt * 0.5 * currentSpeedRef.current;
       const currentGlobalAngleRad = containerAngleRef.current * (Math.PI / 180);
