@@ -26,7 +26,12 @@ function Countdown() {
   ]
 
   return <div className="shift-countdown" role="timer" aria-label={`Countdown to 12 December 2026: ${units.map(([name, value]) => `${value} ${name}`).join(', ')}`}>
-    {units.map(([name, value]) => <div key={name}><strong>{String(value).padStart(2, '0')}</strong><span>{name}</span></div>)}
+    {units.map(([name, value]) =>
+      <div className="shift-countdown-unit" key={name}>
+        <strong className={`shift-countdown-value${String(value).length > 2 ? ' shift-countdown-value--wide' : ''}`}>{String(value).padStart(2, '0')}</strong>
+        <span>{name}</span>
+      </div>
+    )}
   </div>
 }
 

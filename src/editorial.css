@@ -226,8 +226,8 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 @media(max-width:700px){.shift-rail-intro strong{font-size:16px;line-height:1.12}}
 
 .shift-countdown-panel{justify-content:space-between}
-.shift-countdown-heading>span{display:block;margin-bottom:17px;font:700 11px/1.2 Consolas,monospace;letter-spacing:.06em}
-.shift-countdown-panel .shift-countdown-heading h2{margin:0;font:400 clamp(34px,3.2vw,52px)/.9 Arial,Helvetica,sans-serif;letter-spacing:-.055em;color:#f1eeeb}
+.shift-countdown-heading>span{display:block;margin-bottom:17px;font:600 11px/1.2 Gottak,Arial,sans-serif;letter-spacing:.06em}
+.shift-countdown-panel .shift-countdown-heading h2{margin:0;font:600 clamp(34px,3.2vw,52px)/1.12 Gottak,Arial,sans-serif;letter-spacing:-.015em;color:#f1eeeb}
 .shift-countdown{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:25px 0 30px;border-top:1px solid #ffffff55;border-left:1px solid #ffffff55}
 .shift-countdown>div{display:flex;flex-direction:column;justify-content:space-between;min-width:0;min-height:115px;padding:10px 10px 14px;border-right:1px solid #ffffff55;border-bottom:1px solid #ffffff55}
 .shift-countdown strong{font:400 clamp(47px,5vw,76px)/.9 Arial,Helvetica,sans-serif;letter-spacing:-.07em;font-variant-numeric:tabular-nums;color:#f1eeeb}
@@ -249,13 +249,14 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-period{font-family:Arial,Helvetica,sans-serif}
 .shift-about-lead{font-family:Arial,Helvetica,sans-serif}
 
-/* Countdown as an open typographic lockup. */
-.shift-countdown{display:flex;align-items:flex-end;gap:clamp(12px,1.8vw,28px);margin:28px 0 18px;border:0}
-.shift-countdown>div{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-width:0;min-height:0;padding:0;border:0}
-.shift-countdown>div:not(:last-child)::after{content:'/';position:absolute;right:calc(clamp(12px,1.8vw,28px) * -0.68);bottom:clamp(22px,2.2vw,34px);font:400 clamp(20px,2vw,30px)/1 Valentine,Georgia,serif;color:#777}
-.shift-countdown strong{font:400 clamp(48px,5.4vw,82px)/.78 Valentine,Georgia,serif;letter-spacing:0;color:#f1eeeb}
-.shift-countdown span{margin-top:12px;font:600 9px/1 Grotesk,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#bdbdbd}
-@media(max-width:700px){.shift-countdown{gap:12px;margin:18px 0 10px}.shift-countdown>div:not(:last-child)::after{right:-9px;bottom:22px;font-size:18px}.shift-countdown strong{font-size:31px}.shift-countdown span{margin-top:8px;font-size:7px}}
+/* Each time unit owns a column; the separators live in the gaps. */
+.shift-countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:clamp(12px,3vw,24px);container-type:inline-size;margin:34px 0 24px;border:0}
+.shift-countdown>.shift-countdown-unit{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:0;min-height:0;padding:0;border:0;text-align:center}
+.shift-countdown-unit:not(:last-child)::after{content:'/';position:absolute;left:calc(100% + clamp(6px,1.5vw,12px));top:clamp(20px,9cqw,42px);transform:translate(-50%,-50%);font:600 clamp(13px,4cqw,22px)/1 Gottak,Arial,sans-serif;color:#d3d3d3;pointer-events:none}
+.shift-countdown strong{display:block;width:auto;max-width:100%;font:600 clamp(38px,18cqw,82px)/1 Gottak,Arial,sans-serif;letter-spacing:-.02em;color:#f1eeeb;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';white-space:nowrap}
+.shift-countdown .shift-countdown-value--wide{font-size:clamp(30px,13.5cqw,62px)}
+.shift-countdown span{margin-top:13px;font:600 9px/1 Gottak,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#bdbdbd}
+@media(max-width:700px){.shift-countdown{column-gap:12px;margin:22px 0 14px}.shift-countdown-unit:not(:last-child)::after{left:calc(100% + 6px);font-size:13px}.shift-countdown strong{font-size:clamp(34px,18cqw,52px)}.shift-countdown .shift-countdown-value--wide{font-size:clamp(27px,13.5cqw,42px)}.shift-countdown span{margin-top:10px;font-size:7px}}
 .shift-about-side p{font-family:Grotesk,Arial,sans-serif;font-size:16px;line-height:1.15;letter-spacing:.01em}
 .shift-info-grid h3{font-family:Valentine,Georgia,serif;font-weight:400;letter-spacing:0;line-height:.9}
 .shift-info-grid ul{font-family:Arial,Helvetica,sans-serif;letter-spacing:-.02em}

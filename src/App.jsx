@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect } from 'react'
-import { ReactLenis } from 'lenis/react'
+import { useRef, useState, useEffect, useLayoutEffect } from 'react'
+import { ReactLenis, useLenis } from 'lenis/react'
 import './App.css'
 import './reference-components.css'
 import './font-fixes.css'
@@ -33,8 +33,13 @@ const pageTitles = {
   faq: "FAQ — CODERED'26",
 };
 
-function pageFromHash() {
-  const page = window.location.hash.startsWith('#/') ? window.location.hash.slice(2) : 'home';
+function pageFromLocation() {
+  const legacyHashPage = window.location.hash.startsWith('#/') ? window.location.hash.slice(2) : '';
+  const page = legacyHashPage || window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
+  if (legacyHashPage) {
+    const cleanPath = page === 'home' ? '/' : `/${page}`;
+    window.history.replaceState(null, '', `${cleanPath}${window.location.search}`);
+  }
   return pageNames.includes(page) ? page : 'home';
 }
 
@@ -75,27 +80,38 @@ const questions = [
 ]
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(pageFromHash);
+  return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: true }}>
+    <PageContent />
+  </ReactLenis>
+}
+
+function PageContent() {
+  const lenis = useLenis()
+  const [currentPage, setCurrentPage] = useState(pageFromLocation);
   const [openFaq, setOpenFaq] = useState(null)
   const dialog = useRef(null)
   const appRef = useRef(null)
   const register = () => dialog.current.showModal()
 
   const navigatePage = (page) => {
-    const nextHash = `#/${page}`;
-    if (window.location.hash !== nextHash) window.history.pushState(null, '', nextHash);
+    const nextPath = page === 'home' ? '/' : `/${page}`;
+    if (window.location.pathname !== nextPath || window.location.hash) {
+      window.history.pushState(null, '', nextPath);
+    }
     setCurrentPage(page);
     setOpenFaq(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    lenis?.scrollTo(0, { immediate: true });
   };
 
+  useLayoutEffect(() => {
+    lenis?.scrollTo(0, { immediate: true });
+  }, [currentPage, lenis]);
+
   useEffect(() => {
-    const syncPage = () => setCurrentPage(pageFromHash());
+    const syncPage = () => setCurrentPage(pageFromLocation());
     window.addEventListener('popstate', syncPage);
-    window.addEventListener('hashchange', syncPage);
     return () => {
       window.removeEventListener('popstate', syncPage);
-      window.removeEventListener('hashchange', syncPage);
     };
   }, []);
 
@@ -117,7 +133,7 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: true }}>
+  return <>
     <div ref={appRef} className={`app-page app-page--${currentPage}`}>
             <Navbar activePage={currentPage} onNavigate={navigatePage} />
       <main id="main">
@@ -167,7 +183,7 @@ function App() {
       </footer>
       <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e => { if (e.target === dialog.current) dialog.current.close() }}><button className="dialog-close" onClick={() => dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt="" /><span className="eyebrow">THE NEXT WAVE IS COMING</span><h2 id="registration-title">You’re early.<br /><span className="script red">We like that.</span></h2><p>Registration for CODERED’ 26 hasn’t opened yet. The application link, dates, and venue will be announced here.</p><p className="dialog-note">No sign-up is being collected yet. Bookmark this page and check back for the launch.</p><button className="button primary" onClick={() => dialog.current.close()}>Got it <span>↗</span></button></dialog>
     </div>
-  </ReactLenis>
+  </>
 }
 
 function RevolvingFooter({ register }) {

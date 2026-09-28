@@ -6,7 +6,6 @@ const registrationUrl = 'https://unstop.com/o/qjIA3CN?utm_medium=Share&utm_sourc
 
 const pageLinks = [
   ['home', 'Home'],
-  ['about', 'About'],
   ['tracks', 'Tracks'],
   ['prizes', 'Prizes'],
   ['schedule', 'Schedule'],
@@ -51,7 +50,7 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
     <>
       <nav ref={navRef} className={`custom-navbar ${isOpen ? 'open' : ''}`} aria-label="Main navigation">
         <div className="navbar-header">
-          <a className="nav-identity" href="#/home" onClick={followPageLink('home')} aria-label="CODERED home">
+          <a className="nav-identity" href="/" onClick={followPageLink('home')} aria-label="CODERED home">
             <img src={logoImage} alt="" className="nav-logo-img" />
             <span className="nav-title">CODERED<span style={{ color: '#D90A16' }}>’26</span></span>
           </a>
@@ -65,10 +64,9 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
           <ul className="nav-menu-list">
             {pageLinks.map(([page, label]) => (
               <li className="nav-menu-item" key={page}>
-                <a href={`#/${page}`} aria-current={activePage === page ? 'page' : undefined} onClick={followPageLink(page)}>{label}</a>
+                <a href={page === 'home' ? '/' : `/${page}`} aria-current={activePage === page ? 'page' : undefined} onClick={followPageLink(page)}>{label}</a>
               </li>
             ))}
-            <li className="nav-menu-item"><button type="button" onClick={() => showNotice('Sponsor information will be announced here soon.')}>Sponsors</button></li>
           </ul>
 
           <div className="nav-footer">
