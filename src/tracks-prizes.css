@@ -127,36 +127,28 @@
 }
 
 /* Base card coloring */
-.track-card-1 .track-card-body {
+.track-card-1 .track-card-body,
+.track-card-4 .track-card-body {
   background-color: #1e1b18;
   color: #f1eeeb;
   border: 1px solid #ffffff33;
 }
-.track-card-2 .track-card-body {
-  background-color: #ED2024;
-  color: #f1eeeb;
-  border: 1px solid #ffffff33;
-}
+.track-card-2 .track-card-body,
 .track-card-3 .track-card-body {
   background-color: #f1eeeb;
   color: #1e1b18;
   border: 1px solid #1e1b1833;
 }
-.track-card-4 .track-card-body {
-  background-color: #c8c8c8;
-  color: #1e1b18;
-  border: 1px solid #1e1b1833;
-}
 
 /* Ghost number uses dark stripe on light cards */
-.track-card-3 .track-ghost-number,
-.track-card-4 .track-ghost-number {
+.track-card-2 .track-ghost-number,
+.track-card-3 .track-ghost-number {
   --stripe: #1e1b18;
 }
 
 /* Flag color override for light cards */
-.track-card-3 .track-top-flag,
-.track-card-4 .track-top-flag {
+.track-card-2 .track-top-flag,
+.track-card-3 .track-top-flag {
   background-color: #1e1b18;
   border-color: #1e1b18;
   color: #f1eeeb;
@@ -204,11 +196,7 @@
   z-index: 5;
   border-bottom: 0;
 }
-.track-card-2 .track-top-flag {
-  background-color: #1e1b18;
-  border: 1px solid #ED2024;
-  border-bottom: 0;
-}
+
 
 /* Pixel Grid Strip */
 .tp-card-grid-bg {
@@ -226,9 +214,9 @@
   margin-right: -1px; box-sizing: border-box;
 }
 .tp-block-row--split .tp-block { flex: 0 0 calc(100% / 22); max-width: calc(100% / 22); }
-.track-card-2 .tp-block { border: 1px solid rgba(255,255,255,0.3); }
+.track-card-2 .tp-block { border: 1px solid rgba(0,0,0,0.12); }
 .track-card-3 .tp-block { border: 1px solid rgba(0,0,0,0.12); }
-.track-card-4 .tp-block { border: 1px solid rgba(0,0,0,0.12); }
+.track-card-4 .tp-block { border: 1px solid rgba(255,255,255,0.15); }
 
 .tp-card-top {
   position: relative;
@@ -237,8 +225,9 @@
   overflow: hidden;
   border-bottom: 1px solid #ffffff33;
 }
+.track-card-2 .tp-card-top { border-bottom: 1px solid #1e1b1820; }
 .track-card-3 .tp-card-top { border-bottom: 1px solid #1e1b1820; }
-.track-card-4 .tp-card-top { border-bottom: 1px solid #1e1b1820; }
+.track-card-4 .tp-card-top { border-bottom: 1px solid #ffffff33; }
 
 .tp-inner-box {
   position: absolute;
@@ -248,9 +237,9 @@
   border: 1px solid #ffffff33;
 }
 .track-card-1 .tp-inner-box { background-color: #050505; }
-.track-card-2 .tp-inner-box { background-color: #1e1b18; border: 1px solid #ffffff33; }
-.track-card-3 .tp-inner-box { background-color: #1e1b18; border: 1px solid #1e1b1833; color: #f1eeeb; } /* Fix 3: Keep text light */
-.track-card-4 .tp-inner-box { background-color: #1e1b18; border: 1px solid #1e1b1833; color: #f1eeeb; } /* Fix 3: Keep text light */
+.track-card-2 .tp-inner-box { background-color: #1e1b18; border: 1px solid #1e1b1833; color: #f1eeeb; }
+.track-card-3 .tp-inner-box { background-color: #1e1b18; border: 1px solid #1e1b1833; color: #f1eeeb; }
+.track-card-4 .tp-inner-box { background-color: #050505; border: 1px solid #ffffff33; }
 
 .tp-inner-icon {
   flex: 0 0 calc(2 / 20 * 100%);
@@ -258,9 +247,9 @@
   box-sizing: border-box;
 }
 .track-card-1 .tp-inner-icon { background-color: #1e1b18; color: #f1eeeb; }
-.track-card-2 .tp-inner-icon { background-color: #ED2024; color: #f1eeeb; }
-.track-card-3 .tp-inner-icon { background-color: #f1eeeb; color: #1e1b18; }
-.track-card-4 .tp-inner-icon { background-color: #c8c8c8; color: #1e1b18; }
+.track-card-2 .tp-inner-icon { background-color: #1e1b18; color: #f1eeeb; }
+.track-card-3 .tp-inner-icon { background-color: #1e1b18; color: #f1eeeb; }
+.track-card-4 .tp-inner-icon { background-color: #1e1b18; color: #f1eeeb; }
 .tp-icon-svg { width: 60%; height: auto; }
 .tp-inner-text {
   flex: 1; display: flex; align-items: center;
