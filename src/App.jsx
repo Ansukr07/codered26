@@ -132,7 +132,12 @@ function App() {
           CODERED'26
         </div>
         <div className="footer-address" style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: '1.6', maxWidth: '300px' }}><span style={{ fontSize: '14px', fontWeight: 600, color: '#fff', display: 'block', marginBottom: '4px' }}>BMS Institute of Technology and Management</span>Doddaballapur Main Road, Avalahalli,<br />Yelahanka, Bengaluru, Karnataka 560064</div>
-        <span>A little chaos. A lot of possibility.</span>
+        <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '10px', textAlign: 'right', fontSize: '14px', fontWeight: 500 }}>
+          <a href="https://maps.app.goo.gl/RyJvsZVLrH41qCJj7" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
+          <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
+          <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>
+          <a href="https://codered.vercel.app/" target="_blank" rel="noopener noreferrer" className="footer-link">Terms & Conditions</a>
+        </div>
         <a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>BACK TO TOP ↑</a>
         <div className="footer-bottom">
           <span>© 2026 CODERED. Built for what’s next.</span>

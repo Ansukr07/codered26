@@ -142,3 +142,7 @@
     margin-bottom: -1vw;
   }
 }
+
+
+.footer-links a.footer-link { color: #f1eeeb; transition: color 0.2s ease; }
+.footer-links a.footer-link:hover { color: #ED2024; }
