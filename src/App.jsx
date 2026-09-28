@@ -151,9 +151,9 @@ function PageContent() {
         </div>
         <div className="footer-contact" style={{ flex: 1, textAlign: 'center', fontSize: '13px', color: 'var(--muted)', lineHeight: '1.8' }}>
           <span style={{ fontSize: '14px', fontWeight: 600, color: '#fff', display: 'block', marginBottom: '4px' }}>Contact Us</span>
-          <a href="tel:+919141194259" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Vaibhav B: 91411 94259</a>
-          <a href="tel:+917975959500" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Gagan: 79759 59500</a>
-          <a href="tel:+919606295562" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Deepthi Jain: 96062 95562</a>
+          <a href="tel:+919141194259" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Vaibhav B</a>
+          <a href="tel:+917975959500" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Gagan</a>
+          <a href="tel:+919606295562" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Deepthi Jain</a>
         </div>
         <div className="footer-address" style={{ flex: 1, fontSize: '11px', color: 'var(--muted)', lineHeight: '1.6', textAlign: 'right' }}><span style={{ fontSize: '14px', fontWeight: 600, color: '#fff', display: 'block', marginBottom: '4px' }}>BMS Institute of Technology and Management</span>Doddaballapur Main Road, Avalahalli,<br />Yelahanka, Bengaluru, Karnataka 560064</div>
         <div className="footer-bottom">
