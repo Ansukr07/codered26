@@ -144,6 +144,7 @@ function PageContent() {
         <RevolvingFooter register={register} />
       </main>
       <footer>
+        <div className="footer-top-row" style={{ display: "flex", width: "100%", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "20px" }}>
         <div className="footer-links" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '10px', textAlign: 'left', fontSize: '14px', fontWeight: 500 }}>
           <a href="https://maps.app.goo.gl/RyJvsZVLrH41qCJj7" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
           <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
@@ -156,6 +157,7 @@ function PageContent() {
           <a href="tel:+919606295562" className="footer-link" style={{ color: 'var(--muted)', transition: 'color 0.2s ease', display: 'block' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>Deepthi Jain</a>
         </div>
         <div className="footer-address" style={{ flex: 1, fontSize: '13px', color: 'var(--muted)', lineHeight: '1.6', textAlign: 'right' }}><span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>BMS Institute of Technology and Management</span>Doddaballapur Main Road, Avalahalli,<br />Yelahanka, Bengaluru, Karnataka 560064</div>
+        </div>
         <div className="footer-bottom">
           <div className="social-links" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
             <a href="https://www.instagram.com/ecell.bmsit?igsh=dW56aGtuY3pnNTBl" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ color: 'var(--muted)', transition: 'color 0.2s' }} onMouseOver={e=>e.currentTarget.style.color='white'} onMouseOut={e=>e.currentTarget.style.color='var(--muted)'}>
