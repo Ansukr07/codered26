@@ -179,6 +179,7 @@ function RevolvingFooter({ register }) {
 
   // Speed control refs
   const speedBoostTimeRef = useRef(0)
+    const isHoveringRegisterRef = useRef(false)
   const currentSpeedRef = useRef(1)
 
   const sectionRef = useRef(null)
@@ -215,10 +216,12 @@ function RevolvingFooter({ register }) {
       const dt = smoothedDt;
 
       let targetSpeed = 1;
-      if (speedBoostTimeRef.current > 0) {
-        speedBoostTimeRef.current -= dt;
-        targetSpeed = 2.5;
-      }
+        if (isHoveringRegisterRef.current) {
+          targetSpeed = 10.0;
+        } else if (speedBoostTimeRef.current > 0) {
+          speedBoostTimeRef.current -= dt;
+          targetSpeed = 2.5;
+        }
 
       currentSpeedRef.current += (targetSpeed - currentSpeedRef.current) * dt * 2.5;
 
@@ -301,7 +304,8 @@ function RevolvingFooter({ register }) {
         <button
           className="register-btn"
           onClick={register}
-          onMouseEnter={() => { speedBoostTimeRef.current = 1.0 }}
+          onMouseEnter={() => { isHoveringRegisterRef.current = true; speedBoostTimeRef.current = 1.0; }}
+            onMouseLeave={() => { isHoveringRegisterRef.current = false; }}
         >
           Register Now
         </button>
