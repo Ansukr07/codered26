@@ -1,6 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import { TracksSection, PrizesSection } from './TracksAndPrizes'
 import './editorial.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const eventStart = new Date('2026-12-12T00:00:00+05:30').getTime()
 
@@ -29,10 +34,88 @@ const rounds = [
   ['01', 'OPEN CALL', 'Round one: submit the idea', 'BRING YOUR TEAM, FRAME THE PROBLEM, AND SEND IN YOUR CONCEPT.'],
   ['02', 'THE BUILD', 'Round two: 24 hours live', 'SELECTED TEAMS BUILD, TEST, AND REFINE ON THE CLOCK.'],
   ['03', 'FINAL DEMO', 'Present what you made', 'SHOW THE WORK, TELL THE STORY, AND CLOSE THE DAY TOGETHER.'],
+  ['04', 'THE VERDICT', 'Celebrate the victors', 'THE JUDGES DELIVER THEIR VERDICT AND CHAMPIONS ARE CROWNED.'],
 ]
+
+const DotArrowSVG = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none" className="tp-icon-svg">
+    <circle cx="2.481" cy="14.98" r="1.756" fill="currentColor" />
+    <circle cx="6.733" cy="15.004" r="1.756" fill="currentColor" />
+    <circle cx="10.938" cy="14.985" r="1.756" fill="currentColor" />
+    <circle cx="15.19" cy="15.017" r="1.756" fill="currentColor" />
+    <circle cx="19.434" cy="15.033" r="1.756" fill="currentColor" />
+    <circle cx="23.649" cy="15" r="1.756" fill="currentColor" />
+    <circle cx="27.93" cy="15.009" r="1.756" fill="currentColor" />
+    <circle cx="23.67" cy="19.085" r="1.756" fill="currentColor" />
+    <circle cx="19.417" cy="23.29" r="1.756" fill="currentColor" />
+    <circle cx="15.192" cy="27.6" r="1.756" fill="currentColor" />
+    <circle r="1.756" transform="matrix(1 0 0 -1 23.656 10.906)" fill="currentColor" />
+    <circle r="1.756" transform="matrix(1 0 0 -1 19.402 6.708)" fill="currentColor" />
+    <circle r="1.756" transform="matrix(1 0 0 -1 15.187 2.39)" fill="currentColor" />
+  </svg>
+);
 
 export default function EditorialSections() {
   const containerRef = useRef(null);
+  const roundsRef = useRef(null);
+  const [activeRoundIndex, setActiveRoundIndex] = useState(0);
+
+  const handleContainerScroll = (e) => {
+    const container = e.target;
+    const scrollLeft = container.scrollLeft;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+    Array.from(container.children).forEach((child, i) => {
+      const distance = Math.abs(child.offsetLeft - container.offsetLeft - scrollLeft);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = i;
+      }
+    });
+    if (closestIndex !== activeRoundIndex) {
+      setActiveRoundIndex(closestIndex);
+    }
+  };
+
+  const handleScrollDots = (dir) => {
+    if (roundsRef.current) {
+      const container = roundsRef.current;
+      const targetIndex = Math.max(0, Math.min(rounds.length - 1, activeRoundIndex + dir));
+      const child = container.children[targetIndex];
+      if (child) {
+        container.scrollTo({ left: child.offsetLeft - container.offsetLeft, behavior: 'smooth' });
+      }
+    }
+  };
+
+  useGSAP(() => {
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 701px)", () => {
+      if (!containerRef.current || !roundsRef.current) return;
+      const timelineSection = containerRef.current.querySelector('#timeline');
+      const roundsContainer = roundsRef.current;
+      
+      const getScrollAmount = () => {
+        const cards = roundsContainer.querySelectorAll('article');
+        if (cards.length < 2) return 0;
+        return -(roundsContainer.scrollWidth - timelineSection.offsetWidth);
+      };
+
+      gsap.to(roundsContainer, {
+        x: getScrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: timelineSection,
+          start: "top top",
+          end: () => `+=${(roundsContainer.scrollWidth - timelineSection.offsetWidth) * 1.5}`,
+          pin: true,
+          scrub: 0.5,
+          invalidateOnRefresh: true,
+        }
+      });
+    });
+  }, { scope: containerRef });
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -79,7 +162,10 @@ export default function EditorialSections() {
         </div>
       </div>
       <aside className="shift-hero-rail anim-slide-down" style={{ transitionDelay: '0.2s' }}>
-        <div className="shift-rail-intro anim-slide-up" style={{ transitionDelay: '0.3s' }}><strong>National Level<br />24-Hour Hackathon.</strong><img className="shift-rail-tagline" src="/vivaldi-tagline.png" alt="Code Till You Drop." /></div>
+        <div className="shift-rail-intro anim-slide-up" style={{ transitionDelay: '0.3s' }}>
+          <strong>National Level<br />24-Hour Hackathon.</strong>
+          <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "2rem", display: "block", marginTop: "1rem", lineHeight: "1" }}>Code Till You Drop.</span>
+        </div>
         <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>UNTIL THE BUILD BEGINS</span><h2>12 / 12 / 26</h2></div><Countdown /></div>
       </aside>
     </section>
@@ -97,11 +183,33 @@ export default function EditorialSections() {
     <PrizesSection />
 
     <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">
-      <div className="shift-timeline-intro anim-slide-up"><h2 id="timeline-title">The whole sequence.</h2><span><span className="shift-mobile-swipe">SWIPE &rarr;&nbsp;&nbsp;</span>01 / 02 / 03</span></div>
-      <div className="shift-rounds">{rounds.map(([n, phase, title, detail], i) => <article key={n} className="anim-slide-down" style={{ transitionDelay: `${i * 0.15}s` }}>
+      <div className="shift-timeline-intro anim-slide-up"><h2 id="timeline-title">The whole sequence.</h2></div>
+      <div className="shift-rounds" ref={roundsRef} onScroll={handleContainerScroll}>{rounds.map(([n, phase, title, detail], i) => <article key={n} className="anim-slide-down" style={{ transitionDelay: `${i * 0.15}s` }}>
         <div className="shift-round-number" aria-hidden="true">{n}</div>
         <div className="shift-round-content"><span className="shift-round-index anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.1}s` }}>{n}</span><span className="shift-mono anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.2}s` }}>{phase}</span><h3 className="anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.3}s` }}>{title}</h3><p className="anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.4}s` }}>{detail}</p></div>
       </article>)}</div>
+      
+      {/* Mobile Carousel Controls */}
+      <div className="mobile-carousel-controls">
+        <div className="carousel-arrows">
+          <button className="carousel-btn" onClick={() => handleScrollDots(-1)} disabled={activeRoundIndex === 0}>
+            <span style={{ transform: 'rotate(180deg)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px' }}><DotArrowSVG /></span>
+          </button>
+          <button className="carousel-btn" onClick={() => handleScrollDots(1)} disabled={activeRoundIndex === rounds.length - 1}>
+            <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '26px', height: '26px' }}><DotArrowSVG /></span>
+          </button>
+        </div>
+        <div className="carousel-dots">
+          {rounds.map((_, i) => (
+            <span key={i} className={`carousel-dot ${i === activeRoundIndex ? 'active' : ''}`} onClick={() => {
+              if (roundsRef.current && roundsRef.current.children[i]) {
+                const child = roundsRef.current.children[i];
+                roundsRef.current.scrollTo({ left: child.offsetLeft - roundsRef.current.offsetLeft, behavior: 'smooth' });
+              }
+            }} />
+          ))}
+        </div>
+      </div>
     </section>
   </div>
 }

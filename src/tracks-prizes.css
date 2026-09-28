@@ -12,6 +12,12 @@
   100% { transform: translate3d(19px,29px,0) }
 }
 
+@media (max-width: 700px) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
 .tp-section {
   padding: 8rem 2.5rem;
   background-color: #c8c8c8; /* Light gray base to break up the dark */
@@ -89,7 +95,19 @@
 }
 
 @media (max-width: 700px) {
-  .tracks-grid { grid-template-columns: 1fr; }
+  .tracks-grid { 
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    /* Negate the 2.5rem padding of tp-section so grid touches screen edge */
+    margin-left: -2.5rem;
+    /* Add exactly 7.5vw padding so the 85vw card is perfectly centered (7.5 + 85 + 7.5 = 100) */
+    padding-left: 7.5vw;
+  }
+  .track-card {
+    width: 85vw; /* Each card takes up 85% of screen width */
+    margin-right: 1.5rem;
+  }
 }
 
 .track-card {
@@ -162,6 +180,8 @@
   opacity: 1;
   animation: tp-static 0.22s steps(1, end) infinite;
 }
+
+
 
 .track-card-body > * {
   position: relative;
@@ -428,6 +448,7 @@
   padding: 2.2rem 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .prize-amount {
@@ -440,8 +461,16 @@
 }
 
 @media (max-width: 900px) {
-  .prize-outer-container { flex-direction: column; }
-  .prize-card { border-right: none; border-bottom: 1px solid #ffffff33; }
-  .prize-card:last-child { border-bottom: none; }
+  .prize-outer-container { 
+    flex-direction: column; 
+    border: none; 
+    gap: 4rem; 
+  }
+  .prize-card { 
+    border: 1px solid #1e1b18; 
+  }
+  .prize-card:last-child {
+    border-right: 1px solid #1e1b18;
+  }
 }
 
