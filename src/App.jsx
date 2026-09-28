@@ -194,7 +194,7 @@ function RevolvingFooter({ register }) {
   const rafRef = useRef(null)
 
   // Speed control refs
-  const speedBoostTimeRef = useRef(0)
+  const spinEnergyRef = useRef(1.0)
     const isHoveringRegisterRef = useRef(false)
   const currentSpeedRef = useRef(1)
 
@@ -231,13 +231,12 @@ function RevolvingFooter({ register }) {
       smoothedDt = smoothedDt * 0.9 + rawDt * 0.1;
       const dt = smoothedDt;
 
-      let targetSpeed = 1;
-        if (isHoveringRegisterRef.current) {
-          targetSpeed = 2.0; // Keep the max speed low enough to avoid visual frame-tearing (wagon wheel effect)
-        } else if (speedBoostTimeRef.current > 0) {
-          speedBoostTimeRef.current -= dt;
-          targetSpeed = 1.5;
-        }
+      // Decay spin energy slowly when not hovering
+      if (!isHoveringRegisterRef.current) {
+        spinEnergyRef.current = Math.max(1.0, spinEnergyRef.current - dt * 1.5);
+      }
+
+      let targetSpeed = spinEnergyRef.current;
 
       // Smooth transition
       currentSpeedRef.current += (targetSpeed - currentSpeedRef.current) * dt * 2.0;
@@ -321,7 +320,7 @@ function RevolvingFooter({ register }) {
         <button
           className="register-btn"
           onClick={register}
-          onMouseEnter={() => { isHoveringRegisterRef.current = true; speedBoostTimeRef.current = 1.0; }}
+          onMouseEnter={() => { isHoveringRegisterRef.current = true; spinEnergyRef.current = Math.min(10.0, spinEnergyRef.current + 2.5); }}
             onMouseLeave={() => { isHoveringRegisterRef.current = false; }}
         >
           Register Now
