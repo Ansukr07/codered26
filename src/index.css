@@ -5,6 +5,22 @@ html, body, #root {
   overscroll-behavior-x: none;
 }
 
+/* Hide ALL scrollbar tracks on mobile — kills Lenis/native grey track */
+@media (max-width: 767px) {
+  html, body, #root, .lenis, .lenis.lenis-smooth {
+    scrollbar-width: none !important;   /* Firefox */
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  #root::-webkit-scrollbar,
+  .lenis::-webkit-scrollbar,
+  .lenis.lenis-smooth::-webkit-scrollbar {
+    display: none !important;           /* Chrome / Safari / Android */
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
 @media(max-width:600px){.hero .bubbles{display:none}}
 @font-face{font-family:Gottak;src:url('/codered2026/codered2026/fonts/Gottak-SemiBold.otf') format('opentype');font-weight:600;font-display:swap}
 @font-face{font-family:Grotesk;src:url('/codered2026/codered2026/fonts/Typo Grotesk Rounded/Typo Grotesk Rounded Demo.otf') format('opentype');font-display:swap}
