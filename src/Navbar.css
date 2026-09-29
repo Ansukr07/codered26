@@ -14,16 +14,16 @@
 
 @media(max-width:700px) {
   .custom-navbar {
-    width: calc(100% - 24px);
-    max-width: none;
-    left: 12px;
+    width: 245px;
+    max-width: calc(100% - 24px);
+    left: auto;
     right: 12px;
     transform: none;
   }
   .custom-navbar.open {
-    width: calc(100% - 24px);
+    width: 245px;
     right: 12px;
-    left: 12px;
+    left: auto;
     transform: none;
   }
   .navbar-dropdown {
@@ -36,7 +36,6 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: border-radius 0.3s;
   }
-  .nav-title { font-size: clamp(12px, 3.2vw, 16px); }
   .custom-navbar.open .navbar-header {
     border-radius: 0;
   }
@@ -63,6 +62,8 @@
   gap: 12px;
   color: inherit;
   text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-logo-img {
@@ -96,6 +97,7 @@
   align-items: flex-end;
   justify-content: center;
   position: relative;
+  flex-shrink: 0;
 }
 
 .toggle-line {
