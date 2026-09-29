@@ -57,9 +57,8 @@ const baseElements = Array.from({ length: totalElements }).map((_, i) => {
 
   const widthBase = Math.random() * 35 + 50; // 50-85px base size
 
-  // Mix of landscape and portrait
-  const isPortrait = Math.random() > 0.6;
-  const heightRatio = isPortrait ? 1.3 : 0.75;
+  // Square area cards
+  const heightRatio = 1;
 
   const tiltJitter = Math.random() * 20 - 10; // ±10° random tilt
 
@@ -255,24 +254,36 @@ function RevolvingFooter({ register }) {
       containerAngleRef.current += dt * 0.4 * currentSpeedRef.current;
       const currentGlobalAngleRad = containerAngleRef.current * (Math.PI / 180);
 
-      progressRef.current -= (dt / (isPhone ? 120 : 90)) * currentSpeedRef.current;
+      progressRef.current -= (dt / (isPhone ? 65 : 90)) * currentSpeedRef.current;
       if (progressRef.current < 0) progressRef.current += 1;
+
+      const activeCount = isPhone ? 24 : totalElements;
 
       itemsRef.current.forEach((node, i) => {
         if (!node) return;
-        const el = baseElements[i];
 
-        let p = (el.initialP + progressRef.current) % 1;
+        if (isPhone && i >= activeCount) {
+          if (node.style.visibility !== 'hidden') {
+            node.style.visibility = 'hidden';
+            node.style.willChange = 'auto';
+          }
+          return;
+        }
+
+        const el = baseElements[i];
+        const initialP = isPhone ? i / (activeCount - 1) : el.initialP;
+        let p = (initialP + progressRef.current) % 1;
         if (p < 0) p += 1;
 
         const target_I = p * I_max;
         const mapped_p = (-a + Math.sqrt(a * a + 2 * b * target_I)) / b;
 
-        const baseAngle = -(mapped_p * Math.PI * 2 * turns);
+        const activeTurns = isPhone ? 1.5 : turns;
+        const baseAngle = -(mapped_p * Math.PI * 2 * activeTurns);
         
-        // On phone, dramatically pull the radius in so the entire spiral fits on screen
-        const maxPhoneRadius = 180;
-        const minPhoneRadius = 70;
+        // On phone, give the spiral a wider sweep and bigger cards
+        const maxPhoneRadius = 240;
+        const minPhoneRadius = 80;
         const baseRadius = isPhone 
             ? minPhoneRadius + mapped_p * (maxPhoneRadius - minPhoneRadius) 
             : minRadius + mapped_p * (maxRadius - minRadius);
@@ -283,7 +294,7 @@ function RevolvingFooter({ register }) {
         const x = Math.cos(jitterAngle) * jitterRadius;
         const y = Math.sin(jitterAngle) * jitterRadius;
 
-        const sizeScale = isPhone ? 0.2 + 0.25 * mapped_p : 0.5 + 0.5 * mapped_p;
+        const sizeScale = isPhone ? 0.30 + 0.30 * mapped_p : 0.5 + 0.5 * mapped_p;
         const radialAngleDeg = ((jitterAngle % (2 * Math.PI)) * 180 / Math.PI);
         const tilt = radialAngleDeg + 90 + el.tiltJitter;
 
@@ -292,9 +303,8 @@ function RevolvingFooter({ register }) {
         else if (mapped_p > 0.95) opacity = (1 - mapped_p) / 0.05;
 
         // Cards outside the clipped section need no transform or paint work.
-        const orbitScale = isPhone ? 0.7 : 1;
-        const margin = el.widthBase * 0.8 * orbitScale;
-        const visible = Math.abs(x * orbitScale) < halfWidth + margin && Math.abs(y * orbitScale) < halfHeight + margin;
+        const margin = el.widthBase * (isPhone ? 1.6 : 0.8);
+        const visible = Math.abs(x) < halfWidth + margin && Math.abs(y) < halfHeight + margin;
         if (!visible) {
           if (node.style.visibility !== 'hidden') {
             node.style.visibility = 'hidden';
@@ -361,6 +371,11 @@ function RevolvingFooter({ register }) {
 }
 
 export default App
+
+
+
+
+
 
 
 

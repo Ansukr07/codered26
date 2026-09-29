@@ -122,9 +122,15 @@
   box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .revolving-cta {
-    min-height: 330px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    min-height: unset;
+    height: auto;
+    max-height: 100vw;
+    padding: 0;
+    overflow: hidden;
   }
 }
 
@@ -158,3 +164,5 @@
 
 .footer-links a.footer-link, .footer-contact a.footer-link { color: var(--muted); transition: color 0.2s ease; display: inline-block; }
 .footer-links a.footer-link:hover, .footer-contact a.footer-link:hover { color: #ED2024; }
+
+
