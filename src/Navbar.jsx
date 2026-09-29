@@ -15,15 +15,31 @@ const pageLinks = [
 const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const [notice, setNotice] = useState('');
   const navRef = useRef(null);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const updateWidth = () => setIsExpanded(window.scrollY > 80);
-    updateWidth();
-    window.addEventListener('scroll', updateWidth, { passive: true });
-    return () => window.removeEventListener('scroll', updateWidth);
-  }, []);
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      setIsExpanded(currentY > 80);
+
+      // Don't hide while menu is open
+      if (!isOpen) {
+        if (currentY > lastScrollY.current && currentY > 80) {
+          setIsHidden(true);   // scrolling down
+        } else {
+          setIsHidden(false);  // scrolling up
+        }
+      }
+
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -56,7 +72,7 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
 
   return (
     <>
-      <nav ref={navRef} className={`custom-navbar ${isOpen ? 'open' : ''} ${isExpanded ? 'expanded' : ''}`} aria-label="Main navigation">
+      <nav ref={navRef} className={`custom-navbar ${isOpen ? 'open' : ''} ${isExpanded ? 'expanded' : ''} ${isHidden ? 'nav-hidden' : ''}`} aria-label="Main navigation">
         <div className="navbar-header">
           <a className="nav-identity" href="/" onClick={followPageLink('home')} aria-label="CODERED home">
             <img src={logoImage} alt="" className="nav-logo-img" />

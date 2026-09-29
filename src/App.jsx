@@ -181,7 +181,7 @@ function PageContent() {
             </a>
           </div>
         </div>
-        <div className="cosmos-footer-giant anim-slide-up" style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div className="cosmos-footer-giant" style={{ display: 'flex', justifyContent: 'space-between' }}>
           {Array.from("CODERED'26").map((char, index) => (
             <span key={index}>{char}</span>
           ))}
