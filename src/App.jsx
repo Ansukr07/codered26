@@ -7,6 +7,7 @@ import './revolving-footer.css'
 import Navbar from './Navbar.jsx'
 import EditorialSections from './EditorialSections.jsx'
 import './routes.css'
+import RegisterButton from './components/RegisterButton'
 
 const base = '/codered2026/codered2026'
 const art = (name) => `${base}/vector files/elements/${name}.svg`
@@ -323,14 +324,12 @@ function RevolvingFooter({ register }) {
         </div>
       </div>
       <div className="revolving-content">
-        <button
-          className="register-btn"
+        <RegisterButton
+          size="large"
           onClick={register}
           onMouseEnter={() => { isHoveringRegisterRef.current = true; spinEnergyRef.current = Math.min(10.0, spinEnergyRef.current + 2.5); }}
-            onMouseLeave={() => { isHoveringRegisterRef.current = false; }}
-        >
-          Register Now
-        </button>
+          onMouseLeave={() => { isHoveringRegisterRef.current = false; }}
+        />
       </div>
     </section>
   )

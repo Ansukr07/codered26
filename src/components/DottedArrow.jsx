@@ -1,0 +1,1 @@
+export default function DottedArrow({className}) { return <svg className={className} viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="7" r="1.5"/><circle cx="10" cy="7" r="1.5"/><circle cx="10" cy="12" r="1.5"/><circle cx="14" cy="12" r="1.5"/><circle cx="18" cy="12" r="1.5"/><circle cx="6" cy="17" r="1.5"/><circle cx="10" cy="17" r="1.5"/></svg> }

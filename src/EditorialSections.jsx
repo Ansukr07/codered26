@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { TracksSection, PrizesSection } from './TracksAndPrizes'
+import RegisterButton from './components/RegisterButton'
 import './editorial.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -172,7 +173,7 @@ export default function EditorialSections() {
               </span>
             </h1>
           </div>
-          <div className="shift-hero-bottom-action anim-slide-up" style={{ transitionDelay: '0.2s' }}><a href="https://unstop.com/o/qjIA3CN?utm_medium=Share&amp;utm_source=ecell-bmsitm&amp;utm_campaign=Online_coding_challenge" target="_blank" rel="noopener noreferrer">REGISTER NOW <span aria-hidden="true">↗</span></a></div>
+          <div className="shift-hero-bottom-action anim-slide-up" style={{ transitionDelay: '0.2s' }}><RegisterButton href="https://unstop.com/o/qjIA3CN?utm_medium=Share&amp;utm_source=ecell-bmsitm&amp;utm_campaign=Online_coding_challenge" /></div>
         </div>
       </div>
       <aside className="shift-hero-rail anim-slide-down" style={{ transitionDelay: '0.2s' }}>
