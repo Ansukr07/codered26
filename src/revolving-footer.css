@@ -145,9 +145,13 @@
 
 @media (max-width: 768px) {
   .cosmos-footer-giant {
-    font-size: 13.5vw;
+    font-size: 11vw;
     margin-bottom: -1vw;
+    display: flex !important;
     justify-content: space-between !important;
+    white-space: normal;
+    overflow: visible;
+    padding: 0 5%;
   }
 }
 
