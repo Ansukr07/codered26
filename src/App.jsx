@@ -194,7 +194,6 @@ function PageContent() {
 }
 
 function RevolvingFooter({ register }) {
-  const orbitRef = useRef(null)
   const itemsRef = useRef([])
   const progressRef = useRef(0)
   const containerAngleRef = useRef(0)
@@ -209,6 +208,18 @@ function RevolvingFooter({ register }) {
   const isVisibleRef = useRef(true)
 
   useEffect(() => {
+    let halfWidth = 0;
+    let halfHeight = 0;
+    let isPhone = false;
+    const measure = () => {
+      halfWidth = sectionRef.current.clientWidth / 2;
+      halfHeight = sectionRef.current.clientHeight / 2;
+      isPhone = window.matchMedia('(max-width: 700px)').matches;
+    };
+    measure();
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(sectionRef.current);
+
     // Pause animation entirely when scrolled off-screen
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -223,20 +234,14 @@ function RevolvingFooter({ register }) {
     if (sectionRef.current) observer.observe(sectionRef.current);
 
     const lastTimeRef = { current: performance.now() };
-    let smoothedDt = 0.016;
-
     const animate = (now) => {
       if (!isVisibleRef.current) {
         rafRef.current = null;
         return; // Completely stop the loop when off-screen
       }
 
-      let rawDt = (now - lastTimeRef.current) / 1000;
+      const dt = Math.min((now - lastTimeRef.current) / 1000, 0.05);
       lastTimeRef.current = now;
-
-      if (rawDt > 0.1) rawDt = 0.016;
-      smoothedDt = smoothedDt * 0.9 + rawDt * 0.1;
-      const dt = smoothedDt;
 
       // Decay spin energy slowly when not hovering
       if (!isHoveringRegisterRef.current) {
@@ -251,29 +256,40 @@ function RevolvingFooter({ register }) {
       containerAngleRef.current += dt * 0.4 * currentSpeedRef.current;
       const currentGlobalAngleRad = containerAngleRef.current * (Math.PI / 180);
 
-      progressRef.current -= (dt / 90) * currentSpeedRef.current;
+      progressRef.current -= (dt / (isPhone ? 120 : 90)) * currentSpeedRef.current;
       if (progressRef.current < 0) progressRef.current += 1;
 
       itemsRef.current.forEach((node, i) => {
         if (!node) return;
         const el = baseElements[i];
 
-        let p = (el.initialP + progressRef.current) % 1;
+        let p = ((isPhone ? i / totalElements : el.initialP) + progressRef.current) % 1;
         if (p < 0) p += 1;
 
+        // Every image cycles through on phones, but only five occupy the spiral at once.
+        const mobileWindow = 5 / totalElements;
+        if (isPhone && p >= mobileWindow) {
+          if (node.style.visibility !== 'hidden') {
+            node.style.visibility = 'hidden';
+            node.style.willChange = 'auto';
+          }
+          return;
+        }
+
         const target_I = p * I_max;
-        const mapped_p = (-a + Math.sqrt(a * a + 2 * b * target_I)) / b;
+        const mapped_p = isPhone ? p / mobileWindow : (-a + Math.sqrt(a * a + 2 * b * target_I)) / b;
 
-        const baseAngle = -(mapped_p * Math.PI * 2 * turns);
-        const baseRadius = minRadius + mapped_p * (maxRadius - minRadius);
-
+        const baseAngle = isPhone
+          ? -Math.PI / 4 - mapped_p * Math.PI * 2 * 1.25
+          : -(mapped_p * Math.PI * 2 * turns);
+        const baseRadius = isPhone ? 175 + mapped_p * 110 : minRadius + mapped_p * (maxRadius - minRadius);
         const jitterAngle = baseAngle + el.angleJitter + currentGlobalAngleRad;
         const jitterRadius = baseRadius + el.radiusJitter;
 
         const x = Math.cos(jitterAngle) * jitterRadius;
         const y = Math.sin(jitterAngle) * jitterRadius;
 
-        const sizeScale = 0.5 + 0.5 * mapped_p;
+        const sizeScale = isPhone ? 0.75 : 0.5 + 0.5 * mapped_p;
         const radialAngleDeg = ((jitterAngle % (2 * Math.PI)) * 180 / Math.PI);
         const tilt = radialAngleDeg + 90 + el.tiltJitter;
 
@@ -281,7 +297,22 @@ function RevolvingFooter({ register }) {
         if (mapped_p < 0.05) opacity = mapped_p / 0.05;
         else if (mapped_p > 0.95) opacity = (1 - mapped_p) / 0.05;
 
-        node.style.opacity = opacity;
+        // Cards outside the clipped section need no transform or paint work.
+        const orbitScale = isPhone ? 0.7 : 1;
+        const margin = el.widthBase * 0.8 * orbitScale;
+        const visible = Math.abs(x * orbitScale) < halfWidth + margin && Math.abs(y * orbitScale) < halfHeight + margin;
+        if (!visible) {
+          if (node.style.visibility !== 'hidden') {
+            node.style.visibility = 'hidden';
+            node.style.willChange = 'auto';
+          }
+          return;
+        }
+        if (node.style.visibility === 'hidden') {
+          node.style.visibility = 'visible';
+          node.style.willChange = 'transform';
+        }
+        if (node.style.opacity !== String(opacity)) node.style.opacity = opacity;
         node.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) scale(${sizeScale}) rotate(${tilt}deg)`;
       });
 
@@ -292,13 +323,14 @@ function RevolvingFooter({ register }) {
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       observer.disconnect();
+      resizeObserver.disconnect();
     }
   }, [])
 
   return (
     <section className="revolving-cta" ref={sectionRef}>
       <div className="revolving-orbit-container">
-        <div className="revolving-orbit" ref={orbitRef}>
+        <div className="revolving-orbit">
           {baseElements.map((el, i) => {
             const baseWidth = el.widthBase;
             const baseHeight = el.widthBase * el.heightRatio;
@@ -312,7 +344,6 @@ function RevolvingFooter({ register }) {
                   width: baseWidth + 'px',
                   height: baseHeight + 'px',
                   backgroundColor: el.bg,
-                  willChange: 'transform, opacity',
                   left: 0,
                   top: 0
                 }}
