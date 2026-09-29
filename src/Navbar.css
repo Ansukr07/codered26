@@ -21,9 +21,9 @@
     transform: none;
   }
   .custom-navbar.open {
-    width: 245px;
+    width: calc(100% - 24px);
     right: 12px;
-    left: auto;
+    left: 12px;
     transform: none;
   }
   .navbar-dropdown {
