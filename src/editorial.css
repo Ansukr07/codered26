@@ -44,7 +44,7 @@
 .shift-info-grid article{min-height:380px;padding:34px clamp(28px,3.4vw,64px) 48px;display:flex;flex-direction:column;align-items:flex-start}
 .shift-card-plus{font:400 58px/.75 Arial,Helvetica,sans-serif;margin-bottom:auto}
 .shift-info-grid h3{font:400 clamp(36px,3.5vw,58px)/1 Arial,Helvetica,sans-serif;letter-spacing:-.055em;min-height:0;margin:38px 0 28px}
-.shift-info-grid ul{list-style:none;padding:0;margin:0;width:100%;font:400 clamp(16px,1.5vw,22px)/1.25 Arial,Helvetica,sans-serif;letter-spacing:-.025em}
+.shift-info-grid ul{list-style:none;padding:0;margin:0;width:100%;font:400 clamp(16px,1.5vw,22px)/1.25 Grotesk,Arial,sans-serif;letter-spacing:-.025em}
 .shift-info-grid li{border-top:1px solid #808080;padding:11px 0 13px}
 .shift-gallery{display:flex;flex-direction:column}
 .shift-gallery-grid{flex:1}
@@ -266,7 +266,7 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 @media(max-width:700px){.shift-countdown{column-gap:16px;margin:22px 0 14px}.shift-countdown-unit:not(:last-child)::after{left:calc(100% + 8px);font-size:10px}.shift-countdown strong{font-size:clamp(28px,15cqw,46px)}.shift-countdown .shift-countdown-value--wide{font-size:clamp(23px,11cqw,36px)}.shift-countdown span{margin-top:10px;font-size:7px}}
 .shift-about-side p{font-family:Grotesk,Arial,sans-serif;font-size:16px;line-height:1.15;letter-spacing:.01em}
 .shift-info-grid h3{font-family:Valentine,Georgia,serif;font-weight:400;letter-spacing:0;line-height:.9}
-.shift-info-grid ul{font-family:Arial,Helvetica,sans-serif;letter-spacing:-.02em}
+.shift-info-grid ul{font-family:Grotesk,Arial,sans-serif;letter-spacing:-.02em}
 .shift-timeline-intro span,.shift-round-index,.shift-timeline .shift-mono{font-family:Grotesk,Arial,sans-serif;font-weight:600;letter-spacing:.03em}
 .shift-timeline .shift-rounds h3{font-family:Valentine,Georgia,serif;font-weight:400;letter-spacing:0;line-height:.92}
 .shift-timeline .shift-rounds p{font-family:Arial,Helvetica,sans-serif;font-weight:400;letter-spacing:-.01em;line-height:1.35}
@@ -348,6 +348,7 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
     display: grid;
   }
 }
+
 
 
 

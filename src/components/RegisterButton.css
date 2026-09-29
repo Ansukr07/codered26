@@ -18,7 +18,7 @@
   pointer-events: auto;
 }
 
-.new-register-btn:hover {
+.new-register-btn.is-expanded {
 }
 
 .btn-inner-pill {
@@ -36,7 +36,7 @@
   z-index: 1;
 }
 
-.new-register-btn:hover .btn-inner-pill {
+.new-register-btn.is-expanded .btn-inner-pill {
   width: 100%;
 }
 
@@ -51,7 +51,7 @@
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.new-register-btn:hover .arrows-container {
+.new-register-btn.is-expanded .arrows-container {
   transform: translateX(0);
 }
 
@@ -62,25 +62,25 @@
 }
 
 .arrow-1 { opacity: 1; transition: opacity 0.3s; }
-.new-register-btn:hover .arrow-1 { opacity: 0.1; }
+.new-register-btn.is-expanded .arrow-1 { opacity: 0.1; }
 
 .arrow-2 { opacity: 0; transition: opacity 0.3s; }
-.new-register-btn:hover .arrow-2 { opacity: 0.25; }
+.new-register-btn.is-expanded .arrow-2 { opacity: 0.25; }
 
 .arrow-3 { opacity: 0; transition: opacity 0.3s; }
-.new-register-btn:hover .arrow-3 { opacity: 0.4; }
+.new-register-btn.is-expanded .arrow-3 { opacity: 0.4; }
 
 .arrow-4 { opacity: 0; transition: opacity 0.3s; }
-.new-register-btn:hover .arrow-4 { opacity: 0.55; }
+.new-register-btn.is-expanded .arrow-4 { opacity: 0.55; }
 
 .arrow-5 { opacity: 0; transition: opacity 0.3s; }
-.new-register-btn:hover .arrow-5 { opacity: 0.75; }
+.new-register-btn.is-expanded .arrow-5 { opacity: 0.75; }
 
 .arrow-6 { opacity: 0; transition: opacity 0.3s; }
-.new-register-btn:hover .arrow-6 { opacity: 0.9; }
+.new-register-btn.is-expanded .arrow-6 { opacity: 0.9; }
 
 .arrow-7 { opacity: 0; transition: opacity 0.3s; }
-.new-register-btn:hover .arrow-7 { opacity: 1; }
+.new-register-btn.is-expanded .arrow-7 { opacity: 1; }
 
 .btn-text {
   font-family: 'Cocogoose', 'Gottak', Arial, sans-serif !important;
@@ -96,7 +96,7 @@
   white-space: nowrap;
 }
 
-.new-register-btn:hover .btn-text {
+.new-register-btn.is-expanded .btn-text {
   opacity: 0;
   transform: translateX(16px);
 }
@@ -168,4 +168,5 @@
     gap: 12px;
   }
 }
+
 

@@ -1,8 +1,39 @@
+import { useState, useRef, useEffect } from 'react';
 import DottedArrow from "./DottedArrow";
 import "./RegisterButton.css";
 
 export default function RegisterButton({ onClick, onMouseEnter, onMouseLeave, href, size }) {
-  const btnClass = `new-register-btn ${size === "large" ? "new-register-btn-large" : ""}`;
+  const [isHovered, setIsHovered] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
+  const pressTimer = useRef(null);
+
+  useEffect(() => {
+    return () => clearTimeout(pressTimer.current);
+  }, []);
+
+  const handleMouseEnter = (e) => {
+    if (window.matchMedia('(hover: hover)').matches) {
+      setIsHovered(true);
+    }
+    if (onMouseEnter) onMouseEnter(e);
+  };
+
+  const handleMouseLeave = (e) => {
+    setIsHovered(false);
+    if (onMouseLeave) onMouseLeave(e);
+  };
+
+  const handleClick = (e) => {
+    setIsPressed(true);
+    clearTimeout(pressTimer.current);
+    pressTimer.current = setTimeout(() => {
+      setIsPressed(false);
+    }, 5000);
+    
+    if (onClick) onClick(e);
+  };
+
+  const btnClass = `new-register-btn ${size === "large" ? "new-register-btn-large" : ""} ${(isHovered || isPressed) ? "is-expanded" : ""}`;
   
   const inner = (
     <>
@@ -28,9 +59,9 @@ export default function RegisterButton({ onClick, onMouseEnter, onMouseLeave, hr
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={onClick}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+        onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         style={{ textDecoration: "none" }}
       >
         {inner}
@@ -41,9 +72,9 @@ export default function RegisterButton({ onClick, onMouseEnter, onMouseLeave, hr
   return (
     <button 
       className={btnClass} 
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {inner}
     </button>
