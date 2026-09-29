@@ -97,3 +97,24 @@ html.preloader-active::-webkit-scrollbar-track {
 html.preloader-active::-webkit-scrollbar-thumb {
     background: var(--red);
 }
+
+@media (max-width: 700px) {
+  .footer-top-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 32px !important;
+  }
+  .footer-links, .footer-contact, .footer-address {
+    text-align: left !important;
+    flex: none !important;
+    width: 100% !important;
+    font-size: 13px !important;
+  }
+  .footer-links span:first-child, .footer-contact span:first-child, .footer-address span:first-child {
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+  }
+  .footer-link {
+    font-size: 13px !important;
+  }
+}

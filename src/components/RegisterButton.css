@@ -2,25 +2,23 @@
   background-color: #1a1b1e;
   border: 4px solid #1a1b1e;
   border-radius: 9999px;
-  height: 64px;
+  height: 58px;
   display: inline-flex;
   align-items: center;
   padding: 0;
-  padding: 0 40px 0 96px; justify-content: center;
+  padding: 0 36px 0 86px; justify-content: center;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease;
   font-family: 'Cocogoose', 'Gottak', Arial, sans-serif;
-  min-width: 260px;
+  min-width: 240px;
   box-sizing: border-box;
   pointer-events: auto;
 }
 
 .new-register-btn:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 10px 28px rgba(255, 255, 255, 0.15);
 }
 
 .btn-inner-pill {
@@ -87,7 +85,7 @@
 .btn-text {
   font-family: 'Cocogoose', 'Gottak', Arial, sans-serif !important;
   color: #fff;
-  font-size: clamp(18px, 2.5vw, 24px);
+  font-size: clamp(16px, 2vw, 20px);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   line-height: 1;
@@ -150,24 +148,23 @@
   }
   
   .new-register-btn-large {
-    height: 64px;
-    min-width: 260px;
-    padding: 0 36px 0 92px;
+    height: 56px;
+    min-width: 240px;
+    padding: 0 34px 0 82px;
   }
   .new-register-btn-large .btn-inner-pill {
-    height: 56px;
-    width: 56px;
+    height: 48px;
+    width: 48px;
   }
   .new-register-btn-large .btn-text {
-
-    font-size: 18px;
+    font-size: 17px;
   }
   .new-register-btn-large .arrow-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
   .new-register-btn-large .arrows-container {
-    left: 16px;
+    left: 14px;
     gap: 12px;
   }
 }

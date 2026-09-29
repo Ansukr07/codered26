@@ -60,7 +60,7 @@
   .revolving-cta::before { height: 45px; }
   .revolving-cta::after { height: 65px; }
   .revolving-orbit {
-    transform: scale(0.7);
+    transform: scale(1);
   }
 }
 
@@ -129,6 +129,7 @@
 }
 
 .cosmos-footer-giant {
+  order: 4;
   width: 100%;
   font-size: 14.5vw;
   font-weight: 700;
@@ -144,8 +145,9 @@
 
 @media (max-width: 768px) {
   .cosmos-footer-giant {
-    font-size: 17vw;
+    font-size: 13.5vw;
     margin-bottom: -1vw;
+    justify-content: space-between !important;
   }
 }
 

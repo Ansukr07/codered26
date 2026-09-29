@@ -16,7 +16,7 @@ const revolvingImagesList = Array.from({ length: 12 }, (_, i) => `img${i}`);
 const getWebp = (name) => `/images/${name}.webp`;
 
 // Define the structure of the spiral
-const totalElements = 44;
+const totalElements = 34;
 const turns = 2.5;
 const minRadius = 180;
 const maxRadius = 850;
@@ -160,7 +160,7 @@ function PageContent() {
         </div>
         <div className="footer-address" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px', color: 'var(--muted)', fontWeight: 500, textAlign: 'right' }}>
           <span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px", lineHeight: 1.4 }}>BMS Institute of Technology<br/>& Management</span>
-          <span style={{ lineHeight: 1.3 }}>Doddaballapur Main Road, Avalahalli,<br/>Yelahanka, Bengaluru,<br/>Karnataka 560064</span>
+          <span style={{ lineHeight: 1.6, fontSize: "12px" }}>Doddaballapur Main Road, Avalahalli, Yelahanka,<br/>Bengaluru, Karnataka 560064</span>
         </div>
         </div>
         <div className="footer-bottom">
@@ -181,7 +181,6 @@ function PageContent() {
             </a>
           </div>
         </div>
-      
         <div className="cosmos-footer-giant anim-slide-up" style={{ display: 'flex', justifyContent: 'space-between' }}>
           {Array.from("CODERED'26").map((char, index) => (
             <span key={index}>{char}</span>
@@ -263,33 +262,28 @@ function RevolvingFooter({ register }) {
         if (!node) return;
         const el = baseElements[i];
 
-        let p = ((isPhone ? i / totalElements : el.initialP) + progressRef.current) % 1;
+        let p = (el.initialP + progressRef.current) % 1;
         if (p < 0) p += 1;
 
-        // Every image cycles through on phones, but only five occupy the spiral at once.
-        const mobileWindow = 5 / totalElements;
-        if (isPhone && p >= mobileWindow) {
-          if (node.style.visibility !== 'hidden') {
-            node.style.visibility = 'hidden';
-            node.style.willChange = 'auto';
-          }
-          return;
-        }
-
         const target_I = p * I_max;
-        const mapped_p = isPhone ? p / mobileWindow : (-a + Math.sqrt(a * a + 2 * b * target_I)) / b;
+        const mapped_p = (-a + Math.sqrt(a * a + 2 * b * target_I)) / b;
 
-        const baseAngle = isPhone
-          ? -Math.PI / 4 - mapped_p * Math.PI * 2 * 1.25
-          : -(mapped_p * Math.PI * 2 * turns);
-        const baseRadius = isPhone ? 175 + mapped_p * 110 : minRadius + mapped_p * (maxRadius - minRadius);
+        const baseAngle = -(mapped_p * Math.PI * 2 * turns);
+        
+        // On phone, dramatically pull the radius in so the entire spiral fits on screen
+        const maxPhoneRadius = 180;
+        const minPhoneRadius = 70;
+        const baseRadius = isPhone 
+            ? minPhoneRadius + mapped_p * (maxPhoneRadius - minPhoneRadius) 
+            : minRadius + mapped_p * (maxRadius - minRadius);
+
         const jitterAngle = baseAngle + el.angleJitter + currentGlobalAngleRad;
         const jitterRadius = baseRadius + el.radiusJitter;
 
         const x = Math.cos(jitterAngle) * jitterRadius;
         const y = Math.sin(jitterAngle) * jitterRadius;
 
-        const sizeScale = isPhone ? 0.75 : 0.5 + 0.5 * mapped_p;
+        const sizeScale = isPhone ? 0.2 + 0.25 * mapped_p : 0.5 + 0.5 * mapped_p;
         const radialAngleDeg = ((jitterAngle % (2 * Math.PI)) * 180 / Math.PI);
         const tilt = radialAngleDeg + 90 + el.tiltJitter;
 
@@ -367,3 +361,13 @@ function RevolvingFooter({ register }) {
 }
 
 export default App
+
+
+
+
+
+
+
+
+
+
