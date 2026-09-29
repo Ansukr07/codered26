@@ -182,7 +182,7 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-hero-main{position:relative;background:#000000;color:#f1eeeb}
 .shift-rail-intro strong{font:400 clamp(16px,1.35vw,20px)/1.12 Grotesk,Arial,sans-serif;letter-spacing:-.015em}
 .shift-hero-corner-element{position:absolute;z-index:2;top:0;left:0;width:clamp(155px,19vw,285px);height:auto;opacity:1;pointer-events:none;animation:shift-corner-spin 18s linear infinite;transform-origin:center}
-.shift-hero-ribbon{position:absolute;z-index:2;top:-13%;right:-5%;height:135%;width:auto;max-width:none;transform:scaleX(.88);transform-origin:right center;pointer-events:none}
+.shift-hero-ribbon{position:absolute;z-index:2;top:-18%;right:-5%;height:135%;width:auto;max-width:none;transform:scaleX(.88);transform-origin:right center;pointer-events:none}
 @keyframes shift-corner-spin{from{transform:translate(-35%,-35%) rotate(0deg)}to{transform:translate(-35%,-35%) rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.shift-hero-corner-element{animation:none}}
 .shift-hero-presented{margin:0 0 37px;font:600 16px/1.2 Gottak,Arial,sans-serif;letter-spacing:.015em}

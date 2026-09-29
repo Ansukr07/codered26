@@ -6,7 +6,7 @@
   display: inline-flex;
   align-items: center;
   padding: 0;
-  padding-right: 36px;
+  padding: 0 40px 0 96px; justify-content: center;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -90,8 +90,10 @@
   font-size: clamp(18px, 2.5vw, 24px);
   letter-spacing: 1.5px;
   text-transform: uppercase;
+  line-height: 1;
   z-index: 2;
-  margin-left: 76px;
+    margin-top: 4px;
+
   transition: opacity 0.3s ease, transform 0.3s ease;
   white-space: nowrap;
 }
@@ -105,7 +107,7 @@
 .new-register-btn-large {
   height: 80px;
   min-width: 320px;
-  padding-right: 48px;
+  padding: 0 48px 0 120px;
 }
 .new-register-btn-large .btn-inner-pill {
   height: 72px;
@@ -113,7 +115,7 @@
 }
 .new-register-btn-large .btn-text {
   font-size: clamp(22px, 3vw, 36px);
-  margin-left: 96px;
+  
 }
 .new-register-btn-large .arrow-icon {
   width: 32px;
@@ -128,14 +130,14 @@
   .new-register-btn {
     height: 52px;
     min-width: 220px;
-    padding-right: 24px;
+    padding: 0 32px 0 76px;
   }
   .btn-inner-pill {
     height: 44px;
     width: 44px;
   }
   .btn-text {
-    margin-left: 60px;
+    
     font-size: 16px;
   }
   .arrow-icon {
@@ -150,14 +152,14 @@
   .new-register-btn-large {
     height: 64px;
     min-width: 260px;
-    padding-right: 32px;
+    padding: 0 36px 0 92px;
   }
   .new-register-btn-large .btn-inner-pill {
     height: 56px;
     width: 56px;
   }
   .new-register-btn-large .btn-text {
-    margin-left: 76px;
+
     font-size: 18px;
   }
   .new-register-btn-large .arrow-icon {
