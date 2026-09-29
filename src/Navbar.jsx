@@ -14,8 +14,16 @@ const pageLinks = [
 
 const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [notice, setNotice] = useState('');
   const navRef = useRef(null);
+
+  useEffect(() => {
+    const updateWidth = () => setIsExpanded(window.scrollY > 80);
+    updateWidth();
+    window.addEventListener('scroll', updateWidth, { passive: true });
+    return () => window.removeEventListener('scroll', updateWidth);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -48,7 +56,7 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
 
   return (
     <>
-      <nav ref={navRef} className={`custom-navbar ${isOpen ? 'open' : ''}`} aria-label="Main navigation">
+      <nav ref={navRef} className={`custom-navbar ${isOpen ? 'open' : ''} ${isExpanded ? 'expanded' : ''}`} aria-label="Main navigation">
         <div className="navbar-header">
           <a className="nav-identity" href="/" onClick={followPageLink('home')} aria-label="CODERED home">
             <img src={logoImage} alt="" className="nav-logo-img" />

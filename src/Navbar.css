@@ -19,12 +19,11 @@
     left: auto;
     right: 12px;
     transform: none;
+    transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .custom-navbar.open {
+  .custom-navbar.open,
+  .custom-navbar.expanded {
     width: calc(100% - 24px);
-    right: 12px;
-    left: 12px;
-    transform: none;
   }
   .navbar-dropdown {
     border-radius: 0;
@@ -39,6 +38,10 @@
   .custom-navbar.open .navbar-header {
     border-radius: 0;
   }
+}
+
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .custom-navbar { transition: none; }
 }
 
 .navbar-header {
