@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, useLayoutEffect } from 'react'
 import { ReactLenis, useLenis } from 'lenis/react'
+import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import './reference-components.css'
 import './font-fixes.css'
@@ -82,6 +83,7 @@ const questions = [
 function App() {
   return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: true }}>
     <PageContent />
+    <Analytics />
   </ReactLenis>
 }
 
