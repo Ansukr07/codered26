@@ -9,6 +9,51 @@
     <meta name="description"
         content="CODERED' 26 — a collision of code, creativity, and curiosity. Bring your wildest idea. Let's make it real. Hackathon details coming soon." />
     <title>CODERED' 26 — Make a little chaos.</title>
+    <link rel="preload" href="/codered2026/codered2026/fonts/Gottak-SemiBold.otf" as="font" type="font/otf" crossorigin />
+    <style>
+        @font-face {
+            font-family: Gottak;
+            src: url('/codered2026/codered2026/fonts/Gottak-SemiBold.otf') format('opentype');
+            font-weight: 600;
+            font-display: swap;
+        }
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            background: #ed2024;
+        }
+
+        #intro-text {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        #intro-text-inner {
+            padding: 0 1rem;
+            text-align: center;
+            color: #0a0600;
+            font: 600 clamp(2.5rem, 10vw, 8rem)/1 Gottak, Arial, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .intro-char { display: inline-block; will-change: opacity; }
+        #preloader .block { width: 100%; height: 100%; background: #ed2024; }
+        #preloader .block.hide { animation: shadeAway 0.4s ease forwards; }
+
+        @keyframes shadeAway {
+            0% { background: #ed2024; opacity: 1; }
+            40% { background: #6b0e12; opacity: 1; }
+            100% { background: #6b0e12; opacity: 0; }
+        }
+    </style>
 </head>
 
 <body>
@@ -59,6 +104,8 @@
                 preloader.appendChild(block);
                 blocks.push(block);
             }
+            // The blocks now cover the screen; let them reveal the page as they dissolve.
+            preloader.style.background = 'transparent';
 
             // ── Fisher-Yates shuffle ──
             function shuffle(array) {
@@ -148,23 +195,40 @@
             }
 
             // ── Pixel dissolution ──
-            function runDissolution() {
-                const shuffledBlocks = shuffle([...blocks]);
-                setTimeout(() => {
-                    shuffledBlocks.forEach((block, index) => {
-                        setTimeout(() => {
-                            block.classList.add("hide");
-                        }, index * 12);
-                    });
-                    const totalAnimationTime = (totalBlocks * 12) + 300;
+            function runDissolution(delay = 200, stagger = 12) {
+                return new Promise(resolve => {
+                    const shuffledBlocks = shuffle([...blocks]);
                     setTimeout(() => {
-                        preloader.style.display = "none";
-                        document.documentElement.classList.remove('preloader-active');
-                        window.dispatchEvent(new Event('preloaderComplete'));
-                        document.body.style.overflow = "";
-                    }, totalAnimationTime);
-                }, 200);
+                        shuffledBlocks.forEach((block, index) => {
+                            setTimeout(() => block.classList.add('hide'), index * stagger);
+                        });
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                            document.documentElement.classList.remove('preloader-active');
+                            window.dispatchEvent(new Event('preloaderComplete'));
+                            document.body.style.overflow = '';
+                            resolve();
+                        }, (totalBlocks - 1) * stagger + 400);
+                    }, delay);
+                });
             }
+
+            let pageTransitionRunning = false;
+            window.playPagePreloader = (changePage) => {
+                if (pageTransitionRunning) return;
+                pageTransitionRunning = true;
+                document.documentElement.classList.add('preloader-active');
+                document.body.style.overflow = 'hidden';
+                blocks.forEach(block => block.classList.remove('hide'));
+                preloader.style.display = 'grid';
+
+                requestAnimationFrame(() => {
+                    changePage();
+                    requestAnimationFrame(() => {
+                        runDissolution(0, 7).then(() => { pageTransitionRunning = false; });
+                    });
+                });
+            };
 
             // ── Sequence: intro (if first visit) → dissolution ──
             if (isFirstVisit) {

@@ -19,18 +19,40 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
   const [notice, setNotice] = useState('');
   const navRef = useRef(null);
   const lastScrollY = useRef(0);
+  const scrollAnchorY = useRef(0);
+  const scrollDirection = useRef(0);
 
   useEffect(() => {
     const onScroll = () => {
-      const currentY = window.scrollY;
+      const currentY = Math.max(0, window.scrollY);
       setIsExpanded(currentY > 80);
 
-      // Don't hide while menu is open
-      if (!isOpen) {
-        if (currentY > lastScrollY.current && currentY > 80) {
-          setIsHidden(true);   // scrolling down
-        } else {
-          setIsHidden(false);  // scrolling up
+      const delta = currentY - lastScrollY.current;
+      const isMobile = window.matchMedia('(max-width: 700px)').matches;
+      const topThreshold = isMobile ? 100 : 120;
+      const hideAfter = isMobile ? 180 : 220;
+      const hideDistance = isMobile ? 100 : 160;
+      const showDistance = isMobile ? 24 : 40;
+
+      if (isOpen) {
+        setIsHidden(false);
+        scrollAnchorY.current = currentY;
+        scrollDirection.current = 0;
+      } else if (currentY <= topThreshold) {
+        setIsHidden(false);
+        scrollAnchorY.current = currentY;
+        scrollDirection.current = 0;
+      } else if (Math.abs(delta) >= 2) {
+        const direction = Math.sign(delta);
+        if (direction !== scrollDirection.current) {
+          scrollAnchorY.current = lastScrollY.current;
+          scrollDirection.current = direction;
+        }
+
+        if (direction > 0 && currentY > hideAfter && currentY - scrollAnchorY.current >= hideDistance) {
+          setIsHidden(true);
+        } else if (direction < 0 && scrollAnchorY.current - currentY >= showDistance) {
+          setIsHidden(false);
         }
       }
 

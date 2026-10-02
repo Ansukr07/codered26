@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect, useLayoutEffect } from 'react'
 import { ReactLenis, useLenis } from 'lenis/react'
-import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import './reference-components.css'
 import './font-fixes.css'
@@ -83,7 +82,6 @@ const questions = [
 function App() {
   return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: true }}>
     <PageContent />
-    <Analytics />
   </ReactLenis>
 }
 
@@ -97,12 +95,22 @@ function PageContent() {
 
   const navigatePage = (page) => {
     const nextPath = page === 'home' ? '/' : `/${page}`;
-    if (window.location.pathname !== nextPath || window.location.hash) {
-      window.history.pushState(null, '', nextPath);
+    const changePage = () => {
+      if (window.location.pathname !== nextPath || window.location.hash) {
+        window.history.pushState(null, '', nextPath);
+      }
+      setCurrentPage(page);
+      setOpenFaq(null);
+      lenis?.scrollTo(0, { immediate: true });
+    };
+
+    if (page === currentPage) {
+      changePage();
+    } else if (window.playPagePreloader) {
+      window.playPagePreloader(changePage);
+    } else {
+      changePage();
     }
-    setCurrentPage(page);
-    setOpenFaq(null);
-    lenis?.scrollTo(0, { immediate: true });
   };
 
   useLayoutEffect(() => {
@@ -110,12 +118,21 @@ function PageContent() {
   }, [currentPage, lenis]);
 
   useEffect(() => {
-    const syncPage = () => setCurrentPage(pageFromLocation());
+    const syncPage = () => {
+      const page = pageFromLocation();
+      if (page === currentPage) return;
+      const changePage = () => {
+        setCurrentPage(page);
+        setOpenFaq(null);
+      };
+      if (window.playPagePreloader) window.playPagePreloader(changePage);
+      else changePage();
+    };
     window.addEventListener('popstate', syncPage);
     return () => {
       window.removeEventListener('popstate', syncPage);
     };
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     document.title = pageTitles[currentPage];
@@ -373,8 +390,6 @@ function RevolvingFooter({ register }) {
 }
 
 export default App
-
-
 
 
 
