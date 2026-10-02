@@ -211,7 +211,7 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-hero-bottom-action{display:flex;justify-content:flex-end;margin-top:clamp(28px,4svh,48px)}
 /* .shift-hero-bottom-action>a {...} removed for new button */
 /* .shift-hero-bottom-action>a {...} removed for new button */
-/* .shift-hero-bottom-action>a:hover {...} removed */.shift-hero-bottom-action>a span{font:400 25px/0 Arial,sans-serif}
+/* The hero uses RegisterButton's own text styles. */
 .shift-vivaldi-tagline{max-width:205px;opacity:.74}
 .shift-rail-intro{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:0;overflow:hidden;padding:20px 10% 30px}
 .shift-rail-intro strong{display:block;min-width:0;max-width:100%;font:600 clamp(18px,1.55vw,24px)/1.14 Gottak,Arial,sans-serif;letter-spacing:-.02em}
@@ -348,7 +348,6 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
     display: grid;
   }
 }
-
 
 
 

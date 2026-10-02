@@ -16,19 +16,19 @@
   min-width: 240px;
   box-sizing: border-box;
   pointer-events: auto;
-}
-
-.new-register-btn.is-expanded {
+  --circle-size: 50px;
+  --arrow-size: 24px;
 }
 
 .btn-inner-pill {
   background-color: var(--red, #ED2024);
-  height: 56px;
-  width: 56px;
+  height: var(--circle-size);
+  width: var(--circle-size);
   border-radius: 9999px;
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -46,7 +46,7 @@
   height: 100%;
   width: max-content;
   position: absolute;
-  left: 16px;
+  left: calc((var(--circle-size) - var(--arrow-size)) / 2);
   gap: 12px;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -56,8 +56,8 @@
 }
 
 .arrow-icon {
-  width: 24px;
-  height: 24px;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
   color: #fff;
 }
 
@@ -106,21 +106,14 @@
   height: 80px;
   min-width: 320px;
   padding: 0 48px 0 120px;
-}
-.new-register-btn-large .btn-inner-pill {
-  height: 72px;
-  width: 72px;
+  --circle-size: 72px;
+  --arrow-size: 32px;
 }
 .new-register-btn-large .btn-text {
   font-size: clamp(22px, 3vw, 36px);
   
 }
-.new-register-btn-large .arrow-icon {
-  width: 32px;
-  height: 32px;
-}
 .new-register-btn-large .arrows-container {
-  left: 20px;
   gap: 16px;
 }
 
@@ -129,21 +122,14 @@
     height: 52px;
     min-width: 220px;
     padding: 0 32px 0 76px;
-  }
-  .btn-inner-pill {
-    height: 44px;
-    width: 44px;
+    --circle-size: 44px;
+    --arrow-size: 20px;
   }
   .btn-text {
     
     font-size: 16px;
   }
-  .arrow-icon {
-    width: 20px;
-    height: 20px;
-  }
   .arrows-container {
-    left: 12px;
     gap: 10px;
   }
   
@@ -151,22 +137,13 @@
     height: 56px;
     min-width: 240px;
     padding: 0 34px 0 82px;
-  }
-  .new-register-btn-large .btn-inner-pill {
-    height: 48px;
-    width: 48px;
+    --circle-size: 48px;
+    --arrow-size: 22px;
   }
   .new-register-btn-large .btn-text {
     font-size: 17px;
   }
-  .new-register-btn-large .arrow-icon {
-    width: 22px;
-    height: 22px;
-  }
   .new-register-btn-large .arrows-container {
-    left: 14px;
     gap: 12px;
   }
 }
-
-
