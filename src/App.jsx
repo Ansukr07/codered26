@@ -166,7 +166,7 @@ function PageContent() {
         <div className="footer-top-row" style={{ display: "flex", width: "100%", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "20px" }}>
         <div className="footer-links" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'left', fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>
           <span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Quick Links</span>
-          <a href="https://maps.app.goo.gl/RyJvsZVLrH41qCJj7" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
+          <a href="https://www.immersivetourz.com/bmsitm/index.html" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
           <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
           <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>
         </div>
@@ -176,10 +176,10 @@ function PageContent() {
           <a href="tel:+917975959500" className="footer-link">Gagan - 7975959500</a>
           <a href="tel:+919606295562" className="footer-link">Deepthi Jain - 9606295562</a>
         </div>
-        <div className="footer-address" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px', color: 'var(--muted)', fontWeight: 500, textAlign: 'right' }}>
+        <a className="footer-address" href="https://maps.app.goo.gl/osHYqqHTrCKcRak88" target="_blank" rel="noopener noreferrer" aria-label="Open BMS Institute of Technology & Management in Google Maps" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px', color: 'var(--muted)', fontWeight: 500, textAlign: 'right' }}>
           <span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px", lineHeight: 1.4 }}>BMS Institute of Technology<br/>& Management</span>
           <span style={{ lineHeight: 1.6, fontSize: "12px" }}>Doddaballapur Main Road, Avalahalli, Yelahanka,<br/>Bengaluru, Karnataka 560064</span>
-        </div>
+        </a>
         </div>
         <div className="footer-bottom">
           <div className="social-links" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
@@ -390,9 +390,6 @@ function RevolvingFooter({ register }) {
 }
 
 export default App
-
-
-
 
 
 

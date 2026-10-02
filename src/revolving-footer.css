@@ -164,5 +164,6 @@
 
 .footer-links a.footer-link, .footer-contact a.footer-link { color: var(--muted); transition: color 0.2s ease; display: inline-block; }
 .footer-links a.footer-link:hover, .footer-contact a.footer-link:hover { color: #ED2024; }
-
+.footer-address span:last-child { transition: color 0.2s ease; }
+.footer-address:hover span:last-child { color: #ED2024; }
 
