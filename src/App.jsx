@@ -26,7 +26,7 @@ const I_max = a * 1 + (b / 2) * 1 * 1;
 
 const pageNames = ['home', 'about', 'tracks', 'prizes', 'schedule', 'faq'];
 const pageTitles = {
-  home: "CODERED'26 — Make a little chaos.",
+  home: "Code Red ’26 — From Idea to Impact",
   about: "About — CODERED'26",
   tracks: "Tracks — CODERED'26",
   prizes: "Prizes — CODERED'26",
@@ -69,14 +69,15 @@ const baseElements = Array.from({ length: totalElements }).map((_, i) => {
 });
 
 const questions = [
-  ["What is CODERED'26?", 'A hackathon for curious minds who want to turn ideas into working projects. Come to experiment, collaborate, and build something you’re proud of.'],
-  ['Do I need to be an experienced coder?', 'Bring your curiosity. Developers, designers, and problem-solvers all have a place here. Detailed eligibility requirements will be shared when registration opens.'],
-  ['Can I participate with a team?', 'Building together is part of the experience. Team sizes and the team formation process will be announced with the official participant guide.'],
-  ['When and where is it happening?', 'The 2026 edition is on its way. Exact dates, venue, and the final schedule will be announced here.'],
-  ['How do I register?', 'Registration is not open yet. Check the registration panel for the latest status and return here when applications go live.'],
-  ['Is there a fee to participate?', "CODERED'26 is completely free for all accepted participants. We believe in removing barriers to innovation."],
-  ['What kind of projects can we build?', 'Software, hardware, design—anything goes. We encourage you to build outside your comfort zone and try something completely new.'],
-  ['What if I don\'t have a team yet?', 'Don\'t worry! We will host a dedicated team-formation event at the start of the hackathon to help you find teammates with complementary skills.'],
+  ['Who is eligible to participate?', 'Students enrolled in accredited higher education institutions across India.'],
+  ['What are the team size rules?', 'Teams must have 3 to 4 members. Cross-college and inter-departmental teams are welcome.'],
+  ['Is there an entry fee?', 'Round 1 online submission is free. A later confirmation fee may apply to shortlisted teams; the amount has not been announced.'],
+  ['How does Code Red ’26 work?', 'Submit a PPT online, pitch your idea online if shortlisted, and compete for a place among the top 50 teams at the 24-hour offline finale.'],
+  ['When and where is the grand finale?', 'The 24-hour finale takes place on 3–4 December 2026 at BMS Institute of Technology & Management, Yelahanka, Bengaluru.'],
+  ['Can we use a pre-existing project?', 'No. Code, hardware wiring, and system configurations must be completed from scratch during the official 24-hour sprint. Standard open-source libraries and public APIs are permitted.'],
+  ['What should hardware teams bring?', 'Bring your core development kits, such as Raspberry Pi, ESP32, and sensors. The host provides workbenches, power extensions, and basic assembly stations.'],
+  ['Is hospitality provided to finalists?', 'Yes. Registered finalists receive meals, midnight snacks, beverages, continuous facility access, and designated rest areas.'],
+  ['What happens after the hackathon?', 'Promising projects may qualify for VentureX, a separate opportunity to pitch products and business models to investors.'],
 ]
 
 function App() {
@@ -166,19 +167,19 @@ function PageContent() {
       <footer>
         <div className="footer-top-row" style={{ display: "flex", width: "100%", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "20px" }}>
         <div className="footer-links" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'left', fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>
-          <span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Quick Links</span>
+          <span style={{ fontFamily: "Gottak, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Quick Links</span>
           <a href="https://www.immersivetourz.com/bmsitm/index.html" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
           <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
           <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>
         </div>
         <div className="footer-contact" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'center', fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>
-          <span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Contact Us</span>
+          <span style={{ fontFamily: "Gottak, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Contact Us</span>
           <a href="tel:+919141194259" className="footer-link">Vaibhav B - 9141194259</a>
           <a href="tel:+917975959500" className="footer-link">Gagan - 7975959500</a>
           <a href="tel:+919606295562" className="footer-link">Deepthi Jain - 9606295562</a>
         </div>
         <a className="footer-address" href="https://maps.app.goo.gl/osHYqqHTrCKcRak88" target="_blank" rel="noopener noreferrer" aria-label="Open BMS Institute of Technology & Management in Google Maps" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px', color: 'var(--muted)', fontWeight: 500, textAlign: 'right' }}>
-          <span style={{ fontFamily: "Gottak, Arial, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px", lineHeight: 1.4 }}>BMS Institute of Technology<br/>& Management</span>
+          <span style={{ fontFamily: "Gottak, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px", lineHeight: 1.4 }}>BMS Institute of Technology<br/>& Management</span>
           <span style={{ lineHeight: 1.6, fontSize: "12px" }}>Doddaballapur Main Road, Avalahalli, Yelahanka,<br/>Bengaluru, Karnataka 560064</span>
         </a>
         </div>
@@ -206,7 +207,7 @@ function PageContent() {
           ))}
         </div>
       </footer>
-      <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e => { if (e.target === dialog.current) dialog.current.close() }}><button className="dialog-close" onClick={() => dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt="" /><span className="eyebrow">THE NEXT WAVE IS COMING</span><h2 id="registration-title">You’re early.<br /><span className="script red">We like that.</span></h2><p>Registration for CODERED’ 26 hasn’t opened yet. The application link, dates, and venue will be announced here.</p><p className="dialog-note">No sign-up is being collected yet. Bookmark this page and check back for the launch.</p><button className="button primary" onClick={() => dialog.current.close()}>Got it <span>↗</span></button></dialog>
+      <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e => { if (e.target === dialog.current) dialog.current.close() }}><button className="dialog-close" onClick={() => dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt="" /><span className="eyebrow">CODE RED ’26</span><h2 id="registration-title">Build in 24 hours.<br /><span className="script red">Go beyond.</span></h2><p>Registration opens 18 October and closes 31 October. Round 1 is an online PPT submission.</p><p className="dialog-note">The 24-hour grand finale is on 3–4 December 2026 at BMSIT&amp;M.</p><button className="button primary" onClick={() => dialog.current.close()}>Got it <span>↗</span></button></dialog>
     </div>
   </>
 }

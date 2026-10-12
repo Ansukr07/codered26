@@ -22,7 +22,7 @@
   padding: 8rem 2.5rem;
   background-color: #c8c8c8; /* Light gray base to break up the dark */
   color: #1e1b18;
-  font-family: Grotesk, Arial, sans-serif;
+  font-family: Grotesk, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
@@ -41,7 +41,7 @@
 .tp-title-row { margin-bottom: 3.5rem; }
 
 .tp-h-large {
-  font-family: Gottak, Arial, sans-serif;
+  font-family: Gottak, sans-serif;
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 600;
   margin: 0;
@@ -50,7 +50,7 @@
 }
 
 .tp-h-medium {
-  font-family: Gottak, Arial, sans-serif;
+  font-family: Gottak, sans-serif;
   font-size: clamp(1.8rem, 3.5vw, 2.7rem);
   font-weight: 600 !important;
   margin: 0;
@@ -64,7 +64,7 @@
 }
 
 .tp-h-regular {
-  font-family: Gottak, Arial, sans-serif;
+  font-family: Gottak, sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
   margin: 0;
@@ -287,7 +287,7 @@
 
 .track-ghost-number {
   --stripe: #f1eeeb;
-  font: 600 clamp(100px, 15vw, 250px)/0.8 Gottak, Arial, sans-serif;
+  font: 600 clamp(100px, 15vw, 250px)/0.8 Gottak, sans-serif;
   letter-spacing: -0.05em;
   white-space: nowrap;
   color: transparent;
@@ -307,7 +307,7 @@
 .prizes-title-row { margin-top: 5rem; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; }
 .prizes-title-line { width: 100%; height: 2px; background: #1e1b18; opacity: 0.2; }
 .prizes-title-text { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.2rem; }
-.prizes-title-text h3 { font-family: Grotesk, Arial, sans-serif !important; }
+.prizes-title-text h3 { font-family: Grotesk, sans-serif !important; }
 .prizes-title-main { 
   font-weight: 600 !important; 
 }

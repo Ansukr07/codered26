@@ -133,27 +133,27 @@ export function TracksSection() {
 
   const tracks = [
     {
-      title: "Software Track",
-      tag: "Core Track",
-      desc: "Software Track: Build autonomous AI agents, web apps and tools that can act, transact, and coordinate. Focus on scalability, impact, and user experience.",
+      title: "Track 1",
+      tag: "To be announced",
+      desc: "Track 1: Company based problem statement to be announced.",
       ghostText: "01",
     },
     {
-      title: "Hardware Track",
-      tag: "Core Track",
-      desc: "Hardware Track: Prototype physical devices, IoT solutions, and integrated hardware-software systems to bridge the digital and physical worlds.",
+      title: "Track 2",
+      tag: "To be announced",
+      desc: "Track 2: Company based problem statement to be announced.",
       ghostText: "02",
     },
     {
-      title: "Open Innovation",
-      tag: "Special Track",
-      desc: "Open Innovation: No constraints. Pick any problem, any domain, and build a bold solution. Show us what happens when there are no limits.",
+      title: "Track 3",
+      tag: "To be announced",
+      desc: "Track 3: Company based problem statement to be announced.",
       ghostText: "03",
     },
     {
-      title: "AI for Good",
-      tag: "Special Track",
-      desc: "AI for Good: Build AI-powered solutions that address real-world challenges — from healthcare and education to sustainability and accessibility.",
+      title: "Track 4",
+      tag: "To be announced",
+      desc: "Track 4: Company based problem statement to be announced.",
       ghostText: "04",
     },
   ];
@@ -229,32 +229,6 @@ const SparkleSVG = ({ className }) => (
 );
 
 export function PrizesSection() {
-  const prizes = [
-    {
-      place: "1st place",
-      amount: "Rs. 30,000",
-      tagColorClass: "prize-tag-yellow",
-      images: [
-        { src: "/images/prizes/prize-1-diamond.svg", class: "p1-diamond" },
-        { src: "/images/prizes/prize-1-coin-bottom.svg", class: "p1-cb" },
-        { src: "/images/prizes/prize-1-coin-top.svg", class: "p1-ct" },
-        { src: "/images/prizes/prize-1-bills.svg", class: "p1-bills" },
-      ],
-      sparkles: [{ class: "s1" }, { class: "s2" }]
-    },
-    {
-      place: "2nd place",
-      amount: "Rs. 20,000",
-      tagColorClass: "prize-tag-blue",
-      images: [
-        { src: "/images/prizes/prize-2-left.svg", class: "p2-left" },
-        { src: "/images/prizes/prize-2-bottom.svg", class: "p2-bottom" },
-        { src: "/images/prizes/prize-2-top.svg", class: "p2-top" },
-      ],
-      sparkles: [{ class: "s3" }, { class: "s4" }]
-    },
-  ];
-
   return (
     <section id="prizes" className="tp-section tp-section--prizes">
       <div className="tp-container">
@@ -312,44 +286,7 @@ export function PrizesSection() {
 
         </div>
 
-        <div className="prizes-title-row">
-          <div className="prizes-title-text">
-            <h3 className="tp-h-regular prizes-title-main">Prizes per track</h3>
-            <h3 className="tp-h-regular tp-opacity-50">Applies to: All 4 tracks</h3>
-          </div>
-        </div>
-
-        <div className="prize-outer-container">
-          {prizes.map((prize, idx) => (
-            <div key={idx} className={`prize-card prize-card-${idx + 1}`}>
-              <div className="prize-card-top">
-                {/* Top Left Floating Tag Area */}
-                <div className="prize-tag-container">
-                  <PrizePixelGrid />
-                  <div className="prize-tag-inner">
-                    <div className="prize-tag-hash">#</div>
-                    <div className="prize-tag-text">{prize.place}</div>
-                    <div className="prize-tag-bracket">{"}"}</div>
-                  </div>
-                </div>
-
-                {/* Center Illustrations */}
-                <div className="prize-illustration">
-                  {prize.images.map((img, i) => (
-                    <img key={i} src={img.src} alt="" className={`prize-layer ${img.class}`} />
-                  ))}
-                  {prize.sparkles.map((sp, i) => (
-                    <SparkleSVG key={i} className={sp.class} />
-                  ))}
-                </div>
-              </div>
-
-              <div className="prize-card-bottom">
-                <h4 className="prize-amount">{prize.amount}</h4>
-              </div>
-            </div>
-          ))}
-        </div>
+        <div className="prizes-title-row"><div className="prizes-title-text"><h3 className="tp-h-regular prizes-title-main">Prize distribution</h3><h3 className="tp-h-regular tp-opacity-50">Details to be announced</h3></div></div>
       </div>
     </section>
   );

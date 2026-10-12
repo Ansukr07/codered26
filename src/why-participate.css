@@ -1,0 +1,138 @@
+.shift-participate {
+  background: #f6f2ea;
+  color: #1e1b18;
+  padding: clamp(64px, 8vw, 120px) 3.5%;
+}
+
+.shift-participate-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.shift-participate h2 {
+  margin: 0 0 clamp(28px, 4vw, 54px);
+  font: 400 clamp(48px, 6vw, 88px)/0.95 Valentine, Georgia, serif;
+  text-align: center;
+}
+
+.shift-participate-photo {
+  margin: 0;
+}
+
+.shift-participate-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  border: 5px solid #1e1b18;
+}
+
+.shift-participate-photo figcaption {
+  padding: 12px 0 0;
+  color: #51483e;
+  font: 600 11px/1.2 Gottak, sans-serif;
+  text-align: right;
+}
+
+.shift-participate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: clamp(28px, 4vw, 48px);
+}
+
+.shift-participate-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  min-height: 225px;
+  padding: clamp(26px, 2.8vw, 38px);
+  background: #f1eeeb;
+  color: #1e1b18;
+  border: 1px solid #1e1b18;
+}
+
+.shift-participate-card::before {
+  content: '+';
+  position: absolute;
+  top: 16px;
+  right: 22px;
+  color: #ed2024;
+  font: 400 36px/1 Gottak, sans-serif;
+}
+
+.shift-participate-card:nth-child(1),
+.shift-participate-card:nth-child(6) {
+  background: #d90a16;
+  border-color: #d90a16;
+  color: #f1eeeb;
+}
+
+.shift-participate-card:nth-child(2),
+.shift-participate-card:nth-child(5) {
+  background: #1e1b18;
+  color: #f1eeeb;
+}
+
+.shift-participate-card:nth-child(1)::before,
+.shift-participate-card:nth-child(2)::before,
+.shift-participate-card:nth-child(5)::before,
+.shift-participate-card:nth-child(6)::before {
+  color: #f1eeeb;
+}
+
+.shift-participate-card h3 {
+  margin: 0;
+  max-width: 14ch;
+  padding-right: 16px;
+  font: 400 clamp(29px, 2.7vw, 42px)/0.98 Valentine, Georgia, serif;
+}
+
+.shift-participate-card p {
+  margin: 0;
+  max-width: 35ch;
+  color: #51483e;
+  font: 400 clamp(15px, 1.2vw, 17px)/1.45 Grotesk, Gottak, sans-serif;
+}
+
+.shift-participate-card:nth-child(1) p,
+.shift-participate-card:nth-child(2) p,
+.shift-participate-card:nth-child(5) p,
+.shift-participate-card:nth-child(6) p {
+  color: #f1eeeb;
+}
+
+@media (max-width: 900px) {
+  .shift-participate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .shift-participate {
+    padding: 68px 5%;
+  }
+
+  .shift-participate h2 {
+    font-size: clamp(42px, 12vw, 58px);
+  }
+
+  .shift-participate-photo figcaption {
+    padding-top: 9px;
+    font-size: 10px;
+  }
+
+  .shift-participate-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .shift-participate-card {
+    min-height: 150px;
+    gap: 20px;
+    padding: 24px;
+  }
+}

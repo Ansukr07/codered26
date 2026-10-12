@@ -5,16 +5,17 @@ import { useGSAP } from '@gsap/react'
 import { TracksSection, PrizesSection } from './TracksAndPrizes'
 import RegisterButton from './components/RegisterButton'
 import './editorial.css'
+import './why-participate.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const eventStart = new Date('2026-12-12T00:00:00+05:30').getTime()
+const finaleStart = new Date('2026-12-03T00:00:00+05:30').getTime()
 
 function Countdown() {
-  const [remaining, setRemaining] = useState(() => Math.max(0, eventStart - Date.now()))
+  const [remaining, setRemaining] = useState(() => Math.max(0, finaleStart - Date.now()))
 
   useEffect(() => {
-    const timer = window.setInterval(() => setRemaining(Math.max(0, eventStart - Date.now())), 1000)
+    const timer = window.setInterval(() => setRemaining(Math.max(0, finaleStart - Date.now())), 1000)
     return () => window.clearInterval(timer)
   }, [])
 
@@ -26,21 +27,28 @@ function Countdown() {
     ['Secs', totalSeconds % 60],
   ]
 
-  return <div className="shift-countdown" role="timer" aria-label={`Countdown to 12 December 2026: ${units.map(([name, value]) => `${value} ${name}`).join(', ')}`}>
-    {units.map(([name, value]) =>
-      <div className="shift-countdown-unit" key={name}>
-        <strong className={`shift-countdown-value${String(value).length > 2 ? ' shift-countdown-value--wide' : ''}`}>{String(value).padStart(2, '0')}</strong>
-        <span>{name}</span>
-      </div>
-    )}
+  return <div className="shift-countdown" role="timer" aria-label={`Countdown to 3 December 2026: ${units.map(([name, value]) => `${value} ${name}`).join(', ')}`}>
+    {units.map(([name, value]) => <div className="shift-countdown-unit" key={name}>
+      <strong className={`shift-countdown-value${String(value).length > 2 ? ' shift-countdown-value--wide' : ''}`}>{String(value).padStart(2, '0')}</strong>
+      <span>{name}</span>
+    </div>)}
   </div>
 }
 
 const rounds = [
-  ['01', 'OPEN CALL', 'Round one: submit the idea', 'BRING YOUR TEAM, FRAME THE PROBLEM, AND SEND IN YOUR CONCEPT.'],
-  ['02', 'THE BUILD', 'Round two: 24 hours live', 'SELECTED TEAMS BUILD, TEST, AND REFINE ON THE CLOCK.'],
-  ['03', 'FINAL DEMO', 'Present what you made', 'SHOW THE WORK, TELL THE STORY, AND CLOSE THE DAY TOGETHER.'],
-  ['04', 'THE VERDICT', 'Celebrate the victors', 'THE JUDGES DELIVER THEIR VERDICT AND CHAMPIONS ARE CROWNED.'],
+  ['01', '18 OCTOBER–31 OCTOBER', 'Registrations', 'SUBMIT YOUR PROPOSED SOLUTION IN THE PRESCRIBED PPT FORMAT.'],
+  ['02', '9 NOVEMBER', 'Round 1 evaluation', 'SUBMITTED IDEAS ARE REVIEWED AND TEAMS ARE SHORTLISTED.'],
+  ['03', '14–15 NOVEMBER', 'Round 2 online evaluation', 'SHORTLISTED TEAMS PITCH THEIR IDEAS ONLINE TO THE JUDGING PANEL.'],
+  ['04', '18 NOVEMBER', 'Final results announcement', 'THE TOP 50 TEAMS ARE SELECTED FOR THE 24-HOUR GRAND FINALE AT BMSIT&M.'],
+]
+
+const participationReasons = [
+  ['Compete & Win', 'Battle for a ₹2,00,000 prize pool and recognition.'],
+  ['Build Real Products', 'Turn bold ideas into functional prototypes in 24 hours.'],
+  ['Learn from Experts', 'Get guidance and feedback from experienced industry mentors.'],
+  ['Challenge Yourself', 'Push your skills through intense real-world problem-solving.'],
+  ['Connect & Collaborate', 'Meet student innovators, developers, and builders across India.'],
+  ['Go Beyond Code Red', 'Top teams may qualify for VentureX, a separate investor-pitching event.'],
 ]
 
 const DotArrowSVG = () => (
@@ -178,19 +186,37 @@ export default function EditorialSections() {
       </div>
       <aside className="shift-hero-rail anim-slide-down" style={{ transitionDelay: '0.2s' }}>
         <div className="shift-rail-intro anim-slide-up" style={{ transitionDelay: '0.3s' }}>
-          <strong>National Level<br />24-Hour Hackathon.</strong>
-          <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "2rem", display: "block", marginTop: "1rem", lineHeight: "1" }}>Code Till You Drop.</span>
+          <strong>National level<br />24-hour product sprint.</strong>
+          <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "2rem", display: "block", marginTop: "1rem", lineHeight: "1" }}>From Idea to Impact.</span>
         </div>
-        <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>UNTIL THE BUILD BEGINS</span><h2>12 / 12 / 26</h2></div><Countdown /></div>
+        <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>3–4 December 2026</h2></div><Countdown /><p>Top 50 teams build at BMSIT&amp;M.</p></div>
       </aside>
     </section>
 
     <section id="about" className="shift-about" aria-labelledby="about-title">
-      <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">CODERED 3.0</span> is a National Level 24-hour Hackathon where builders, designers, and makers come together to prototype bold ideas<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
+      <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national product development sprint. Teams turn ideas into functional products in 24 hours, with promising projects getting the chance to pitch at VentureX<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
       <div className="shift-info-grid">
-        <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Software</li><li>Hardware</li></ul></article>
-        <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>Overall Winner: Rs. 60,000</li><li>Runner-up: Rs. 30,000</li><li>Category Winners</li></ul></article>
-        <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>Duration: 24 hours</li><li>Team size: 3-4</li><li>Venue: BMS Institute Of Technology &amp; Management</li><li>Date: Dec 12-13, 2026</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Four company based tracks</li><li>Details to be announced</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>₹2,00,000 total prize pool</li><li>Recognition for standout teams</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>24-hour offline sprint</li><li>3–4 December 2026</li><li>Teams of 3–4</li><li>Top 50 teams at BMSIT&amp;M</li></ul></article>
+      </div>
+    </section>
+
+    <section id="why-participate" className="shift-participate" aria-labelledby="participate-title">
+      <div className="shift-participate-inner">
+        <h2 id="participate-title" className="anim-slide-up">Why participate?</h2>
+        <figure className="shift-participate-photo">
+          <img src="/images/group.webp" width="1020" height="572" alt="Participants and organizers at a previous Code Red event, standing behind large Code Red letters" loading="lazy" />
+          <figcaption>Previous Code Red edition</figcaption>
+        </figure>
+        <div className="shift-participate-grid">
+          {participationReasons.map(([title, description]) => (
+            <article className="shift-participate-card" key={title}>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -198,10 +224,10 @@ export default function EditorialSections() {
     <PrizesSection />
 
     <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">
-      <div className="shift-timeline-intro anim-slide-up"><h2 id="timeline-title">The whole sequence.</h2></div>
-      <div className="shift-rounds" ref={roundsRef} onScroll={handleContainerScroll}>{rounds.map(([n, phase, title, detail], i) => <article key={n} className="anim-slide-down" style={{ transitionDelay: `${i * 0.15}s` }}>
+      <div className="shift-timeline-intro anim-slide-up"><h2 id="timeline-title">The road to the finale.</h2></div>
+      <div className="shift-rounds" ref={roundsRef} onScroll={handleContainerScroll}>{rounds.map(([n, phase, title, detail, opening], i) => <article key={n} className="anim-slide-down" style={{ transitionDelay: `${i * 0.15}s` }}>
         <div className="shift-round-number" aria-hidden="true">{n}</div>
-        <div className="shift-round-content"><span className="shift-round-index anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.1}s` }}>{n}</span><span className="shift-mono anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.2}s` }}>{phase}</span><h3 className="anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.3}s` }}>{title}</h3><p className="anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.4}s` }}>{detail}</p></div>
+        <div className="shift-round-content"><span className="shift-round-index anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.1}s` }}>{n}</span><span className="shift-mono anim-slide-up" style={{ transitionDelay: `${i * 0.15 + 0.2}s` }}>{phase}</span><h3 className={`anim-slide-up${title === 'Final results announcement' ? ' shift-round-title--single-line' : ''}`} style={{ transitionDelay: `${i * 0.15 + 0.3}s` }}>{title}</h3>{opening && <p className="shift-round-opening">{opening}</p>}<p className="shift-round-description">{detail}</p></div>
       </article>)}</div>
       
       {/* Mobile Carousel Controls */}
