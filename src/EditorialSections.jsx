@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { TracksSection, PrizesSection } from './TracksAndPrizes'
+import SponsorsSection from './SponsorsSection'
 import RegisterButton from './components/RegisterButton'
 import './editorial.css'
 import './why-participate.css'
@@ -220,7 +221,8 @@ export default function EditorialSections() {
       </div>
     </section>
 
-        <TracksSection />
+    <TracksSection />
+    <SponsorsSection />
     <PrizesSection />
 
     <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">

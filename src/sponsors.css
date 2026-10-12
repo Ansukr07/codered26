@@ -1,0 +1,435 @@
+/* =============================================
+   SPONSORS SECTION — sponsors.css
+   Pixel-perfect Brutalist Bento Grid
+   ============================================= */
+
+@font-face {
+  font-family: 'TWK Everett Mono';
+  src: url('/fonts/TWKEverettMono-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --sp-bg: #f6f2ea;
+  --sp-card-bg: #ffffff;
+  --sp-border: #1e1b18;
+  --sp-red: #ed2024;
+  --sp-text: #1e1b18;
+  --sp-text-muted: #6b6762;
+}
+
+.sponsors-section {
+  position: relative;
+  background-color: var(--sp-bg);
+  color: var(--sp-text);
+  padding: 8rem 2.5rem;
+  font-family: Grotesk, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(30, 27, 24, 0.15);
+  border-bottom: 1px solid rgba(30, 27, 24, 0.15);
+}
+
+.sponsors-container {
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+/* Heading */
+.sponsors-header {
+  margin-bottom: 2.75rem;
+}
+
+.sponsors-title {
+  font-family: Valentine, Georgia, serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--sp-text);
+  margin: 0;
+}
+
+/* Bento Grid System */
+.sponsors-bento {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sponsors-grid-top {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background-color: var(--sp-border);
+  border: 2px solid var(--sp-border);
+  border-bottom: 0;
+  width: 100%;
+}
+
+.sponsors-grid-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background-color: var(--sp-border);
+  border: 2px solid var(--sp-border);
+  width: 100%;
+}
+
+/* Individual Grid Item */
+.sponsors-grid__item {
+  position: relative;
+  background-color: var(--sp-card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.sponsors-grid-top .sponsors-grid__item {
+  height: clamp(220px, 22vw, 300px);
+}
+
+.sponsors-grid-bottom .sponsors-grid__item {
+  height: clamp(170px, 16vw, 220px);
+}
+
+/* Dynamic Traveling Background (GSAP Flip) */
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--sp-red);
+}
+
+/* Logo container */
+.sponsors-logo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  max-width: 80%;
+}
+
+.sponsors-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0);
+  opacity: 0.9;
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+/* Specific Logo Sizing */
+.sponsors-logo.is-hackerearth {
+  width: clamp(210px, 24vw, 310px);
+}
+
+.sponsors-logo.is-deepbook {
+  width: clamp(200px, 21vw, 280px);
+}
+
+.sponsors-logo.is-openzeppelin {
+  width: clamp(140px, 15vw, 200px);
+}
+
+.sponsors-logo.is-unstop {
+  width: clamp(180px, 20vw, 260px);
+}
+
+/* Coming Soon Placeholders */
+.sponsors-coming-soon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.sponsors-coming-soon span {
+  font-family: Gottak, sans-serif;
+  font-size: clamp(1.4rem, 2.3vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--sp-text);
+  line-height: 1;
+  transition: color 0.35s ease;
+}
+
+/* Top Left Corner Tag */
+.sponsors-top {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--sp-text-muted);
+  font-family: Consolas, 'TWK Everett Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.sponsors-eyebrow {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+
+.sponsors-brackets {
+  display: flex;
+  align-items: center;
+}
+
+/* Micro-interaction Hover Animation on Tag */
+[data-sponsor-el] {
+  display: inline-block;
+  margin: 0;
+  transition: transform 0.45s cubic-bezier(0.15, 0.5, 0.05, 1);
+}
+
+.sponsors-grid__item:hover .sponsors-top {
+  color: var(--sp-text);
+}
+
+.sponsors-grid__item:hover [data-sponsor-el="left"] {
+  transform: translate(-40%, 0px);
+}
+
+.sponsors-grid__item:hover [data-sponsor-el="right"] {
+  transform: translate(75%, 0px);
+}
+
+.sponsors-grid__item:hover [data-sponsor-el="arrow"] {
+  transform: translate(35%, -25%);
+}
+
+/* When active card has traveling red background (#ED2024) — desktop only */
+@media (min-width: 769px) {
+  .sponsors-grid__item:has(.grid-bg) .sponsors-top {
+    color: #ffffff !important;
+  }
+  .sponsors-grid__item:has(.grid-bg) .sponsors-logo img {
+    filter: brightness(1) invert(0) !important;
+    opacity: 1 !important;
+  }
+  .sponsors-grid__item:has(.grid-bg) .sponsors-coming-soon span {
+    color: #ffffff !important;
+  }
+}
+
+/* =============================================
+   BECOME A SPONSOR BUTTON
+   ============================================= */
+.sponsors-button {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 4rem;
+  margin-top: 1.5rem;
+  background-color: var(--sp-border);
+  color: var(--sp-bg);
+  text-decoration: none;
+  overflow: hidden;
+  border: 2px solid var(--sp-border);
+  align-items: stretch;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.sponsors-button:hover {
+  border-color: var(--sp-red);
+}
+
+.button-text__wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.525s cubic-bezier(0.525, 0, 0, 1);
+}
+
+.text-wrap__innner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 0.25em;
+  height: 1.5em;
+}
+
+[data-arrow-button] span {
+  display: inline-block;
+  font-family: Gottak, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sp-bg);
+  letter-spacing: -0.01em;
+  text-shadow: 0px 1.25em currentColor;
+  transition: transform 0.45s cubic-bezier(0.525, 0, 0, 1);
+  will-change: transform;
+}
+
+.button-icon__wrap {
+  aspect-ratio: 1;
+  height: 100%;
+  background-color: var(--sp-red);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.525s cubic-bezier(0.525, 0, 0, 1);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.button-icon__wrap.is--main {
+  border-left: 2px solid var(--sp-border);
+  flex-shrink: 0;
+}
+
+.button-icon__wrap.is--duplicate {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transform: translate(-100%, 0);
+  border-right: 2px solid var(--sp-border);
+  border-left: none;
+}
+
+.button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45rem;
+  height: 1.45rem;
+  transition: transform 0.525s cubic-bezier(0.525, 0, 0, 1);
+  transform: rotate(0deg);
+}
+
+.button-icon__wrap.is--duplicate .button-icon {
+  transform: rotate(-45deg);
+}
+
+.button-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Button Hover State */
+[data-arrow-button]:hover .button-text__wrap,
+.sponsors-button:hover .button-text__wrap {
+  transform: translate(4em, 0px);
+}
+
+[data-arrow-button]:hover span,
+.sponsors-button:hover span {
+  transform: translate(0px, -1.25em);
+}
+
+[data-arrow-button]:hover .button-icon__wrap.is--main,
+.sponsors-button:hover .button-icon__wrap.is--main {
+  transform: translate(100%, 0px);
+}
+
+[data-arrow-button]:hover .button-icon__wrap.is--main .button-icon,
+.sponsors-button:hover .button-icon__wrap.is--main .button-icon {
+  transform: rotate(45deg);
+}
+
+[data-arrow-button]:hover .button-icon__wrap.is--duplicate,
+.sponsors-button:hover .button-icon__wrap.is--duplicate {
+  transform: translate(0%, 0px);
+}
+
+[data-arrow-button]:hover .button-icon__wrap.is--duplicate .button-icon,
+.sponsors-button:hover .button-icon__wrap.is--duplicate .button-icon {
+  transform: rotate(0deg);
+}
+
+/* =============================================
+   RESPONSIVE (TABLET & MOBILE)
+   ============================================= */
+@media (max-width: 900px) {
+  .sponsors-section {
+    padding: 5rem 1.5rem 6rem;
+  }
+  .sponsors-grid-top .sponsors-grid__item {
+    height: 200px;
+  }
+  .sponsors-grid-bottom .sponsors-grid__item {
+    height: 160px;
+  }
+  .sponsors-button {
+    height: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsors-section {
+    padding: 4rem 1.25rem 5rem;
+  }
+  .sponsors-grid-top {
+    grid-template-columns: 1fr;
+    border-bottom: 0;
+  }
+  .sponsors-grid-bottom {
+    grid-template-columns: 1fr;
+    border-top: 2px solid var(--sp-border);
+  }
+  .sponsors-grid-top .sponsors-grid__item {
+    height: 160px;
+  }
+  .sponsors-grid-bottom .sponsors-grid__item {
+    height: 140px;
+  }
+  /* Disable travelling background on mobile touch to prevent flickers */
+  .grid-bg {
+    display: none !important;
+  }
+  /* Ensure active card on mobile renders in normal dark ink rest colors */
+  .sponsors-grid__item:has(.grid-bg) .sponsors-top {
+    color: var(--sp-text-muted) !important;
+  }
+  .sponsors-grid__item:has(.grid-bg) .sponsors-logo img {
+    filter: brightness(0) !important;
+    opacity: 0.9 !important;
+  }
+  .sponsors-grid__item:has(.grid-bg) .sponsors-coming-soon span {
+    color: var(--sp-text) !important;
+  }
+  .sponsors-top {
+    top: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.72rem;
+  }
+  .sponsors-button {
+    height: 3.25rem;
+  }
+  .button-text__wrap {
+    font-size: 0.95rem;
+  }
+}
