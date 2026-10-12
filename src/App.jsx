@@ -12,8 +12,21 @@ import RegisterButton from './components/RegisterButton'
 const base = '/codered2026/codered2026'
 const art = (name) => `${base}/vector files/elements/${name}.svg`
 
-const revolvingImagesList = Array.from({ length: 12 }, (_, i) => `img${i}`);
-const getWebp = (name) => `/images/${name}.webp`;
+const revolvingImagesList = [
+  'footimg1.webp',
+  'footimg2.webp',
+  'footimg3.webp',
+  'footimg4.webp',
+  'footimg5.webp',
+  'footimg6.webp',
+  'footimg7.webp',
+  'footimg8.webp',
+  'footimg9.webp',
+  'footimg10.webp',
+  'footimg11.webp',
+  'footimg12.webp',
+];
+const getImage = (name) => `/images/${name}`;
 
 // Define the structure of the spiral
 const totalElements = 34;
@@ -374,7 +387,7 @@ function RevolvingFooter({ register }) {
                   top: 0
                 }}
               >
-                <img src={getWebp(el.img)} alt="" loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} />
+                <img src={getImage(el.img)} alt="" loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} />
               </div>
             )
           })}
