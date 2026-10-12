@@ -50,7 +50,7 @@
 .shift-gallery-grid{flex:1}
 .shift-gallery-grid .shift-photo{height:100%}
 .shift-timeline .shift-rounds article{height:max(610px,calc(100svh - 112px))}
-@media(max-width:700px){.shift-about-top{min-height:0}.shift-about-copy{min-height:350px;padding:60px 5% 45px}.shift-about-copy p{font-size:18px;max-width:100%}.shift-about-plus{font-size:120px}.shift-info-grid article{min-height:310px;padding:30px 6% 35px}.shift-card-plus{font-size:48px}.shift-info-grid h3{font-size:42px;margin:30px 0 18px}.shift-info-grid ul{font-size:19px}.shift-gallery-grid .shift-photo{height:auto}.shift-timeline .shift-rounds article{height:480px}}
+@media(max-width:700px){.shift-about-top{min-height:0}.shift-about-copy{min-height:350px;padding:60px 5% 45px}.shift-about-copy p{font-size:18px;line-height:1.5;max-width:100%}.shift-about-plus{font-size:120px}.shift-info-grid article{min-height:310px;padding:30px 6% 35px}.shift-card-plus{font-size:48px}.shift-info-grid h3{font-size:42px;margin:30px 0 18px}.shift-info-grid ul{font-size:19px}.shift-gallery-grid .shift-photo{height:auto}.shift-timeline .shift-rounds article{height:480px}}
 
 /* --- Scroll & Hover Animations --- */
 .anim-slide-up {
