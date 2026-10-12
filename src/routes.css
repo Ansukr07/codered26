@@ -2,6 +2,7 @@
 .app-page--tracks :is(#home, #about, #sponsors, #prizes, #timeline, #faqs),
 .app-page--prizes :is(#home, #about, #tracks, #sponsors, #timeline, #faqs),
 .app-page--schedule :is(#home, #about, #tracks, #sponsors, #prizes, #faqs),
+.app-page--sponsors :is(#home, #about, #tracks, #prizes, #timeline, #faqs),
 .app-page--faq :is(#home, #about, #tracks, #sponsors, #prizes, #timeline) {
   display: none;
 }

@@ -394,11 +394,10 @@
   }
   .sponsors-grid-top {
     grid-template-columns: 1fr;
-    border-bottom: 0;
+    border-bottom: 2px solid var(--sp-border);
   }
   .sponsors-grid-bottom {
-    grid-template-columns: 1fr;
-    border-top: 2px solid var(--sp-border);
+    display: none;
   }
   .sponsors-grid-top .sponsors-grid__item {
     height: 160px;
