@@ -114,6 +114,7 @@ function PageContent() {
   };
 
   useLayoutEffect(() => {
+    window.scrollTo(0, 0);
     lenis?.scrollTo(0, { immediate: true });
   }, [currentPage, lenis]);
 
