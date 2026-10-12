@@ -13,18 +13,18 @@ const base = '/codered2026/codered2026'
 const art = (name) => `${base}/vector files/elements/${name}.svg`
 
 const revolvingImagesList = [
-  'footimg1.webp',
-  'footimg2.webp',
-  'footimg3.webp',
-  'footimg4.webp',
-  'footimg5.webp',
-  'footimg6.webp',
-  'footimg7.webp',
-  'footimg8.webp',
-  'footimg9.webp',
-  'footimg10.webp',
-  'footimg11.webp',
-  'footimg12.webp',
+  'footimg1 (1).webp',
+  'footimg2 (1).jpg',
+  'footimg3 (1).webp',
+  'footimg4 (1).webp',
+  'footimg5 (1).webp',
+  'footimg6 (1).webp',
+  'footimg7 (1).webp',
+  'footimg8 (1).webp',
+  'footimg9 (1).webp',
+  'footimg10 (1).webp',
+  'footimg11 (1).webp',
+  'footimg12 (1).webp',
 ];
 const getImage = (name) => `/images/${name}`;
 
