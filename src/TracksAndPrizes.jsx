@@ -102,18 +102,31 @@ export function TracksSection() {
         return -((cards.length - 1) * shiftPerCard);
       };
 
-      gsap.to(trackGrid, {
-        x: getScrollAmount,
-        ease: "none",
-        scrollTrigger: {
-          trigger: e,
-          start: "top 10%",
-          end: () => `+=${trackGrid.scrollWidth}`,
-          pin: innerContainer,
-          scrub: 1,
-          invalidateOnRefresh: true,
+      const tween = gsap.fromTo(trackGrid,
+        { x: 0 },
+        {
+          x: getScrollAmount,
+          ease: "none",
+          scrollTrigger: {
+            trigger: e,
+            start: "top top",
+            end: () => `+=${trackGrid.scrollWidth}`,
+            pin: innerContainer,
+            scrub: 1,
+            invalidateOnRefresh: true,
+          }
         }
-      });
+      );
+
+      const onPreloaderComplete = () => {
+        ScrollTrigger.refresh();
+      };
+      window.addEventListener('preloaderComplete', onPreloaderComplete);
+
+      return () => {
+        window.removeEventListener('preloaderComplete', onPreloaderComplete);
+        tween.kill();
+      };
     });
 
   }, { scope: containerRef });

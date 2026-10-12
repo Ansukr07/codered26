@@ -96,7 +96,10 @@
 
 @media (max-width: 700px) {
   .tp-section {
-    padding: 3rem 2.5rem 4rem 2.5rem; /* Significantly reduce top/bottom padding so cards fit on screen during pin */
+    padding: 6.5rem 2.5rem 4rem 2.5rem;
+  }
+  .tp-title-row {
+    margin-bottom: 2rem;
   }
   .tracks-grid { 
     display: flex;
@@ -106,11 +109,14 @@
     margin-left: -2.5rem;
     /* Add exactly 7.5vw padding so the 85vw card is perfectly centered (7.5 + 85 + 7.5 = 100) */
     padding-left: 7.5vw;
+    padding-right: 7.5vw;
+    box-sizing: border-box;
   }
   .track-card {
     width: 85vw; /* Each card takes up 85% of screen width */
     margin-right: 1.5rem;
     height: auto;
+    flex-shrink: 0;
   }
   .track-card-content {
     min-height: 10rem;
