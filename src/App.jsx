@@ -24,13 +24,14 @@ const a = minRadius;
 const b = maxRadius - minRadius;
 const I_max = a * 1 + (b / 2) * 1 * 1;
 
-const pageNames = ['home', 'about', 'tracks', 'prizes', 'schedule', 'faq'];
+const pageNames = ['home', 'about', 'tracks', 'prizes', 'schedule', 'sponsors', 'faq'];
 const pageTitles = {
   home: "Code Red ’26 — From Idea to Impact",
   about: "About — CODERED'26",
   tracks: "Tracks — CODERED'26",
   prizes: "Prizes — CODERED'26",
   schedule: "Schedule — CODERED'26",
+  sponsors: "Sponsors — CODERED'26",
   faq: "FAQ — CODERED'26",
 };
 

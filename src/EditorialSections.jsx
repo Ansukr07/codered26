@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { TracksSection, PrizesSection } from './TracksAndPrizes'
+import SponsorsSection from './SponsorsSection'
 import RegisterButton from './components/RegisterButton'
 import './editorial.css'
 import './why-participate.css'
@@ -189,7 +190,7 @@ export default function EditorialSections() {
           <strong>National level<br />24-hour product sprint.</strong>
           <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "2rem", display: "block", marginTop: "1rem", lineHeight: "1" }}>From Idea to Impact.</span>
         </div>
-        <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>3–4 December 2026</h2></div><Countdown /><p>Top 50 teams build at BMSIT&amp;M.</p></div>
+        <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>3–4 December 2026</h2></div><Countdown /></div>
       </aside>
     </section>
 
@@ -220,7 +221,8 @@ export default function EditorialSections() {
       </div>
     </section>
 
-        <TracksSection />
+    <TracksSection />
+    <SponsorsSection />
     <PrizesSection />
 
     <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">
