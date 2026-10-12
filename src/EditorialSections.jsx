@@ -206,7 +206,7 @@ export default function EditorialSections() {
       <div className="shift-participate-inner">
         <h2 id="participate-title" className="anim-slide-up">Why participate?</h2>
         <figure className="shift-participate-photo">
-          <img src="/images/group.webp" width="1020" height="572" alt="Participants and organizers at a previous Code Red event, standing behind large Code Red letters" loading="lazy" />
+          <img src="/images/group1.webp" width="1020" height="572" alt="Participants and organizers at a previous Code Red event, standing behind large Code Red letters" loading="lazy" />
           <figcaption>Previous Code Red edition</figcaption>
         </figure>
         <div className="shift-participate-grid">

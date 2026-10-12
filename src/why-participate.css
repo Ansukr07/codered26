@@ -16,13 +16,17 @@
 }
 
 .shift-participate-photo {
-  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .shift-participate-photo img {
   display: block;
   width: 100%;
+  aspect-ratio: 1020 / 572;
   height: auto;
+  object-fit: cover;
+  object-position: center;
   box-sizing: border-box;
   border: 5px solid #1e1b18;
 }
