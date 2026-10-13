@@ -13,11 +13,12 @@ gsap.registerPlugin(ScrollTrigger)
 const finaleStart = new Date('2026-12-03T00:00:00+05:30').getTime()
 
 function Countdown() {
-  const [remaining, setRemaining] = useState(() => Math.max(0, finaleStart - Date.now()))
+  const [remaining, setRemaining] = useState(0)
 
   useEffect(() => {
+    const initialTimer = window.setTimeout(() => setRemaining(Math.max(0, finaleStart - Date.now())), 0)
     const timer = window.setInterval(() => setRemaining(Math.max(0, finaleStart - Date.now())), 1000)
-    return () => window.clearInterval(timer)
+    return () => { window.clearTimeout(initialTimer); window.clearInterval(timer) }
   }, [])
 
   const totalSeconds = Math.floor(remaining / 1000)
@@ -70,7 +71,8 @@ const DotArrowSVG = () => (
   </svg>
 );
 
-export default function EditorialSections() {
+export default function EditorialSections({ page = 'home' }) {
+  const show = (section) => page === 'home' || page === section;
   const containerRef = useRef(null);
   const roundsRef = useRef(null);
   const [activeRoundIndex, setActiveRoundIndex] = useState(0);
@@ -158,7 +160,7 @@ export default function EditorialSections() {
   }, []);
 
   return <div ref={containerRef}>
-    <section id="home" className="shift-hero" aria-labelledby="hero-title">
+    {page === 'home' && <section id="home" className="shift-hero" aria-labelledby="hero-title">
       <div className="shift-hero-main anim-slide-down">
         <img className="shift-hero-corner-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" />
         <img className="shift-hero-ribbon" src="/codered2026/codered2026/vector%20files/elements/Asset%2018.svg" alt="" aria-hidden="true" />
@@ -173,7 +175,7 @@ export default function EditorialSections() {
               </span>
             </div>
             <h1 id="hero-title" className="shift-hero-display">
-              <span className="sr-only">CODE RED'26</span>
+              <span className="sr-only">Code Red 2026 — National 24-hour hackathon in Bengaluru</span>
               <span aria-hidden="true" style={{ display: 'block' }}>
                 {"RED".split('').map((char, i) => (
                   <span key={i} className="anim-slide-up" style={{ display: 'inline-block', transitionDelay: `${0.32 + i * 0.08}s` }}>{char}</span>
@@ -182,7 +184,7 @@ export default function EditorialSections() {
               </span>
             </h1>
           </div>
-          <div className="shift-hero-bottom-action anim-slide-up" style={{ transitionDelay: '0.2s' }}><RegisterButton href="https://unstop.com/o/qjIA3CN?utm_medium=Share&amp;utm_source=ecell-bmsitm&amp;utm_campaign=Online_coding_challenge" /></div>
+          <div className="shift-hero-bottom-action anim-slide-up" style={{ transitionDelay: '0.2s' }}><RegisterButton href="https://unstop.com/o/qjIA3CN?utm_medium=Share&utm_source=ecell-bmsitm&utm_campaign=Online_coding_challenge" /></div>
         </div>
       </div>
       <aside className="shift-hero-rail anim-slide-down" style={{ transitionDelay: '0.2s' }}>
@@ -192,18 +194,18 @@ export default function EditorialSections() {
         </div>
         <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>3–4 December 2026</h2></div><Countdown /></div>
       </aside>
-    </section>
+    </section>}
 
-    <section id="about" className="shift-about" aria-labelledby="about-title">
-      <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national product development sprint. Teams turn ideas into functional products in 24 hours, with promising projects getting the chance to pitch at VentureX<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
+    {show('about') && <section id="about" className="shift-about" aria-labelledby="about-title">
+      <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national 24-hour hackathon and product development sprint in Bengaluru. The finale takes place on 3–4 December 2026 at BMS Institute of Technology &amp; Management, Yelahanka. Teams turn ideas into functional products in 24 hours, with promising projects getting the chance to pitch at VentureX<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
       <div className="shift-info-grid">
         <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Four company based tracks</li><li>Details to be announced</li></ul></article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>₹2,00,000 total prize pool</li><li>Recognition for standout teams</li></ul></article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>24-hour offline sprint</li><li>3–4 December 2026</li><li>Teams of 3–4</li><li>Top 50 teams at BMSIT&amp;M</li></ul></article>
       </div>
-    </section>
+    </section>}
 
-    <section id="why-participate" className="shift-participate" aria-labelledby="participate-title">
+    {page === 'home' && <section id="why-participate" className="shift-participate" aria-labelledby="participate-title">
       <div className="shift-participate-inner">
         <h2 id="participate-title" className="anim-slide-up">Why participate?</h2>
         <figure className="shift-participate-photo">
@@ -219,13 +221,13 @@ export default function EditorialSections() {
           ))}
         </div>
       </div>
-    </section>
+    </section>}
 
-    <TracksSection />
-    <SponsorsSection />
-    <PrizesSection />
+    {show('tracks') && <TracksSection />}
+    {show('sponsors') && <SponsorsSection />}
+    {show('prizes') && <PrizesSection />}
 
-    <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">
+    {page === 'home' && <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">
       <div className="shift-timeline-intro anim-slide-up"><h2 id="timeline-title">The road to the finale.</h2></div>
       <div className="shift-rounds" ref={roundsRef} onScroll={handleContainerScroll}>{rounds.map(([n, phase, title, detail, opening], i) => <article key={n} className="anim-slide-down" style={{ transitionDelay: `${i * 0.15}s` }}>
         <div className="shift-round-number" aria-hidden="true">{n}</div>
@@ -253,6 +255,6 @@ export default function EditorialSections() {
           ))}
         </div>
       </div>
-    </section>
+    </section>}
   </div>
 }

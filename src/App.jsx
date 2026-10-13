@@ -8,6 +8,7 @@ import Navbar from './Navbar.jsx'
 import EditorialSections from './EditorialSections.jsx'
 import './routes.css'
 import RegisterButton from './components/RegisterButton'
+import { pages, updateSeo } from './seo.js'
 
 const base = '/codered2026/codered2026'
 const art = (name) => `${base}/vector files/elements/${name}.svg`
@@ -38,16 +39,9 @@ const b = maxRadius - minRadius;
 const I_max = a * 1 + (b / 2) * 1 * 1;
 
 const pageNames = ['home', 'about', 'tracks', 'prizes', 'sponsors', 'faq'];
-const pageTitles = {
-  home: "Code Red ’26 — From Idea to Impact",
-  about: "About — CODERED'26",
-  tracks: "Tracks — CODERED'26",
-  prizes: "Prizes — CODERED'26",
-  sponsors: "Sponsors — CODERED'26",
-  faq: "FAQ — CODERED'26",
-};
 
 function pageFromLocation() {
+  if (typeof window === 'undefined') return 'home';
   const legacyHashPage = window.location.hash.startsWith('#/') ? window.location.hash.slice(2) : '';
   let page = legacyHashPage || window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
   if (legacyHashPage) {
@@ -58,10 +52,16 @@ function pageFromLocation() {
     window.history.replaceState(null, '', `/${window.location.search}#timeline`);
     page = 'home';
   }
-  return pageNames.includes(page) ? page : 'home';
+  return pageNames.includes(page) ? page : 'notFound';
 }
 
 const bgColors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c', '#e67e22', '#34495e'];
+// Stable decorative positions keep pre-rendered HTML and hydration identical.
+let decorationSeed = 26;
+const decorationRandom = () => {
+  decorationSeed = (decorationSeed * 16807) % 2147483647;
+  return (decorationSeed - 1) / 2147483646;
+};
 
 // Generate base identities for the elements
 const baseElements = Array.from({ length: totalElements }).map((_, i) => {
@@ -69,16 +69,16 @@ const baseElements = Array.from({ length: totalElements }).map((_, i) => {
   const initialP = i / (totalElements - 1);
 
   // Very light jitter to keep the spiral arms clear
-  const angleJitter = (Math.random() * 0.1 - 0.05);
-  const radiusJitter = (Math.random() * 10 - 5);
+  const angleJitter = (decorationRandom() * 0.1 - 0.05);
+  const radiusJitter = (decorationRandom() * 10 - 5);
 
-  const widthBase = Math.random() * 50 + 70; // 70-120px base size
+  const widthBase = decorationRandom() * 50 + 70; // 70-120px base size
   const phoneWidthBase = 50 + ((widthBase - 70) / 50) * 35; // Match the last committed 50-85px phone size
 
   // Square area cards
   const heightRatio = 1;
 
-  const tiltJitter = Math.random() * 20 - 10; // ±10° random tilt
+  const tiltJitter = decorationRandom() * 20 - 10; // ±10° random tilt
 
   const bg = bgColors[i % bgColors.length];
   const img = revolvingImagesList[i % revolvingImagesList.length];
@@ -98,15 +98,15 @@ const questions = [
   ['What happens after the hackathon?', 'Promising projects may qualify for VentureX, a separate opportunity to pitch products and business models to investors.'],
 ]
 
-function App() {
+function App({ initialPage }) {
   return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: true }}>
-    <PageContent />
+    <PageContent initialPage={initialPage} />
   </ReactLenis>
 }
 
-function PageContent() {
+function PageContent({ initialPage }) {
   const lenis = useLenis()
-  const [currentPage, setCurrentPage] = useState(pageFromLocation);
+  const [currentPage, setCurrentPage] = useState(() => initialPage || pageFromLocation());
   const [openFaq, setOpenFaq] = useState(0)
   const dialog = useRef(null)
   const appRef = useRef(null)
@@ -176,10 +176,10 @@ function PageContent() {
     return () => {
       window.removeEventListener('popstate', syncPage);
     };
-  }, [currentPage]);
+  }, [currentPage, lenis]);
 
   useEffect(() => {
-    document.title = pageTitles[currentPage];
+    updateSeo(currentPage);
   }, [currentPage]);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -194,14 +194,17 @@ function PageContent() {
       appRef.current.querySelectorAll('.anim-slide-up').forEach(el => observer.observe(el));
     }
     return () => observer.disconnect();
-  }, []);
+  }, [currentPage]);
 
   return <>
     <div ref={appRef} className={`app-page app-page--${currentPage}`}>
             <Navbar activePage={currentPage} onNavigate={navigatePage} />
       <main id="main">
-        <EditorialSections key={currentPage} />
-        <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
+        {currentPage !== 'home' && <h1 className="sr-only">{pages[currentPage].title}</h1>}
+        {currentPage === 'notFound' && <section style={{ padding: '10rem 6%' }}><h2>Page not found</h2><p>The page you requested is unavailable.</p><a href="/">Explore Code Red 2026</a></section>}
+        <EditorialSections key={currentPage} page={currentPage} />
+        {['home', 'faq'].includes(currentPage) && <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
+            <noscript><dl>{questions.map(([question, answer]) => <div key={question}><dt>{question}</dt><dd>{answer}</dd></div>)}</dl></noscript>
             <div className="faq-grid">
               <div className="faq-intro">
                 <h2 className="anim-slide-up" style={{ transitionDelay: '0.1s' }}>Frequently Asked Questions</h2>
@@ -231,12 +234,14 @@ function PageContent() {
               </div>
             </div>
         </section>
+        }
         <RevolvingFooter register={register} />
       </main>
       <footer>
         <div className="footer-top-row" style={{ display: "flex", width: "100%", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "20px" }}>
         <div className="footer-links" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'left', fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>
           <span style={{ fontFamily: "LilGrotesk, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Quick Links</span>
+          <a href="/about" className="footer-link">About Code Red 2026</a>
           <a href="https://www.immersivetourz.com/bmsitm/index.html" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
           <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
           <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>

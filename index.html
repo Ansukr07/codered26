@@ -23,7 +23,7 @@
             position: fixed;
             inset: 0;
             z-index: 9999;
-            display: grid;
+            display: none;
             background: #ed2024;
         }
 
@@ -78,13 +78,6 @@
         // ── Prevent scrolling while preloader is running ──
         document.body.style.overflow = 'hidden';
 
-        // ── Check tab memory immediately ──
-        let isFirstVisit = false;
-        if (!sessionStorage.getItem('CR_TAB_MEMORY')) {
-            isFirstVisit = true;
-            sessionStorage.setItem('CR_TAB_MEMORY', 'true');
-        }
-
         document.addEventListener("DOMContentLoaded", () => {
             const preloader = document.getElementById("preloader");
 
@@ -119,82 +112,6 @@
                 return array;
             }
 
-            // ── Glitch a set of chars in or out ──
-            function glitchChars(chars, out, duration) {
-                return new Promise(resolve => {
-                    chars.forEach(char => {
-                        const flashes = 2 + Math.floor(Math.random() * 4);
-                        const startDelay = Math.random() * duration * 0.65;
-                        const flashInterval = (duration * 0.35) / flashes;
-                        setTimeout(() => {
-                            let step = 0;
-                            const interval = setInterval(() => {
-                                char.style.opacity = Math.random() < 0.5 ? '0' : '1';
-                                step++;
-                                if (step >= flashes) {
-                                    clearInterval(interval);
-                                    char.style.opacity = out ? '0' : '1';
-                                }
-                            }, flashInterval);
-                        }, startDelay);
-                    });
-                    setTimeout(resolve, duration);
-                });
-            }
-
-            // ── Subtle residual flickers while text is held ──
-            function holdWithResidual(chars, duration) {
-                return new Promise(resolve => {
-                    const blinks = Math.round((duration / 1000) * 15);
-                    for (let i = 0; i < blinks; i++) {
-                        const at = Math.random() * duration;
-                        const char = chars[Math.floor(Math.random() * chars.length)];
-                        setTimeout(() => {
-                            char.style.opacity = (0.1 + Math.random() * 0.4).toString();
-                            setTimeout(() => { char.style.opacity = '1'; }, 20 + Math.random() * 40);
-                        }, at);
-                    }
-                    setTimeout(resolve, duration);
-                });
-            }
-
-            // ── Intro text animation (first visit only) ──
-            function runIntro() {
-                return new Promise(async resolve => {
-                    const introText = document.getElementById('intro-text');
-                    const inner = document.getElementById('intro-text-inner');
-
-                    // Split text into individual character spans
-                    const text = inner.textContent;
-                    inner.textContent = '';
-                    const chars = [];
-                    [...text].forEach(ch => {
-                        const span = document.createElement('span');
-                        span.className = 'intro-char';
-                        span.textContent = ch;
-                        span.style.opacity = '0';
-                        inner.appendChild(span);
-                        chars.push(span);
-                    });
-
-                    // Show intro text layer
-                    introText.style.display = 'flex';
-
-                    // 1. Glitch IN
-                    await glitchChars(chars, false, 500);
-
-                    // 2. Hold with residual flickers
-                    await holdWithResidual(chars, 800);
-
-                    // 3. Glitch OUT
-                    await glitchChars(chars, true, 300);
-
-                    // Hide intro text
-                    introText.style.display = 'none';
-                    resolve();
-                });
-            }
-
             // ── Pixel dissolution ──
             function runDissolution(delay = 200, stagger = 12) {
                 return new Promise(resolve => {
@@ -217,6 +134,7 @@
             let pageTransitionRunning = false;
             window.playPagePreloader = (changePage) => {
                 if (pageTransitionRunning) return;
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { changePage(); return; }
                 pageTransitionRunning = true;
                 document.documentElement.classList.add('preloader-active');
                 document.body.style.overflow = 'hidden';
@@ -231,14 +149,21 @@
                 });
             };
 
-            // ── Sequence: intro (if first visit) → dissolution ──
-            if (isFirstVisit) {
-                runIntro().then(runDissolution);
-            } else {
-                runDissolution();
-            }
+            // Reveal initial HTML immediately, so the intro cannot delay useful content.
+            preloader.style.display = 'none';
+            document.documentElement.classList.remove('preloader-active');
+            document.body.style.overflow = '';
+            window.dispatchEvent(new Event('preloaderComplete'));
         });
     </script>
+    <noscript><style>
+        #preloader, #intro-text { display: none !important; }
+        .anim-slide-up, .anim-slide-down, .anim-blur-reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+        .faq-list, .custom-navbar { display: none !important; }
+    </style></noscript>
+    <noscript><nav aria-label="Site pages" style="padding: 1rem; background: #101010; color: white">
+        <a href="/">Home</a> · <a href="/about">About</a> · <a href="/tracks">Tracks</a> · <a href="/prizes">Prizes</a> · <a href="/sponsors">Sponsors</a> · <a href="/faq">FAQ</a>
+    </nav></noscript>
 </body>
 
 </html>

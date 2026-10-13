@@ -135,7 +135,7 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
           </ul>
 
           <div className="nav-footer">
-            <button type="button" className="nav-btn-pitchdeck" onClick={() => showNotice('The PPT template is not available yet. Please check back for the official download.')}>PPT TEMPLATE</button>
+            <button type="button" className="nav-btn-pitchdeck" onClick={() => showNotice('Coming soon!')}>PPT TEMPLATE</button>
             <div className="nav-footer-row">
               <button type="button" className="nav-btn-action" onClick={() => showNotice('Registration is coming soon. Please check back soon.')}>REGISTER NOW</button>
               <button type="button" className="nav-btn-action" onClick={() => showNotice('The brochure is not available yet. Please check back for the official download.')}>BROCHURE</button>
