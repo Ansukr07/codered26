@@ -367,41 +367,44 @@ function RevolvingFooter({ register }) {
   }, [])
 
   return (
-    <section className="revolving-cta" ref={sectionRef}>
-      <div className="revolving-orbit-container">
-        <div className="revolving-orbit">
-          {baseElements.map((el, i) => {
-            const baseWidth = el.widthBase;
-            const baseHeight = el.widthBase * el.heightRatio;
+    <>
+      <div className="revolving-transition" aria-hidden="true" />
+      <section className="revolving-cta" ref={sectionRef}>
+        <div className="revolving-orbit-container">
+          <div className="revolving-orbit">
+            {baseElements.map((el, i) => {
+              const baseWidth = el.widthBase;
+              const baseHeight = el.widthBase * el.heightRatio;
 
-            return (
-              <div
-                key={i}
-                ref={node => itemsRef.current[i] = node}
-                className="revolving-item"
-                style={{
-                  width: baseWidth + 'px',
-                  height: baseHeight + 'px',
-                  backgroundColor: el.bg,
-                  left: 0,
-                  top: 0
-                }}
-              >
-                <img src={getImage(el.img)} alt="" loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} />
-              </div>
-            )
-          })}
+              return (
+                <div
+                  key={i}
+                  ref={node => itemsRef.current[i] = node}
+                  className="revolving-item"
+                  style={{
+                    width: baseWidth + 'px',
+                    height: baseHeight + 'px',
+                    backgroundColor: el.bg,
+                    left: 0,
+                    top: 0
+                  }}
+                >
+                  <img src={getImage(el.img)} alt="" loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} />
+                </div>
+              )
+            })}
+          </div>
         </div>
-      </div>
-      <div className="revolving-content">
-        <RegisterButton
-          size="large"
-          onClick={register}
-          onMouseEnter={() => { isHoveringRegisterRef.current = true; spinEnergyRef.current = Math.min(10.0, spinEnergyRef.current + 2.5); }}
-          onMouseLeave={() => { isHoveringRegisterRef.current = false; }}
-        />
-      </div>
-    </section>
+        <div className="revolving-content">
+          <RegisterButton
+            size="large"
+            onClick={register}
+            onMouseEnter={() => { isHoveringRegisterRef.current = true; spinEnergyRef.current = Math.min(10.0, spinEnergyRef.current + 2.5); }}
+            onMouseLeave={() => { isHoveringRegisterRef.current = false; }}
+          />
+        </div>
+      </section>
+    </>
   )
 }
 

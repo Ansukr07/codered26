@@ -25,7 +25,7 @@ const SponsorCard = ({ href, name, logoSrc, logoClass, isComingSoon }) => {
   const linkProps = isLink ? { href, target: "_blank", rel: "noopener noreferrer" } : {};
 
   return (
-    <Tag {...linkProps} className="sponsors-grid__item" data-sponsor-item="">
+    <Tag {...linkProps} className={`sponsors-grid__item${isComingSoon ? ' is-coming-soon' : ''}`} data-sponsor-item="">
       <div className="sponsors-top">
         <span className="sponsors-eyebrow">{name || 'Coming Soon'}</span>
         <span className="sponsors-brackets">

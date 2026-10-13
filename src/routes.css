@@ -10,3 +10,20 @@
 .nav-menu-item a[aria-current="page"] {
   color: #ed2024;
 }
+
+/* Keep a modest gap between route content and the shared footer fade. */
+.app-page--tracks #tracks,
+.app-page--prizes #prizes {
+  padding-bottom: clamp(13rem, 14vw, 14rem);
+}
+
+.app-page--schedule .mobile-carousel-controls {
+  position: relative;
+  z-index: 7;
+}
+
+@media (min-width: 701px) {
+  .app-page--schedule #timeline {
+    padding-bottom: 200px;
+  }
+}
