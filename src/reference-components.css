@@ -15,3 +15,30 @@
 .faq .faq-list{min-height:780px}
 @media(min-width:701px) and (max-width:900px){.faq .faq-list{min-height:820px}}
 @media(max-width:700px){.faq .faq-list{min-height:760px}}
+
+.faq .faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 180ms ease, visibility 0s linear 280ms;
+}
+.faq .faq-answer-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.faq .faq-answer.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.faq .faq-answer p {
+  margin: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq .faq-answer,
+  .faq .faq-toggle {
+    transition: none;
+  }
+}

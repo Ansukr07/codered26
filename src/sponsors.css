@@ -435,7 +435,7 @@
   }
 }
 
-/* Preserve breathing room before the shared footer fade on the Sponsors page. */
+/* Add a clear gap before the shared footer on the Sponsors page. */
 .app-page--sponsors .sponsors-section {
-  padding-bottom: 4rem;
+  padding-bottom: clamp(15rem, 20vw, 20rem);
 }

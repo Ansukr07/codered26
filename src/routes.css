@@ -1,7 +1,6 @@
 .app-page--about :is(#home, #why-participate, #tracks, #sponsors, #prizes, #timeline, #faqs),
 .app-page--tracks :is(#home, #about, #why-participate, #sponsors, #prizes, #timeline, #faqs),
 .app-page--prizes :is(#home, #about, #why-participate, #tracks, #sponsors, #timeline, #faqs),
-.app-page--schedule :is(#home, #about, #why-participate, #tracks, #sponsors, #prizes, #faqs),
 .app-page--sponsors :is(#home, #about, #why-participate, #tracks, #prizes, #timeline, #faqs),
 .app-page--faq :is(#home, #about, #why-participate, #tracks, #sponsors, #prizes, #timeline) {
   display: none;
@@ -17,17 +16,14 @@
   padding-bottom: clamp(13rem, 14vw, 14rem);
 }
 
+.app-page--prizes #prizes {
+  padding-top: 8rem;
+}
+
 .app-page--sponsors #faqs {
   padding-top: 4rem !important;
 }
 
-.app-page--schedule .mobile-carousel-controls {
-  position: relative;
-  z-index: 7;
-}
-
-@media (min-width: 701px) {
-  .app-page--schedule #timeline {
-    padding-bottom: 200px;
-  }
+.app-page--faq #faqs {
+  padding-top: 7rem !important;
 }

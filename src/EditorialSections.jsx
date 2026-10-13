@@ -188,7 +188,7 @@ export default function EditorialSections() {
       <aside className="shift-hero-rail anim-slide-down" style={{ transitionDelay: '0.2s' }}>
         <div className="shift-rail-intro anim-slide-up" style={{ transitionDelay: '0.3s' }}>
           <strong>National level<br />24-hour product sprint.</strong>
-          <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "2rem", display: "block", marginTop: "1rem", lineHeight: "1" }}>From Idea to Impact.</span>
+          <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "2rem", fontWeight: 400, display: "block", marginTop: "1.5rem", lineHeight: "1" }}>₹2,00,000 Prize Pool</span>
         </div>
         <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>3–4 December 2026</h2></div><Countdown /></div>
       </aside>

@@ -37,23 +37,26 @@ const a = minRadius;
 const b = maxRadius - minRadius;
 const I_max = a * 1 + (b / 2) * 1 * 1;
 
-const pageNames = ['home', 'about', 'tracks', 'prizes', 'schedule', 'sponsors', 'faq'];
+const pageNames = ['home', 'about', 'tracks', 'prizes', 'sponsors', 'faq'];
 const pageTitles = {
   home: "Code Red ’26 — From Idea to Impact",
   about: "About — CODERED'26",
   tracks: "Tracks — CODERED'26",
   prizes: "Prizes — CODERED'26",
-  schedule: "Schedule — CODERED'26",
   sponsors: "Sponsors — CODERED'26",
   faq: "FAQ — CODERED'26",
 };
 
 function pageFromLocation() {
   const legacyHashPage = window.location.hash.startsWith('#/') ? window.location.hash.slice(2) : '';
-  const page = legacyHashPage || window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
+  let page = legacyHashPage || window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
   if (legacyHashPage) {
     const cleanPath = page === 'home' ? '/' : `/${page}`;
     window.history.replaceState(null, '', `${cleanPath}${window.location.search}`);
+  }
+  if (page === 'schedule') {
+    window.history.replaceState(null, '', `/${window.location.search}#timeline`);
+    page = 'home';
   }
   return pageNames.includes(page) ? page : 'home';
 }
@@ -110,6 +113,20 @@ function PageContent() {
   const register = () => window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Registration is coming soon. Please check back soon.' }))
 
   const navigatePage = (page) => {
+    if (page === 'schedule') {
+      const timeline = document.getElementById('timeline');
+      if (window.location.pathname !== '/' || window.location.hash !== '#timeline') {
+        window.history.pushState(null, '', `/${window.location.search}#timeline`);
+      }
+      setOpenFaq(0);
+      if (currentPage !== 'home') {
+        setCurrentPage('home');
+      } else if (timeline) {
+        lenis?.scrollTo(timeline);
+      }
+      return;
+    }
+
     const nextPath = page === 'home' ? '/' : `/${page}`;
     const changePage = () => {
       if (window.location.pathname !== nextPath || window.location.hash) {
@@ -130,14 +147,24 @@ function PageContent() {
   };
 
   useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-    lenis?.scrollTo(0, { immediate: true });
+    const hashTarget = window.location.hash && document.getElementById(window.location.hash.slice(1));
+    if (hashTarget) {
+      lenis?.scrollTo(hashTarget, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+      lenis?.scrollTo(0, { immediate: true });
+    }
   }, [currentPage, lenis]);
 
   useEffect(() => {
     const syncPage = () => {
       const page = pageFromLocation();
-      if (page === currentPage) return;
+      if (page === currentPage) {
+        const hashTarget = window.location.hash && document.getElementById(window.location.hash.slice(1));
+        if (hashTarget) lenis?.scrollTo(hashTarget);
+        else lenis?.scrollTo(0, { immediate: true });
+        return;
+      }
       const changePage = () => {
         setCurrentPage(page);
         setOpenFaq(0);
@@ -175,7 +202,34 @@ function PageContent() {
       <main id="main">
         <EditorialSections key={currentPage} />
         <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
-            <div className="faq-grid"><div className="faq-intro"><h2 className="anim-slide-up" style={{ transitionDelay: '0.1s' }}>Frequently Asked Questions</h2></div><div className="faq-list">{questions.map(([q, answer], i) => <div className="anim-slide-up" style={{ transitionDelay: `${i * 0.15}s` }} key={q}><div className={`faq-item ${openFaq === i ? 'is-open' : ''}`}><h3><button aria-expanded={openFaq === i} aria-controls={`answer-${i}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}><span className="faq-index">Q<span style={{fontFamily: 'Valentine, serif'}}>.</span>{String(i + 1).padStart(3, '0')} <i>/</i></span><span className="faq-question">{q}</span><span className="faq-toggle">{openFaq === i ? '−' : '+'}</span></button></h3><div className="faq-answer" id={`answer-${i}`} hidden={openFaq !== i}><p>{answer.split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{fontFamily: 'LilGrotesk, sans-serif'}}>{part}</span> : part)}</p></div></div></div>)}</div></div>
+            <div className="faq-grid">
+              <div className="faq-intro">
+                <h2 className="anim-slide-up" style={{ transitionDelay: '0.1s' }}>Frequently Asked Questions</h2>
+              </div>
+              <div className="faq-list">
+                {questions.map(([q, answer], i) => {
+                  const isOpen = openFaq === i;
+                  return (
+                    <div className="anim-slide-up" style={{ transitionDelay: `${i * 0.15}s` }} key={q}>
+                      <div className={`faq-item ${isOpen ? 'is-open' : ''}`}>
+                        <h3>
+                          <button aria-expanded={isOpen} aria-controls={`answer-${i}`} onClick={() => setOpenFaq(isOpen ? null : i)}>
+                            <span className="faq-index">Q<span style={{ fontFamily: 'Valentine, serif' }}>.</span>{String(i + 1).padStart(3, '0')} <i>/</i></span>
+                            <span className="faq-question">{q}</span>
+                            <span className="faq-toggle">{isOpen ? '−' : '+'}</span>
+                          </button>
+                        </h3>
+                        <div className={`faq-answer${isOpen ? ' is-open' : ''}`} id={`answer-${i}`} aria-hidden={!isOpen} inert={!isOpen}>
+                          <div className="faq-answer-inner">
+                            <p>{answer.split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{ fontFamily: 'LilGrotesk, sans-serif' }}>{part}</span> : part)}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
         </section>
         <RevolvingFooter register={register} />
       </main>
