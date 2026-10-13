@@ -1,6 +1,7 @@
 .app-page--about :is(#home, #why-participate, #tracks, #sponsors, #prizes, #timeline, #faqs),
 .app-page--tracks :is(#home, #about, #why-participate, #sponsors, #prizes, #timeline, #faqs),
 .app-page--prizes :is(#home, #about, #why-participate, #tracks, #sponsors, #timeline, #faqs),
+.app-page--schedule :is(#home, #about, #why-participate, #tracks, #sponsors, #prizes, #faqs),
 .app-page--sponsors :is(#home, #about, #why-participate, #tracks, #prizes, #timeline, #faqs),
 .app-page--faq :is(#home, #about, #why-participate, #tracks, #sponsors, #prizes, #timeline) {
   display: none;
@@ -18,6 +19,74 @@
 
 .app-page--prizes #prizes {
   padding-top: 8rem;
+}
+
+/* Keep the About details above the footer blend instead of underneath it. */
+.app-page--about {
+  --about-transition-space: clamp(5rem, 7vw, 7.5rem);
+}
+
+.app-page--about #about {
+  padding-bottom: var(--about-transition-space);
+}
+
+.app-page--about .shift-about-copy {
+  padding-top: 100px;
+}
+
+.app-page--about .revolving-transition {
+  height: var(--about-transition-space);
+  margin-top: calc(-1 * var(--about-transition-space));
+}
+
+.app-page--about .revolving-transition::after {
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.58) 58%, #000 100%);
+  box-shadow: none;
+}
+
+/* Let the footer fade occupy its own short buffer instead of covering schedule copy. */
+.app-page--schedule {
+  --schedule-transition-space: clamp(5rem, 7vw, 7.5rem);
+}
+
+.app-page--schedule #timeline {
+  padding-bottom: var(--schedule-transition-space);
+}
+
+.app-page--schedule .revolving-transition {
+  height: var(--schedule-transition-space);
+  margin-top: calc(-1 * var(--schedule-transition-space));
+}
+
+.app-page--schedule .revolving-transition::after {
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.58) 58%, #000 100%);
+  box-shadow: none;
+}
+
+@media (max-width: 700px) {
+  .app-page--about {
+    --about-transition-space: 7rem;
+  }
+
+  .app-page--about .shift-about-copy {
+    padding-top: 105px;
+  }
+
+  .app-page--about .shift-about-side {
+    top: 40px;
+  }
+
+  .app-page--schedule {
+    --schedule-transition-space: 7rem;
+  }
+
+  .app-page--schedule .shift-timeline-intro {
+    height: auto;
+    min-height: 170px;
+    padding: 92px 5% 25px;
+  }
 }
 
 .app-page--sponsors #faqs {

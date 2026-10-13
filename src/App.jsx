@@ -38,7 +38,7 @@ const a = minRadius;
 const b = maxRadius - minRadius;
 const I_max = a * 1 + (b / 2) * 1 * 1;
 
-const pageNames = ['home', 'about', 'tracks', 'prizes', 'sponsors', 'faq'];
+const pageNames = ['home', 'about', 'tracks', 'prizes', 'schedule', 'sponsors', 'faq'];
 
 function pageFromLocation() {
   if (typeof window === 'undefined') return 'home';
@@ -47,10 +47,6 @@ function pageFromLocation() {
   if (legacyHashPage) {
     const cleanPath = page === 'home' ? '/' : `/${page}`;
     window.history.replaceState(null, '', `${cleanPath}${window.location.search}`);
-  }
-  if (page === 'schedule') {
-    window.history.replaceState(null, '', `/${window.location.search}#timeline`);
-    page = 'home';
   }
   return pageNames.includes(page) ? page : 'notFound';
 }
@@ -107,33 +103,19 @@ function App({ initialPage }) {
 function PageContent({ initialPage }) {
   const lenis = useLenis()
   const [currentPage, setCurrentPage] = useState(() => initialPage || pageFromLocation());
-  const [openFaq, setOpenFaq] = useState(0)
+  const [openFaq, setOpenFaq] = useState(null)
   const dialog = useRef(null)
   const appRef = useRef(null)
   const register = () => window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Registration is coming soon. Please check back soon.' }))
 
   const navigatePage = (page) => {
-    if (page === 'schedule') {
-      const timeline = document.getElementById('timeline');
-      if (window.location.pathname !== '/' || window.location.hash !== '#timeline') {
-        window.history.pushState(null, '', `/${window.location.search}#timeline`);
-      }
-      setOpenFaq(0);
-      if (currentPage !== 'home') {
-        setCurrentPage('home');
-      } else if (timeline) {
-        lenis?.scrollTo(timeline);
-      }
-      return;
-    }
-
     const nextPath = page === 'home' ? '/' : `/${page}`;
     const changePage = () => {
       if (window.location.pathname !== nextPath || window.location.hash) {
         window.history.pushState(null, '', nextPath);
       }
       setCurrentPage(page);
-      setOpenFaq(0);
+      setOpenFaq(null);
       lenis?.scrollTo(0, { immediate: true });
     };
 
@@ -167,7 +149,7 @@ function PageContent({ initialPage }) {
       }
       const changePage = () => {
         setCurrentPage(page);
-        setOpenFaq(0);
+        setOpenFaq(null);
       };
       if (window.playPagePreloader) window.playPagePreloader(changePage);
       else changePage();

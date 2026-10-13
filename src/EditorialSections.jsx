@@ -113,6 +113,7 @@ export default function EditorialSections({ page = 'home' }) {
       if (!containerRef.current || !roundsRef.current) return;
       const timelineSection = containerRef.current.querySelector('#timeline');
       const roundsContainer = roundsRef.current;
+      if (!timelineSection) return;
       
       gsap.set(timelineSection, { overflow: 'hidden' });
       gsap.set(roundsContainer, { width: 'max-content', overflow: 'visible', flexWrap: 'nowrap' });
@@ -227,7 +228,7 @@ export default function EditorialSections({ page = 'home' }) {
     {show('sponsors') && <SponsorsSection />}
     {show('prizes') && <PrizesSection />}
 
-    {page === 'home' && <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">
+    {show('schedule') && <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">
       <div className="shift-timeline-intro anim-slide-up"><h2 id="timeline-title">The road to the finale.</h2></div>
       <div className="shift-rounds" ref={roundsRef} onScroll={handleContainerScroll}>{rounds.map(([n, phase, title, detail, opening], i) => <article key={n} className="anim-slide-down" style={{ transitionDelay: `${i * 0.15}s` }}>
         <div className="shift-round-number" aria-hidden="true">{n}</div>

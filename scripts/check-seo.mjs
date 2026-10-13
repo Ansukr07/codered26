@@ -25,6 +25,7 @@ for (const [page, info] of Object.entries(pages)) {
 const robots = await readFile('dist/robots.txt', 'utf8')
 assert(robots.includes(`Sitemap: ${siteUrl}/sitemap.xml`))
 const sitemap = await readFile('dist/sitemap.xml', 'utf8')
-assert.equal((sitemap.match(/<loc>/g) || []).length, 6)
+const crawlablePageCount = Object.keys(pages).filter((p) => p !== 'notFound').length
+assert.equal((sitemap.match(/<loc>/g) || []).length, crawlablePageCount)
 assert(!sitemap.includes('/404'))
 console.log('SEO checks passed: titles, descriptions, H1s, canonicals, schema, pre-rendering, local assets, robots and sitemap.')
