@@ -422,3 +422,8 @@
     font-size: 0.95rem;
   }
 }
+
+/* Preserve breathing room before the shared footer fade on the Sponsors page. */
+.app-page--sponsors .sponsors-section {
+  padding-bottom: clamp(13rem, 14vw, 14rem);
+}
