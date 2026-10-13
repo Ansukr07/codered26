@@ -1,9 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
-import { Flip } from 'gsap/Flip';
+import React from 'react';
 import './sponsors.css';
-
-gsap.registerPlugin(Flip);
 
 const DotArrowIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 24" fill="none">
@@ -23,14 +19,13 @@ const DotArrowIcon = () => (
   </svg>
 );
 
-const SponsorCard = ({ href, name, logoSrc, logoClass, isComingSoon, children }) => {
+const SponsorCard = ({ href, name, logoSrc, logoClass, isComingSoon }) => {
   const isLink = Boolean(href);
   const Tag = isLink ? 'a' : 'div';
   const linkProps = isLink ? { href, target: "_blank", rel: "noopener noreferrer" } : {};
 
   return (
     <Tag {...linkProps} className="sponsors-grid__item" data-sponsor-item="">
-      {children}
       <div className="sponsors-top">
         <span className="sponsors-eyebrow">{name || 'Coming Soon'}</span>
         <span className="sponsors-brackets">
@@ -53,53 +48,24 @@ const SponsorCard = ({ href, name, logoSrc, logoClass, isComingSoon, children })
 };
 
 export default function SponsorsSection() {
-  const containerRef = useRef(null);
-  const bgRef = useRef(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    const bg = bgRef.current;
-    if (!container || !bg) return;
-    const mm = gsap.matchMedia();
-    mm.add('(min-width: 769px)', () => {
-      const sponsorCards = container.querySelectorAll('[data-sponsor-item]');
-      const handleMouseEnter = (e) => {
-        const card = e.currentTarget;
-        gsap.to(bg, { background: '#ED2024', duration: 0.425, ease: 'power3' });
-        const state = Flip.getState(bg);
-        card.appendChild(bg);
-        Flip.from(state, { duration: 0.425, ease: 'power3' });
-      };
-      sponsorCards.forEach((card) => card.addEventListener('mouseenter', handleMouseEnter));
-      return () => {
-        sponsorCards.forEach((card) => card.removeEventListener('mouseenter', handleMouseEnter));
-      };
-    });
-
-    return () => mm.revert();
-  }, []);
-
   return (
-    <section id="sponsors" className="sponsors-section" ref={containerRef}>
+    <section id="sponsors" className="sponsors-section">
       <div className="sponsors-container">
         <div className="sponsors-header">
           <h2 className="sponsors-title">Sponsors</h2>
         </div>
         <div className="sponsors-bento">
           <div className="sponsors-grid-top">
-            <SponsorCard href="https://www.hackerearth.com/" name="HackerEarth" logoSrc="/sponsors/hackerearth.svg" logoClass="is-hackerearth">
-              <div ref={bgRef} data-sponsor-bg="" data-dark="true" className="grid-bg" />
-            </SponsorCard>
+            <SponsorCard href="https://www.hackerearth.com/" name="HackerEarth" logoSrc="/sponsors/hackerearth.svg" logoClass="is-hackerearth" />
             <SponsorCard href="https://unstop.com/" name="Unstop" logoSrc="/sponsors/unstop.svg" logoClass="is-unstop" />
           </div>
           <div className="sponsors-grid-bottom">
             <SponsorCard isComingSoon />
-            <SponsorCard isComingSoon />
+            <SponsorCard href="https://gen.xyz/" name=".xyz" logoSrc="/sponsors/xyz-logo-white.svg" logoClass="is-xyz" />
             <SponsorCard isComingSoon />
           </div>
         </div>
-        {/* Link removed for now: https://docs.google.com/forms/d/e/1FAIpQLSc4cZr_ayJYUsJ553TBCbjyoxrkj7BHxVgCSRRzhPSPcaQrGg/viewform */}
-        <div className="sponsors-button" data-arrow-button="" role="button" tabIndex={0}>
+        <a className="sponsors-button" data-arrow-button="" href="https://drive.google.com/file/d/1R868KjV0qfIvK2croIpPDb5R0J6qH9JY/view" target="_blank" rel="noopener noreferrer">
           <div className="button-icon__wrap is--duplicate"><div className="button-icon"><DotArrowIcon /></div></div>
           <div className="button-text__wrap">
             <div className="text-wrap__innner">
@@ -107,7 +73,7 @@ export default function SponsorsSection() {
             </div>
           </div>
           <div className="button-icon__wrap is--main"><div className="button-icon"><DotArrowIcon /></div></div>
-        </div>
+        </a>
       </div>
     </section>
   );

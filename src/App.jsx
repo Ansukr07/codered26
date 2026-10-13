@@ -103,7 +103,7 @@ function App() {
 function PageContent() {
   const lenis = useLenis()
   const [currentPage, setCurrentPage] = useState(pageFromLocation);
-  const [openFaq, setOpenFaq] = useState(null)
+  const [openFaq, setOpenFaq] = useState(0)
   const dialog = useRef(null)
   const appRef = useRef(null)
   const register = () => dialog.current.showModal()
@@ -115,7 +115,7 @@ function PageContent() {
         window.history.pushState(null, '', nextPath);
       }
       setCurrentPage(page);
-      setOpenFaq(null);
+      setOpenFaq(0);
       lenis?.scrollTo(0, { immediate: true });
     };
 
@@ -139,7 +139,7 @@ function PageContent() {
       if (page === currentPage) return;
       const changePage = () => {
         setCurrentPage(page);
-        setOpenFaq(null);
+        setOpenFaq(0);
       };
       if (window.playPagePreloader) window.playPagePreloader(changePage);
       else changePage();

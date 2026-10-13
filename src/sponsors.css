@@ -93,6 +93,7 @@
   overflow: hidden;
   cursor: pointer;
   box-sizing: border-box;
+  transition: background-color 0.25s ease;
 }
 
 .sponsors-grid-top .sponsors-grid__item {
@@ -101,15 +102,6 @@
 
 .sponsors-grid-bottom .sponsors-grid__item {
   height: clamp(170px, 16vw, 220px);
-}
-
-/* Dynamic Traveling Background (GSAP Flip) */
-.grid-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-color: var(--sp-red);
 }
 
 /* Logo container */
@@ -148,6 +140,10 @@
 
 .sponsors-logo.is-unstop {
   width: clamp(180px, 20vw, 260px);
+}
+
+.sponsors-logo.is-xyz {
+  width: clamp(110px, 13vw, 170px);
 }
 
 /* Coming Soon Placeholders */
@@ -212,6 +208,12 @@
   color: var(--sp-text);
 }
 
+@media (min-width: 769px) {
+  .sponsors-grid__item:hover {
+    background-color: var(--sp-red);
+  }
+}
+
 .sponsors-grid__item:hover [data-sponsor-el="left"] {
   transform: translate(-40%, 0px);
 }
@@ -224,17 +226,17 @@
   transform: translate(35%, -25%);
 }
 
-/* When active card has traveling red background (#ED2024) — desktop only */
+/* Keep the red background and white content on the hovered card only. */
 @media (min-width: 769px) {
-  .sponsors-grid__item:has(.grid-bg) .sponsors-top {
-    color: #ffffff !important;
+  .sponsors-grid__item:hover .sponsors-top {
+    color: #ffffff;
   }
-  .sponsors-grid__item:has(.grid-bg) .sponsors-logo img {
-    filter: brightness(1) invert(0) !important;
-    opacity: 1 !important;
+  .sponsors-grid__item:hover .sponsors-logo img {
+    filter: brightness(0) invert(1);
+    opacity: 1;
   }
-  .sponsors-grid__item:has(.grid-bg) .sponsors-coming-soon span {
-    color: #ffffff !important;
+  .sponsors-grid__item:hover .sponsors-coming-soon span {
+    color: #ffffff;
   }
 }
 
@@ -404,21 +406,6 @@
   }
   .sponsors-grid-bottom .sponsors-grid__item {
     height: 140px;
-  }
-  /* Disable travelling background on mobile touch to prevent flickers */
-  .grid-bg {
-    display: none !important;
-  }
-  /* Ensure active card on mobile renders in normal dark ink rest colors */
-  .sponsors-grid__item:has(.grid-bg) .sponsors-top {
-    color: var(--sp-text-muted) !important;
-  }
-  .sponsors-grid__item:has(.grid-bg) .sponsors-logo img {
-    filter: brightness(0) !important;
-    opacity: 0.9 !important;
-  }
-  .sponsors-grid__item:has(.grid-bg) .sponsors-coming-soon span {
-    color: var(--sp-text) !important;
   }
   .sponsors-top {
     top: 0.75rem;
