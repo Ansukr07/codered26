@@ -396,9 +396,12 @@
   }
   .sponsors-grid-top {
     grid-template-columns: 1fr;
-    border-bottom: 2px solid var(--sp-border);
+    border-bottom: 0;
   }
   .sponsors-grid-bottom {
+    grid-template-columns: 1fr;
+  }
+  .sponsors-grid-bottom .is-coming-soon {
     display: none;
   }
   .sponsors-grid-top .sponsors-grid__item {
