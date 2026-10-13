@@ -108,19 +108,29 @@
   .tracks-grid { 
     display: flex;
     flex-wrap: nowrap;
-    width: max-content;
+    width: calc(100% + 5rem);
     /* Negate the 2.5rem padding of tp-section so grid touches screen edge */
     margin-left: -2.5rem;
     /* Add exactly 7.5vw padding so the 85vw card is perfectly centered (7.5 + 85 + 7.5 = 100) */
     padding-left: 7.5vw;
     padding-right: 7.5vw;
+    gap: 1.5rem;
     box-sizing: border-box;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tracks-grid::-webkit-scrollbar {
+    display: none;
   }
   .track-card {
     width: 85vw; /* Each card takes up 85% of screen width */
-    margin-right: 1.5rem;
+    margin-right: 0;
     height: auto;
     flex-shrink: 0;
+    scroll-snap-align: center;
   }
   .track-card-content {
     min-height: 10rem;
@@ -129,6 +139,46 @@
   .track-ghost-number {
     font-size: clamp(70px, 22vw, 130px);
     margin-bottom: -10px;
+  }
+  .tp-track-carousel-controls {
+    margin-top: 1.5rem;
+    padding: 0 3.5% 1.25rem;
+    color: #1e1b18;
+    transform: translateY(0.5rem);
+  }
+  .tp-track-carousel-controls .carousel-arrows {
+    margin-left: -1.25rem;
+  }
+  .tp-track-carousel-controls .carousel-btn {
+    background: rgba(30, 27, 24, 0.06);
+    border-color: rgba(30, 27, 24, 0.2);
+    color: #1e1b18;
+    backdrop-filter: none;
+  }
+  .tp-track-carousel-controls .carousel-btn:not(:disabled):hover {
+    background: rgba(30, 27, 24, 0.12);
+    border-color: rgba(30, 27, 24, 0.35);
+  }
+  .tp-track-carousel-controls .carousel-dot {
+    border: 0;
+    padding: 0;
+  }
+  .tp-track-carousel-controls .carousel-dot:not(.active) {
+    background-color: rgba(30, 27, 24, 0.28);
+  }
+  .tp-carousel-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+  }
+  .tp-carousel-arrow .tp-icon-svg {
+    width: 100%;
+    height: 100%;
+  }
+  .tp-carousel-arrow.is-previous {
+    transform: rotate(180deg);
   }
 }
 

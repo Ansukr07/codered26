@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -59,6 +59,8 @@ const DotArrowSVG = () => (
 
 export function TracksSection() {
   const containerRef = useRef(null);
+  const trackGridRef = useRef(null);
+  const [activeTrackIndex, setActiveTrackIndex] = useState(0);
 
   useGSAP(() => {
     const e = containerRef.current;
@@ -84,52 +86,36 @@ export function TracksSection() {
       );
     });
 
-    mm.add("(max-width: 700px)", () => {
-      const trackGrid = e.querySelector('.tracks-grid');
-      const innerContainer = e.querySelector('.tp-container');
-
-      // Calculate how far to scroll to perfectly center the 4th (last) card
-      const getScrollAmount = () => {
-        const cards = trackGrid.querySelectorAll('.track-card');
-        if (cards.length < 2) return 0;
-
-        // The most foolproof way to get the exact width + gap of a single card
-        // is to measure the distance between the start of card 1 and card 2.
-        const shiftPerCard = cards[1].offsetLeft - cards[0].offsetLeft;
-
-        // Since the 1st card starts perfectly centered, we shift the grid left 
-        // by exactly (N-1) times the shift amount!
-        return -((cards.length - 1) * shiftPerCard);
-      };
-
-      const tween = gsap.fromTo(trackGrid,
-        { x: 0 },
-        {
-          x: getScrollAmount,
-          ease: "none",
-          scrollTrigger: {
-            trigger: e,
-            start: "top top",
-            end: () => `+=${trackGrid.scrollWidth}`,
-            pin: innerContainer,
-            scrub: 1,
-            invalidateOnRefresh: true,
-          }
-        }
-      );
-
-      const onPreloaderComplete = () => {
-        ScrollTrigger.refresh();
-      };
-      window.addEventListener('preloaderComplete', onPreloaderComplete);
-
-      return () => {
-        window.removeEventListener('preloaderComplete', onPreloaderComplete);
-        tween.kill();
-      };
-    });
-
   }, { scope: containerRef });
+
+  const handleTrackScroll = () => {
+    const container = trackGridRef.current;
+    if (!container) return;
+    const cards = Array.from(container.children);
+    const center = container.getBoundingClientRect().left + container.clientWidth / 2;
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+    cards.forEach((card, index) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const distance = Math.abs(cardCenter - center);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+    setActiveTrackIndex(closestIndex);
+  };
+
+  const goToTrack = (index) => {
+    const container = trackGridRef.current;
+    const card = container?.children[index];
+    if (!container || !card) return;
+    const containerRect = container.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const left = container.scrollLeft + cardRect.left - containerRect.left - (container.clientWidth - card.clientWidth) / 2;
+    container.scrollTo({ left, behavior: 'smooth' });
+  };
 
   const tracks = [
     {
@@ -164,7 +150,7 @@ export function TracksSection() {
         <div className="tp-title-row">
           <h2 className="tp-h-large" style={{ fontFamily: "Valentine, Georgia, serif", fontWeight: 400, textTransform: "none" }}>Tracks</h2>
         </div>
-        <div className="tracks-grid">
+        <div className="tracks-grid" ref={trackGridRef} onScroll={handleTrackScroll}>
           {tracks.map((track, idx) => (
             <div key={idx} className={`track-card track-card-${idx + 1}`}>
               <span className="track-top-flag">{track.tag}</span>
@@ -195,6 +181,21 @@ export function TracksSection() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="mobile-carousel-controls tp-track-carousel-controls" aria-label="Track navigation">
+          <div className="carousel-arrows">
+            <button className="carousel-btn" type="button" aria-label="Previous track" onClick={() => goToTrack(activeTrackIndex - 1)} disabled={activeTrackIndex === 0}>
+              <span className="tp-carousel-arrow is-previous"><DotArrowSVG /></span>
+            </button>
+            <button className="carousel-btn" type="button" aria-label="Next track" onClick={() => goToTrack(activeTrackIndex + 1)} disabled={activeTrackIndex === tracks.length - 1}>
+              <span className="tp-carousel-arrow"><DotArrowSVG /></span>
+            </button>
+          </div>
+          <div className="carousel-dots" role="group" aria-label="Choose track">
+            {tracks.map((track, index) => (
+              <button key={track.ghostText} className={`carousel-dot${index === activeTrackIndex ? ' active' : ''}`} type="button" aria-label={`Go to ${track.title}`} aria-current={index === activeTrackIndex ? 'true' : undefined} onClick={() => goToTrack(index)} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
