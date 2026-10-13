@@ -34,4 +34,5 @@ for (const [page, info] of Object.entries(pages)) {
 }
 await writeFile('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`)
 await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${Object.entries(pages).filter(([page]) => page !== 'notFound').map(([, info]) => `<url><loc>${siteUrl}${info.path}</loc></url>`).join('')}</urlset>\n`)
-console.log('Generated six crawlable pages, a 404 page, robots.txt and sitemap.xml.')
+const crawlablePageCount = Object.keys(pages).filter((page) => page !== 'notFound').length
+console.log(`Generated ${crawlablePageCount} crawlable pages, a 404 page, robots.txt and sitemap.xml.`)

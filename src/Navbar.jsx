@@ -126,7 +126,7 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
             {pageLinks.map(([page, label]) => (
               <li className="nav-menu-item" key={page}>
                 <a
-                  href={page === 'home' ? '/' : page === 'schedule' ? '/#timeline' : `/${page}`}
+                  href={page === 'home' ? '/' : `/${page}`}
                   aria-current={activePage === page ? 'page' : undefined}
                   onClick={followPageLink(page)}
                 >{label}</a>
