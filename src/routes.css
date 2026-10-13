@@ -17,6 +17,10 @@
   padding-bottom: clamp(13rem, 14vw, 14rem);
 }
 
+.app-page--sponsors #faqs {
+  padding-top: 4rem !important;
+}
+
 .app-page--schedule .mobile-carousel-controls {
   position: relative;
   z-index: 7;

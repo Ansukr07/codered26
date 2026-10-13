@@ -24,7 +24,7 @@
   position: relative;
   background-color: var(--sp-bg);
   color: var(--sp-text);
-  padding: 8rem 2.5rem;
+  padding: 8rem 2.5rem 4rem;
   font-family: LilGrotesk, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -404,7 +404,7 @@
 
 @media (max-width: 768px) {
   .sponsors-section {
-    padding: 4rem 1.25rem 5rem;
+    padding: 4rem 1.25rem 4rem;
   }
   .sponsors-grid-top {
     grid-template-columns: 1fr;
@@ -437,5 +437,5 @@
 
 /* Preserve breathing room before the shared footer fade on the Sponsors page. */
 .app-page--sponsors .sponsors-section {
-  padding-bottom: clamp(13rem, 14vw, 14rem);
+  padding-bottom: 4rem;
 }
