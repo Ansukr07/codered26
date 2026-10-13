@@ -52,7 +52,7 @@ export default function SponsorsSection() {
     <section id="sponsors" className="sponsors-section">
       <div className="sponsors-container">
         <div className="sponsors-header">
-          <h2 className="sponsors-title">Sponsors</h2>
+          <h2 className="sponsors-title">Partners</h2>
         </div>
         <div className="sponsors-bento">
           <div className="sponsors-grid-top">
@@ -62,7 +62,7 @@ export default function SponsorsSection() {
           <div className="sponsors-grid-bottom">
             <SponsorCard href="https://gen.xyz/" name=".xyz" logoSrc="/sponsors/xyz-logo-white.svg" logoClass="is-xyz" />
             <SponsorCard href="https://fueler.io/" name="Fueler" logoSrc="/sponsors/fueler.svg" logoClass="is-fueler" />
-            <SponsorCard isComingSoon />
+            <SponsorCard href="https://givemycertificate.com/" name="Give My Certificate" logoSrc="/sponsors/give-my-certificate.png" logoClass="is-give-my-certificate" />
           </div>
         </div>
         <a className="sponsors-button" data-arrow-button="" href="https://drive.google.com/file/d/1R868KjV0qfIvK2croIpPDb5R0J6qH9JY/view" target="_blank" rel="noopener noreferrer">

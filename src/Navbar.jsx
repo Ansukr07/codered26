@@ -7,7 +7,7 @@ const pageLinks = [
   ['tracks', 'Tracks'],
   ['prizes', 'Prizes'],
   ['schedule', 'Schedule'],
-  ['sponsors', 'Sponsors'],
+  ['sponsors', 'Partners'],
   ['faq', 'FAQ'],
 ];
 

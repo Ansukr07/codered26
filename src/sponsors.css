@@ -130,6 +130,26 @@
   opacity: 1;
 }
 
+.sponsors-logo.is-give-my-certificate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(290px, 34vw, 450px);
+  max-width: none;
+  padding: 1.25rem 0.75rem 0 2rem;
+  box-sizing: border-box;
+}
+
+.sponsors-logo.is-give-my-certificate img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: none;
+  opacity: 1;
+}
+
 /* Specific Logo Sizing */
 .sponsors-logo.is-hackerearth {
   width: clamp(210px, 24vw, 310px);
@@ -246,6 +266,15 @@
   }
   .sponsors-grid__item:hover .sponsors-logo.is-fueler img {
     filter: none;
+  }
+  .sponsors-grid__item:hover .sponsors-logo.is-give-my-certificate img {
+    filter: none;
+  }
+  .sponsors-grid__item:has(.sponsors-logo.is-give-my-certificate):hover {
+    background-color: var(--sp-card-bg);
+  }
+  .sponsors-grid__item:has(.sponsors-logo.is-give-my-certificate):hover .sponsors-top {
+    color: var(--sp-text);
   }
   .sponsors-grid__item:hover .sponsors-coming-soon span {
     color: #ffffff;
@@ -421,6 +450,10 @@
   }
   .sponsors-grid-bottom .sponsors-grid__item {
     height: 140px;
+  }
+  .sponsors-logo.is-give-my-certificate {
+    padding: 1.25rem 0.75rem 0 2rem;
+    transform: translateX(1.8rem);
   }
   .sponsors-top {
     top: 0.75rem;

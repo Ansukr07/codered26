@@ -1,6 +1,7 @@
 # Code Red 2026 SEO plan
 
-Production origin: https://codered26.vercel.app/  
+Production origin: https://www.codered26.xyz/
+Domain migration checked on 14 October 2026: `https://codered26.xyz/` returns HTTP 308 to the www host; the www homepage returns HTTP 200. Canonicals, schema, social metadata and sitemap now use the www host. The repository adds a permanent, path-preserving redirect from the former `codered26.vercel.app` host; deploy to activate it. Verify the custom-domain property in Google Search Console and Bing Webmaster Tools and submit `https://www.codered26.xyz/sitemap.xml` after deployment.
 Audit date: 13 October 2026. Goal: attract eligible student teams and relevant partners searching for Code Red, Bengaluru hackathons, and 2026 student product development events.
 
 ## Findings and implemented fixes

@@ -80,17 +80,20 @@ Track 4:
 * **GRAND FINALE — BMSIT\&M**  
   The top 50 come to BMSIT\&M for the final product-development sprint, demonstration and final evaluation.
 
-**17th October | CODE RED ’26 Launch**
+**22nd October 2026 | CODE RED ’26 Launch and Registration**  
+Challenge briefs go live on the website and registrations open.
 
-**18th October | Registration Opens**
+**7th November 2026 | Round 1 — PPT Submissions**  
+Registration closes; this is the deadline for idea submissions.
 
-**31st October | Registration Deadline**
+**14th–15th November 2026 | Round 2 — Online Evaluation**  
+Google Meet evaluations for teams shortlisted from Round 1.
 
-**9th November | Round 1 Evaluation**
+**18th November 2026 | Top 50 Teams Announced**  
+Round 2 results will be published on the website.
 
-**14th to 15th November | Round 2 Evaluation (GMeet)**
-
-**18th November | Final Results Announcement**
+**3rd–4th December 2026 | 24-hour On-Campus Sprint**  
+CODE RED ’26 Grand Finale.
 
 ## 
 

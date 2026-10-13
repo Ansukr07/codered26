@@ -38,10 +38,11 @@ function Countdown() {
 }
 
 const rounds = [
-  ['01', '18 OCTOBER–31 OCTOBER', 'Registrations', 'SUBMIT YOUR PROPOSED SOLUTION IN THE PRESCRIBED PPT FORMAT.'],
-  ['02', '9 NOVEMBER', 'Round 1 evaluation', 'SUBMITTED IDEAS ARE REVIEWED AND TEAMS ARE SHORTLISTED.'],
-  ['03', '14–15 NOVEMBER', 'Round 2 online evaluation', 'SHORTLISTED TEAMS PITCH THEIR IDEAS ONLINE TO THE JUDGING PANEL.'],
-  ['04', '18 NOVEMBER', 'Final results announcement', 'THE TOP 50 TEAMS ARE SELECTED FOR THE 24-HOUR GRAND FINALE AT BMSIT&M.'],
+  ['01', '22 OCTOBER', 'Code Red ’26 launch & registration', 'THE CHALLENGE BRIEFS GO LIVE ON THE WEBSITE AND REGISTRATION OPENS.'],
+  ['02', '7 NOVEMBER', 'Round 1 PPT submissions', 'REGISTRATION CLOSES. SUBMIT YOUR IDEA BY THE DEADLINE.'],
+  ['03', '14–15 NOVEMBER', 'Round 2 online evaluation', 'SHORTLISTED TEAMS ARE EVALUATED ONLINE VIA GOOGLE MEET.'],
+  ['04', '18 NOVEMBER', 'Top 50 teams announced', 'ROUND 2 RESULTS WILL BE PUBLISHED ON THE WEBSITE.'],
+  ['05', '3–4 DECEMBER', '24-hour on-campus sprint', 'THE CODE RED ’26 GRAND FINALE TAKES PLACE AT BMSIT&M.'],
 ]
 
 const participationReasons = [
@@ -198,7 +199,7 @@ export default function EditorialSections({ page = 'home' }) {
     </section>}
 
     {show('about') && <section id="about" className="shift-about" aria-labelledby="about-title">
-      <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national 24-hour hackathon and product development sprint in Bengaluru. The finale takes place on 3–4 December 2026 at BMS Institute of Technology &amp; Management, Yelahanka. Teams turn ideas into functional products in 24 hours, with promising projects getting the chance to pitch at VentureX<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
+      <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national 24-hour hackathon and product development sprint in Bengaluru. Teams go beyond ideas to develop functional, market-ready products that solve real-world problems, with the opportunity for top teams to pitch at VentureX<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
       <div className="shift-info-grid">
         <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Four company based tracks</li><li>Details to be announced</li></ul></article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>₹2,00,000 total prize pool</li><li>Recognition for standout teams</li></ul></article>
