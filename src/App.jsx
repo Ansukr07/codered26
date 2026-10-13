@@ -13,18 +13,18 @@ const base = '/codered2026/codered2026'
 const art = (name) => `${base}/vector files/elements/${name}.svg`
 
 const revolvingImagesList = [
-  'footimg1 (1).webp',
-  'footimg2 (1).jpg',
-  'footimg3 (1).webp',
-  'footimg4 (1).webp',
-  'footimg5 (1).webp',
-  'footimg6 (1).webp',
-  'footimg7 (1).webp',
-  'footimg8 (1).webp',
-  'footimg9 (1).webp',
-  'footimg10 (1).webp',
-  'footimg11 (1).webp',
-  'footimg12 (1).webp',
+  'footer/footimg1.webp',
+  'footer/footimg2.webp',
+  'footer/footimg3.webp',
+  'footer/footimg4.webp',
+  'footer/footimg5.webp',
+  'footer/footimg6.webp',
+  'footer/footimg7.webp',
+  'footer/footimg8.webp',
+  'footer/footimg9.webp',
+  'footer/footimg10.webp',
+  'footer/footimg11.webp',
+  'footer/footimg12.webp',
 ];
 const getImage = (name) => `/images/${name}`;
 
@@ -69,7 +69,8 @@ const baseElements = Array.from({ length: totalElements }).map((_, i) => {
   const angleJitter = (Math.random() * 0.1 - 0.05);
   const radiusJitter = (Math.random() * 10 - 5);
 
-  const widthBase = Math.random() * 35 + 50; // 50-85px base size
+  const widthBase = Math.random() * 50 + 70; // 70-120px base size
+  const phoneWidthBase = 50 + ((widthBase - 70) / 50) * 35; // Match the last committed 50-85px phone size
 
   // Square area cards
   const heightRatio = 1;
@@ -79,7 +80,7 @@ const baseElements = Array.from({ length: totalElements }).map((_, i) => {
   const bg = bgColors[i % bgColors.length];
   const img = revolvingImagesList[i % revolvingImagesList.length];
 
-  return { initialP, angleJitter, radiusJitter, widthBase, heightRatio, tiltJitter, bg, img };
+  return { initialP, angleJitter, radiusJitter, widthBase, phoneWidthBase, heightRatio, tiltJitter, bg, img };
 });
 
 const questions = [
@@ -106,7 +107,7 @@ function PageContent() {
   const [openFaq, setOpenFaq] = useState(0)
   const dialog = useRef(null)
   const appRef = useRef(null)
-  const register = () => dialog.current.showModal()
+  const register = () => window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Registration is coming soon. Please check back soon.' }))
 
   const navigatePage = (page) => {
     const nextPath = page === 'home' ? '/' : `/${page}`;
@@ -174,26 +175,26 @@ function PageContent() {
       <main id="main">
         <EditorialSections key={currentPage} />
         <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
-            <div className="faq-grid"><div className="faq-intro"><h2 className="anim-slide-up" style={{ transitionDelay: '0.1s' }}>Frequently Asked Questions</h2></div><div className="faq-list">{questions.map(([q, answer], i) => <div className="anim-slide-up" style={{ transitionDelay: `${i * 0.15}s` }} key={q}><div className={`faq-item ${openFaq === i ? 'is-open' : ''}`}><h3><button aria-expanded={openFaq === i} aria-controls={`answer-${i}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}><span className="faq-index">Q<span style={{fontFamily: 'Valentine, serif'}}>.</span>{String(i + 1).padStart(3, '0')} <i>/</i></span><span className="faq-question">{q}</span><span className="faq-toggle">{openFaq === i ? '−' : '+'}</span></button></h3><div className="faq-answer" id={`answer-${i}`} hidden={openFaq !== i}><p>{answer.split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{fontFamily: 'Gottak, sans-serif'}}>{part}</span> : part)}</p></div></div></div>)}</div></div>
+            <div className="faq-grid"><div className="faq-intro"><h2 className="anim-slide-up" style={{ transitionDelay: '0.1s' }}>Frequently Asked Questions</h2></div><div className="faq-list">{questions.map(([q, answer], i) => <div className="anim-slide-up" style={{ transitionDelay: `${i * 0.15}s` }} key={q}><div className={`faq-item ${openFaq === i ? 'is-open' : ''}`}><h3><button aria-expanded={openFaq === i} aria-controls={`answer-${i}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}><span className="faq-index">Q<span style={{fontFamily: 'Valentine, serif'}}>.</span>{String(i + 1).padStart(3, '0')} <i>/</i></span><span className="faq-question">{q}</span><span className="faq-toggle">{openFaq === i ? '−' : '+'}</span></button></h3><div className="faq-answer" id={`answer-${i}`} hidden={openFaq !== i}><p>{answer.split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{fontFamily: 'LilGrotesk, sans-serif'}}>{part}</span> : part)}</p></div></div></div>)}</div></div>
         </section>
         <RevolvingFooter register={register} />
       </main>
       <footer>
         <div className="footer-top-row" style={{ display: "flex", width: "100%", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "20px" }}>
         <div className="footer-links" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'left', fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>
-          <span style={{ fontFamily: "Gottak, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Quick Links</span>
+          <span style={{ fontFamily: "LilGrotesk, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Quick Links</span>
           <a href="https://www.immersivetourz.com/bmsitm/index.html" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
           <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
           <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>
         </div>
         <div className="footer-contact" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'center', fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>
-          <span style={{ fontFamily: "Gottak, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Contact Us</span>
+          <span style={{ fontFamily: "LilGrotesk, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Contact Us</span>
           <a href="tel:+919141194259" className="footer-link">Vaibhav B - 9141194259</a>
           <a href="tel:+917975959500" className="footer-link">Gagan - 7975959500</a>
           <a href="tel:+919606295562" className="footer-link">Deepthi Jain - 9606295562</a>
         </div>
         <a className="footer-address" href="https://maps.app.goo.gl/osHYqqHTrCKcRak88" target="_blank" rel="noopener noreferrer" aria-label="Open BMS Institute of Technology & Management in Google Maps" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px', color: 'var(--muted)', fontWeight: 500, textAlign: 'right' }}>
-          <span style={{ fontFamily: "Gottak, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px", lineHeight: 1.4 }}>BMS Institute of Technology<br/>& Management</span>
+          <span style={{ fontFamily: "LilGrotesk, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px", lineHeight: 1.4 }}>BMS Institute of Technology<br/>& Management</span>
           <span style={{ lineHeight: 1.6, fontSize: "12px" }}>Doddaballapur Main Road, Avalahalli, Yelahanka,<br/>Bengaluru, Karnataka 560064</span>
         </a>
         </div>
@@ -238,7 +239,7 @@ function RevolvingFooter({ register }) {
   const currentSpeedRef = useRef(1)
 
   const sectionRef = useRef(null)
-  const isVisibleRef = useRef(true)
+  const isVisibleRef = useRef(false)
 
   useEffect(() => {
     let halfWidth = 0;
@@ -329,7 +330,9 @@ function RevolvingFooter({ register }) {
         const x = Math.cos(jitterAngle) * jitterRadius;
         const y = Math.sin(jitterAngle) * jitterRadius;
 
-        const sizeScale = isPhone ? 0.30 + 0.30 * mapped_p : 0.5 + 0.5 * mapped_p;
+        const sizeScale = isPhone
+          ? (el.phoneWidthBase / el.widthBase) * (0.30 + 0.30 * mapped_p)
+          : 0.62 + 0.62 * mapped_p;
         const radialAngleDeg = ((jitterAngle % (2 * Math.PI)) * 180 / Math.PI);
         const tilt = radialAngleDeg + 90 + el.tiltJitter;
 
@@ -338,7 +341,7 @@ function RevolvingFooter({ register }) {
         else if (mapped_p > 0.95) opacity = (1 - mapped_p) / 0.05;
 
         // Cards outside the clipped section need no transform or paint work.
-        const margin = el.widthBase * (isPhone ? 1.6 : 0.8);
+        const margin = isPhone ? el.phoneWidthBase * 1.6 : el.widthBase * 1.4;
         const visible = Math.abs(x) < halfWidth + margin && Math.abs(y) < halfHeight + margin;
         if (!visible) {
           if (node.style.visibility !== 'hidden') {
@@ -358,7 +361,6 @@ function RevolvingFooter({ register }) {
       rafRef.current = requestAnimationFrame(animate)
     }
 
-    rafRef.current = requestAnimationFrame(animate)
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       observer.disconnect();
@@ -389,7 +391,7 @@ function RevolvingFooter({ register }) {
                     top: 0
                   }}
                 >
-                  <img src={getImage(el.img)} alt="" loading="eager" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} />
+                  <img src={getImage(el.img)} alt="" width="256" height="256" loading="lazy" fetchPriority="low" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }} />
                 </div>
               )
             })}

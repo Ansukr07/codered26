@@ -24,11 +24,16 @@ export default function RegisterButton({ onClick, onMouseEnter, onMouseLeave, hr
   };
 
   const handleClick = (e) => {
+    if (href) {
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Registration is coming soon. Please check back soon.' }));
+    }
+    setIsHovered(false);
     setIsPressed(true);
     clearTimeout(pressTimer.current);
     pressTimer.current = setTimeout(() => {
       setIsPressed(false);
-    }, 5000);
+    }, 1000);
     
     if (onClick) onClick(e);
   };

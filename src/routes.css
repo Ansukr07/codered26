@@ -1,9 +1,9 @@
-.app-page--about :is(#home, #tracks, #sponsors, #prizes, #timeline, #faqs),
-.app-page--tracks :is(#home, #about, #sponsors, #prizes, #timeline, #faqs),
-.app-page--prizes :is(#home, #about, #tracks, #sponsors, #timeline, #faqs),
-.app-page--schedule :is(#home, #about, #tracks, #sponsors, #prizes, #faqs),
-.app-page--sponsors :is(#home, #about, #tracks, #prizes, #timeline, #faqs),
-.app-page--faq :is(#home, #about, #tracks, #sponsors, #prizes, #timeline) {
+.app-page--about :is(#home, #why-participate, #tracks, #sponsors, #prizes, #timeline, #faqs),
+.app-page--tracks :is(#home, #about, #why-participate, #sponsors, #prizes, #timeline, #faqs),
+.app-page--prizes :is(#home, #about, #why-participate, #tracks, #sponsors, #timeline, #faqs),
+.app-page--schedule :is(#home, #about, #why-participate, #tracks, #sponsors, #prizes, #faqs),
+.app-page--sponsors :is(#home, #about, #why-participate, #tracks, #prizes, #timeline, #faqs),
+.app-page--faq :is(#home, #about, #why-participate, #tracks, #sponsors, #prizes, #timeline) {
   display: none;
 }
 

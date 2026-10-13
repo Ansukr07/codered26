@@ -25,7 +25,7 @@
   background-color: var(--sp-bg);
   color: var(--sp-text);
   padding: 8rem 2.5rem;
-  font-family: Grotesk, sans-serif;
+  font-family: LilGrotesk, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
@@ -125,6 +125,11 @@
   transition: filter 0.35s ease, opacity 0.35s ease;
 }
 
+.sponsors-logo.is-fueler img {
+  filter: none;
+  opacity: 1;
+}
+
 /* Specific Logo Sizing */
 .sponsors-logo.is-hackerearth {
   width: clamp(210px, 24vw, 310px);
@@ -142,6 +147,10 @@
   width: clamp(180px, 20vw, 260px);
 }
 
+.sponsors-logo.is-fueler {
+  width: clamp(160px, 18vw, 240px);
+}
+
 .sponsors-logo.is-xyz {
   width: clamp(110px, 13vw, 170px);
 }
@@ -157,7 +166,7 @@
 }
 
 .sponsors-coming-soon span {
-  font-family: Gottak, sans-serif;
+  font-family: LilGrotesk, sans-serif;
   font-size: clamp(1.4rem, 2.3vw, 2.2rem);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -235,6 +244,9 @@
     filter: brightness(0) invert(1);
     opacity: 1;
   }
+  .sponsors-grid__item:hover .sponsors-logo.is-fueler img {
+    filter: none;
+  }
   .sponsors-grid__item:hover .sponsors-coming-soon span {
     color: #ffffff;
   }
@@ -283,7 +295,7 @@
 
 [data-arrow-button] span {
   display: inline-block;
-  font-family: Gottak, sans-serif;
+  font-family: LilGrotesk, sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--sp-bg);

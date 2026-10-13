@@ -185,8 +185,8 @@ export function TracksSection() {
 
                 <div className="track-card-content">
                   <p className="tp-p-medium">
-                    <strong>{track.desc.substring(0, track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{ fontFamily: 'Gottak, sans-serif' }}>{part}</span> : part)}</strong>
-                    {track.desc.substring(track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{ fontFamily: 'Gottak, sans-serif' }}>{part}</span> : part)}
+                    <strong>{track.desc.substring(0, track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{ fontFamily: 'LilGrotesk, sans-serif' }}>{part}</span> : part)}</strong>
+                    {track.desc.substring(track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{ fontFamily: 'LilGrotesk, sans-serif' }}>{part}</span> : part)}
                   </p>
 
                   {/* Huge striped background number a-la timeline */}
@@ -222,13 +222,41 @@ const PrizePixelGrid = () => (
   </div>
 );
 
-const SparkleSVG = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className={`sparkle-svg ${className}`}>
-    <path fill="#ffffff" d="M50 0 C50 35, 65 50, 100 50 C65 50, 50 65, 50 100 C50 65, 35 50, 0 50 C35 50, 50 35, 50 0 Z" />
-  </svg>
+const SparkleSVG = ({ className, style, asset = '/assets-for-prize/stars.svg' }) => (
+  <img src={asset} alt="" aria-hidden="true" className={`prize-stars-asset ${className}`} style={style} />
 );
 
+const animatePrizeAsset = (event, isHovering) => {
+  const image = event.currentTarget.querySelector('.prize-award-asset');
+  if (!image || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const currentTransform = getComputedStyle(image).transform;
+  image.getAnimations().forEach(animation => animation.cancel());
+
+  if (isHovering) {
+    image.animate(
+      [
+        { transform: currentTransform },
+        { transform: 'translateY(2px)' },
+        { transform: currentTransform },
+      ],
+      { duration: 2400, iterations: Infinity, easing: 'ease-in-out' }
+    );
+    return;
+  }
+
+  image.animate(
+    [{ transform: currentTransform }, { transform: 'translateY(14px)' }],
+    { duration: 850, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+  );
+};
+
 export function PrizesSection() {
+  const prizes = [
+    { place: '1st place', amount: '₹30,000', asset: '/assets-for-prize/1st.svg', sparkle: 's1' },
+    { place: '2nd place', amount: '₹20,000', asset: '/assets-for-prize/2nd.svg', sparkle: 's3', starAsset: '/assets-for-prize/black%20star.svg' },
+  ];
+
   return (
     <section id="prizes" className="tp-section tp-section--prizes">
       <div className="tp-container">
@@ -266,9 +294,8 @@ export function PrizesSection() {
 
             {/* We position the sparkles manually so they are visible and don't hide behind the wide tag */}
             <div className="prize-illustration">
-              <SparkleSVG className="s1" style={{ top: '25%', left: '30%', width: '45px' }} />
-              <SparkleSVG className="s2" style={{ top: '65%', right: '20%', width: '60px' }} />
-              <SparkleSVG className="s4" style={{ top: '20%', right: '35%', width: '30px' }} />
+              <SparkleSVG className="s1 prize-pool-star prize-pool-star--left" />
+              <SparkleSVG className="s2 prize-pool-star prize-pool-star--right" />
             </div>
 
             {/* Massive Center Text (Light text on dark background) */}
@@ -286,7 +313,43 @@ export function PrizesSection() {
 
         </div>
 
-        <div className="prizes-title-row"><div className="prizes-title-text"><h3 className="tp-h-regular prizes-title-main">Prize distribution</h3><h3 className="tp-h-regular tp-opacity-50">Details to be announced</h3></div></div>
+        <div className="prizes-title-row">
+          <div className="prizes-title-text">
+            <h3 className="tp-h-regular prizes-title-main">Prize distribution</h3>
+            <h3 className="tp-h-regular tp-opacity-50">Applies to all the tracks</h3>
+          </div>
+        </div>
+        <div className="prize-outer-container">
+          {prizes.map((prize, index) => (
+            <article
+              className={`prize-card prize-card-${index + 1}`}
+              key={prize.place}
+              onMouseEnter={event => animatePrizeAsset(event, true)}
+              onMouseLeave={event => animatePrizeAsset(event, false)}
+            >
+              <div className="prize-card-top">
+                <div className="prize-tag-container">
+                  <PrizePixelGrid />
+                  <div className="prize-tag-inner">
+                    <div className="prize-tag-hash">#</div>
+                    <div className="prize-tag-text">{prize.place}</div>
+                    <div className="prize-tag-bracket">{"}"}</div>
+                  </div>
+                </div>
+                <div className="prize-illustration">
+                  <img className="prize-award-asset" src={prize.asset} alt={`${prize.place} prize illustration`} />
+                  <SparkleSVG className={prize.sparkle} asset={prize.starAsset} />
+                  <SparkleSVG className="s2" asset={prize.starAsset} />
+                  <SparkleSVG className="s4" asset={prize.starAsset} />
+                  <SparkleSVG className="s5" asset={prize.starAsset} />
+                </div>
+              </div>
+              <div className="prize-card-bottom">
+                <h4 className="prize-amount">{prize.amount}</h4>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

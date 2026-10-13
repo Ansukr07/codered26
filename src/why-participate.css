@@ -34,7 +34,7 @@
 .shift-participate-photo figcaption {
   padding: 12px 0 0;
   color: #51483e;
-  font: 600 11px/1.2 Gottak, sans-serif;
+  font: 600 11px/1.2 LilGrotesk, sans-serif;
   text-align: right;
 }
 
@@ -64,7 +64,7 @@
   top: 16px;
   right: 22px;
   color: #ed2024;
-  font: 400 36px/1 Gottak, sans-serif;
+  font: 400 36px/1 LilGrotesk, sans-serif;
 }
 
 .shift-participate-card:nth-child(1),
@@ -98,7 +98,7 @@
   margin: 0;
   max-width: 35ch;
   color: #51483e;
-  font: 400 clamp(15px, 1.2vw, 17px)/1.45 Grotesk, Gottak, sans-serif;
+  font: 400 clamp(15px, 1.2vw, 17px)/1.45 LilGrotesk, LilGrotesk, sans-serif;
 }
 
 .shift-participate-card:nth-child(1) p,

@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './Navbar.css';
-import logoImage from './assets/logo.png';
-
-const registrationUrl = 'https://unstop.com/o/qjIA3CN?utm_medium=Share&utm_source=ecell-bmsitm&utm_campaign=Online_coding_challenge';
+const logoImage = '/logos/Asset%2026.svg';
 
 const pageLinks = [
   ['home', 'Home'],
@@ -18,10 +16,21 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [notice, setNotice] = useState('');
+  const noticeTimeout = useRef(null);
   const navRef = useRef(null);
   const lastScrollY = useRef(0);
   const scrollAnchorY = useRef(0);
   const scrollDirection = useRef(0);
+
+  const showNotice = (message) => {
+    if (noticeTimeout.current) window.clearTimeout(noticeTimeout.current);
+    setNotice(message);
+    setIsOpen(false);
+    noticeTimeout.current = window.setTimeout(() => {
+      setNotice('');
+      noticeTimeout.current = null;
+    }, 3000);
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -80,11 +89,16 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    const onSiteNotice = (event) => showNotice(event.detail || 'Coming soon.');
+    window.addEventListener('site-notice', onSiteNotice);
+    return () => {
+      window.removeEventListener('site-notice', onSiteNotice);
+      if (noticeTimeout.current) window.clearTimeout(noticeTimeout.current);
+    };
+  }, []);
+
   const closeMenu = () => setIsOpen(false);
-  const showNotice = (message) => {
-    setNotice(message);
-    closeMenu();
-  };
 
   const followPageLink = (page) => (event) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -123,13 +137,17 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
           <div className="nav-footer">
             <button type="button" className="nav-btn-pitchdeck" onClick={() => showNotice('The PPT template is not available yet. Please check back for the official download.')}>PPT TEMPLATE</button>
             <div className="nav-footer-row">
-              <a className="nav-btn-action" href={registrationUrl} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>REGISTER NOW</a>
+              <button type="button" className="nav-btn-action" onClick={() => showNotice('Registration is coming soon. Please check back soon.')}>REGISTER NOW</button>
               <button type="button" className="nav-btn-action" onClick={() => showNotice('The brochure is not available yet. Please check back for the official download.')}>BROCHURE</button>
             </div>
           </div>
         </div>
       </nav>
-      {notice && <div className="nav-notice" role="status"><span>{notice}</span><button type="button" onClick={() => setNotice('')} aria-label="Dismiss notice">×</button></div>}
+      {notice && (
+        <div className="nav-notice" role="status" aria-live="polite">
+          <span>Coming soon!</span>
+        </div>
+      )}
     </>
   );
 };

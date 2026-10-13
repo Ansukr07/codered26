@@ -60,8 +60,8 @@ export default function SponsorsSection() {
             <SponsorCard href="https://unstop.com/" name="Unstop" logoSrc="/sponsors/unstop.svg" logoClass="is-unstop" />
           </div>
           <div className="sponsors-grid-bottom">
-            <SponsorCard isComingSoon />
             <SponsorCard href="https://gen.xyz/" name=".xyz" logoSrc="/sponsors/xyz-logo-white.svg" logoClass="is-xyz" />
+            <SponsorCard href="https://fueler.io/" name="Fueler" logoSrc="/sponsors/fueler.svg" logoClass="is-fueler" />
             <SponsorCard isComingSoon />
           </div>
         </div>
