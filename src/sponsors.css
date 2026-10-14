@@ -433,7 +433,7 @@
 
 @media (max-width: 768px) {
   .sponsors-section {
-    padding: 4rem 1.25rem 4rem;
+    padding: 6rem 1.25rem 4rem;
   }
   .sponsors-grid-top {
     grid-template-columns: 1fr;

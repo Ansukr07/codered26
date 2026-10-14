@@ -225,8 +225,8 @@ function PageContent({ initialPage }) {
           <span style={{ fontFamily: "LilGrotesk, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Quick Links</span>
           <a href="/about" className="footer-link">About Code Red 2026</a>
           <a href="https://www.immersivetourz.com/bmsitm/index.html" target="_blank" rel="noopener noreferrer" className="footer-link">Campus Map</a>
-          <a href="https://drive.google.com/file/d/11r5pY0Dj753Wgoakf-dTFa_RXWh60Q13/view" target="_blank" rel="noopener noreferrer" className="footer-link">Code of Conduct</a>
-          <a href="https://drive.google.com/file/d/1cKVELBjOxDpR2r8XHxjsIPd6tag_Y5BS/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="footer-link">Privacy Policy</a>
+          <a href="#code-of-conduct" onClick={(event) => { event.preventDefault(); window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Coming soon!' })); }} className="footer-link">Code of Conduct</a>
+          <a href="#privacy-policy" onClick={(event) => { event.preventDefault(); window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Coming soon!' })); }} className="footer-link">Privacy Policy</a>
         </div>
         <div className="footer-contact" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'center', fontSize: '13px', color: 'var(--muted)', fontWeight: 500 }}>
           <span style={{ fontFamily: "LilGrotesk, sans-serif", fontSize: "16px", fontWeight: 600, color: "#fff", display: "block", marginBottom: "6px", letterSpacing: "1px" }}>Contact Us</span>
