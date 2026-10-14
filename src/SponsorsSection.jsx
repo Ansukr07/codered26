@@ -69,7 +69,7 @@ export default function SponsorsSection() {
           <div className="button-icon__wrap is--duplicate"><div className="button-icon"><DotArrowIcon /></div></div>
           <div className="button-text__wrap">
             <div className="text-wrap__innner">
-              <span>Become a sponsor</span>
+              <span>Become a partner</span>
             </div>
           </div>
           <div className="button-icon__wrap is--main"><div className="button-icon"><DotArrowIcon /></div></div>
