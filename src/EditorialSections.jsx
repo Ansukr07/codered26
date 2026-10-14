@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { TracksSection, PrizesSection } from './TracksAndPrizes'
+import GallerySection from './GallerySection'
 import SponsorsSection from './SponsorsSection'
 import RegisterButton from './components/RegisterButton'
 import './editorial.css'
@@ -258,5 +259,6 @@ export default function EditorialSections({ page = 'home' }) {
         </div>
       </div>
     </section>}
+    {show('schedule') && <GallerySection followedByFaq={page === 'home'} />}
   </div>
 }
