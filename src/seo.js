@@ -6,6 +6,7 @@ export const pages = {
   prizes: { path: '/prizes', title: '₹2,00,000 Hackathon Prize Pool | Code Red 2026', description: 'See prizes and awards for Code Red 2026, the national 24-hour product development sprint at BMSIT&M, Bengaluru, with a total ₹2,00,000 prize pool.' },
   schedule: { path: '/schedule', title: 'Hackathon Schedule & Timeline | Code Red 2026', description: 'See the Code Red 2026 schedule, from registration and online evaluation rounds to the 24-hour grand finale at BMSIT&M, Bengaluru.' },
   sponsors: { path: '/sponsors', title: 'Partners | Code Red 2026 at BMSIT&M', description: 'Meet the partners supporting student builders at BMSIT&M’s national product development sprint, Code Red 2026.' },
+  team: { path: '/team', title: 'Meet the Team | Code Red 2026', description: 'Meet the student team behind Code Red 2026 at BMSIT&M, from coordinators to technology, design, marketing, events, relations, content and media.' },
   faq: { path: '/faq', title: 'Eligibility, Team Size, Fees & FAQs | Code Red 2026', description: 'Find Code Red 2026 answers about student eligibility, teams of 3–4, registration fees, hardware, hospitality and the 3–4 December finale in Bengaluru.' },
   notFound: { path: '/404', title: 'Page Not Found | Code Red 2026', description: 'This page could not be found. Explore Code Red 2026’s event details, tracks, prizes and frequently asked questions.' },
 }

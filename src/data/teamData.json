@@ -1,0 +1,223 @@
+{
+  
+  "Co ordinators": [
+    {
+      "name": "Vaibhav Balakundi",
+      "position": "President",
+      "image": "./assets/team/vaibhav.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Milan S",
+      "position": "Mentor",
+      "image": "./assets/team/milan.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "P Deepthi Jain",
+      "position": "Vice President",
+      "image": "./assets/team/deepthijain.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Gagan H S",
+      "position": "Vice President",
+      "image": "./assets/team/gaganhs.jpeg",
+      "socials": {"instagram": null, "linkedin": null}
+    }
+  ],
+  "tech_domain": [
+    {
+      "name": "Ansu Kumar",
+      "position": "Tech Head",
+      "image": "./assets/team/ansu.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Krish Jain",
+      "position": "Tech Vice Head",
+      "image": "./assets/team/krishjain.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Archit Kumar",
+      "position": "Tech Associate",
+      "image": "./assets/team/archit.jpeg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Vansh Baranwal",
+      "position": "Tech Associate",
+      "image": "./assets/team/vansh.jpeg",
+      "socials": {"instagram": null, "linkedin": null}
+    }
+  ],
+  "design_domain": [
+    {
+      "name": "Jasvanti M",
+      "position": "Design Head",
+      "image": "./assets/team/jasvanti.jpeg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Raashi A",
+      "position": "Vice Design Head",
+      "image": "./assets/team/raashi.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Gaurav S",
+      "position": "Design Associate",
+      "image": "./assets/team/gaurav.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Disha Kanmuse",
+      "position": "Design Associate",
+      "image": "./assets/team/disha.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    }
+  ],
+  "media_marketing": [
+    {
+      "name": "Manal Gupta",
+      "position": "Marketing Head",
+      "image": "./assets/team/manal.png",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Ujwal U",
+      "position": "Marketing Vice Head",
+      "image": "./assets/team/ujwal.png",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Srilakshmi",
+      "position": "Marketing Associate",
+      "image": "./assets/team/srilakshmi.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Poojit Sriram",
+      "position": "Marketing Associate",
+      "image": "./assets/team/poojit.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Namratha R Bagade",
+      "position": "Marketing Associate",
+      "image": "./assets/team/namratha.png",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Abhyuday Kaushik",
+      "position": "Marketing Associate",
+      "image": "./assets/team/abhyuday.png",
+      "socials": {"instagram": null, "linkedin": null}
+    }
+  ],
+  "events_ops": [
+    {
+      "name": "Dhyeya Talupula",
+      "position": "Event/Ops Head",
+      "image": "./assets/team/Dhyeya.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Mohammed Talha",
+      "position": "Event/Ops Vice Head",
+      "image": "./assets/team/talha.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Rishav Singh",
+      "position": "Event/Ops Associate",
+      "image": "./assets/team/rishav.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Aadya Bajpai",
+      "position": "Events/Ops Associate",
+      "image": "./assets/team/aadya.jpeg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Bhuvan Shivaprasad",
+      "position": "Events/Ops Associate",
+      "image": "./assets/team/bhuvan_shiva.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Jiya Jain",
+      "position": "Events/Ops Associate",
+      "image": "./assets/team/jiya.jpeg",
+      "socials": {"instagram": null, "linkedin": null}
+    }
+  ],
+  "corporate_relations": [
+    {
+      "name": "Arush Singh",
+      "position": "Corporate Relations Head",
+      "image": "./assets/team/arush.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Harshith Kumar Medathati",
+      "position": "Corporate Relations Associate",
+      "image": "./assets/team/harshith.png",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Bhuvan Tej Reddy Seethi",
+      "position": "Corporate Relations Associate",
+      "image": "./assets/team/bhuvan.jpeg",
+      "socials": {"instagram": null, "linkedin": null}
+    }
+  ],
+  "content_team": [
+    {
+      "name": "Parikshith S",
+      "position": "Content Head",
+      "image": "./assets/team/parikshit.png",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "N\u00a0J Jayakeerthy",
+      "position": "Content Vice Head",
+      "image": "./assets/team/jayakeerthi.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Vimarsha V",
+      "position": "Content Associate",
+      "image": "./assets/team/vimarsha.jpg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Kushadhi J Yadav",
+      "position": "Content Associate",
+      "image": "./assets/team/kushadhi.jpeg",
+      "socials": {"instagram": null, "linkedin": null}
+    }
+  ],
+  "farewell_chronicle": [
+    {
+      "name": "Hitesh R",
+      "position": "Media Head",
+      "image": "./assets/team/hitesh.jpeg",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Bhanu Prasad N",
+      "position": "Media Vice Head",
+      "image": "./assets/team/bhanu.JPG",
+      "socials": {"instagram": null, "linkedin": null}
+    },
+    {
+      "name": "Fardeen Khan K",
+      "position": "Corporate Relations Head",
+      "image": "./assets/team/fardeen.jpeg",
+      "socials": {"instagram": null, "linkedin": null}
+    }
+  ]
+}

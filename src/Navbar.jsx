@@ -8,6 +8,7 @@ const pageLinks = [
   ['prizes', 'Prizes'],
   ['schedule', 'Schedule'],
   ['sponsors', 'Partners'],
+  ['team', 'Team'],
   ['faq', 'FAQ'],
 ];
 

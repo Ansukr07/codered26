@@ -8,6 +8,7 @@ import Navbar from './Navbar.jsx'
 import EditorialSections from './EditorialSections.jsx'
 import './routes.css'
 import RegisterButton from './components/RegisterButton'
+import TeamPage from './TeamPage.jsx'
 import { pages, updateSeo } from './seo.js'
 
 const base = '/codered2026/codered2026'
@@ -38,7 +39,7 @@ const a = minRadius;
 const b = maxRadius - minRadius;
 const I_max = a * 1 + (b / 2) * 1 * 1;
 
-const pageNames = ['home', 'about', 'tracks', 'prizes', 'schedule', 'sponsors', 'faq'];
+const pageNames = ['home', 'about', 'tracks', 'prizes', 'schedule', 'sponsors', 'faq', 'team'];
 
 function pageFromLocation() {
   if (typeof window === 'undefined') return 'home';
@@ -182,9 +183,9 @@ function PageContent({ initialPage }) {
     <div ref={appRef} className={`app-page app-page--${currentPage}`}>
             <Navbar activePage={currentPage} onNavigate={navigatePage} />
       <main id="main">
-        {currentPage !== 'home' && <h1 className="sr-only">{pages[currentPage].title}</h1>}
+        {currentPage !== 'home' && currentPage !== 'team' && <h1 className="sr-only">{pages[currentPage].title}</h1>}
         {currentPage === 'notFound' && <section style={{ padding: '10rem 6%' }}><h2>Page not found</h2><p>The page you requested is unavailable.</p><a href="/">Explore Code Red 2026</a></section>}
-        <EditorialSections key={currentPage} page={currentPage} />
+        {currentPage === 'team' ? <TeamPage /> : <EditorialSections key={currentPage} page={currentPage} />}
         {['home', 'faq'].includes(currentPage) && <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
             <noscript><dl>{questions.map(([question, answer]) => <div key={question}><dt>{question}</dt><dd>{answer}</dd></div>)}</dl></noscript>
             <div className="faq-grid">
