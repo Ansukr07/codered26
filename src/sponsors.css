@@ -442,6 +442,7 @@
   .sponsors-grid-bottom {
     grid-template-columns: 1fr;
   }
+  .sponsors-grid-top .is-coming-soon,
   .sponsors-grid-bottom .is-coming-soon {
     display: none;
   }

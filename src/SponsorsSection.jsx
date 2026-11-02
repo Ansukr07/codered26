@@ -56,7 +56,7 @@ export default function SponsorsSection() {
         </div>
         <div className="sponsors-bento">
           <div className="sponsors-grid-top">
-            <SponsorCard href="https://www.hackerearth.com/" name="HackerEarth" logoSrc="/sponsors/hackerearth.svg" logoClass="is-hackerearth" />
+            <SponsorCard isComingSoon />
             <SponsorCard href="https://unstop.com/" name="Unstop" logoSrc="/sponsors/unstop.svg" logoClass="is-unstop" />
           </div>
           <div className="sponsors-grid-bottom">
