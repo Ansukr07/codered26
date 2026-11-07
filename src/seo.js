@@ -1,5 +1,13 @@
+import { trackRoutes } from './trackData.js'
+
 export const siteUrl = 'https://www.codered26.xyz'
 export const pages = {
+  ...Object.fromEntries(trackRoutes.map(route => [route.page, {
+    path: route.path,
+    title: route.kind === 'problems' ? `${route.track.title} — Problem Statements | Code Red 2026` : route.kind === 'brief' ? `${route.brief.title} — ${route.track.title} PS ${route.brief.problemNumber} | Code Red 2026` : `${route.track.title} — Track ${route.track.numeral} | Code Red 2026`,
+    description: (route.brief || route.track).summary,
+    isMock: true,
+  }])),
   home: { path: '/', title: 'Code Red 2026 | 24-Hour Hackathon in Bengaluru | BMSIT&M', description: 'Join Code Red 2026, E-Cell BMSIT&M’s national 24-hour product sprint in Bengaluru on 3–4 December. Teams of 3–4 compete for a ₹2,00,000 prize pool.' },
   about: { path: '/about', title: 'About Code Red 2026 | BMSIT&M Student Hackathon', description: 'Discover Code Red 2026 at BMSIT&M, Bengaluru: a national student product development sprint, online selection rounds and a 24-hour offline finale.' },
   tracks: { path: '/tracks', title: 'Hackathon Tracks & Problem Statements | Code Red 2026', description: 'Explore the four company based tracks for Code Red 2026 at BMSIT&M, Bengaluru. Official problem statements and track details will be announced here.' },
@@ -28,7 +36,7 @@ export function updateSeo(page) {
     element.content = content
   }
   setMeta('name', 'description', info.description)
-  setMeta('name', 'robots', page === 'notFound' ? 'noindex, follow' : 'index, follow, max-image-preview:large')
+  setMeta('name', 'robots', page === 'notFound' || info.isMock ? 'noindex, follow' : 'index, follow, max-image-preview:large')
   for (const [name, value] of Object.entries({ 'og:title': info.title, 'og:description': info.description, 'og:url': siteUrl + info.path })) setMeta('property', name, value)
   setMeta('name', 'twitter:title', info.title)
   setMeta('name', 'twitter:description', info.description)

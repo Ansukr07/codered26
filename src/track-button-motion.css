@@ -1,0 +1,70 @@
+/* Partner-button motion with the track buttons' existing colours and arrow glyphs. */
+.track-detail :is(.td-button, .ps-card-action).td-button--motion {
+  --td-button-motion: 0;
+  --td-button-motion-shift: 0px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: border-color .3s ease;
+}
+.track-detail .td-button--motion:has(.td-motion-arrow--main) {
+  --td-button-motion-shift: calc(1em + var(--td-button-gap,20px));
+}
+.track-detail .td-button--motion > .td-motion-text {
+  position: relative;
+  display: block;
+  flex: none;
+  height: 1.3em;
+  line-height: 1.3;
+}
+.td-motion-mask {
+  display: flex;
+  align-items: center;
+  height: 1.5em;
+  margin-block: -.1em;
+  padding-inline: .05em;
+  margin-inline: -.05em;
+  overflow: hidden;
+  transform: translateX(calc(var(--td-button-motion) * var(--td-button-motion-shift)));
+  transition: transform .525s cubic-bezier(.525,0,0,1);
+}
+.td-motion-label {
+  display: block;
+  white-space: nowrap;
+  line-height: 1.3;
+  text-shadow: 0 1.25em currentColor;
+  transform: translateY(calc(var(--td-button-motion) * -1.25em));
+  transition: transform .45s cubic-bezier(.525,0,0,1);
+}
+.td-button--motion .td-motion-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  height: 1.3em;
+  line-height: 1.3;
+  pointer-events: none;
+  transition: transform .525s cubic-bezier(.525,0,0,1), opacity .35s ease;
+}
+.td-motion-arrow--main {
+  opacity: calc(1 - var(--td-button-motion));
+  transform: translateX(calc(var(--td-button-motion) * 4em)) rotate(calc(var(--td-button-motion) * 45deg));
+}
+.td-motion-arrow--incoming {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  opacity: var(--td-button-motion);
+  transform: translate(calc((var(--td-button-motion) - 1) * var(--td-button-motion-shift)), -50%) rotate(calc((var(--td-button-motion) - 1) * 45deg));
+}
+/* The button stays in place while its contents move. */
+.track-detail .td-button.td-button--motion:is(:hover,:focus-visible,:active) { transform: none; box-shadow: none; }
+.track-detail .td-button.td-button--motion:focus-visible { --td-button-motion: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .track-detail .td-button.td-button--motion:hover { --td-button-motion: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track-detail :is(.td-button, .ps-card-action).td-button--motion { --td-button-motion: 0 !important; }
+  .td-button--motion .td-motion-label { text-shadow: none; }
+  .td-button--motion .td-motion-arrow--incoming { display: none; }
+}

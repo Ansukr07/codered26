@@ -73,7 +73,7 @@ const DotArrowSVG = () => (
   </svg>
 );
 
-export default function EditorialSections({ page = 'home' }) {
+export default function EditorialSections({ page = 'home', onNavigate }) {
   const show = (section) => page === 'home' || page === section;
   const containerRef = useRef(null);
   const roundsRef = useRef(null);
@@ -226,7 +226,7 @@ export default function EditorialSections({ page = 'home' }) {
       </div>
     </section>}
 
-    {show('tracks') && <TracksSection />}
+    {show('tracks') && <TracksSection onNavigate={onNavigate} />}
     {show('sponsors') && <SponsorsSection />}
     {show('prizes') && <PrizesSection />}
 

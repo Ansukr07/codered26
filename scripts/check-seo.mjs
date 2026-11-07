@@ -4,7 +4,7 @@ import { pages, siteUrl } from '../src/seo.js'
 
 const titles = new Set()
 for (const [page, info] of Object.entries(pages)) {
-  const file = page === 'home' ? 'dist/index.html' : page === 'notFound' ? 'dist/404.html' : `dist/${page}/index.html`
+  const file = page === 'home' ? 'dist/index.html' : page === 'notFound' ? 'dist/404.html' : `dist${info.path}/index.html`
   const html = await readFile(file, 'utf8')
   assert.equal((html.match(/<title>/g) || []).length, 1, `${page}: one title`)
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1, `${page}: one H1`)
@@ -17,6 +17,7 @@ for (const [page, info] of Object.entries(pages)) {
   assert.equal(schema['@context'], 'https://schema.org')
   assert(html.includes('id="root"><'), `${page}: pre-rendered content`)
   if (page !== 'home') assert(!html.includes('id="home"'), `${page}: no hidden homepage content`)
+  if (info.isMock) assert(html.includes('content="noindex, follow"'), `${page}: mock is not indexed`)
   for (const [, source] of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
     if (!source.startsWith('/') || !/\.(?:svg|webp|png|jpg|js|css)(?:\?|$)/.test(source)) continue
     await access(`dist${decodeURIComponent(source.split('?')[0])}`)
@@ -25,7 +26,7 @@ for (const [page, info] of Object.entries(pages)) {
 const robots = await readFile('dist/robots.txt', 'utf8')
 assert(robots.includes(`Sitemap: ${siteUrl}/sitemap.xml`))
 const sitemap = await readFile('dist/sitemap.xml', 'utf8')
-const crawlablePageCount = Object.keys(pages).filter((p) => p !== 'notFound').length
+const crawlablePageCount = Object.entries(pages).filter(([p, info]) => p !== 'notFound' && !info.isMock).length
 assert.equal((sitemap.match(/<loc>/g) || []).length, crawlablePageCount)
 assert(!sitemap.includes('/404'))
 console.log('SEO checks passed: titles, descriptions, H1s, canonicals, schema, pre-rendering, local assets, robots and sitemap.')

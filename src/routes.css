@@ -11,6 +11,18 @@
   color: #ed2024;
 }
 
+/* Confine the footer blend to empty space after each track brief. */
+.app-page--track-detail .revolving-transition {
+  height: 120px;
+  margin-top: -120px;
+}
+
+.app-page--track-detail .revolving-transition::after {
+  inset: 0;
+  box-shadow: none;
+  background: linear-gradient(to bottom, transparent, #000);
+}
+
 /* Keep a modest gap between route content and the shared footer fade. */
 .app-page--tracks #tracks,
 .app-page--prizes #prizes {

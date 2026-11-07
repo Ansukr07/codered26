@@ -189,6 +189,10 @@
   isolation: isolate;
 }
 
+.track-card .tp-h-medium {
+  font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+}
+
 .track-card-body {
   display: flex;
   flex-direction: column;

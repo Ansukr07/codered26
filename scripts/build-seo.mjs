@@ -12,7 +12,7 @@ const escape = (value) => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;
 for (const [page, info] of Object.entries(pages)) {
   const head = `<title>${escape(info.title)}</title>
     <meta name="description" content="${escape(info.description)}" />
-    <meta name="robots" content="${page === 'notFound' ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
+    <meta name="robots" content="${page === 'notFound' || info.isMock ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
     <link rel="canonical" href="${siteUrl}${info.path}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Code Red 2026" />
@@ -28,11 +28,11 @@ for (const [page, info] of Object.entries(pages)) {
     <meta name="twitter:image" content="${siteUrl}/images/group1.webp" />
     <script id="site-schema" type="application/ld+json">${JSON.stringify(structuredData(page)).replaceAll('<', '\\u003c')}</script>`
   const html = template.replace(/<meta name="description"[\s\S]*?\/>/, '').replace(/<title>.*?<\/title>/, head).replace('<div id="root"></div>', `<div id="root">${render(page)}</div>`)
-  const filename = page === 'home' ? 'dist/index.html' : page === 'notFound' ? 'dist/404.html' : `dist/${page}/index.html`
+  const filename = page === 'home' ? 'dist/index.html' : page === 'notFound' ? 'dist/404.html' : `dist${info.path}/index.html`
   await mkdir(resolve(filename, '..'), { recursive: true })
   await writeFile(filename, html)
 }
 await writeFile('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`)
-await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${Object.entries(pages).filter(([page]) => page !== 'notFound').map(([, info]) => `<url><loc>${siteUrl}${info.path}</loc></url>`).join('')}</urlset>\n`)
-const crawlablePageCount = Object.keys(pages).filter((page) => page !== 'notFound').length
+await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${Object.entries(pages).filter(([page, info]) => page !== 'notFound' && !info.isMock).map(([, info]) => `<url><loc>${siteUrl}${info.path}</loc></url>`).join('')}</urlset>\n`)
+const crawlablePageCount = Object.entries(pages).filter(([page, info]) => page !== 'notFound' && !info.isMock).length
 console.log(`Generated ${crawlablePageCount} crawlable pages, a 404 page, robots.txt and sitemap.xml.`)

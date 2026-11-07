@@ -11,7 +11,6 @@ const groups = [
   ['events_ops', 'Events & operations'],
   ['corporate_relations', 'Corporate relations'],
   ['content_team', 'Content'],
-  ['farewell_chronicle', 'Media & relations'],
 ]
 
 const portrait = (image) => `/team/${image.split('/').pop()}`
@@ -24,7 +23,7 @@ function SocialIcon({ href, label, children }) {
 
 function Member({ person, featured = false, index }) {
   return <article className={`team-member team-reveal${featured ? ' team-member--featured' : ''}`} style={{ '--team-delay': `${(index % 4) * 65}ms` }}>
-    <TeamPortrait src={portrait(person.image)} name={person.name} eager={featured} />
+    <TeamPortrait src={portrait(person.image)} name={person.name} eager={featured} objectPosition={person.imagePosition} objectFit={person.imageFit} scale={person.imageScale} scaleOrigin={person.imageScaleOrigin} filter={person.imageFilter} />
     <div className="team-member-details">
       <h3>{person.name}</h3>
       <p>{person.position}</p>
