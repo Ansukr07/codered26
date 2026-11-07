@@ -9,6 +9,9 @@ import EditorialSections from './EditorialSections.jsx'
 import './routes.css'
 import RegisterButton from './components/RegisterButton'
 import TeamPage from './TeamPage.jsx'
+import TrackDetailPage from './TrackDetailPage.jsx'
+import TrackProblemsPage from './TrackProblemsPage.jsx'
+import { getTrackRoute } from './trackData.js'
 import { pages, updateSeo } from './seo.js'
 
 const base = '/codered2026/codered2026'
@@ -49,7 +52,7 @@ function pageFromLocation() {
     const cleanPath = page === 'home' ? '/' : `/${page}`;
     window.history.replaceState(null, '', `${cleanPath}${window.location.search}`);
   }
-  return pageNames.includes(page) ? page : 'notFound';
+  return pageNames.includes(page) || getTrackRoute(page) ? page : 'notFound';
 }
 
 const bgColors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c', '#e67e22', '#34495e'];
@@ -104,6 +107,8 @@ function App({ initialPage }) {
 function PageContent({ initialPage }) {
   const lenis = useLenis()
   const [currentPage, setCurrentPage] = useState(() => initialPage || pageFromLocation());
+  const trackRoute = getTrackRoute(currentPage);
+  const selectedTrack = trackRoute?.track;
   const [openFaq, setOpenFaq] = useState(null)
   const dialog = useRef(null)
   const appRef = useRef(null)
@@ -180,12 +185,12 @@ function PageContent({ initialPage }) {
   }, [currentPage]);
 
   return <>
-    <div ref={appRef} className={`app-page app-page--${currentPage}`}>
-            <Navbar activePage={currentPage} onNavigate={navigatePage} />
+    <div ref={appRef} className={`app-page app-page--${selectedTrack ? 'track-detail' : currentPage}`}>
+            <Navbar activePage={selectedTrack ? 'tracks' : currentPage} onNavigate={navigatePage} />
       <main id="main">
-        {currentPage !== 'home' && currentPage !== 'team' && <h1 className="sr-only">{pages[currentPage].title}</h1>}
+        {currentPage !== 'home' && currentPage !== 'team' && !selectedTrack && <h1 className="sr-only">{pages[currentPage].title}</h1>}
         {currentPage === 'notFound' && <section style={{ padding: '10rem 6%' }}><h2>Page not found</h2><p>The page you requested is unavailable.</p><a href="/">Explore Code Red 2026</a></section>}
-        {currentPage === 'team' ? <TeamPage /> : <EditorialSections key={currentPage} page={currentPage} />}
+        {trackRoute?.kind === 'problems' ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <TeamPage /> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />}
         {['home', 'faq'].includes(currentPage) && <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
             <noscript><dl>{questions.map(([question, answer]) => <div key={question}><dt>{question}</dt><dd>{answer}</dd></div>)}</dl></noscript>
             <div className="faq-grid">

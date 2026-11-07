@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import './tracks-prizes.css';
+import { tracks } from './trackData.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
   - Row 2 & 3: 2 blocks left + 2 blocks right (split rows)
   - Row 4: 22 blocks (full border row)
 */
-const TrackPixelGrid = () => (
+export const TrackPixelGrid = () => (
   <div className="tp-card-grid-bg">
     {/* Row 1: full row */}
     <div className="tp-block-row tp-block-row--full">
@@ -39,7 +40,7 @@ const TrackPixelGrid = () => (
   </div>
 );
 
-const DotArrowSVG = () => (
+export const DotArrowSVG = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none" className="tp-icon-svg">
     <circle cx="2.481" cy="14.98" r="1.756" fill="currentColor" />
     <circle cx="6.733" cy="15.004" r="1.756" fill="currentColor" />
@@ -57,7 +58,7 @@ const DotArrowSVG = () => (
   </svg>
 );
 
-export function TracksSection() {
+export function TracksSection({ onNavigate }) {
   const containerRef = useRef(null);
   const trackGridRef = useRef(null);
   const [activeTrackIndex, setActiveTrackIndex] = useState(0);
@@ -117,32 +118,11 @@ export function TracksSection() {
     container.scrollTo({ left, behavior: 'smooth' });
   };
 
-  const tracks = [
-    {
-      title: "Track 1",
-      tag: "To be announced",
-      desc: "Track 1: Company based problem statement to be announced.",
-      ghostText: "01",
-    },
-    {
-      title: "Track 2",
-      tag: "To be announced",
-      desc: "Track 2: Company based problem statement to be announced.",
-      ghostText: "02",
-    },
-    {
-      title: "Track 3",
-      tag: "To be announced",
-      desc: "Track 3: Company based problem statement to be announced.",
-      ghostText: "03",
-    },
-    {
-      title: "Track 4",
-      tag: "To be announced",
-      desc: "Track 4: Company based problem statement to be announced.",
-      ghostText: "04",
-    },
-  ];
+  const followTrack = (event, track) => {
+    if (!onNavigate || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    onNavigate(track.problemsPage);
+  };
 
   return (
     <section id="tracks" className="tp-section" ref={containerRef}>
@@ -152,8 +132,8 @@ export function TracksSection() {
         </div>
         <div className="tracks-grid" ref={trackGridRef} onScroll={handleTrackScroll}>
           {tracks.map((track, idx) => (
-            <div key={idx} className={`track-card track-card-${idx + 1}`}>
-              <span className="track-top-flag">{track.tag}</span>
+            <a key={track.slug} href={track.problemsPath} onClick={event => followTrack(event, track)} className={`track-card track-card-${idx + 1}`}>
+              <span className="track-top-flag">To be announced</span>
 
               <div className="track-card-body">
                 <div className="tp-card-top">
@@ -164,22 +144,21 @@ export function TracksSection() {
                       <DotArrowSVG />
                     </div>
                     <div className="tp-inner-text">
-                      <h3 className="tp-h-medium">{track.title}</h3>
+                      <h3 className="tp-h-medium">Track {idx + 1}</h3>
                     </div>
                   </div>
                 </div>
 
                 <div className="track-card-content">
                   <p className="tp-p-medium">
-                    <strong>{track.desc.substring(0, track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{ fontFamily: 'LilGrotesk, sans-serif' }}>{part}</span> : part)}</strong>
-                    {track.desc.substring(track.desc.indexOf(':') + 1).split(/([.,!?'-])/g).map((part, j) => part.match(/[.,!?'-]/) ? <span key={j} style={{ fontFamily: 'LilGrotesk, sans-serif' }}>{part}</span> : part)}
+                    <strong>Track {idx + 1}:</strong> Company based problem statement to be announced.
                   </p>
 
                   {/* Huge striped background number a-la timeline */}
-                  <span className="track-ghost-number">{track.ghostText}</span>
+                  <span className="track-ghost-number" aria-hidden="true">{track.numeral}</span>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
         <div className="mobile-carousel-controls tp-track-carousel-controls" aria-label="Track navigation">
@@ -193,7 +172,7 @@ export function TracksSection() {
           </div>
           <div className="carousel-dots" role="group" aria-label="Choose track">
             {tracks.map((track, index) => (
-              <button key={track.ghostText} className={`carousel-dot${index === activeTrackIndex ? ' active' : ''}`} type="button" aria-label={`Go to ${track.title}`} aria-current={index === activeTrackIndex ? 'true' : undefined} onClick={() => goToTrack(index)} />
+              <button key={track.slug} className={`carousel-dot${index === activeTrackIndex ? ' active' : ''}`} type="button" aria-label={`Go to Track ${index + 1}`} aria-current={index === activeTrackIndex ? 'true' : undefined} onClick={() => goToTrack(index)} />
             ))}
           </div>
         </div>
