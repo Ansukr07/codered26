@@ -190,7 +190,7 @@ function PageContent({ initialPage }) {
       <main id="main">
         {currentPage !== 'home' && currentPage !== 'team' && !selectedTrack && <h1 className="sr-only">{pages[currentPage].title}</h1>}
         {currentPage === 'notFound' && <section style={{ padding: '10rem 6%' }}><h2>Page not found</h2><p>The page you requested is unavailable.</p><a href="/">Explore Code Red 2026</a></section>}
-        {trackRoute?.kind === 'problems' ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <TeamPage /> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />}
+        {trackRoute?.kind === 'problems' || (trackRoute?.kind === 'overview' && selectedTrack.hasOfficialBriefs) ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <TeamPage /> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />}
         {['home', 'faq'].includes(currentPage) && <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
             <noscript><dl>{questions.map(([question, answer]) => <div key={question}><dt>{question}</dt><dd>{answer}</dd></div>)}</dl></noscript>
             <div className="faq-grid">

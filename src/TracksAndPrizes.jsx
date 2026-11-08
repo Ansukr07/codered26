@@ -132,8 +132,8 @@ export function TracksSection({ onNavigate }) {
         </div>
         <div className="tracks-grid" ref={trackGridRef} onScroll={handleTrackScroll}>
           {tracks.map((track, idx) => (
-            <a key={track.slug} href={track.problemsPath} onClick={event => followTrack(event, track)} className={`track-card track-card-${idx + 1}`}>
-              <span className="track-top-flag">To be announced</span>
+            <a key={track.slug} href={track.problemsPath} onClick={event => followTrack(event, track)} className={`track-card track-card-${idx + 1}`} data-partner={track.hasOfficialBriefs ? '' : undefined}>
+              <span className="track-top-flag">{track.hasOfficialBriefs ? `Track ${idx + 1} · ${track.briefKind === 'open-challenge' ? 'Open challenge' : `${track.problemStatements.length} problem ${track.problemStatements.length === 1 ? 'statement' : 'statements'}`}` : 'To be announced'}</span>
 
               <div className="track-card-body">
                 <div className="tp-card-top">
@@ -144,14 +144,14 @@ export function TracksSection({ onNavigate }) {
                       <DotArrowSVG />
                     </div>
                     <div className="tp-inner-text">
-                      <h3 className="tp-h-medium">Track {idx + 1}</h3>
+                      <h3 className="tp-h-medium">{track.hasOfficialBriefs ? track.title : `Track ${idx + 1}`}</h3>
                     </div>
                   </div>
                 </div>
 
                 <div className="track-card-content">
                   <p className="tp-p-medium">
-                    <strong>Track {idx + 1}:</strong> Company based problem statement to be announced.
+                    <strong>Track {idx + 1}:</strong> {track.hasOfficialBriefs ? track.cardDescription : 'Company based problem statement to be announced.'}
                   </p>
 
                   {/* Huge striped background number a-la timeline */}

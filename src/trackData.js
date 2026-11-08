@@ -1,4 +1,7 @@
 import { problemStatementMocks } from './problemStatementMocks.js'
+import { createMyStartupWaveTrack } from './myStartupWaveTrack.js'
+import { createThinkRoboticsTrack } from './thinkRoboticsTrack.js'
+import { createAgnesAITrack } from './agnesAITrack.js'
 
 // Demonstration content only. Replace these records when official briefs arrive.
 const mockTracks = [
@@ -170,6 +173,9 @@ export const tracks = mockTracks.map((track, index) => {
     { name: 'All tracks', note: 'Return to the track overview and explore the other sample briefs.', href: '/tracks' },
   ],
   }
+  if (index === 0) return createMyStartupWaveTrack(base)
+  if (index === 1) return createThinkRoboticsTrack(base)
+  if (index === 2) return createAgnesAITrack(base)
   return { ...base, problemStatements: (problemStatementMocks[index] || []).map(([title, summary, problem], problemIndex) => ({
     ...base,
     id: `ps-${problemIndex + 1}`,

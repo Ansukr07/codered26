@@ -1,0 +1,3898 @@
+[
+  {
+    "number": 1,
+    "title": "Reverse Engineer Anything [REA]",
+    "subtitle": "GenAI-assisted deconstruction and reinvention of real-world applications",
+    "challengeTitle": "Reverse Engineer Anything [REA]",
+    "company": "MyStartupWave",
+    "industry": "Generative AI / Software Engineering",
+    "challengeType": "Existing Product Enhancement",
+    "summary": "Teams will select a widely used, publicly available application and use generative AI to systematically deconstruct its architecture, features, data flows and user interface. Using that analysis, they will build a working, upgraded version that delivers measurable improvements in functionality, usability, performance or design, and document every step of the reverse-engineering process.",
+    "objective": "Leverage generative AI to deconstruct and analyse the architecture, features and user interface of an existing application, then build an upgraded, more creative version that demonstrably improves on the original.",
+    "sections": [
+      {
+        "id": "source-1",
+        "number": 1,
+        "heading": "Challenge Overview",
+        "sourceHeading": "1. Challenge Overview",
+        "pages": [
+          1
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Company / Partner Name:",
+            "text": "MyStartupWave"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Title:",
+            "text": "Reverse Engineer Anything [REA]"
+          },
+          {
+            "kind": "field",
+            "label": "Industry / Track:",
+            "text": "Generative AI / Software Engineering"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Contact:",
+            "text": "MyStartupWave Challenge Desk (mystartupwave@gmail.com)"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Type:",
+            "text": "Existing Product Enhancement"
+          },
+          {
+            "kind": "field",
+            "label": "Brief Summary:",
+            "text": "Teams will select a widely used, publicly available application and use generative AI to systematically deconstruct its architecture, features, data flows and user interface. Using that analysis, they will build a working, upgraded version that delivers measurable improvements in functionality, usability, performance or design, and document every step of the reverse-engineering process."
+          }
+        ]
+      },
+      {
+        "id": "source-2",
+        "number": 2,
+        "heading": "Industry Context",
+        "sourceHeading": "2. Industry Context",
+        "pages": [
+          1
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Modern product teams spend a large share of their early discovery effort on competitive teardown: studying how successful applications structure navigation, onboarding, data models and monetisation. This work is manual, slow and rarely documented in a reusable form."
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "At the same time, generative AI models can now read screenshots, interpret public documentation, infer API contracts from observed behaviour and produce working code scaffolding. This creates an opportunity to compress weeks of product discovery and prototyping into days, provided the result is genuinely better than the original and is built ethically, without copying proprietary code or assets."
+          }
+        ]
+      },
+      {
+        "id": "source-3",
+        "number": 3,
+        "heading": "Problem Statement",
+        "sourceHeading": "3. Problem Statement",
+        "pages": [
+          1,
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "Problem and who is affected:",
+            "text": "Startups, product managers and developers need to understand,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "benchmark and improve on established applications, but today they rely on manual teardown, scattered screenshots and guesswork about how a product works internally."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "When and where it occurs:  During market research, competitor analysis, MVP planning and redesign"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "cycles, typically before any code is written, when wrong assumptions are most costly."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Limitations of current solutions:  Teardown blogs and UX case studies are static, shallow and quickly"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "outdated. AI coding assistants can generate UI copies, but they produce cosmetic clones without understanding architecture, edge cases or the reasons behind design decisions. Nothing connects structured analysis to a working, improved build."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Why it is worth solving:  Competitive analysis is standard practice in every product team, and app clones"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "are among the most common developer projects, yet very few clones add meaningful innovation. A disciplined, AI-accelerated teardown-to-upgrade method has clear value for startups and for engineering education."
+          }
+        ]
+      },
+      {
+        "id": "source-4",
+        "number": 4,
+        "heading": "Target Users and Stakeholders",
+        "sourceHeading": "4. Target Users and Stakeholders",
+        "pages": [
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Primary users:",
+            "text": "Developers and early-stage founders building or improving a product in an established category."
+          },
+          {
+            "kind": "field",
+            "label": "Secondary users / stakeholders:",
+            "text": "Product managers, UX designers, engineering educators and innovation teams."
+          },
+          {
+            "kind": "field",
+            "label": "Current user journey or workflow:",
+            "text": "Pick a reference app → explore it manually and take screenshots → guess the data model and APIs → design a copy in Figma → build from scratch → discover gaps late. Improvements, if any, are ad hoc and never measured against the original."
+          },
+          {
+            "kind": "field",
+            "label": "Key user pain points:",
+            "text": "Teardown is slow and undocumented; architecture is invisible from the outside; clones copy weaknesses along with strengths; and there is no objective way to prove the new version is better."
+          }
+        ]
+      },
+      {
+        "id": "source-5",
+        "number": 5,
+        "heading": "Product Opportunity",
+        "sourceHeading": "5. Product Opportunity",
+        "pages": [
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "What users should accomplish:",
+            "text": "Produce a structured, evidence-backed teardown of a real application"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "(feature map, user flows, inferred architecture, data model and API surface) with substantial help from generative AI."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Meaningful improvement:  Turn that analysis into a working, upgraded application that fixes the"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "weaknesses identified and adds at least two original, non-trivial features."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "What makes it different:  The upgrade is proven objectively through side-by-side benchmarks (task"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "completion time, steps per task, performance, accessibility) rather than opinion, and every design decision traces back to evidence from the teardown."
+          }
+        ]
+      },
+      {
+        "id": "source-6",
+        "number": 6,
+        "heading": "Expected Product Capabilities",
+        "sourceHeading": "6. Expected Product Capabilities",
+        "pages": [
+          2,
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "subheading",
+            "label": "Must-have capabilities:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "AI-driven teardown report covering a feature inventory, screen-by-screen UI breakdown, user flows,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "inferred system architecture, data model (ER diagram) and API/endpoint map."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Traceability: every inference in the report is labelled as observed, documented or AI-inferred, together"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "with the evidence (screenshot, public document or network trace) that supports it."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A functional, deployed application that reproduces the target app’s core user journeys end to end (not"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "static mock-ups)."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "At least two significant original improvements (e.g., a new AI-powered capability, a redesigned workflow,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "offline support, an accessibility overhaul), each justified by a weakness found in the teardown."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A side-by-side, metric-based comparison of the original and the upgraded version."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "An original codebase and original design assets, with no copied proprietary code, logos, images or"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "copyrighted content."
+          },
+          {
+            "kind": "subheading",
+            "label": "Nice-to-have capabilities:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A reusable “REA pipeline” that can analyse a second application with minimal changes (e.g., screenshot-"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "to-component-tree, automatic flow-graph extraction)."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Automatic generation of architecture diagrams and a product requirements document (PRD) from the"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "teardown."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Usability test results from at least five real users."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Web and mobile parity."
+          },
+          {
+            "kind": "field",
+            "label": "Expected user interactions:",
+            "text": "Users explore the teardown as an interactive report (feature map, flows, architecture diagrams), then use the upgraded application to complete the same core tasks as in the original, switching between the “original flow” and the “upgraded flow” to see the difference."
+          },
+          {
+            "kind": "subheading",
+            "label": "Expected demonstration / deliverable:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Live walkthrough of the teardown report and the AI workflow used to produce it."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Live demo of the deployed upgraded application completing at least three core journeys."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Benchmark comparison of original vs. upgraded version."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Public repository with README, architecture diagram and an AI/prompt usage log."
+          }
+        ]
+      },
+      {
+        "id": "source-7",
+        "number": 7,
+        "heading": "Technical and Operational Constraints",
+        "sourceHeading": "7. Technical and Operational Constraints",
+        "pages": [
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Technical or platform constraints:",
+            "text": "The target application must be publicly accessible and widely used (e.g., a leading app in its category). Analysis may rely only on legitimate sources: the public UI, public documentation, public APIs and the team’s own observation of their own accounts. Decompiling, bypassing DRM or circumventing security controls is not permitted. Any technology stack may be used."
+          },
+          {
+            "kind": "field",
+            "label": "Performance, accuracy, or latency requirements:",
+            "text": "The upgraded application must match or beat the original on at least two measurable dimensions (e.g., time-to-interactive, number of steps for a core task, Lighthouse performance or accessibility score). Core pages should load in under 2.5 seconds on a standard connection. Teardown inferences must be at least 80% accurate when spot-checked by the judges."
+          },
+          {
+            "kind": "field",
+            "label": "Security, privacy, or compliance requirements:",
+            "text": "No real user data may be scraped or stored. Authentication, if implemented, must use hashed passwords or a trusted identity provider. Follow OWASP Top 10 basics and respect the target application’s terms of service."
+          },
+          {
+            "kind": "field",
+            "label": "Hardware, connectivity, or deployment limitations:",
+            "text": "Must be deployed to a publicly reachable URL (or an installable build for mobile) for judging, and must run on a standard laptop and a mid-range smartphone."
+          },
+          {
+            "kind": "field",
+            "label": "Budget or resource constraints:",
+            "text": "Solutions should run on free tiers or open-source tooling. Any paid API usage is the team’s responsibility and must be documented."
+          },
+          {
+            "kind": "field",
+            "label": "Domain-specific safety requirements:",
+            "text": "No feature may mislead users into believing the upgraded app is the original: no impersonation, look-alike login pages or use of the original’s brand assets."
+          }
+        ]
+      },
+      {
+        "id": "source-8",
+        "number": 8,
+        "heading": "Available Resources and Support",
+        "sourceHeading": "8. Available Resources and Support",
+        "pages": [
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Resources marked “Confirmed” are guaranteed by the partner. “Permitted” items may be used by teams at their own discretion and cost. “Under consideration” items are not yet confirmed."
+          },
+          {
+            "kind": "field",
+            "label": "APIs, SDKs, developer tools, or technology credits:",
+            "text": "Confirmed: none provided by the partner. Permitted: any generative AI APIs or open-source models the team has access to (e.g., free tiers of LLM and vision APIs)."
+          },
+          {
+            "kind": "field",
+            "label": "Sample datasets or permitted data sources:",
+            "text": "The public UI of the chosen application, its official documentation and public API references. No private or personal data."
+          },
+          {
+            "kind": "field",
+            "label": "Sandbox environments or test infrastructure:",
+            "text": "Not provided. Teams use their own free-tier hosting (e.g., Vercel, Render, Firebase)."
+          },
+          {
+            "kind": "field",
+            "label": "Documentation and reference materials:",
+            "text": "Public product documentation and app-store listings of the chosen application; OWASP Top 10; WCAG 2.2 accessibility guidelines."
+          },
+          {
+            "kind": "field",
+            "label": "Mentors, domain experts, or technical sessions:",
+            "text": "Confirmed: MyStartupWave engineers during the scheduled mentoring rounds (subject to the event schedule)."
+          },
+          {
+            "kind": "field",
+            "label": "Other resources or support:",
+            "text": "Under consideration: a short session on ethical reverse engineering and IP boundaries."
+          }
+        ]
+      },
+      {
+        "id": "source-9",
+        "number": 9,
+        "heading": "Business and Adoption Context",
+        "sourceHeading": "9. Business and Adoption Context",
+        "pages": [
+          3,
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Intended customer or beneficiary:",
+            "text": "Startups and product teams entering established markets; engineering education programmes."
+          },
+          {
+            "kind": "field",
+            "label": "Current alternatives or competing solutions:",
+            "text": "Manual competitor teardowns, UX case-study blogs, design-inspiration libraries, and AI UI generators that produce screen-level copies without architectural understanding."
+          },
+          {
+            "kind": "field",
+            "label": "Potential value created:",
+            "text": "Faster product discovery (weeks reduced to days), lower prototyping cost, better-informed product decisions and a reusable analysis method."
+          },
+          {
+            "kind": "field",
+            "label": "Potential adoption pathway:",
+            "text": "Start as an internal discovery tool for startups and studios; evolve into a SaaS “product teardown assistant” or an educational offering for engineering programmes."
+          },
+          {
+            "kind": "field",
+            "label": "Commercial or operational considerations:",
+            "text": "Generative AI inference cost per teardown, legal review of IP boundaries, and integration with design and project tools (e.g., Figma, Jira)."
+          },
+          {
+            "kind": "field",
+            "label": "Known assumptions or uncertainties:",
+            "text": "Generative AI can infer architecture with acceptable accuracy from external evidence alone; the improvements chosen by teams are valued by real users."
+          }
+        ]
+      },
+      {
+        "id": "source-10",
+        "number": 10,
+        "heading": "Success Indicators",
+        "sourceHeading": "10. Success Indicators",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Functional outcomes:",
+            "text": "Complete teardown report covering all required sections; upgraded application reproduces at least three core journeys end to end with no critical bugs; at least two original improvements working live."
+          },
+          {
+            "kind": "field",
+            "label": "User or customer outcomes:",
+            "text": "In a short usability test, users complete core tasks faster or in fewer steps than in the original, and at least 70% prefer the upgraded version."
+          },
+          {
+            "kind": "field",
+            "label": "Technical performance indicators:",
+            "text": "Measurable gains on at least two metrics (e.g., Lighthouse performance/accessibility ≥ 90, fewer steps per task, faster load time); teardown inference accuracy ≥ 80% on judge spot-checks."
+          },
+          {
+            "kind": "field",
+            "label": "Business or operational indicators:",
+            "text": "A clear statement of who would use the upgraded product and why they would switch from the original."
+          },
+          {
+            "kind": "field",
+            "label": "Safety, reliability, or compliance indicators:",
+            "text": "Zero copied proprietary code or brand assets; documented compliance with the target application’s terms of service."
+          }
+        ]
+      },
+      {
+        "id": "source-11",
+        "number": 11,
+        "heading": "Scope and Boundaries",
+        "sourceHeading": "11. Scope and Boundaries",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "In scope:",
+            "text": "Selection and justification of one target application; AI-assisted teardown; a working upgraded application; benchmark comparison; documentation."
+          },
+          {
+            "kind": "field",
+            "label": "Out of scope:",
+            "text": "Decompiling binaries, bypassing authentication or paywalls, exact replication of proprietary algorithms, migrating real users or data, and full feature parity with the original."
+          },
+          {
+            "kind": "field",
+            "label": "Permitted assumptions or simplifications:",
+            "text": "Teams may focus on the 3–5 most important user journeys instead of the entire application. Backend services may be simplified or mocked where they are not central to the improvement, provided this is disclosed."
+          },
+          {
+            "kind": "field",
+            "label": "Dependencies (systems, approvals, resources):",
+            "text": "Access to generative AI tools, public hosting and a publicly accessible target application."
+          }
+        ]
+      },
+      {
+        "id": "source-12",
+        "number": 12,
+        "heading": "Industry Engagement",
+        "sourceHeading": "12. Industry Engagement",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Will the company provide mentors or subject-matter experts?",
+            "text": "Yes. Engineers from MyStartupWave will be available during the scheduled mentoring rounds for architecture, product and feasibility reviews."
+          },
+          {
+            "kind": "field",
+            "label": "Will teams receive feedback during development?",
+            "text": "Yes. Teams will receive structured feedback at the designated mid-event checkpoint(s), focused on scope, technical approach and progress against the success indicators."
+          },
+          {
+            "kind": "field",
+            "label": "Will the company participate in evaluation or demonstrations?",
+            "text": "Yes. MyStartupWave representatives will attend the final demonstrations and take part in evaluation alongside the CODERED ’26 jury."
+          },
+          {
+            "kind": "field",
+            "label": "Is further validation, pilot discussion, or product exploration possible after the event?",
+            "text": "Possible. Teams with exceptional solutions may be invited to a follow-up discussion on further validation, mentoring or pilot exploration."
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Any follow-on engagement is subject to mutual interest and separate agreement."
+          }
+        ]
+      },
+      {
+        "id": "source-13",
+        "number": 13,
+        "heading": "Intellectual Property and Participation Terms",
+        "sourceHeading": "13. Intellectual Property and Participation Terms",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "The following terms apply to all participating teams and are communicated before development begins. Participation does not imply any automatic transfer of ownership or commercial rights; any subsequent arrangement must be agreed separately."
+          },
+          {
+            "kind": "field",
+            "label": "Data and resource usage conditions:",
+            "text": "Use only public information about the target application and data the team owns or has permission to use. Do not scrape personal data or violate any platform’s terms of service."
+          },
+          {
+            "kind": "field",
+            "label": "Confidentiality requirements, if any:",
+            "text": "None. This brief and any materials shared for this challenge are non-confidential."
+          },
+          {
+            "kind": "field",
+            "label": "Intellectual property and ownership terms:",
+            "text": "Teams retain full ownership of the code, designs, models and other intellectual property they create. Participation does not transfer any ownership or commercial rights to MyStartupWave."
+          },
+          {
+            "kind": "field",
+            "label": "Restrictions on using company names, data, or materials:",
+            "text": "Do not use MyStartupWave’s name or branding without written permission. The target application’s name may be used only descriptively in the teardown; its logos, trademarks and brand assets must not appear in the upgraded product."
+          },
+          {
+            "kind": "field",
+            "label": "Terms governing subsequent pilots, licensing, investment, employment, or commercial collaboration:",
+            "text": "Any pilot, licensing, investment, employment or commercial collaboration after the event is subject to mutual interest and a separate written agreement."
+          }
+        ]
+      },
+      {
+        "id": "source-14",
+        "number": 14,
+        "heading": "Partner Contact and Clarifications",
+        "sourceHeading": "14. Partner Contact and Clarifications",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Primary contact:",
+            "text": "MyStartupWave Challenge Desk"
+          },
+          {
+            "kind": "field",
+            "label": "Email:",
+            "text": "mystartupwave@gmail.com"
+          },
+          {
+            "kind": "field",
+            "label": "Reference documentation / resource links:",
+            "text": "This challenge brief; official documentation of the chosen target application; OWASP Top 10; WCAG 2.2."
+          },
+          {
+            "kind": "field",
+            "label": "Clarification process:",
+            "text": "Send questions in writing to the challenge contact or raise them through the official CODERED ’26 helpdesk. Answers that affect scope or evaluation will be shared with all teams on this challenge at the same time, to keep the competition fair."
+          }
+        ]
+      },
+      {
+        "id": "submission-checklist",
+        "number": null,
+        "heading": "Submission Checklist",
+        "sourceHeading": "Submission Checklist",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  The problem is real, relevant, and clearly stated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Target users and desired outcomes are identified."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Teams have freedom to develop their own solutions."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  A working prototype is reasonably achievable within the challenge timeline."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Business value and adoption can be evaluated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Technical constraints and available resources are stated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Data, safety, confidentiality, and IP terms are clear."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Evaluation expectations are communicated consistently."
+          }
+        ]
+      },
+      {
+        "id": "guiding-principle",
+        "number": null,
+        "heading": "THE GUIDING PRINCIPLE",
+        "sourceHeading": "THE GUIDING PRINCIPLE",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "The company defines the opportunity. The team defines the solution."
+          }
+        ]
+      }
+    ],
+    "source": {
+      "filename": "CODERED26_PS1_Reverse_Engineer_Anything.pdf",
+      "href": "/briefs/mystartupwave/CODERED26_PS1_Reverse_Engineer_Anything.pdf",
+      "pages": 5,
+      "sha256": "1cc38a149c8105a4fc3f472e839f32d50122846b26a30d87127a96b7f3219cb7"
+    },
+    "coverage": {
+      "numberedSections": 14,
+      "checklistItems": 8,
+      "sourceCharacters": 13169,
+      "renderedCharacters": 13169,
+      "contentSha256": "f21be8012cf5f1f006889c254fa0171e30f82d67694ac5fec38bf0e36ae59d5d",
+      "lossless": true,
+      "excludedPageFurniture": [
+        {
+          "page": 1,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 1,
+          "text": "CODERED ’26  |  INDUSTRY CHALLENGE BRIEF"
+        },
+        {
+          "page": 1,
+          "text": "CODERED ’26  •  Problem Statement 1: Reverse Engineer Anything  |  1"
+        },
+        {
+          "page": 2,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 2,
+          "text": "CODERED ’26  •  Problem Statement 1: Reverse Engineer Anything  |  2"
+        },
+        {
+          "page": 3,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 3,
+          "text": "CODERED ’26  •  Problem Statement 1: Reverse Engineer Anything  |  3"
+        },
+        {
+          "page": 4,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 4,
+          "text": "CODERED ’26  •  Problem Statement 1: Reverse Engineer Anything  |  4"
+        },
+        {
+          "page": 5,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 5,
+          "text": "CODERED ’26  •  Problem Statement 1: Reverse Engineer Anything  |  5"
+        }
+      ]
+    }
+  },
+  {
+    "number": 2,
+    "title": "The Perfect Fit",
+    "subtitle": "Instant ATS scoring, one-page resume optimisation and auto-generated portfolios",
+    "challengeTitle": "The Perfect Fit",
+    "company": "MyStartupWave",
+    "industry": "AI for Careers / HR Technology",
+    "challengeType": "New Product Development",
+    "summary": "Job seekers routinely lose opportunities because their resumes are rejected by Applicant Tracking Systems (ATS) or fail to fit a clean single-page format. Teams will build an automated platform that parses any resume, scores it for ATS compatibility against a specific job description, gives precise and actionable improvement guidance, reformats it into a polished one-page layout, and automatically generates a personal portfolio website.",
+    "objective": "Address the challenges job applicants face with single-page resume formatting and ATS compatibility through an automated platform that provides instant ATS scoring, actionable improvement parameters and an automatically generated portfolio website.",
+    "sections": [
+      {
+        "id": "source-1",
+        "number": 1,
+        "heading": "Challenge Overview",
+        "sourceHeading": "1. Challenge Overview",
+        "pages": [
+          1
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Company / Partner Name:",
+            "text": "MyStartupWave"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Title:",
+            "text": "The Perfect Fit"
+          },
+          {
+            "kind": "field",
+            "label": "Industry / Track:",
+            "text": "AI for Careers / HR Technology"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Contact:",
+            "text": "MyStartupWave Challenge Desk (mystartupwave@gmail.com)"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Type:",
+            "text": "New Product Development"
+          },
+          {
+            "kind": "field",
+            "label": "Brief Summary:",
+            "text": "Job seekers routinely lose opportunities because their resumes are rejected by Applicant Tracking Systems (ATS) or fail to fit a clean single-page format. Teams will build an automated platform that parses any resume, scores it for ATS compatibility against a specific job description, gives precise and actionable improvement guidance, reformats it into a polished one-page layout, and automatically generates a personal portfolio website."
+          }
+        ]
+      },
+      {
+        "id": "source-2",
+        "number": 2,
+        "heading": "Industry Context",
+        "sourceHeading": "2. Industry Context",
+        "pages": [
+          1
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Most mid-size and large employers, and a growing share of startups, screen applications through Applicant Tracking Systems before a human ever reads them. Campus placements and off-campus hiring in India attract very large numbers of applicants per role, and recruiters typically spend only seconds on an initial resume scan."
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Many qualified candidates, especially students and early-career professionals, are filtered out because of parsing failures (tables, columns, graphics, unusual fonts), missing keywords or poor structure rather than a lack of skill. Recruiters also increasingly expect a portfolio or online presence. Advances in document parsing and language models now make it possible to give every candidate recruiter-grade feedback instantly."
+          }
+        ]
+      },
+      {
+        "id": "source-3",
+        "number": 3,
+        "heading": "Problem Statement",
+        "sourceHeading": "3. Problem Statement",
+        "pages": [
+          1,
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "Problem and who is affected:",
+            "text": "Students, freshers and career switchers apply to many roles without"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "knowing why their resume is rejected. Recruiters also lose strong candidates whose resumes are parsed poorly."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "When and where it occurs:  At every application, especially in high-volume campus placement drives and"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "job-portal applications, where the resume must be tailored to each job description under time pressure."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Limitations of current solutions:  Existing ATS checkers give a vague score with generic tips, often hide"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "detailed feedback behind paywalls, ignore the specific job description, or do not explain how the score is calculated. Resume builders produce templates that are not always ATS-safe and rarely enforce a single page. Portfolio sites must be built separately and by hand."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "Why it is worth solving:",
+            "text": "Candidates often submit dozens of applications per offer; placement cells and recruiters repeatedly cite formatting and keyword gaps as common rejection reasons; and the market for paid resume review and builder tools is large and growing, signalling strong willingness to pay for better outcomes."
+          }
+        ]
+      },
+      {
+        "id": "source-4",
+        "number": 4,
+        "heading": "Target Users and Stakeholders",
+        "sourceHeading": "4. Target Users and Stakeholders",
+        "pages": [
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Primary users:",
+            "text": "Students, freshers and early-career professionals applying through ATS-driven hiring processes."
+          },
+          {
+            "kind": "field",
+            "label": "Secondary users / stakeholders:",
+            "text": "University placement cells, career counsellors, recruiters and hiring managers, bootcamps and training institutes."
+          },
+          {
+            "kind": "field",
+            "label": "Current user journey or workflow:",
+            "text": "Download a template → fill it in Word or Canva → guess keywords from the job description → upload to a free ATS checker → receive a generic score → edit manually → struggle to fit everything on one page → build a portfolio site separately, or skip it."
+          },
+          {
+            "kind": "field",
+            "label": "Key user pain points:",
+            "text": "Opaque scoring; generic advice; formatting that breaks parsing; content spilling beyond one page; repetitive tailoring for every job; and no time or skill to build a portfolio website."
+          }
+        ]
+      },
+      {
+        "id": "source-5",
+        "number": 5,
+        "heading": "Product Opportunity",
+        "sourceHeading": "5. Product Opportunity",
+        "pages": [
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "What users should accomplish:",
+            "text": "Upload a resume (PDF or DOCX) and a target job description and receive,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "within seconds, an explainable ATS score with a parameter-by-parameter breakdown."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Meaningful improvement:  Specific, line-level improvements (rewritten bullets, missing keywords,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "quantified impact, section order) and an exported ATS-safe, single-page resume that keeps all critical content."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "What makes it different:  Transparent, deterministic scoring tied to a real job description, plus a"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "professional, mobile-responsive portfolio generated from the same data in one click, keeping resume and portfolio in sync."
+          }
+        ]
+      },
+      {
+        "id": "source-6",
+        "number": 6,
+        "heading": "Expected Product Capabilities",
+        "sourceHeading": "6. Expected Product Capabilities",
+        "pages": [
+          2,
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "subheading",
+            "label": "Must-have capabilities:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Robust parsing of PDF and DOCX resumes, including multi-column layouts, tables and non-standard"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "section headings, into a structured schema (contact, education, experience, projects, skills, certifications)."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A job-description-aware ATS score (0–100) with a transparent breakdown of at least eight parameters,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "e.g., keyword match, skills coverage, section completeness, formatting/parseability, action verbs, quantified achievements, length/density and readability."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Actionable, line-level suggestions rather than generic tips, including AI-rewritten bullet points that the user"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "can accept, edit or reject."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Automatic single-page optimisation: intelligent condensing, prioritisation and layout so the final resume fits"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "exactly one page while remaining ATS-safe."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Export to ATS-friendly PDF and DOCX."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "One-click generation of a responsive portfolio website from the resume data, published at a shareable"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "URL."
+          },
+          {
+            "kind": "subheading",
+            "label": "Nice-to-have capabilities:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "“Before vs. after” score comparison and version history for each job application."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Multiple portfolio themes, custom-domain support and import from GitHub or LinkedIn."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Fairness checks that flag details which should not appear on a resume (e.g., photo, age, marital status)."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Support for Indian and international resume conventions and regional-language interfaces."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A recruiter view to bulk-score resumes against a job description."
+          },
+          {
+            "kind": "field",
+            "label": "Expected user interactions:",
+            "text": "Upload resume → paste or link a job description → view the score dashboard and parameter breakdown → accept or edit suggestions inline and watch the score update live → download the optimised one-page resume → publish the portfolio and share its link."
+          },
+          {
+            "kind": "field",
+            "label": "Expected demonstration / deliverable:",
+            "text": "A live end-to-end flow using at least three resumes of different quality and format (including a two-column, graphics-heavy resume), each scored against a real job description, showing the score improvement, a one-page export and a live portfolio URL."
+          }
+        ]
+      },
+      {
+        "id": "source-7",
+        "number": 7,
+        "heading": "Technical and Operational Constraints",
+        "sourceHeading": "7. Technical and Operational Constraints",
+        "pages": [
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Technical or platform constraints:",
+            "text": "Must work in a modern browser without installation. Must handle text-based PDF and DOCX; scanned or image-only PDFs must either be supported through OCR or rejected with a clear message. Generated resumes must use ATS-safe layouts (single column, standard fonts, no text inside images, headers or footers)."
+          },
+          {
+            "kind": "field",
+            "label": "Performance, accuracy, or latency requirements:",
+            "text": "Parsing and scoring in under 10 seconds per resume. Field-level parsing accuracy of at least 90% on the judges’ test resumes. Scores must be deterministic: the same resume and job description must return the same score (±1). Suggestions must never invent experience, skills, employers or metrics the user did not provide."
+          },
+          {
+            "kind": "field",
+            "label": "Security, privacy, or compliance requirements:",
+            "text": "Resumes contain personal data. Encrypt data in transit (HTTPS), let users delete their data, do not use uploaded resumes for model training without explicit consent, and align with the principles of India’s Digital Personal Data Protection Act, 2023. Portfolio publishing must be opt-in, with user control over which contact details are public."
+          },
+          {
+            "kind": "field",
+            "label": "Hardware, connectivity, or deployment limitations:",
+            "text": "Must work on low-bandwidth mobile connections. Portfolio sites should be lightweight static pages."
+          },
+          {
+            "kind": "field",
+            "label": "Budget or resource constraints:",
+            "text": "Should operate within free tiers or low-cost inference. Teams must document the processing cost per resume."
+          },
+          {
+            "kind": "field",
+            "label": "Domain-specific safety requirements:",
+            "text": "No fabrication or exaggeration of credentials; AI-generated rewrites must be clearly labelled; no recommendations that encourage keyword stuffing or hidden text."
+          }
+        ]
+      },
+      {
+        "id": "source-8",
+        "number": 8,
+        "heading": "Available Resources and Support",
+        "sourceHeading": "8. Available Resources and Support",
+        "pages": [
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Resources marked “Confirmed” are guaranteed by the partner. “Permitted” items may be used by teams at their own discretion and cost. “Under consideration” items are not yet confirmed."
+          },
+          {
+            "kind": "field",
+            "label": "APIs, SDKs, developer tools, or technology credits:",
+            "text": "Confirmed: none provided by the partner. Permitted: open-source parsers and language models, or generative AI APIs available to the team."
+          },
+          {
+            "kind": "field",
+            "label": "Sample datasets or permitted data sources:",
+            "text": "Team members’ own resumes (with consent), synthetic resumes and publicly available job descriptions. Public resume datasets may be used where their licences permit. Judges will evaluate using a hidden test set of resumes and job descriptions."
+          },
+          {
+            "kind": "field",
+            "label": "Sandbox environments or test infrastructure:",
+            "text": "Not provided. Teams use their own hosting (e.g., Vercel, Netlify, GitHub Pages for portfolios)."
+          },
+          {
+            "kind": "field",
+            "label": "Documentation and reference materials:",
+            "text": "Publicly available ATS vendor documentation and recruiter guidance on resume parsing; Digital Personal Data Protection Act, 2023."
+          },
+          {
+            "kind": "field",
+            "label": "Mentors, domain experts, or technical sessions:",
+            "text": "Confirmed: MyStartupWave engineers during the scheduled mentoring rounds (subject to the event schedule)."
+          },
+          {
+            "kind": "field",
+            "label": "Other resources or support:",
+            "text": "Under consideration: a feedback session with campus placement coordinators."
+          }
+        ]
+      },
+      {
+        "id": "source-9",
+        "number": 9,
+        "heading": "Business and Adoption Context",
+        "sourceHeading": "9. Business and Adoption Context",
+        "pages": [
+          3,
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Intended customer or beneficiary:",
+            "text": "Students and job seekers (B2C); universities, placement cells and training institutes (B2B / B2B2C)."
+          },
+          {
+            "kind": "field",
+            "label": "Current alternatives or competing solutions:",
+            "text": "Online ATS checkers (e.g., Jobscan, Resume Worded), resume builders (e.g., Canva, Zety, Novorésumé) and general-purpose website builders used for portfolios (e.g., Wix, Notion)."
+          },
+          {
+            "kind": "field",
+            "label": "Potential value created:",
+            "text": "Higher shortlisting rates for candidates, time saved on tailoring every application, fewer qualified candidates lost to parsing errors, and a professional online presence with no extra effort."
+          },
+          {
+            "kind": "field",
+            "label": "Potential adoption pathway:",
+            "text": "Freemium for individual students; institutional licences for colleges and placement cells; partnerships with hiring platforms."
+          },
+          {
+            "kind": "field",
+            "label": "Commercial or operational considerations:",
+            "text": "Language-model inference cost per analysis, portfolio hosting cost, data-protection obligations and integration with university placement portals."
+          },
+          {
+            "kind": "field",
+            "label": "Known assumptions or uncertainties:",
+            "text": "ATS behaviour varies by vendor and is not fully public, so the score approximates common ATS logic; score improvements are assumed to correlate with better shortlisting outcomes."
+          }
+        ]
+      },
+      {
+        "id": "source-10",
+        "number": 10,
+        "heading": "Success Indicators",
+        "sourceHeading": "10. Success Indicators",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Functional outcomes:",
+            "text": "Correct parsing, scoring, suggestions, one-page export and portfolio generation for all judge test resumes, including complex layouts."
+          },
+          {
+            "kind": "field",
+            "label": "User or customer outcomes:",
+            "text": "Average ATS score increase of at least 25 points after accepting suggestions; users can go from upload to a published portfolio in under 5 minutes."
+          },
+          {
+            "kind": "field",
+            "label": "Technical performance indicators:",
+            "text": "≥ 90% field-level parsing accuracy; < 10 seconds per analysis; 100% of exported resumes fit exactly one page and re-parse cleanly through the team’s own parser and at least one external parser."
+          },
+          {
+            "kind": "field",
+            "label": "Business or operational indicators:",
+            "text": "Clear unit economics (cost per analysis) and an adoption plan for at least one institutional customer segment."
+          },
+          {
+            "kind": "field",
+            "label": "Safety, reliability, or compliance indicators:",
+            "text": "Zero fabricated content in suggestions during judge spot-checks; a working data-deletion flow."
+          }
+        ]
+      },
+      {
+        "id": "source-11",
+        "number": 11,
+        "heading": "Scope and Boundaries",
+        "sourceHeading": "11. Scope and Boundaries",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "In scope:",
+            "text": "Resume parsing, job-description-aware ATS scoring, explainable feedback, AI rewrite suggestions, single-page optimisation, export, and portfolio generation and hosting."
+          },
+          {
+            "kind": "field",
+            "label": "Out of scope:",
+            "text": "Integration with real employers’ ATS systems, applying to jobs on users’ behalf, guaranteeing interview outcomes, and cover-letter generation (optional only)."
+          },
+          {
+            "kind": "field",
+            "label": "Permitted assumptions or simplifications:",
+            "text": "Scoring may be based on a documented model of common ATS behaviour rather than any single vendor’s proprietary algorithm. English-language resumes are sufficient for the core demonstration."
+          },
+          {
+            "kind": "field",
+            "label": "Dependencies (systems, approvals, resources):",
+            "text": "A document-parsing approach, a language model for rewriting, and static hosting for portfolios."
+          }
+        ]
+      },
+      {
+        "id": "source-12",
+        "number": 12,
+        "heading": "Industry Engagement",
+        "sourceHeading": "12. Industry Engagement",
+        "pages": [
+          4,
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Will the company provide mentors or subject-matter experts?",
+            "text": "Yes. Engineers from MyStartupWave will be available during the scheduled mentoring rounds for architecture, product and feasibility reviews."
+          },
+          {
+            "kind": "field",
+            "label": "Will teams receive feedback during development?",
+            "text": "Yes. Teams will receive structured feedback at the designated mid-event checkpoint(s), focused on scope, technical approach and progress against the success indicators."
+          },
+          {
+            "kind": "field",
+            "label": "Will the company participate in evaluation or demonstrations?",
+            "text": "Yes. MyStartupWave representatives will attend the final demonstrations and take part in evaluation alongside the CODERED ’26 jury."
+          },
+          {
+            "kind": "field",
+            "label": "Is further validation, pilot discussion, or product exploration possible after the event?",
+            "text": "Possible. Teams with exceptional solutions may be invited to a follow-up discussion on further validation, mentoring or pilot exploration."
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Any follow-on engagement is subject to mutual interest and separate agreement."
+          }
+        ]
+      },
+      {
+        "id": "source-13",
+        "number": 13,
+        "heading": "Intellectual Property and Participation Terms",
+        "sourceHeading": "13. Intellectual Property and Participation Terms",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "The following terms apply to all participating teams and are communicated before development begins. Participation does not imply any automatic transfer of ownership or commercial rights; any subsequent arrangement must be agreed separately."
+          },
+          {
+            "kind": "field",
+            "label": "Data and resource usage conditions:",
+            "text": "Use only synthetic resumes, public job descriptions, openly licensed datasets, or resumes shared with the explicit consent of their owners. Do not scrape personal data from job portals or social networks."
+          },
+          {
+            "kind": "field",
+            "label": "Confidentiality requirements, if any:",
+            "text": "None. This brief and any materials shared for this challenge are non-confidential."
+          },
+          {
+            "kind": "field",
+            "label": "Intellectual property and ownership terms:",
+            "text": "Teams retain full ownership of the code, designs, models and other intellectual property they create. Participation does not transfer any ownership or commercial rights to MyStartupWave."
+          },
+          {
+            "kind": "field",
+            "label": "Restrictions on using company names, data, or materials:",
+            "text": "Do not use MyStartupWave’s name or branding without written permission. Names of third-party ATS vendors or job portals may be referenced only descriptively."
+          },
+          {
+            "kind": "field",
+            "label": "Terms governing subsequent pilots, licensing, investment, employment, or commercial collaboration:",
+            "text": "Any pilot, licensing, investment, employment or commercial collaboration after the event is subject to mutual interest and a separate written agreement."
+          }
+        ]
+      },
+      {
+        "id": "source-14",
+        "number": 14,
+        "heading": "Partner Contact and Clarifications",
+        "sourceHeading": "14. Partner Contact and Clarifications",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Primary contact:",
+            "text": "MyStartupWave Challenge Desk"
+          },
+          {
+            "kind": "field",
+            "label": "Email:",
+            "text": "mystartupwave@gmail.com"
+          },
+          {
+            "kind": "field",
+            "label": "Reference documentation / resource links:",
+            "text": "This challenge brief; Digital Personal Data Protection Act, 2023; public ATS vendor documentation on resume parsing."
+          },
+          {
+            "kind": "field",
+            "label": "Clarification process:",
+            "text": "Send questions in writing to the challenge contact or raise them through the official CODERED ’26 helpdesk. Answers that affect scope or evaluation will be shared with all teams on this challenge at the same time, to keep the competition fair."
+          }
+        ]
+      },
+      {
+        "id": "submission-checklist",
+        "number": null,
+        "heading": "Submission Checklist",
+        "sourceHeading": "Submission Checklist",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  The problem is real, relevant, and clearly stated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Target users and desired outcomes are identified."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Teams have freedom to develop their own solutions."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  A working prototype is reasonably achievable within the challenge timeline."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Business value and adoption can be evaluated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Technical constraints and available resources are stated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Data, safety, confidentiality, and IP terms are clear."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Evaluation expectations are communicated consistently."
+          }
+        ]
+      },
+      {
+        "id": "guiding-principle",
+        "number": null,
+        "heading": "THE GUIDING PRINCIPLE",
+        "sourceHeading": "THE GUIDING PRINCIPLE",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "The company defines the opportunity. The team defines the solution."
+          }
+        ]
+      }
+    ],
+    "source": {
+      "filename": "CODERED26_PS2_The_Perfect_Fit.pdf",
+      "href": "/briefs/mystartupwave/CODERED26_PS2_The_Perfect_Fit.pdf",
+      "pages": 5,
+      "sha256": "74f84842c590217cb7d86991a3724ba163af868bcdd31e496773f8c7360662dc"
+    },
+    "coverage": {
+      "numberedSections": 14,
+      "checklistItems": 8,
+      "sourceCharacters": 13376,
+      "renderedCharacters": 13376,
+      "contentSha256": "fb5556b230e147d1f60f22d5667687d8fd9082219964cdd93dff65ca4ae87246",
+      "lossless": true,
+      "excludedPageFurniture": [
+        {
+          "page": 1,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 1,
+          "text": "CODERED ’26  |  INDUSTRY CHALLENGE BRIEF"
+        },
+        {
+          "page": 1,
+          "text": "CODERED ’26  •  Problem Statement 2: The Perfect Fit  |  1"
+        },
+        {
+          "page": 2,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 2,
+          "text": "CODERED ’26  •  Problem Statement 2: The Perfect Fit  |  2"
+        },
+        {
+          "page": 3,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 3,
+          "text": "CODERED ’26  •  Problem Statement 2: The Perfect Fit  |  3"
+        },
+        {
+          "page": 4,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 4,
+          "text": "CODERED ’26  •  Problem Statement 2: The Perfect Fit  |  4"
+        },
+        {
+          "page": 5,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 5,
+          "text": "CODERED ’26  •  Problem Statement 2: The Perfect Fit  |  5"
+        }
+      ]
+    }
+  },
+  {
+    "number": 3,
+    "title": "Catalog Genius",
+    "subtitle": "AI-Powered Product Generation & Authenticity Detection",
+    "challengeTitle": "Catalog Genius – AI-Powered Product Generation & Authenticity Detection",
+    "company": "MyStartupWave",
+    "industry": "E-commerce / Generative AI & Digital Trust",
+    "challengeType": "Product Innovation",
+    "summary": "Teams will develop an AI-powered platform that generates high-quality product images and detailed e-commerce listings from minimal text descriptions or uploaded product photos. The same platform must detect whether uploaded images are authentic photographs or AI-generated, with confidence scores and explainable indicators, helping vendors maintain transparency and trust in online marketplaces.",
+    "objective": "Simplify e-commerce product listing while ensuring the authenticity and reliability of product images, using generative AI and synthetic media detection.",
+    "sections": [
+      {
+        "id": "source-1",
+        "number": 1,
+        "heading": "Challenge Overview",
+        "sourceHeading": "1. Challenge Overview",
+        "pages": [
+          1
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Company / Partner Name:",
+            "text": "MyStartupWave"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Title:",
+            "text": "Catalog Genius – AI-Powered Product Generation & Authenticity Detection"
+          },
+          {
+            "kind": "field",
+            "label": "Industry / Track:",
+            "text": "E-commerce / Generative AI & Digital Trust"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Contact:",
+            "text": "MyStartupWave Challenge Desk (mystartupwave@gmail.com)"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Type:",
+            "text": "Product Innovation"
+          },
+          {
+            "kind": "field",
+            "label": "Brief Summary:",
+            "text": "Teams will develop an AI-powered platform that generates high-quality product images and detailed e-commerce listings from minimal text descriptions or uploaded product photos. The same platform must detect whether uploaded images are authentic photographs or AI-generated, with confidence scores and explainable indicators, helping vendors maintain transparency and trust in online marketplaces."
+          }
+        ]
+      },
+      {
+        "id": "source-2",
+        "number": 2,
+        "heading": "Industry Context",
+        "sourceHeading": "2. Industry Context",
+        "pages": [
+          1
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "India’s e-commerce and social-commerce ecosystem is growing rapidly, with millions of small sellers, D2C brands and ONDC-enabled merchants coming online. Every listing needs clean images on a white background, multiple angles, a compelling title, a structured description, specifications and SEO tags, and every marketplace has its own image and content rules. Professional photography and copywriting are expensive and slow, so many vendors upload poor-quality photos and incomplete listings, which lowers conversion and increases returns."
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "At the same time, image-generation models can now produce photorealistic product images in seconds. This can democratise catalog creation, but it also creates a new risk: AI-generated images that misrepresent what the buyer will actually receive. Marketplaces, consumers and regulators are paying increasing attention to transparency in synthetic media, creating demand for tools that combine fast catalog creation with trustworthy authenticity analysis."
+          }
+        ]
+      },
+      {
+        "id": "source-3",
+        "number": 3,
+        "heading": "Problem Statement",
+        "sourceHeading": "3. Problem Statement",
+        "pages": [
+          1,
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "Problem and who is affected:",
+            "text": "Small and medium sellers, D2C brands and catalog teams must create large"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "numbers of listings quickly and cheaply, while buyers need to trust that product images reflect the real item."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "When and where it occurs:  During onboarding of new products, seasonal catalog refreshes and"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "expansion to new marketplaces, and at the moment a buyer decides whether an image can be trusted."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Limitations of current solutions:  Studios and freelance copywriters are costly and slow; generic AI image"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "tools ignore marketplace guidelines and often alter the product itself (wrong logos, colours, shapes or text); listing generators produce generic copy; and AI-image detectors are mostly standalone, unreliable on compressed or edited images, and give a bare “real/fake” answer with no explanation."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "Why it is worth solving:",
+            "text": "Image quality and listing completeness are widely recognised drivers of conversion and return rates; marketplaces publish strict image and content guidelines; and concern about synthetic media and misleading product imagery is growing among platforms, consumers and policymakers."
+          }
+        ]
+      },
+      {
+        "id": "source-4",
+        "number": 4,
+        "heading": "Target Users and Stakeholders",
+        "sourceHeading": "4. Target Users and Stakeholders",
+        "pages": [
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Primary users:",
+            "text": "Small and medium online sellers, D2C brands and independent vendors selling on marketplaces and on Shopify or WooCommerce stores."
+          },
+          {
+            "kind": "field",
+            "label": "Secondary users / stakeholders:",
+            "text": "Marketplace catalog and trust & safety teams, e-commerce agencies, and end buyers."
+          },
+          {
+            "kind": "field",
+            "label": "Current user journey or workflow:",
+            "text": "Take product photos on a phone → edit them manually or pay for photography → write titles and descriptions by hand → guess SEO keywords → upload to each marketplace separately → fix rejections for guideline violations. Image authenticity is rarely checked at all."
+          },
+          {
+            "kind": "field",
+            "label": "Key user pain points:",
+            "text": "High cost and time per listing; inconsistent quality across products; repeated rework for different platforms; and no easy way to prove images are genuine or to detect AI-generated images supplied by third parties."
+          }
+        ]
+      },
+      {
+        "id": "source-5",
+        "number": 5,
+        "heading": "Product Opportunity",
+        "sourceHeading": "5. Product Opportunity",
+        "pages": [
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "What users should accomplish:",
+            "text": "Go from a short text description or a single phone photo to a complete,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "marketplace-ready listing (multiple professional images plus title, description, specifications, tags and SEO content) in minutes."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Meaningful improvement:  Generated images that stay faithful to the real product, so listings are attractive"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "without being misleading, and an authenticity analysis that gives vendors and marketplaces a confidence score with human-understandable evidence."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "What makes it different:  A single platform that unites catalog creation and trust verification, so speed and"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "transparency reinforce each other instead of being traded off."
+          }
+        ]
+      },
+      {
+        "id": "source-6",
+        "number": 6,
+        "heading": "Expected Product Capabilities",
+        "sourceHeading": "6. Expected Product Capabilities",
+        "pages": [
+          2,
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "subheading",
+            "label": "Must-have capabilities:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "AI Product Image Generation: professional, high-quality product images from text descriptions or"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "reference photos, including clean white-background packshots and at least one lifestyle/context scene."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Product fidelity: when a reference photo is supplied, generated and enhanced images must preserve the"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "product’s shape, colour, branding and printed text, and the system must flag outputs that fail its fidelity checks."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Smart Image Enhancement: background removal, lighting and colour correction, upscaling, and generation"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "of multiple consistent product views (e.g., front, side, angled)."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "AI-Powered Product Listings: automatically generated titles, highlights, descriptions, structured"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "specifications, tags/categories and SEO-friendly content, adapted to the character limits and rules of at least two target platforms."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Image Authenticity Detection: analyse uploaded images and estimate whether each is a real photograph or"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "AI-generated, returning a calibrated confidence score."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Trust & Transparency: an explainable report for each verdict with visual indicators (e.g., heatmaps of"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "suspicious regions), metadata and provenance checks (EXIF, C2PA Content Credentials where present) and plain-language reasons."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "E-commerce Integration: one-click export to Shopify and WooCommerce, via their APIs or official product"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "CSV import formats."
+          },
+          {
+            "kind": "subheading",
+            "label": "Nice-to-have capabilities:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Batch processing of an entire catalog (e.g., 50+ products from a CSV file)."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Multilingual listings (English plus at least one Indian language)."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Embedding disclosure labels or C2PA Content Credentials in generated images so they are transparently marked as AI-generated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Detection of partial manipulation (splicing, object insertion or removal) in addition to fully synthetic images."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A marketplace-guideline compliance checker (image dimensions, background, text overlays)."
+          },
+          {
+            "kind": "field",
+            "label": "Expected user interactions:",
+            "text": "The vendor enters a short description or uploads a phone photo → reviews and edits the generated images and listing → runs an authenticity check on any image → reviews the trust report → exports to Shopify or WooCommerce, or downloads a complete listing pack."
+          },
+          {
+            "kind": "subheading",
+            "label": "Expected demonstration / deliverable:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Live creation of at least three complete listings across different categories (e.g., apparel, an electronics"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "accessory, packaged food) from minimal input."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Live authenticity analysis on a judge-provided mixed set of real and AI-generated images, including"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "compressed and cropped versions."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Successful export to a Shopify development store or a WooCommerce test site."
+          }
+        ]
+      },
+      {
+        "id": "source-7",
+        "number": 7,
+        "heading": "Technical and Operational Constraints",
+        "sourceHeading": "7. Technical and Operational Constraints",
+        "pages": [
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Technical or platform constraints:",
+            "text": "Web-based platform; any model stack may be used (open-source or API). Authenticity detection must not rely on metadata alone, because metadata is easily stripped: it must include content-based analysis of the pixels. Exports must follow the official Shopify and WooCommerce product formats."
+          },
+          {
+            "kind": "field",
+            "label": "Performance, accuracy, or latency requirements:",
+            "text": "A complete listing (images and text) in under 60 seconds per product. Authenticity detection accuracy of at least 85% on the judges’ balanced hidden test set, with no more than a 10-percentage-point drop on JPEG-compressed, resized or cropped versions of the same images. Detection latency under 5 seconds per image. Generated text must not contain specifications that are absent from the input."
+          },
+          {
+            "kind": "field",
+            "label": "Security, privacy, or compliance requirements:",
+            "text": "Uploaded images and data are used only for the requested task. No use of copyrighted or third-party brand imagery without permission. Generated images must be disclosed as AI-generated in exported listings, in line with the principles of India’s Consumer Protection (E-Commerce) Rules, 2020 against misleading product information."
+          },
+          {
+            "kind": "field",
+            "label": "Hardware, connectivity, or deployment limitations:",
+            "text": "Should run on cloud or free GPU tiers. The vendor-facing interface must work on mobile browsers, since many vendors operate from their phones."
+          },
+          {
+            "kind": "field",
+            "label": "Budget or resource constraints:",
+            "text": "Teams must document the generation cost per listing. The solution should be economically viable for small vendors, with a target cost well below that of a single professional product photograph."
+          },
+          {
+            "kind": "field",
+            "label": "Domain-specific safety requirements:",
+            "text": "Authenticity results are probabilistic and must be presented as estimates with confidence levels, never as definitive proof. To avoid false accusations, uncertainty must be communicated clearly, including an “inconclusive” band."
+          }
+        ]
+      },
+      {
+        "id": "source-8",
+        "number": 8,
+        "heading": "Available Resources and Support",
+        "sourceHeading": "8. Available Resources and Support",
+        "pages": [
+          3,
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Resources marked “Confirmed” are guaranteed by the partner. “Permitted” items may be used by teams at their own discretion and cost. “Under consideration” items are not yet confirmed."
+          },
+          {
+            "kind": "field",
+            "label": "APIs, SDKs, developer tools, or technology credits:",
+            "text": "Confirmed: none provided by the partner. Permitted: open-source image-generation and vision models, or generative AI APIs available to the team. Shopify development stores (via the Shopify Partner programme) and WooCommerce can be set up free of charge."
+          },
+          {
+            "kind": "field",
+            "label": "Sample datasets or permitted data sources:",
+            "text": "Self-captured product photos, public-domain or openly licensed product images, and public real-vs-synthetic image datasets used within their licences. Judges will evaluate detection on a hidden test set."
+          },
+          {
+            "kind": "field",
+            "label": "Sandbox environments or test infrastructure:",
+            "text": "A Shopify development store and a local or hosted WooCommerce test site, set up by each team."
+          },
+          {
+            "kind": "field",
+            "label": "Documentation and reference materials:",
+            "text": "Shopify and WooCommerce product API/import documentation; the C2PA (Content Credentials) specification; major marketplaces’ image guidelines; Consumer Protection (E-Commerce) Rules, 2020."
+          },
+          {
+            "kind": "field",
+            "label": "Mentors, domain experts, or technical sessions:",
+            "text": "Confirmed: MyStartupWave engineers during the scheduled mentoring rounds (subject to the event schedule)."
+          },
+          {
+            "kind": "field",
+            "label": "Other resources or support:",
+            "text": "Under consideration: a session on synthetic media detection and responsible disclosure."
+          }
+        ]
+      },
+      {
+        "id": "source-9",
+        "number": 9,
+        "heading": "Business and Adoption Context",
+        "sourceHeading": "9. Business and Adoption Context",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Intended customer or beneficiary:",
+            "text": "Small sellers and D2C brands (SMB SaaS); marketplaces and e-commerce agencies (B2B API)."
+          },
+          {
+            "kind": "field",
+            "label": "Current alternatives or competing solutions:",
+            "text": "Professional photographers and studios, AI background-removal and product-shot tools, general-purpose LLM copywriting, and standalone AI-image detectors."
+          },
+          {
+            "kind": "field",
+            "label": "Potential value created:",
+            "text": "Lower cost and time per listing, faster catalog launches, higher conversion from better images and copy, fewer returns caused by misleading images, and stronger buyer trust."
+          },
+          {
+            "kind": "field",
+            "label": "Potential adoption pathway:",
+            "text": "Freemium, per-listing pricing for SMBs; a Shopify / WooCommerce plugin; an API for marketplace trust & safety teams."
+          },
+          {
+            "kind": "field",
+            "label": "Commercial or operational considerations:",
+            "text": "GPU inference costs, changes in marketplace policies, maintenance of platform integrations, and liability considerations around authenticity verdicts."
+          },
+          {
+            "kind": "field",
+            "label": "Known assumptions or uncertainties:",
+            "text": "Detectors may not generalise to future image-generation models; vendors are assumed to accept AI-generated images when they stay faithful to the real product and are clearly disclosed."
+          }
+        ]
+      },
+      {
+        "id": "source-10",
+        "number": 10,
+        "heading": "Success Indicators",
+        "sourceHeading": "10. Success Indicators",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Functional outcomes:",
+            "text": "End-to-end listing generation and export working for all demo products; an authenticity report produced for every test image."
+          },
+          {
+            "kind": "field",
+            "label": "User or customer outcomes:",
+            "text": "Time to create a complete listing reduced from hours to under 5 minutes; vendors rate generated images as publishable in at least 80% of cases."
+          },
+          {
+            "kind": "field",
+            "label": "Technical performance indicators:",
+            "text": "≥ 85% detection accuracy on clean images and ≤ 10-point drop under common transformations; well-calibrated confidence scores; < 60 seconds per listing; product fidelity preserved in judge review."
+          },
+          {
+            "kind": "field",
+            "label": "Business or operational indicators:",
+            "text": "Cost per listing and a pricing model clearly justified for small sellers."
+          },
+          {
+            "kind": "field",
+            "label": "Safety, reliability, or compliance indicators:",
+            "text": "No hallucinated product specifications; clear disclosure of AI-generated imagery; uncertainty communicated for every authenticity verdict."
+          }
+        ]
+      },
+      {
+        "id": "source-11",
+        "number": 11,
+        "heading": "Scope and Boundaries",
+        "sourceHeading": "11. Scope and Boundaries",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "In scope:",
+            "text": "Image generation and enhancement, listing generation, authenticity detection with explanations, and Shopify / WooCommerce export."
+          },
+          {
+            "kind": "field",
+            "label": "Out of scope:",
+            "text": "Payment processing, inventory and order management, live publishing on production marketplaces, legal certification of authenticity, and video generation."
+          },
+          {
+            "kind": "field",
+            "label": "Permitted assumptions or simplifications:",
+            "text": "Teams may focus on 2–3 product categories. Shopify and WooCommerce integration may use test stores. Detection may target current mainstream image generators."
+          },
+          {
+            "kind": "field",
+            "label": "Dependencies (systems, approvals, resources):",
+            "text": "Access to image-generation and vision models, GPU compute (free tiers acceptable) and test e-commerce stores."
+          }
+        ]
+      },
+      {
+        "id": "source-12",
+        "number": 12,
+        "heading": "Industry Engagement",
+        "sourceHeading": "12. Industry Engagement",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Will the company provide mentors or subject-matter experts?",
+            "text": "Yes. Engineers from MyStartupWave will be available during the scheduled mentoring rounds for architecture, product and feasibility reviews."
+          },
+          {
+            "kind": "field",
+            "label": "Will teams receive feedback during development?",
+            "text": "Yes. Teams will receive structured feedback at the designated mid-event checkpoint(s), focused on scope, technical approach and progress against the success indicators."
+          },
+          {
+            "kind": "field",
+            "label": "Will the company participate in evaluation or demonstrations?",
+            "text": "Yes. MyStartupWave representatives will attend the final demonstrations and take part in evaluation alongside the CODERED ’26 jury."
+          },
+          {
+            "kind": "field",
+            "label": "Is further validation, pilot discussion, or product exploration possible after the event?",
+            "text": "Possible. Teams with exceptional solutions may be invited to a follow-up discussion on further validation, mentoring or pilot exploration."
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Any follow-on engagement is subject to mutual interest and separate agreement."
+          }
+        ]
+      },
+      {
+        "id": "source-13",
+        "number": 13,
+        "heading": "Intellectual Property and Participation Terms",
+        "sourceHeading": "13. Intellectual Property and Participation Terms",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "The following terms apply to all participating teams and are communicated before development begins. Participation does not imply any automatic transfer of ownership or commercial rights; any subsequent arrangement must be agreed separately."
+          },
+          {
+            "kind": "field",
+            "label": "Data and resource usage conditions:",
+            "text": "Use only self-captured, public-domain or properly licensed images and datasets, within their licence terms. Do not scrape product images or listings from marketplaces in violation of their terms of service."
+          },
+          {
+            "kind": "field",
+            "label": "Confidentiality requirements, if any:",
+            "text": "None. This brief and any materials shared for this challenge are non-confidential."
+          },
+          {
+            "kind": "field",
+            "label": "Intellectual property and ownership terms:",
+            "text": "Teams retain full ownership of the code, designs, models and other intellectual property they create. Participation does not transfer any ownership or commercial rights to MyStartupWave."
+          },
+          {
+            "kind": "field",
+            "label": "Restrictions on using company names, data, or materials:",
+            "text": "Do not use MyStartupWave’s name or branding without written permission. Third-party brands, logos and marketplace names may be referenced only descriptively and must not be used to generate misleading product imagery."
+          },
+          {
+            "kind": "field",
+            "label": "Terms governing subsequent pilots, licensing, investment, employment, or commercial collaboration:",
+            "text": "Any pilot, licensing, investment, employment or commercial collaboration after the event is subject to mutual interest and a separate written agreement."
+          }
+        ]
+      },
+      {
+        "id": "source-14",
+        "number": 14,
+        "heading": "Partner Contact and Clarifications",
+        "sourceHeading": "14. Partner Contact and Clarifications",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Primary contact:",
+            "text": "MyStartupWave Challenge Desk"
+          },
+          {
+            "kind": "field",
+            "label": "Email:",
+            "text": "mystartupwave@gmail.com"
+          },
+          {
+            "kind": "field",
+            "label": "Reference documentation / resource links:",
+            "text": "This challenge brief; Shopify and WooCommerce developer documentation; C2PA specification (c2pa.org); Consumer Protection (E-Commerce) Rules, 2020."
+          },
+          {
+            "kind": "field",
+            "label": "Clarification process:",
+            "text": "Send questions in writing to the challenge contact or raise them through the official CODERED ’26 helpdesk. Answers that affect scope or evaluation will be shared with all teams on this challenge at the same time, to keep the competition fair."
+          }
+        ]
+      },
+      {
+        "id": "submission-checklist",
+        "number": null,
+        "heading": "Submission Checklist",
+        "sourceHeading": "Submission Checklist",
+        "pages": [
+          6
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  The problem is real, relevant, and clearly stated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Target users and desired outcomes are identified."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Teams have freedom to develop their own solutions."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  A working prototype is reasonably achievable within the challenge timeline."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Business value and adoption can be evaluated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Technical constraints and available resources are stated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Data, safety, confidentiality, and IP terms are clear."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Evaluation expectations are communicated consistently."
+          }
+        ]
+      },
+      {
+        "id": "guiding-principle",
+        "number": null,
+        "heading": "THE GUIDING PRINCIPLE",
+        "sourceHeading": "THE GUIDING PRINCIPLE",
+        "pages": [
+          6
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "The company defines the opportunity. The team defines the solution."
+          }
+        ]
+      }
+    ],
+    "source": {
+      "filename": "CODERED26_PS3_Catalog_Genius.pdf",
+      "href": "/briefs/mystartupwave/CODERED26_PS3_Catalog_Genius.pdf",
+      "pages": 6,
+      "sha256": "08a0d74c98ba2462da30a8a7c8ddfe957623238113ae96c06d470aac2c204728"
+    },
+    "coverage": {
+      "numberedSections": 14,
+      "checklistItems": 8,
+      "sourceCharacters": 14423,
+      "renderedCharacters": 14423,
+      "contentSha256": "e6ec96a9567fd7ac9c05d72dc707d0a4da1e97e25417b10c8cabdecf0e1da59b",
+      "lossless": true,
+      "excludedPageFurniture": [
+        {
+          "page": 1,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 1,
+          "text": "CODERED ’26  |  INDUSTRY CHALLENGE BRIEF"
+        },
+        {
+          "page": 1,
+          "text": "CODERED ’26  •  Problem Statement 3: Catalog Genius  |  1"
+        },
+        {
+          "page": 2,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 2,
+          "text": "CODERED ’26  •  Problem Statement 3: Catalog Genius  |  2"
+        },
+        {
+          "page": 3,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 3,
+          "text": "CODERED ’26  •  Problem Statement 3: Catalog Genius  |  3"
+        },
+        {
+          "page": 4,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 4,
+          "text": "CODERED ’26  •  Problem Statement 3: Catalog Genius  |  4"
+        },
+        {
+          "page": 5,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 5,
+          "text": "CODERED ’26  •  Problem Statement 3: Catalog Genius  |  5"
+        },
+        {
+          "page": 6,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 6,
+          "text": "CODERED ’26  •  Problem Statement 3: Catalog Genius  |  6"
+        }
+      ]
+    }
+  },
+  {
+    "number": 4,
+    "title": "HyperSpeed Quick Commerce",
+    "subtitle": "Disruptive logistics and ordering systems for minutes-level delivery at scale",
+    "challengeTitle": "HyperSpeed Quick Commerce",
+    "company": "MyStartupWave",
+    "industry": "Logistics & Supply Chain / Quick Commerce",
+    "challengeType": "Product Innovation",
+    "summary": "Quick commerce platforms compete on delivery promises of around 10 minutes, which depend on demand forecasting, dark-store operations, rider allocation and routing working together under tight margins. Teams will design and build a disruptive logistical or ordering system that measurably increases delivery efficiency and operational speed, validated through a realistic, reproducible simulation of orders, dark stores and riders.",
+    "objective": "Address the intense competition and logistical demands of the quick commerce sector by designing a disruptive logistical or ordering system that drastically increases delivery efficiency, operational speed and overall market competitiveness.",
+    "sections": [
+      {
+        "id": "source-1",
+        "number": 1,
+        "heading": "Challenge Overview",
+        "sourceHeading": "1. Challenge Overview",
+        "pages": [
+          1
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Company / Partner Name:",
+            "text": "MyStartupWave"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Title:",
+            "text": "HyperSpeed Quick Commerce"
+          },
+          {
+            "kind": "field",
+            "label": "Industry / Track:",
+            "text": "Logistics & Supply Chain / Quick Commerce"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Contact:",
+            "text": "MyStartupWave Challenge Desk (mystartupwave@gmail.com)"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Type:",
+            "text": "Product Innovation"
+          },
+          {
+            "kind": "field",
+            "label": "Brief Summary:",
+            "text": "Quick commerce platforms compete on delivery promises of around 10 minutes, which depend on demand forecasting, dark-store operations, rider allocation and routing working together under tight margins. Teams will design and build a disruptive logistical or ordering system that measurably increases delivery efficiency and operational speed, validated through a realistic, reproducible simulation of orders, dark stores and riders."
+          }
+        ]
+      },
+      {
+        "id": "source-2",
+        "number": 2,
+        "heading": "Industry Context",
+        "sourceHeading": "2. Industry Context",
+        "pages": [
+          1
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Quick commerce has grown rapidly in Indian cities, with players such as Blinkit, Zepto and Swiggy Instamart promising groceries and essentials within minutes. The model relies on dense networks of dark stores, small high-velocity inventories and large rider fleets operating in congested traffic."
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Margins are thin and every second counts: picking and packing, rider assignment, batching, last-mile routing and stock availability all directly affect delivery time, cost per order and customer retention. As players expand into new cities and categories, operational efficiency has become the key differentiator, and advances in forecasting, optimisation, real-time data and AI create room for genuinely new approaches."
+          }
+        ]
+      },
+      {
+        "id": "source-3",
+        "number": 3,
+        "heading": "Problem Statement",
+        "sourceHeading": "3. Problem Statement",
+        "pages": [
+          1,
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "Problem and who is affected:",
+            "text": "Quick commerce operators, dark-store managers and riders struggle to"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "keep delivery fast and economical at scale; customers experience late deliveries, cancellations and out-of-stock items."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "When and where it occurs:  Continuously during operation, and most severely at peak demand (meal"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "times, evenings, weekends, festivals, rain), in congested urban areas, and when demand shifts unexpectedly."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Limitations of current solutions:  Rule-based rider assignment and nearest-store routing break down at"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "peak; forecasts at dark-store and SKU level are noisy, causing stock-outs or wastage; picking layouts and processes are static; riders sit idle or are overloaded; and optimisations are often made in isolation rather than end to end."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "Why it is worth solving:",
+            "text": "Delivery-time promises are the core competitive claim of every quick commerce brand; stock-outs and delays directly drive cancellations and churn; and unit economics depend heavily on orders per rider-hour and store throughput, so even small efficiency gains create significant value."
+          }
+        ]
+      },
+      {
+        "id": "source-4",
+        "number": 4,
+        "heading": "Target Users and Stakeholders",
+        "sourceHeading": "4. Target Users and Stakeholders",
+        "pages": [
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Primary users:",
+            "text": "Quick commerce operations teams and dark-store managers."
+          },
+          {
+            "kind": "field",
+            "label": "Secondary users / stakeholders:",
+            "text": "Delivery riders, customers, inventory and supply-chain planners, and brands or suppliers that replenish dark stores."
+          },
+          {
+            "kind": "field",
+            "label": "Current user journey or workflow:",
+            "text": "Customer places an order → order is routed to the nearest dark store → a picker collects items → order is packed → a rider is assigned (often first-available) → rider navigates to the customer → rider returns to the store. Replenishment is usually planned from historical sales, often once a day."
+          },
+          {
+            "kind": "field",
+            "label": "Key user pain points:",
+            "text": "Long pick-and-pack times at peak, poor rider utilisation, cancellations caused by stock-outs, inaccurate ETAs, inefficient batching, and limited real-time visibility across stores and the fleet."
+          }
+        ]
+      },
+      {
+        "id": "source-5",
+        "number": 5,
+        "heading": "Product Opportunity",
+        "sourceHeading": "5. Product Opportunity",
+        "pages": [
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "What users should accomplish:",
+            "text": "Fulfil more orders within the promised delivery window, especially at"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "peak and during disruptions."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Meaningful improvement:  Lower average order-to-door time and cost per delivery, with better rider"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "utilisation and stock availability."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "What makes it different:  A genuinely new idea in ordering, inventory positioning, dispatch, batching or"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "routing, rather than an incremental tweak, with its impact proven quantitatively against a realistic baseline."
+          }
+        ]
+      },
+      {
+        "id": "source-6",
+        "number": 6,
+        "heading": "Expected Product Capabilities",
+        "sourceHeading": "6. Expected Product Capabilities",
+        "pages": [
+          2,
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "subheading",
+            "label": "Must-have capabilities:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A clearly defined innovation in at least one of: demand forecasting and inventory placement, order"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "batching, rider dispatch and routing, dark-store picking, or the customer ordering experience, integrated into an end-to-end order flow."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A simulation environment modelling a city zone with at least 3 dark stores, 30+ riders, thousands of orders"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "per day, realistic road travel times, demand peaks and SKU-level inventory."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A baseline policy (e.g., nearest store + first-available rider) implemented in the same simulator, so"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "improvements are measured on identical scenarios."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A real-time operations dashboard showing orders, store load, rider positions and status, SLA breaches and"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "key KPIs."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Dynamic decision-making that adapts in real time to surges and disruptions (e.g., rain, rider shortage,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "stock-out at a store)."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Accurate delivery-ETA prediction shown to the customer at order time."
+          },
+          {
+            "kind": "subheading",
+            "label": "Nice-to-have capabilities:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Predictive pre-positioning of inventory or riders ahead of forecast demand."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Multi-store order splitting or substitution suggestions when items are out of stock."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Fairness- and fatigue-aware rider assignment."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A customer-facing ordering prototype with smart recommendations and delivery-slot nudges."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Use of real open map data (e.g., the OpenStreetMap road network of an Indian city)."
+          },
+          {
+            "kind": "field",
+            "label": "Expected user interactions:",
+            "text": "Operators monitor the live dashboard and intervene when alerts fire; the system automatically assigns, batches and routes orders; customers place orders and see accurate ETAs; riders receive optimised tasks."
+          },
+          {
+            "kind": "field",
+            "label": "Expected demonstration / deliverable:",
+            "text": "Run the baseline and the proposed system on the same simulated day, including at least one demand surge and one disruption; present the live dashboard; and show a side-by-side KPI comparison with a clear explanation of why the improvement occurs."
+          }
+        ]
+      },
+      {
+        "id": "source-7",
+        "number": 7,
+        "heading": "Technical and Operational Constraints",
+        "sourceHeading": "7. Technical and Operational Constraints",
+        "pages": [
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Technical or platform constraints:",
+            "text": "Any technology stack may be used. The decision engine must operate in real time within the simulation. The simulation must be reproducible (fixed random seeds) so that judges can rerun scenarios. Live data from any quick commerce company’s private systems must not be used."
+          },
+          {
+            "kind": "field",
+            "label": "Performance, accuracy, or latency requirements:",
+            "text": "Dispatch and routing decisions within 2 seconds per order at a load of at least 500 concurrent active orders. Versus the baseline on the same scenario, the proposed system must achieve at least a 15% reduction in average delivery time or at least a 20% improvement in on-time (within-SLA) delivery rate, without increasing cost per order. ETA prediction error (MAE) must be under 2 minutes."
+          },
+          {
+            "kind": "field",
+            "label": "Security, privacy, or compliance requirements:",
+            "text": "Location and customer data must be synthetic or anonymised. Designs must respect road-safety and labour norms for riders."
+          },
+          {
+            "kind": "field",
+            "label": "Hardware, connectivity, or deployment limitations:",
+            "text": "Should run on a standard laptop or a free cloud tier; dashboards must run in a browser."
+          },
+          {
+            "kind": "field",
+            "label": "Budget or resource constraints:",
+            "text": "Use open-source optimisation and mapping tools where possible (e.g., Google OR-Tools, OSRM, OpenStreetMap). Any paid API usage must be documented."
+          },
+          {
+            "kind": "field",
+            "label": "Domain-specific safety requirements:",
+            "text": "Delivery-time improvements must come from better planning, not from assuming unsafe rider speeds. Simulated rider speeds must stay within realistic urban limits, and rider workload and break limits must be respected."
+          }
+        ]
+      },
+      {
+        "id": "source-8",
+        "number": 8,
+        "heading": "Available Resources and Support",
+        "sourceHeading": "8. Available Resources and Support",
+        "pages": [
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Resources marked “Confirmed” are guaranteed by the partner. “Permitted” items may be used by teams at their own discretion and cost. “Under consideration” items are not yet confirmed."
+          },
+          {
+            "kind": "field",
+            "label": "APIs, SDKs, developer tools, or technology credits:",
+            "text": "Confirmed: none provided by the partner. Permitted: open-source tools such as OpenStreetMap, OSRM or GraphHopper, Google OR-Tools and SimPy, or other APIs available to the team."
+          },
+          {
+            "kind": "field",
+            "label": "Sample datasets or permitted data sources:",
+            "text": "Synthetic order, inventory and rider data generated by the team; public grocery-order or delivery datasets and open road networks, used within their licences."
+          },
+          {
+            "kind": "field",
+            "label": "Sandbox environments or test infrastructure:",
+            "text": "Not provided. Teams build their own simulation environment."
+          },
+          {
+            "kind": "field",
+            "label": "Documentation and reference materials:",
+            "text": "Google OR-Tools vehicle-routing documentation; OpenStreetMap and OSRM documentation; published research on dynamic vehicle routing and last-mile delivery."
+          },
+          {
+            "kind": "field",
+            "label": "Mentors, domain experts, or technical sessions:",
+            "text": "Confirmed: MyStartupWave engineers during the scheduled mentoring rounds (subject to the event schedule)."
+          },
+          {
+            "kind": "field",
+            "label": "Other resources or support:",
+            "text": "Under consideration: a session with a quick commerce operations practitioner."
+          }
+        ]
+      },
+      {
+        "id": "source-9",
+        "number": 9,
+        "heading": "Business and Adoption Context",
+        "sourceHeading": "9. Business and Adoption Context",
+        "pages": [
+          3,
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Intended customer or beneficiary:",
+            "text": "Quick commerce and hyperlocal delivery operators, dark-store franchisees, and logistics-technology providers."
+          },
+          {
+            "kind": "field",
+            "label": "Current alternatives or competing solutions:",
+            "text": "In-house dispatch and routing systems at large operators; third-party last-mile logistics platforms and route-optimisation SaaS products."
+          },
+          {
+            "kind": "field",
+            "label": "Potential value created:",
+            "text": "Shorter delivery times and lower cost per order, higher rider productivity, fewer cancellations and stock-outs, and better customer retention."
+          },
+          {
+            "kind": "field",
+            "label": "Potential adoption pathway:",
+            "text": "Pilot as a plug-in optimisation module for a single dark-store cluster, then expand into SaaS for mid-sized hyperlocal players without in-house optimisation teams."
+          },
+          {
+            "kind": "field",
+            "label": "Commercial or operational considerations:",
+            "text": "Integration with existing order-management systems and rider apps, real-time compute cost, and change management for store and rider operations."
+          },
+          {
+            "kind": "field",
+            "label": "Known assumptions or uncertainties:",
+            "text": "Simulated demand and traffic are representative enough to indicate real-world impact; operators would share data for a pilot."
+          }
+        ]
+      },
+      {
+        "id": "source-10",
+        "number": 10,
+        "heading": "Success Indicators",
+        "sourceHeading": "10. Success Indicators",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Functional outcomes:",
+            "text": "End-to-end simulation of ordering, picking, dispatch and delivery for both the baseline and the proposed system; a live dashboard; adaptive response to surges and disruptions."
+          },
+          {
+            "kind": "field",
+            "label": "User or customer outcomes:",
+            "text": "A higher share of orders delivered within the promised SLA; more accurate ETAs; better rider utilisation without unsafe workloads."
+          },
+          {
+            "kind": "field",
+            "label": "Technical performance indicators:",
+            "text": "≥ 15% lower average delivery time or ≥ 20% higher on-time rate versus baseline; decisions in < 2 seconds at 500+ concurrent orders; ETA MAE < 2 minutes; reproducible results."
+          },
+          {
+            "kind": "field",
+            "label": "Business or operational indicators:",
+            "text": "Quantified impact on cost per order and orders per rider-hour, with a credible pilot plan."
+          },
+          {
+            "kind": "field",
+            "label": "Safety, reliability, or compliance indicators:",
+            "text": "No reliance on unsafe speeds; rider workload and break limits respected throughout the simulation."
+          }
+        ]
+      },
+      {
+        "id": "source-11",
+        "number": 11,
+        "heading": "Scope and Boundaries",
+        "sourceHeading": "11. Scope and Boundaries",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "In scope:",
+            "text": "Design of the logistics or ordering innovation, the simulation, baseline comparison, operations dashboard and ETA model."
+          },
+          {
+            "kind": "field",
+            "label": "Out of scope:",
+            "text": "Real-world deployment with live riders, payment systems, procurement contracts, a full customer app (optional only), and physical hardware such as drones or robots (concepts may be discussed but must be simulated)."
+          },
+          {
+            "kind": "field",
+            "label": "Permitted assumptions or simplifications:",
+            "text": "A single city zone and a limited SKU catalogue (e.g., 200–500 SKUs) are sufficient. Travel times may be approximated from open road networks."
+          },
+          {
+            "kind": "field",
+            "label": "Dependencies (systems, approvals, resources):",
+            "text": "Open map data, optimisation libraries and compute for running the simulation."
+          }
+        ]
+      },
+      {
+        "id": "source-12",
+        "number": 12,
+        "heading": "Industry Engagement",
+        "sourceHeading": "12. Industry Engagement",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Will the company provide mentors or subject-matter experts?",
+            "text": "Yes. Engineers from MyStartupWave will be available during the scheduled mentoring rounds for architecture, product and feasibility reviews."
+          },
+          {
+            "kind": "field",
+            "label": "Will teams receive feedback during development?",
+            "text": "Yes. Teams will receive structured feedback at the designated mid-event checkpoint(s), focused on scope, technical approach and progress against the success indicators."
+          },
+          {
+            "kind": "field",
+            "label": "Will the company participate in evaluation or demonstrations?",
+            "text": "Yes. MyStartupWave representatives will attend the final demonstrations and take part in evaluation alongside the CODERED ’26 jury."
+          },
+          {
+            "kind": "field",
+            "label": "Is further validation, pilot discussion, or product exploration possible after the event?",
+            "text": "Possible. Teams with exceptional solutions may be invited to a follow-up discussion on further validation, mentoring or pilot exploration."
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Any follow-on engagement is subject to mutual interest and separate agreement."
+          }
+        ]
+      },
+      {
+        "id": "source-13",
+        "number": 13,
+        "heading": "Intellectual Property and Participation Terms",
+        "sourceHeading": "13. Intellectual Property and Participation Terms",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "The following terms apply to all participating teams and are communicated before development begins. Participation does not imply any automatic transfer of ownership or commercial rights; any subsequent arrangement must be agreed separately."
+          },
+          {
+            "kind": "field",
+            "label": "Data and resource usage conditions:",
+            "text": "Use only synthetic data, openly licensed datasets and open map data. Do not scrape or reverse-engineer any quick commerce company’s apps, APIs or private data."
+          },
+          {
+            "kind": "field",
+            "label": "Confidentiality requirements, if any:",
+            "text": "None. This brief and any materials shared for this challenge are non-confidential."
+          },
+          {
+            "kind": "field",
+            "label": "Intellectual property and ownership terms:",
+            "text": "Teams retain full ownership of the code, designs, models and other intellectual property they create. Participation does not transfer any ownership or commercial rights to MyStartupWave."
+          },
+          {
+            "kind": "field",
+            "label": "Restrictions on using company names, data, or materials:",
+            "text": "Do not use MyStartupWave’s name or branding without written permission. Names of existing quick commerce companies may be referenced only descriptively, for market context."
+          },
+          {
+            "kind": "field",
+            "label": "Terms governing subsequent pilots, licensing, investment, employment, or commercial collaboration:",
+            "text": "Any pilot, licensing, investment, employment or commercial collaboration after the event is subject to mutual interest and a separate written agreement."
+          }
+        ]
+      },
+      {
+        "id": "source-14",
+        "number": 14,
+        "heading": "Partner Contact and Clarifications",
+        "sourceHeading": "14. Partner Contact and Clarifications",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Primary contact:",
+            "text": "MyStartupWave Challenge Desk"
+          },
+          {
+            "kind": "field",
+            "label": "Email:",
+            "text": "mystartupwave@gmail.com"
+          },
+          {
+            "kind": "field",
+            "label": "Reference documentation / resource links:",
+            "text": "This challenge brief; Google OR-Tools documentation; OpenStreetMap and OSRM documentation."
+          },
+          {
+            "kind": "field",
+            "label": "Clarification process:",
+            "text": "Send questions in writing to the challenge contact or raise them through the official CODERED ’26 helpdesk. Answers that affect scope or evaluation will be shared with all teams on this challenge at the same time, to keep the competition fair."
+          }
+        ]
+      },
+      {
+        "id": "submission-checklist",
+        "number": null,
+        "heading": "Submission Checklist",
+        "sourceHeading": "Submission Checklist",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  The problem is real, relevant, and clearly stated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Target users and desired outcomes are identified."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Teams have freedom to develop their own solutions."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  A working prototype is reasonably achievable within the challenge timeline."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Business value and adoption can be evaluated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Technical constraints and available resources are stated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Data, safety, confidentiality, and IP terms are clear."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Evaluation expectations are communicated consistently."
+          }
+        ]
+      },
+      {
+        "id": "guiding-principle",
+        "number": null,
+        "heading": "THE GUIDING PRINCIPLE",
+        "sourceHeading": "THE GUIDING PRINCIPLE",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "The company defines the opportunity. The team defines the solution."
+          }
+        ]
+      }
+    ],
+    "source": {
+      "filename": "CODERED26_PS4_HyperSpeed_Quick_Commerce.pdf",
+      "href": "/briefs/mystartupwave/CODERED26_PS4_HyperSpeed_Quick_Commerce.pdf",
+      "pages": 5,
+      "sha256": "962d5bd645c9552f45434d5bfd5e845c7d3edb6fee4f6cafa7a3f965d906da3a"
+    },
+    "coverage": {
+      "numberedSections": 14,
+      "checklistItems": 8,
+      "sourceCharacters": 12778,
+      "renderedCharacters": 12778,
+      "contentSha256": "573b902d61940645395736cc6e4e41a684440fe94dcddfd5abb53092a041aa26",
+      "lossless": true,
+      "excludedPageFurniture": [
+        {
+          "page": 1,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 1,
+          "text": "CODERED ’26  |  INDUSTRY CHALLENGE BRIEF"
+        },
+        {
+          "page": 1,
+          "text": "CODERED ’26  •  Problem Statement 4: HyperSpeed Quick Commerce  |  1"
+        },
+        {
+          "page": 2,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 2,
+          "text": "CODERED ’26  •  Problem Statement 4: HyperSpeed Quick Commerce  |  2"
+        },
+        {
+          "page": 3,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 3,
+          "text": "CODERED ’26  •  Problem Statement 4: HyperSpeed Quick Commerce  |  3"
+        },
+        {
+          "page": 4,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 4,
+          "text": "CODERED ’26  •  Problem Statement 4: HyperSpeed Quick Commerce  |  4"
+        },
+        {
+          "page": 5,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 5,
+          "text": "CODERED ’26  •  Problem Statement 4: HyperSpeed Quick Commerce  |  5"
+        }
+      ]
+    }
+  },
+  {
+    "number": 5,
+    "title": "One-Token Video",
+    "subtitle": "Compute-efficient, high-quality AI video generation and editing",
+    "challengeTitle": "One-Token Video",
+    "company": "MyStartupWave",
+    "industry": "Generative AI / Media & Content Technology",
+    "challengeType": "Product Innovation",
+    "summary": "Current AI video generation tools are expensive and slow because they consume large amounts of compute and tokens per second of output, putting them out of reach for most creators and small businesses. Teams will engineer an efficient video editing and generation platform that produces high-quality short clips while consuming dramatically less compute, and will prove the quality-versus-cost trade-off with transparent measurements.",
+    "objective": "Overcome the high computational cost and token consumption of current AI video generation tools by engineering an efficient video editing and generation platform that produces high-quality clips while consuming minimal processing tokens.",
+    "sections": [
+      {
+        "id": "source-1",
+        "number": 1,
+        "heading": "Challenge Overview",
+        "sourceHeading": "1. Challenge Overview",
+        "pages": [
+          1
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Company / Partner Name:",
+            "text": "MyStartupWave"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Title:",
+            "text": "One-Token Video"
+          },
+          {
+            "kind": "field",
+            "label": "Industry / Track:",
+            "text": "Generative AI / Media & Content Technology"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Contact:",
+            "text": "MyStartupWave Challenge Desk (mystartupwave@gmail.com)"
+          },
+          {
+            "kind": "field",
+            "label": "Challenge Type:",
+            "text": "Product Innovation"
+          },
+          {
+            "kind": "field",
+            "label": "Brief Summary:",
+            "text": "Current AI video generation tools are expensive and slow because they consume large amounts of compute and tokens per second of output, putting them out of reach for most creators and small businesses. Teams will engineer an efficient video editing and generation platform that produces high-quality short clips while consuming dramatically less compute, and will prove the quality-versus-cost trade-off with transparent measurements."
+          }
+        ]
+      },
+      {
+        "id": "source-2",
+        "number": 2,
+        "heading": "Industry Context",
+        "sourceHeading": "2. Industry Context",
+        "pages": [
+          1
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Short-form video dominates digital marketing, social media and education, and demand for video content far outstrips the capacity of creators and small businesses to produce it. Text-to-video and image-to-video models have improved dramatically, but generating even a few seconds of video can require significant GPU time and costly credit-based pricing, with long waits and frequent regeneration when results are wrong."
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Because most edits mean regenerating from scratch, AI video remains impractical for iterative creative work and for price-sensitive markets such as India. Techniques such as keyframe reuse, latent caching, efficient interpolation, model distillation, smart composition of generated and existing assets, and careful prompt planning offer a route to much cheaper generation, if they are combined into a product that keeps quality high."
+          }
+        ]
+      },
+      {
+        "id": "source-3",
+        "number": 3,
+        "heading": "Problem Statement",
+        "sourceHeading": "3. Problem Statement",
+        "pages": [
+          1,
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "Problem and who is affected:",
+            "text": "Content creators, marketers, small businesses, educators and startups"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "need frequent short-form video but cannot afford high per-clip generation costs or long processing times."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "When and where it occurs:  Whenever a video must be produced or revised quickly (social campaigns,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "product promos, explainers, ads), and especially during iterative editing, where small changes trigger full, expensive regenerations."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Limitations of current solutions:  Leading tools charge per second of generated video and regenerate"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "entire clips for minor edits; capable open-source models need high-end GPUs; outputs often suffer from temporal flicker and inconsistent subjects; and users have little visibility into, or control over, compute spend."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "Why it is worth solving:",
+            "text": "Credit-based pricing and long render queues are common complaints among AI video users; demand for short-form video keeps growing; and strong research momentum on efficient video diffusion, distillation and caching indicates that large efficiency gains are achievable."
+          }
+        ]
+      },
+      {
+        "id": "source-4",
+        "number": 4,
+        "heading": "Target Users and Stakeholders",
+        "sourceHeading": "4. Target Users and Stakeholders",
+        "pages": [
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Primary users:",
+            "text": "Independent creators, social media managers, and small and medium businesses producing short-form video."
+          },
+          {
+            "kind": "field",
+            "label": "Secondary users / stakeholders:",
+            "text": "Marketing agencies, ed-tech content teams, and developers who integrate video generation into their own products."
+          },
+          {
+            "kind": "field",
+            "label": "Current user journey or workflow:",
+            "text": "Write a prompt → wait for generation → receive a clip that is partly wrong → regenerate the whole clip, spending credits again → export → edit in a separate editor → repeat for every variant or aspect ratio."
+          },
+          {
+            "kind": "field",
+            "label": "Key user pain points:",
+            "text": "High cost per usable clip; slow turnaround; full regeneration for small changes; inconsistent characters and objects across shots; no visibility into compute spend; and separate tools for generation and editing."
+          }
+        ]
+      },
+      {
+        "id": "source-5",
+        "number": 5,
+        "heading": "Product Opportunity",
+        "sourceHeading": "5. Product Opportunity",
+        "pages": [
+          2
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "What users should accomplish:",
+            "text": "Generate and edit short, high-quality video clips from text, images or"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "existing footage at a fraction of today’s compute cost."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Meaningful improvement:  Incremental edits that change only what needs changing (one shot, an object,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "text, style or duration) without regenerating the whole video."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "What makes it different:  A transparent cost meter that shows users exactly how much compute each"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "output consumes, backed by a measured, reproducible quality-versus-cost comparison."
+          }
+        ]
+      },
+      {
+        "id": "source-6",
+        "number": 6,
+        "heading": "Expected Product Capabilities",
+        "sourceHeading": "6. Expected Product Capabilities",
+        "pages": [
+          2,
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "subheading",
+            "label": "Must-have capabilities:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Text-to-video and image-to-video generation of short clips (at least 10–15 seconds, 720p or higher, 24 fps)"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "with coherent motion and consistent subjects."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "An efficiency architecture that substantially reduces compute or tokens per second of output compared"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "with a naïve baseline, e.g., keyframe generation with interpolation, latent/feature caching, reuse of shared scenes, low-resolution drafts with selective upscaling, or composition of generated and existing assets."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Incremental editing: modify a single shot, segment or element and regenerate only the affected portion."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A built-in timeline editor supporting trimming, sequencing, text overlays, transitions and an audio track."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A per-job cost and performance meter showing GPU-seconds or tokens consumed, generation time and"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "estimated cost, compared against the team’s own baseline pipeline."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Quality evaluation using objective metrics (e.g., CLIP-based text–video alignment,"
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "temporal-consistency/flicker score, FVD where feasible) alongside human ratings."
+          },
+          {
+            "kind": "subheading",
+            "label": "Nice-to-have capabilities:",
+            "text": ""
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "A draft/preview mode that produces a low-cost storyboard or animatic before committing to a full render."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Character and brand consistency across multiple clips (reference-image locking)."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Automatic aspect-ratio adaptation (16:9, 9:16, 1:1) without full regeneration."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "AI voice-over, captions and music synchronisation."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "Watermarking or C2PA labelling of AI-generated video."
+          },
+          {
+            "kind": "field",
+            "label": "Expected user interactions:",
+            "text": "The user writes a prompt or uploads images or footage → reviews a low-cost storyboard → generates the clip → edits individual shots on the timeline while seeing the cost of each action → exports in the required format."
+          },
+          {
+            "kind": "field",
+            "label": "Expected demonstration / deliverable:",
+            "text": "Live generation of at least two distinct clips from prompts and one single-shot edit; a side-by-side comparison against a baseline pipeline on identical prompts, showing compute consumed, time taken and quality metrics; and the final exported videos."
+          }
+        ]
+      },
+      {
+        "id": "source-7",
+        "number": 7,
+        "heading": "Technical and Operational Constraints",
+        "sourceHeading": "7. Technical and Operational Constraints",
+        "pages": [
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Technical or platform constraints:",
+            "text": "Any model stack may be used (open-source preferred). Teams must define and implement a fair baseline (e.g., the same base model generating full clips directly) to measure efficiency gains against. The measurement methodology must be documented and reproducible."
+          },
+          {
+            "kind": "field",
+            "label": "Performance, accuracy, or latency requirements:",
+            "text": "At least a 5× reduction in compute (GPU-seconds or tokens) per second of output video versus the team’s baseline, with no more than a 10% drop on the chosen quality metrics and comparable human-rated quality. A single-shot edit must cost less than 25% of a full regeneration. A 10-second 720p clip should generate in under 3 minutes on a single consumer or free-tier GPU (e.g., T4 or A10 class)."
+          },
+          {
+            "kind": "field",
+            "label": "Security, privacy, or compliance requirements:",
+            "text": "No generation of deepfakes of real people without consent, no sexual or violent content, and respect for copyrighted characters and brands. Uploaded media must be used only for the user’s own job."
+          },
+          {
+            "kind": "field",
+            "label": "Hardware, connectivity, or deployment limitations:",
+            "text": "Must be runnable on a single GPU available through free or low-cost tiers (e.g., Google Colab, Kaggle) or through APIs. The front end must run in a browser."
+          },
+          {
+            "kind": "field",
+            "label": "Budget or resource constraints:",
+            "text": "Total compute used during the event should stay within free tiers or modest credits. Teams must report cost per second of output video."
+          },
+          {
+            "kind": "field",
+            "label": "Domain-specific safety requirements:",
+            "text": "Content-safety filtering on prompts and outputs, and clear labelling of generated videos as AI-generated."
+          }
+        ]
+      },
+      {
+        "id": "source-8",
+        "number": 8,
+        "heading": "Available Resources and Support",
+        "sourceHeading": "8. Available Resources and Support",
+        "pages": [
+          3
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Resources marked “Confirmed” are guaranteed by the partner. “Permitted” items may be used by teams at their own discretion and cost. “Under consideration” items are not yet confirmed."
+          },
+          {
+            "kind": "field",
+            "label": "APIs, SDKs, developer tools, or technology credits:",
+            "text": "Confirmed: none provided by the partner. Permitted: open-source video models (e.g., Stable Video Diffusion, CogVideoX, AnimateDiff, LTX-Video, Wan), video tooling such as FFmpeg, or generative AI APIs available to the team."
+          },
+          {
+            "kind": "field",
+            "label": "Sample datasets or permitted data sources:",
+            "text": "Openly licensed stock footage and images, team-created media, and public video-generation benchmark prompts, used within their licences."
+          },
+          {
+            "kind": "field",
+            "label": "Sandbox environments or test infrastructure:",
+            "text": "Not provided. Teams use free GPU tiers (e.g., Google Colab, Kaggle) or their own resources."
+          },
+          {
+            "kind": "field",
+            "label": "Documentation and reference materials:",
+            "text": "Model cards and papers for the chosen video models; FFmpeg documentation; literature on efficient diffusion (distillation, caching, frame interpolation)."
+          },
+          {
+            "kind": "field",
+            "label": "Mentors, domain experts, or technical sessions:",
+            "text": "Confirmed: MyStartupWave engineers during the scheduled mentoring rounds (subject to the event schedule)."
+          },
+          {
+            "kind": "field",
+            "label": "Other resources or support:",
+            "text": "Under consideration: a technical session on efficient diffusion inference."
+          }
+        ]
+      },
+      {
+        "id": "source-9",
+        "number": 9,
+        "heading": "Business and Adoption Context",
+        "sourceHeading": "9. Business and Adoption Context",
+        "pages": [
+          3,
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Intended customer or beneficiary:",
+            "text": "Creators, SMB marketers and agencies (SaaS); developers (API)."
+          },
+          {
+            "kind": "field",
+            "label": "Current alternatives or competing solutions:",
+            "text": "Commercial AI video generators (e.g., Runway, Pika, Luma, Kling), template-based editors (e.g., CapCut, Canva) and self-hosted open-source models."
+          },
+          {
+            "kind": "field",
+            "label": "Potential value created:",
+            "text": "An order-of-magnitude lower cost per usable clip, faster iteration, fewer wasted regenerations, and AI video that is affordable in price-sensitive markets."
+          },
+          {
+            "kind": "field",
+            "label": "Potential adoption pathway:",
+            "text": "A freemium creator tool with pay-as-you-go credits; an API for platforms that embed video generation; agency plans."
+          },
+          {
+            "kind": "field",
+            "label": "Commercial or operational considerations:",
+            "text": "GPU cost and availability, model licensing terms (some open models restrict commercial use) and content-moderation obligations."
+          },
+          {
+            "kind": "field",
+            "label": "Known assumptions or uncertainties:",
+            "text": "Efficiency techniques are assumed to generalise across prompt types, and users are assumed to accept slight quality trade-offs in exchange for large cost savings."
+          }
+        ]
+      },
+      {
+        "id": "source-10",
+        "number": 10,
+        "heading": "Success Indicators",
+        "sourceHeading": "10. Success Indicators",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Functional outcomes:",
+            "text": "Generation, incremental editing, timeline editing, cost metering and export working end to end."
+          },
+          {
+            "kind": "field",
+            "label": "User or customer outcomes:",
+            "text": "Users can produce a publishable 15-second clip, including at least one revision, in under 10 minutes; human raters judge quality comparable to the baseline."
+          },
+          {
+            "kind": "field",
+            "label": "Technical performance indicators:",
+            "text": "≥ 5× compute reduction per output second versus baseline with ≤ 10% quality-metric drop; single-shot edits ≤ 25% of full-regeneration cost; a 10-second 720p clip in under 3 minutes on a single T4/A10-class GPU."
+          },
+          {
+            "kind": "field",
+            "label": "Business or operational indicators:",
+            "text": "A credible cost-per-clip and pricing model showing affordability for SMB creators."
+          },
+          {
+            "kind": "field",
+            "label": "Safety, reliability, or compliance indicators:",
+            "text": "Prompt and output safety filters active; generated videos labelled; no misuse of real people’s likenesses in demos."
+          }
+        ]
+      },
+      {
+        "id": "source-11",
+        "number": 11,
+        "heading": "Scope and Boundaries",
+        "sourceHeading": "11. Scope and Boundaries",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "In scope:",
+            "text": "An efficient generation pipeline, incremental editing, a timeline editor, a cost meter, quality evaluation and the baseline comparison."
+          },
+          {
+            "kind": "field",
+            "label": "Out of scope:",
+            "text": "Training a foundation video model from scratch, long-form video (over 60 seconds), real-time or live video generation, and 4K output."
+          },
+          {
+            "kind": "field",
+            "label": "Permitted assumptions or simplifications:",
+            "text": "Teams may build on existing pre-trained models and fine-tune or distil them. Short clips (10–30 seconds) are sufficient. Quality metrics may be computed on a small benchmark prompt set (e.g., 10–20 prompts)."
+          },
+          {
+            "kind": "field",
+            "label": "Dependencies (systems, approvals, resources):",
+            "text": "GPU access and pre-trained model weights with compatible licences."
+          }
+        ]
+      },
+      {
+        "id": "source-12",
+        "number": 12,
+        "heading": "Industry Engagement",
+        "sourceHeading": "12. Industry Engagement",
+        "pages": [
+          4
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Will the company provide mentors or subject-matter experts?",
+            "text": "Yes. Engineers from MyStartupWave will be available during the scheduled mentoring rounds for architecture, product and feasibility reviews."
+          },
+          {
+            "kind": "field",
+            "label": "Will teams receive feedback during development?",
+            "text": "Yes. Teams will receive structured feedback at the designated mid-event checkpoint(s), focused on scope, technical approach and progress against the success indicators."
+          },
+          {
+            "kind": "field",
+            "label": "Will the company participate in evaluation or demonstrations?",
+            "text": "Yes. MyStartupWave representatives will attend the final demonstrations and take part in evaluation alongside the CODERED ’26 jury."
+          },
+          {
+            "kind": "field",
+            "label": "Is further validation, pilot discussion, or product exploration possible after the event?",
+            "text": "Possible. Teams with exceptional solutions may be invited to a follow-up discussion on further validation, mentoring or pilot exploration."
+          },
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "Any follow-on engagement is subject to mutual interest and separate agreement."
+          }
+        ]
+      },
+      {
+        "id": "source-13",
+        "number": 13,
+        "heading": "Intellectual Property and Participation Terms",
+        "sourceHeading": "13. Intellectual Property and Participation Terms",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "The following terms apply to all participating teams and are communicated before development begins. Participation does not imply any automatic transfer of ownership or commercial rights; any subsequent arrangement must be agreed separately."
+          },
+          {
+            "kind": "field",
+            "label": "Data and resource usage conditions:",
+            "text": "Use only openly licensed or team-created media and models whose licences permit the intended use. Do not upload or generate content depicting real people without their consent."
+          },
+          {
+            "kind": "field",
+            "label": "Confidentiality requirements, if any:",
+            "text": "None. This brief and any materials shared for this challenge are non-confidential."
+          },
+          {
+            "kind": "field",
+            "label": "Intellectual property and ownership terms:",
+            "text": "Teams retain full ownership of the code, designs, models and other intellectual property they create. Participation does not transfer any ownership or commercial rights to MyStartupWave."
+          },
+          {
+            "kind": "field",
+            "label": "Restrictions on using company names, data, or materials:",
+            "text": "Do not use MyStartupWave’s name or branding without written permission. Commercial AI video products may be referenced only descriptively, for comparison."
+          },
+          {
+            "kind": "field",
+            "label": "Terms governing subsequent pilots, licensing, investment, employment, or commercial collaboration:",
+            "text": "Any pilot, licensing, investment, employment or commercial collaboration after the event is subject to mutual interest and a separate written agreement."
+          }
+        ]
+      },
+      {
+        "id": "source-14",
+        "number": 14,
+        "heading": "Partner Contact and Clarifications",
+        "sourceHeading": "14. Partner Contact and Clarifications",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "field",
+            "label": "Primary contact:",
+            "text": "MyStartupWave Challenge Desk"
+          },
+          {
+            "kind": "field",
+            "label": "Email:",
+            "text": "mystartupwave@gmail.com"
+          },
+          {
+            "kind": "field",
+            "label": "Reference documentation / resource links:",
+            "text": "This challenge brief; model cards of the chosen video models; FFmpeg documentation."
+          },
+          {
+            "kind": "field",
+            "label": "Clarification process:",
+            "text": "Send questions in writing to the challenge contact or raise them through the official CODERED ’26 helpdesk. Answers that affect scope or evaluation will be shared with all teams on this challenge at the same time, to keep the competition fair."
+          }
+        ]
+      },
+      {
+        "id": "submission-checklist",
+        "number": null,
+        "heading": "Submission Checklist",
+        "sourceHeading": "Submission Checklist",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  The problem is real, relevant, and clearly stated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Target users and desired outcomes are identified."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Teams have freedom to develop their own solutions."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  A working prototype is reasonably achievable within the challenge timeline."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Business value and adoption can be evaluated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Technical constraints and available resources are stated."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Data, safety, confidentiality, and IP terms are clear."
+          },
+          {
+            "kind": "bullet",
+            "marker": "",
+            "label": "",
+            "text": "☑  Evaluation expectations are communicated consistently."
+          }
+        ]
+      },
+      {
+        "id": "guiding-principle",
+        "number": null,
+        "heading": "THE GUIDING PRINCIPLE",
+        "sourceHeading": "THE GUIDING PRINCIPLE",
+        "pages": [
+          5
+        ],
+        "blocks": [
+          {
+            "kind": "paragraph",
+            "label": "",
+            "text": "The company defines the opportunity. The team defines the solution."
+          }
+        ]
+      }
+    ],
+    "source": {
+      "filename": "CODERED26_PS5_One_Token_Video.pdf",
+      "href": "/briefs/mystartupwave/CODERED26_PS5_One_Token_Video.pdf",
+      "pages": 5,
+      "sha256": "3d0ee517617daaf69e2086aabd365123ddde65c83f2d245f322c3404dc1ad662"
+    },
+    "coverage": {
+      "numberedSections": 14,
+      "checklistItems": 8,
+      "sourceCharacters": 12941,
+      "renderedCharacters": 12941,
+      "contentSha256": "2655602fe4ddb45ed3e0087be715c583316d4178102a241777192b2b234fc313",
+      "lossless": true,
+      "excludedPageFurniture": [
+        {
+          "page": 1,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 1,
+          "text": "CODERED ’26  |  INDUSTRY CHALLENGE BRIEF"
+        },
+        {
+          "page": 1,
+          "text": "CODERED ’26  •  Problem Statement 5: One-Token Video  |  1"
+        },
+        {
+          "page": 2,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 2,
+          "text": "CODERED ’26  •  Problem Statement 5: One-Token Video  |  2"
+        },
+        {
+          "page": 3,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 3,
+          "text": "CODERED ’26  •  Problem Statement 5: One-Token Video  |  3"
+        },
+        {
+          "page": 4,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 4,
+          "text": "CODERED ’26  •  Problem Statement 5: One-Token Video  |  4"
+        },
+        {
+          "page": 5,
+          "text": "CODERED ’26  |  INDUSTRY PARTNERSHIPS"
+        },
+        {
+          "page": 5,
+          "text": "CODERED ’26  •  Problem Statement 5: One-Token Video  |  5"
+        }
+      ]
+    }
+  }
+]

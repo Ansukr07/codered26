@@ -1,0 +1,175 @@
+[
+  {
+    "number": 1,
+    "problem": "A B2B marketplace for robotics, industrial automation, electronic components, drones and 3D printing sells both online and through field sales. Each customer appears in fragments: an order under one company name, a personal email account, several shipping addresses, browsing activity and scattered public records. Without a shared identity, salespeople cannot quickly understand the account, marketing segments by geography rather than need, and leadership relies on spreadsheets. Build a customer knowledge graph for Indian B2B commerce that connects those fragments, explains how trustworthy each claim is, and turns the connected evidence into useful sales actions.",
+    "audience": "A field salesperson preparing for a meeting on a phone is the primary user. Inside sales, telecalling, marketing and leadership are secondary users.",
+    "outcome": "One connected customer model powering all four workflows: a mobile account brief, territory and segment queries, discovery of new leads, and evidence-backed next-need signals.",
+    "required": [
+      {
+        "title": "One connected, extensible model",
+        "text": "Connect accounts, people, locations, products, orders, sessions and external records through entities and relationships. The schema must accommodate new data types; all four sales workflows must use this same graph."
+      },
+      {
+        "title": "Account brief",
+        "text": "Look up an account by company name, GSTIN, email domain or phone. Produce a one-page, phone-readable brief covering who and where the customer is, purchases, current browsing, publicly evidenced projects and what to pitch."
+      },
+      {
+        "title": "Territory and segment queries",
+        "text": "Filter by PIN code, city, district, industry or product category. Rank matching customers by value and recency, with enough account context to plan visits or calls and build need-based segments."
+      },
+      {
+        "title": "Lead discovery",
+        "text": "Use the existing customer base to find similar companies in public records that have never ordered. Show the evidence explaining why each company is a promising lead."
+      },
+      {
+        "title": "Next-need signals",
+        "text": "Infer industry, project activity, buying stage and likely next needs. Combine the customer's own history, patterns from similar customers and external signals such as imports, tenders or hiring, with supporting evidence."
+      },
+      {
+        "title": "Confidence for every identity merge",
+        "text": "Resolve inconsistent names, personal business emails, multiple shipping addresses and shared IPs into customer identities. Expose confidence for every merge instead of treating a shared fragment as unquestionable proof."
+      },
+      {
+        "title": "Enrichment, corroboration and provenance",
+        "text": "Enrich accounts from public or permitted third-party company sources, treating external information as signals. Every fact must show its supporting sources, when each was last seen, and a defensible confidence or weight. Independent agreement should strengthen confidence; disagreement and single weak sources must remain visible as uncertainty."
+      },
+      {
+        "title": "Fresh and resilient updates",
+        "text": "Update incrementally when orders, sessions and external records arrive, without rebuilding everything. Missing or unreachable sources should lower confidence rather than break an answer. Distinguish what was observed from when it was observed, and do not present stale records as current facts."
+      },
+      {
+        "title": "A salesperson can use it unaided",
+        "text": "Provide plain queries and ready-made briefs that a non-technical salesperson can use on a phone without training or writing a query. Natural language is welcome but optional; a clear form or search interface is acceptable."
+      }
+    ],
+    "optional": [
+      {
+        "title": "A harder resolution benchmark",
+        "text": "Impress with measured match and false-merge rates on an especially challenging labelled set; reporting both rates is already part of the evaluation."
+      },
+      {
+        "title": "Explain inferred facts",
+        "text": "Attach a clear explanation to every inferred fact, beyond simply displaying its required evidence and confidence."
+      },
+      {
+        "title": "One-screen preparation",
+        "text": "Make the account brief fit on one phone screen."
+      },
+      {
+        "title": "Indian naming edge cases",
+        "text": "Handle Pvt Ltd versus Private Limited, transliterated company names and abbreviations."
+      },
+      {
+        "title": "Resilient PIN reasoning",
+        "text": "Keep PIN-to-district reasoning useful even when a PIN contains a wrong digit."
+      },
+      {
+        "title": "An explicit unknown state",
+        "text": "Say “unknown” when the evidence is too thin, instead of guessing."
+      }
+    ],
+    "workflow": "Find an account or territory → inspect the resolved customer, sources and confidence → read the meeting brief or ranked visit/call list → explore new leads and likely next needs → refresh the graph as new evidence arrives.",
+    "deliverables": [
+      {
+        "title": "Online round 1: PPT and video",
+        "text": "Present the graph model, chosen sources and why they were selected, and the corroboration approach. Demonstrate one workflow working end to end on your team's synthetic data."
+      },
+      {
+        "title": "Online round 2: live pitch query",
+        "text": "Accept a company name or PIN code from the panel and show a live answer with its sources and confidence."
+      },
+      {
+        "title": "On-campus sprint: complete product",
+        "text": "Demonstrate all four workflows on a deliberately conflicting dataset. Explain what the system got wrong and how it recognises those errors. Bring a labelled messy test set and report match rate alongside false-merge rate."
+      }
+    ],
+    "success": [
+      {
+        "title": "Resolution quality",
+        "text": "Measure identity matching on a labelled messy set your team builds, reporting the false-merge rate alongside the match rate."
+      },
+      {
+        "title": "Corroboration and provenance",
+        "text": "Every external fact carries its sources and defensible confidence. Conflicting sources are visible rather than hidden."
+      },
+      {
+        "title": "Sales usefulness",
+        "text": "Show how the brief and query results change what a salesperson would do in a meeting."
+      },
+      {
+        "title": "Query experience",
+        "text": "Prioritise speed, clarity and how little a user needs to know to ask a useful question."
+      },
+      {
+        "title": "Data handling",
+        "text": "Demonstrate compliance with the personal-data and private-deployment constraints."
+      },
+      {
+        "title": "Path to production",
+        "text": "Explain how real systems could be connected and how the graph would stay current. Evaluators weigh these six criteria in roughly the order shown; the brief sets no numeric accuracy or latency pass mark."
+      }
+    ],
+    "constraints": [
+      {
+        "title": "Synthetic internal data",
+        "text": "The partner supplies no internal company data. Generate realistic records with inconsistent names, personal Gmail business accounts, several shipping PINs, shared office IPs, and GSTINs present on some orders but absent on others."
+      },
+      {
+        "title": "Purpose and deletion controls",
+        "text": "Treat contact names, emails, phone numbers, IP addresses and device identifiers as personal data under the brief's DPDP Act, 2023 requirements. Collect only what the workflow needs, keep it for a stated purpose, and demonstrate that an individual's data can be found and deleted on request."
+      },
+      {
+        "title": "Private deployment",
+        "text": "Make the architecture deployable on private servers or a private cloud, with open-source components preferred. Any hosted service, including a language model, must be optional and swappable. The product cannot depend on sending customer data to a third party to function."
+      },
+      {
+        "title": "Source permissions and limits",
+        "text": "Public-page scraping and third-party APIs or exports are permitted within each source's terms of use. Use data gathered for this challenge for the demonstration only. Do not profile individuals from personal social-media accounts."
+      },
+      {
+        "title": "Restraint when combining records",
+        "text": "Business identifiers such as GSTINs, registered offices and company import records are distinct from personal data in the brief, but combine them with information about individuals cautiously. No external source, scraped page or model extraction is automatically reliable."
+      }
+    ],
+    "scope": [
+      {
+        "title": "In scope",
+        "text": "Resolve customer entities, enrich and corroborate accounts, infer industry/projects/next needs with evidence, and provide sales, marketing and leadership query and brief interfaces."
+      },
+      {
+        "title": "Out of scope",
+        "text": "Replacing the CRM or order system, public-storefront product recommendations, a general-purpose company database for India, and scraping individuals or profiling them from personal social-media accounts."
+      },
+      {
+        "title": "Choose your approach",
+        "text": "Graph databases, relational models, vector search, rules, classical ML and language models may be used alone or together. The connected model and useful workflows matter; no particular database or LLM is mandated."
+      }
+    ],
+    "resources": [
+      {
+        "title": "Simulate orders",
+        "text": "Include order ID, date, SKUs, HSN codes, quantities, value, invoice GSTIN, and billing and shipping addresses with PIN codes."
+      },
+      {
+        "title": "Simulate web sessions",
+        "text": "Include account or anonymous ID, pages, categories, searches, cart events, timestamps and time on site."
+      },
+      {
+        "title": "Simulate accounts and devices",
+        "text": "Accounts need the typed company name, contact name, email and its domain, phone and GST number if given. Session metadata needs IP address, device type, user agent and mobile/desktop information."
+      },
+      {
+        "title": "Government and business signals",
+        "text": "Possible starting points include GST registration details, MCA company master data, Udyam registrations, customs/DGFT import-export records, GeM/CPPP/state tenders and awards, and patent filings."
+      },
+      {
+        "title": "Web and classification signals",
+        "text": "Company websites, LinkedIn company pages, job posts and news can inform projects, products, hiring and funding. India Post PIN data/OpenStreetMap can map locations, CBIC HSN data can classify products, and third-party APIs can add company profiles."
+      },
+      {
+        "title": "Starting points, not a checklist",
+        "text": "These sources are examples, not mandatory integrations. Better sources are welcome when you can defend their trustworthiness. LLMs and RLMs are permitted, but corroboration across independent evidence matters more than collecting a large volume of claims."
+      }
+    ]
+  }
+]

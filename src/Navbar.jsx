@@ -145,7 +145,7 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
       </nav>
       {notice && (
         <div className="nav-notice" role="status" aria-live="polite">
-          <span>Coming soon!</span>
+          <span>{notice}</span>
         </div>
       )}
     </>

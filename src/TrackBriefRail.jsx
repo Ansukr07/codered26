@@ -4,9 +4,14 @@ import './track-brief-rail.css'
 function BriefIcon({ section }) {
   const paths = {
     problem: ['M15 12H3', 'M17 18H3', 'M21 6H3'],
+    directions: ['M4 4h6v6H4Z', 'M14 4h6v6h-6Z', 'M4 14h6v6H4Z', 'M14 14h6v6h-6Z'],
     focus: ['M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2', 'M12 11h4', 'M12 16h4', 'M8 11h.01', 'M8 16h.01'],
     ideas: ['M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5', 'M9 18h6', 'M10 22h4'],
     judging: ['m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z', 'm2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z', 'M7 21h10', 'M12 3v18', 'M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2'],
+    resources: ['M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H4Z', 'M13 7a3 3 0 0 1 3-3h4v15h-3a4 4 0 0 0-4 2'],
+    terms: ['M6 3h9l4 4v14H6Z', 'M14 3v5h5', 'M9 12h7', 'M9 16h5'],
+    submission: ['M9 3h9a2 2 0 0 1 2 2v15H4V8', 'm3 4 3 3 5-5', 'M8 12h8', 'M8 16h8'],
+    deliverables: ['M4 4h16v13H4Z', 'm10 8 5 3-5 3Z', 'M8 21h8', 'M12 17v4'],
     next: ['M5 12h14', 'm12 5 7 7-7 7'],
   }
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -15,7 +20,7 @@ function BriefIcon({ section }) {
   </svg>
 }
 
-export default function TrackBriefRail({ sections, activeSection, title }) {
+export default function TrackBriefRail({ sections, activeSection, title, kind = 'track' }) {
   const [expanded, setExpanded] = useState(true)
   const bodyId = useId()
   const rowHeight = 44
@@ -26,7 +31,7 @@ export default function TrackBriefRail({ sections, activeSection, title }) {
   const rowY = (index) => 6 + index * rowHeight + rowHeight / 2
   const height = 12 + sections.length * rowHeight
 
-  return <nav className="td-branched" aria-label="In this track brief" data-open={expanded ? '' : undefined} style={{ '--td-branched-row': `${rowHeight}px` }}>
+  return <nav className="td-branched" aria-label={kind === 'challenge' ? 'In this open challenge' : kind === 'problem' ? 'In this problem statement' : 'In this track brief'} data-open={expanded ? '' : undefined} style={{ '--td-branched-row': `${rowHeight}px` }}>
     <span className="td-branched__marker" aria-hidden="true" data-active={activeIndex >= 0 ? '' : undefined} />
     <button className="td-branched__head" type="button" aria-expanded={expanded} aria-controls={bodyId} onClick={() => setExpanded(value => !value)}>
       <span>On this page{title ? ` · ${title}` : ''}</span>

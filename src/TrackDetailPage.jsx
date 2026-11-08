@@ -5,6 +5,7 @@ import TrackWheel from './TrackWheel.jsx'
 import TrackBriefRail from './TrackBriefRail.jsx'
 import TrackScene from './TrackScene.jsx'
 import TrackButtonContent from './TrackButtonContent.jsx'
+import OfficialBriefContent, { officialBriefSections } from './OfficialBriefContent.jsx'
 import useTrackSectionHighlight from './useTrackSectionHighlight.js'
 import './track-detail.css'
 
@@ -137,7 +138,7 @@ function useHeroLayout(stageRef, diagram) {
 function TrackHero({ track }) {
   const heroRef = useRef(null)
   const stageRef = useRef(null)
-  const diagram = track.slug === 'track-1'
+  const diagram = track.heroMode === 'diagram' || track.slug === 'track-1'
   const demo = useDemoPrompt(track, stageRef, diagram)
   const anchor = useHeroLayout(stageRef, diagram)
   useTrackEntrance(heroRef)
@@ -145,7 +146,7 @@ function TrackHero({ track }) {
 
   return <section ref={heroRef} className={`td-hero${diagram ? '' : ' td-hero--scene'}`} aria-labelledby="td-title">
     <div className="td-heading">
-      <p className="td-kicker">{track.problemNumber ? `${track.parentTrackTitle} · PS ${track.problemNumber}` : `Track ${track.numeral}`} <span> / </span> {track.category}</p>
+      <p className="td-kicker">{track.problemNumber ? `${track.parentTrackTitle} · ${track.briefKind === 'open-challenge' ? 'Open challenge' : `PS ${track.problemNumber}`}` : `Track ${track.numeral}`} <span> / </span> {track.category}</p>
       <h1 id="td-title"><span className="td-title-mask"><span>{track.title}</span></span></h1>
       <p className="td-subtitle">{track.subtitle}</p>
     </div>
@@ -180,7 +181,7 @@ function TrackHero({ track }) {
           <div className="td-answer-set td-answer-live">{demo.prompt.answers.map((answer, i) => <span key={answer} style={{ transitionDelay: demo.done ? `${i * 90}ms` : '0ms' }}>{answer}</span>)}</div>
         </div>
         <p className="td-summary">{track.summary}</p>
-        <div className="td-actions"><a className="td-button td-button--red td-button--motion" href="#problem"><TrackButtonContent arrow="↗">Read the brief</TrackButtonContent></a><a className="td-button td-button--motion" href="#focus"><TrackButtonContent arrow="↓">Explore focus areas</TrackButtonContent></a></div>
+        <div className="td-actions"><a className="td-button td-button--red td-button--motion" href="#problem"><TrackButtonContent arrow="↗">Read the brief</TrackButtonContent></a><a className="td-button td-button--motion" href={`#${track.heroExploreTarget || 'focus'}`}><TrackButtonContent arrow="↓">{track.heroExploreLabel || 'Explore focus areas'}</TrackButtonContent></a></div>
       </div>
       </> : <>
         <div className="td-scene-calls"><p className="td-summary">{track.summary}</p><div className="td-actions"><a className="td-button td-button--red td-button--motion" href="#problem"><TrackButtonContent arrow="↗">Read the brief</TrackButtonContent></a><a className="td-button td-button--motion" href="#focus"><TrackButtonContent arrow="↓">Explore focus areas</TrackButtonContent></a></div></div>
@@ -201,10 +202,14 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
   useBriefReveals(pageRef)
   const activeSection = useTrackSectionHighlight(pageRef, track.page)
   const index = tracks.findIndex((item) => item.page === parentTrack.page)
-  const wheelTracks = tracks.map(item => ({ ...item, page: item.problemsPage, path: item.problemsPath }))
-  const siblings = track.problemNumber ? parentTrack.problemStatements : wheelTracks
+  const openChallenge = track.briefKind === 'open-challenge'
+  const trackLinks = tracks.map(item => ({ ...item, page: item.problemsPage, path: item.problemsPath }))
+  const siblings = track.problemNumber ? parentTrack.problemStatements : trackLinks
   const siblingIndex = siblings.findIndex(item => item.page === track.page)
   const position = track.problemNumber ? siblingIndex : index
+  const wheelItems = track.problemNumber ? siblings.map(item => ({ ...item, numeral: item.problemNumber, ...(openChallenge ? { title: item.parentTrackTitle } : {}) })) : trackLinks
+  const railSections = track.officialBrief ? (openChallenge ? [officialBriefSections[0], ['directions', 'Suggested directions'], ...officialBriefSections.slice(1)] : officialBriefSections) : sections
+  const briefKind = track.problemNumber ? (openChallenge ? 'challenge' : 'problem') : 'track'
   const previous = siblings[(position - 1 + siblings.length) % siblings.length]
   const next = siblings[(position + 1) % siblings.length]
   const register = () => window.dispatchEvent(new CustomEvent('site-notice', {
@@ -216,17 +221,18 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
     onNavigate(page)
   }
 
-  return <div ref={pageRef} className="track-detail">
+  return <div ref={pageRef} className={`track-detail${track.officialBrief ? ' track-detail--official' : ''}`}>
     <div className="td-intro">
       <div className="td-topbar">
-        <a className="td-back" href={parentTrack.problemsPath} onClick={follow(parentTrack.problemsPage)}><span aria-hidden="true">←</span> Problem statements</a>
-        <TrackWheel tracks={wheelTracks} activeIndex={index} onNavigate={onNavigate} />
+        <a className="td-back" href={parentTrack.problemsPath} onClick={follow(parentTrack.problemsPage)}><span aria-hidden="true">←</span> {openChallenge ? `${parentTrack.title} track` : 'Problem statements'}</a>
+        <TrackWheel tracks={wheelItems} activeIndex={position} onNavigate={onNavigate} kind={briefKind} />
       </div>
       <TrackHero key={track.page} track={track} />
     </div>
     <div className="td-brief-layout">
-      <aside className="td-rail"><TrackBriefRail sections={sections} activeSection={activeSection} title={track.title} /></aside>
+      <aside className="td-rail"><TrackBriefRail sections={railSections} activeSection={activeSection} title={track.title} kind={briefKind} /></aside>
       <div className="td-brief">
+        {track.officialBrief ? <OfficialBriefContent track={track} /> : <>
         <section id="problem" className="td-brief-section td-problem">
           <div className="td-number-card"><span>BRIEF / {track.category}</span><strong>{track.problemNumber || track.numeral}</strong><p>{track.title}</p></div>
           <div><SectionHeading label="The problem">{track.subtitle}</SectionHeading><p className="td-body-copy">{track.problem}</p><div className="td-tags">{track.focus.map((area) => <span key={area.title}>{area.title}</span>)}</div></div>
@@ -234,6 +240,7 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
         <section id="focus" className="td-brief-section"><SectionHeading label="Focus areas">Where you can make<br />a difference.</SectionHeading><ol className="td-focus-grid">{track.focus.map((area, i) => <li key={area.title}><span className="td-focus-number">{String(i + 1).padStart(2, '0')}</span><h3>{area.title}</h3><p>{area.text}</p></li>)}</ol></section>
         <section id="ideas" className="td-brief-section td-ideas"><div><SectionHeading label="Example projects">A spark to<br />start with.</SectionHeading><p className="td-body-copy">A few directions to explore. Your team can approach the problem in its own way.</p></div><ol>{track.ideas.map((idea, i) => <li key={idea}><span>{String(i + 1).padStart(2, '0')}</span><p>{idea}</p></li>)}</ol></section>
         <section id="judging" className="td-brief-section"><SectionHeading label="Judging">Build with purpose.</SectionHeading><dl className="td-criteria">{[['Originality', 'A thoughtful approach to the problem and a clear reason for your solution.'], ['Working prototype', 'A demonstrable core experience with a realistic scope.'], ['Usability', 'A product that is clear and accessible for its intended users.'], ['Potential impact', 'A useful outcome and a credible path to making it happen.']].map(([title, text]) => <div key={title}><dt>{title}</dt><dd>{text}</dd></div>)}</dl></section>
+        </>}
         <section id="next" className="td-brief-section td-next">
           <div className="td-next-banner" aria-labelledby="td-register-title">
             <p className="td-kicker">3–4 December 2026 · BMSIT&amp;M, Bengaluru</p>

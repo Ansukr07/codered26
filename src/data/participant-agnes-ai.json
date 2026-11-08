@@ -1,0 +1,171 @@
+[
+  {
+    "number": 1,
+    "problem": "Scientific and engineering work often means moving between documents, data, code and specialist tools, then checking whether an AI output is actually usable. Choose one user, one workflow bottleneck and one measurable outcome. Build a functional product that uses Agnes AI to help that user complete a scientific, engineering or physical-world task, with evidence that the result improves on a stated baseline. This is one open challenge: the four suggested product directions are starting points, not fixed problem statements. You may propose another relevant problem with a clear user and evaluation method.",
+    "audience": "Choose a specific researcher, engineer, scientific developer or disaster-response planner. Domain experts, supervisors and potential adopters can help check whether the result fits that user's next step.",
+    "outcome": "A focused, working Agnes-powered workflow that takes a task or question to a checked output. Demonstrate a relevant improvement in correctness, speed, effort, cost or planning quality; a narrow, reproducible result is sufficient.",
+    "directions": [
+      {
+        "title": "Chip Design & Verification",
+        "text": "Turn a small set of design requirements into a candidate implementation or testbench, then check it with permitted simulation or verification tools. Possible measures include fewer invalid designs or less time to reach a passing test case."
+      },
+      {
+        "title": "Operator Optimization",
+        "text": "Improve a selected numerical or AI operator. Compare runtime with the initial implementation on the same hardware and inputs while preserving numerical correctness."
+      },
+      {
+        "title": "Protein Synthesis Research Support",
+        "text": "Organize published evidence or permitted sequence data around a narrow protein research question. Provide traceable sources and accuracy checks; wet-lab synthesis and biological validation are not required for the prototype."
+      },
+      {
+        "title": "Disaster Response & Rescue Planning",
+        "text": "Turn public or synthetic incident information into a reviewed situation summary, resource plan or simulated search route. Evaluate under stated scenario constraints and retain human review."
+      }
+    ],
+    "required": [
+      {
+        "title": "One working user workflow",
+        "text": "Choose a concrete task and substantiate its bottleneck with cited domain material, a representative task or user feedback. Build a usable workflow beyond an isolated model response. If enhancing an existing product, identify your new contribution."
+      },
+      {
+        "title": "Agnes inside the product",
+        "text": "Meaningfully use at least one Agnes AI model in the product's functionality. Using Agnes only for coding assistance does not meet this requirement. Teams choose their own implementation, supporting tools, interface and architecture."
+      },
+      {
+        "title": "Traceable inputs and checked outputs",
+        "text": "Make inputs, outputs and supporting evidence traceable. Connect the result to appropriate domain checks, data or simulation so the user can assess it. Distinguish generated suggestions from validated results and state assumptions and limitations."
+      },
+      {
+        "title": "Review, revise, approve or reject",
+        "text": "Let the user supply a task, data or scenario, inspect the proposed output and evidence, and revise, approve or reject the result before using it in the next workflow step."
+      },
+      {
+        "title": "A repeatable baseline comparison",
+        "text": "Define task-specific targets and a documented test set. Compare against a named manual workflow, existing domain tool or simple AI baseline using the same inputs and evaluation conditions. Report correctness or quality alongside time, API usage and cost where relevant."
+      }
+    ],
+    "optional": [
+      {
+        "title": "Deeper domain integration",
+        "text": "Integrate domain tools or simulation more closely into the user experience. Choose the level of integration that helps your focused task."
+      },
+      {
+        "title": "Richer evidence and experiment history",
+        "text": "Add source-citation views, experiment history or richer uncertainty reporting. These can strengthen an experience whose inputs, outputs and validation must already be traceable."
+      },
+      {
+        "title": "Improvement across attempts",
+        "text": "Use results from repeated attempts to help the user improve an experiment, design, operator or plan."
+      },
+      {
+        "title": "Additional modalities",
+        "text": "Text, image and video capabilities may be combined when useful. Additional modalities and video generation are optional."
+      }
+    ],
+    "workflow": "Supply a focused task, data or scenario → use an Agnes model to propose an output → inspect its evidence and domain checks → revise, approve or reject it → compare the checked result with the baseline under the same conditions.",
+    "deliverables": [
+      {
+        "title": "Reviewable code and README",
+        "text": "Provide a GitHub repository accessible for review. The README must explain where Agnes is used, which models power each feature and how to set up and run the product."
+      },
+      {
+        "title": "A reproducible test case",
+        "text": "Include the test inputs, evaluation method, baseline results, measured results, limitations and known failure cases. Report failures and retries as well as successful runs."
+      },
+      {
+        "title": "A short working demo",
+        "text": "Show the workflow end to end with actual Agnes model use, user review and handling of invalid inputs or API failure. If optional live video generation is delayed, use a clearly labelled recording of an actual run."
+      }
+    ],
+    "success": [
+      {
+        "title": "Functional result",
+        "text": "Demonstrate an end-to-end workflow on a reproducible case, including real Agnes model use and invalid-input or API-failure handling. These are evaluation guidelines; the final judging rules remain to be confirmed by the organiser."
+      },
+      {
+        "title": "User value",
+        "text": "Explain who benefits and compare effort, usability or decision quality with the current workflow. Include user or expert feedback where available; identify assumptions where it is unavailable."
+      },
+      {
+        "title": "Technical evidence",
+        "text": "Use a metric suited to the task: for example, code test-pass rate, operator runtime at equal numerical correctness, research-source accuracy or planning results in a simulated scenario. Show limitations and failures, not only the best run."
+      },
+      {
+        "title": "Cost and feasibility",
+        "text": "Report approximate cost and time per completed task and quantify the benefit actually demonstrated. Identify the likely user, remaining gaps and a small follow-up test that could justify a pilot; further discussion with Agnes AI researchers or partners is not guaranteed."
+      },
+      {
+        "title": "Responsible design",
+        "text": "Show data provenance, protected credentials, clear uncertainty and appropriate human review. Separate generated suggestions from independently validated results, and report retries and failures for workflows that use external APIs."
+      }
+    ],
+    "constraints": [
+      {
+        "title": "Dynamic limits and clear failure states",
+        "text": "Use the current console RPM limits; they depend on the model, resolution and platform capacity. Credits neither remove limits nor guarantee capacity. Handle HTTP 429 and temporary failures. Video may return HTTP 503 or queue-full responses: use bounded retries with backoff and a clear failure state."
+      },
+      {
+        "title": "Protected credentials and permitted data",
+        "text": "Keep API keys server-side or in protected local configuration, out of repositories and demos. Use public, synthetic or explicitly permitted data, record licenses and provenance, and obtain permission for personal or confidential material. No proprietary scientific dataset is committed."
+      },
+      {
+        "title": "Independent checks and human approval",
+        "text": "Scientific outputs require independent validation. Use simulation, public data and appropriate expert review. Disaster-response and robotics demos must remain supervised prototypes, with human approval before consequential actions; real emergency dispatch and hazardous autonomous operation are not required."
+      },
+      {
+        "title": "Bring your own environment",
+        "text": "API calls need internet access. Teams provide computing and domain tools; no dedicated GPU, robot, laboratory, chip fabrication facility or private research API is included. A dedicated event sandbox, reserved inference capacity and specialist hardware are not committed."
+      },
+      {
+        "title": "Honest demonstrations",
+        "text": "Video is optional. Clearly label prerecorded demonstrations and disclose how simplified tests differ from real deployment. If live generation is delayed, a recording must show an actual run rather than an invented result."
+      }
+    ],
+    "scope": [
+      {
+        "title": "In scope",
+        "text": "One focused scientific, engineering or physical-world task with meaningful Agnes model use, working functionality and measurable evaluation. A new product or a clearly explained enhancement is welcome. Third-party and open-source tools may be used under their licenses and event rules."
+      },
+      {
+        "title": "Outside the challenge",
+        "text": "A generic chat wrapper without a defined domain task, a concept deck without working functionality, or unsupported claims of scientific discovery, production readiness or autonomous rescue."
+      },
+      {
+        "title": "Small, reproducible tests are enough",
+        "text": "Small datasets, toy circuits, CPU-scale benchmarks, synthetic incidents and simulations are acceptable. State the assumptions. Full-scale fabrication, wet-lab validation and training a foundation model are not required."
+      }
+    ],
+    "resources": [
+      {
+        "title": "Free APIs for rounds 1 and 2",
+        "text": "Use the existing free offering within current availability and limits. The brief lists Agnes 2.5 Flash and 3.0 Flash text models, Flash image models and Video 2.5 Flash; check live pricing and account permissions before choosing a model.",
+        "href": "https://wiki.agnes-ai.com/en/docs/pricing"
+      },
+      {
+        "title": "Finalist API balances",
+        "text": "The 12 finalist teams receive US$10 per registered member, credited individually: US$30 across three members or US$40 across four. Each balance stays on its own account; it is not a pooled team wallet. Sponsored balances do not expire and remain available after the event until used.",
+        "href": "https://platform.agnes-ai.com/"
+      },
+      {
+        "title": "Account setup and credit allocation",
+        "text": "Each finalist member must create an Agnes platform account and provide its registered email for credit allocation. The organiser does not require passwords or API keys. Activation timing is coordinated by the organiser; further funding is not committed.",
+        "href": "https://platform.agnes-ai.com/"
+      },
+      {
+        "title": "Access plans and current RPM rules",
+        "text": "Consult the public API documentation and current console limits before testing. Funded balances still remain subject to rate limits and available capacity.",
+        "href": "https://wiki.agnes-ai.com/en/docs/tokenplan"
+      },
+      {
+        "title": "API integration and error handling",
+        "text": "Use the public integration and error-handling reference when implementing bounded retries, backoff and useful failure messages.",
+        "href": "https://wiki.agnes-ai.com/en/docs/faqs"
+      },
+      {
+        "title": "Agnes Harness",
+        "text": "This public development resource is optional. Using it does not provide access to private research systems.",
+        "href": "https://github.com/AgnesAI-Labs/agnes-harness"
+      }
+    ]
+  }
+]
