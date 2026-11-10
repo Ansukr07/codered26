@@ -11,6 +11,7 @@ import RegisterButton from './components/RegisterButton'
 import TeamPage from './TeamPage.jsx'
 import TrackDetailPage from './TrackDetailPage.jsx'
 import TrackProblemsPage from './TrackProblemsPage.jsx'
+import NotFoundPage from './NotFoundPage.jsx'
 import { getTrackRoute } from './trackData.js'
 import { pages, updateSeo } from './seo.js'
 
@@ -112,7 +113,6 @@ function PageContent({ initialPage }) {
   const [openFaq, setOpenFaq] = useState(null)
   const dialog = useRef(null)
   const appRef = useRef(null)
-  const register = () => window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Registration is coming soon. Please check back soon.' }))
 
   const navigatePage = (page) => {
     const nextPath = page === 'home' ? '/' : `/${page}`;
@@ -133,6 +133,8 @@ function PageContent({ initialPage }) {
       changePage();
     }
   };
+
+  const register = () => navigatePage('notFound')
 
   useLayoutEffect(() => {
     const hashTarget = window.location.hash && document.getElementById(window.location.hash.slice(1));
@@ -170,6 +172,11 @@ function PageContent({ initialPage }) {
     updateSeo(currentPage);
   }, [currentPage]);
   useEffect(() => {
+    const goTo404 = () => navigatePage('notFound');
+    window.addEventListener('navigate-to-404', goTo404);
+    return () => window.removeEventListener('navigate-to-404', goTo404);
+  }, []);
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -188,9 +195,9 @@ function PageContent({ initialPage }) {
     <div ref={appRef} className={`app-page app-page--${selectedTrack ? 'track-detail' : currentPage}`}>
             <Navbar activePage={selectedTrack ? 'tracks' : currentPage} onNavigate={navigatePage} />
       <main id="main">
-        {currentPage !== 'home' && currentPage !== 'team' && !selectedTrack && <h1 className="sr-only">{pages[currentPage].title}</h1>}
-        {currentPage === 'notFound' && <section style={{ padding: '10rem 6%' }}><h2>Page not found</h2><p>The page you requested is unavailable.</p><a href="/">Explore Code Red 2026</a></section>}
-        {trackRoute?.kind === 'problems' ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <TeamPage /> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />}
+        {currentPage !== 'home' && currentPage !== 'team' && currentPage !== 'notFound' && !selectedTrack && <h1 className="sr-only">{pages[currentPage].title}</h1>}
+        {currentPage === 'notFound' && <NotFoundPage onNavigate={navigatePage} />}
+        {currentPage !== 'notFound' && (trackRoute?.kind === 'problems' ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <TeamPage /> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />)}
         {['home', 'faq'].includes(currentPage) && <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
             <noscript><dl>{questions.map(([question, answer]) => <div key={question}><dt>{question}</dt><dd>{answer}</dd></div>)}</dl></noscript>
             <div className="faq-grid">
@@ -223,7 +230,7 @@ function PageContent({ initialPage }) {
             </div>
         </section>
         }
-        <RevolvingFooter register={register} />
+        {currentPage !== 'notFound' && <RevolvingFooter register={register} />}
       </main>
       <footer>
         <div className="footer-top-row" style={{ display: "flex", width: "100%", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: "20px" }}>

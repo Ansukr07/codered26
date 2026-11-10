@@ -168,7 +168,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
         <img className="shift-hero-corner-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" />
         <img className="shift-hero-ribbon" src="/codered2026/codered2026/vector%20files/elements/Asset%2018.svg" alt="" aria-hidden="true" />
         <div className="shift-hero-composition">
-          <div className="shift-hero-topline anim-slide-up"><p className="shift-hero-presented">E-CELL × BMSIT&amp;M PRESENTS</p><a className="shift-mobile-register" href="#register" onClick={(event) => { event.preventDefault(); window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Registration is coming soon. Please check back soon.' })); }}>REGISTER NOW ↗</a></div>
+          <div className="shift-hero-topline anim-slide-up"><p className="shift-hero-presented">E-CELL × BMSIT&amp;M PRESENTS</p><a className="shift-mobile-register" href="#register" onClick={(event) => { event.preventDefault(); onNavigate('notFound'); }}>REGISTER NOW ↗</a></div>
           <div className="shift-hero-text-wrapper">
             <div className="shift-hero-first-line" aria-hidden="true">
               <span style={{ display: 'block' }}>
