@@ -1,4 +1,7 @@
 import { problemStatementMocks } from './problemStatementMocks.js'
+import { createMyStartupWaveTrack } from './myStartupWaveTrack.js'
+import { createThinkRoboticsTrack } from './thinkRoboticsTrack.js'
+import { createAgnesAITrack } from './agnesAITrack.js'
 
 // Demonstration content only. Replace these records when official briefs arrive.
 const mockTracks = [
@@ -111,7 +114,7 @@ const mockTracks = [
     ],
   },
   {
-    title: 'Circular Future',
+    title: 'Simple Energy',
     category: 'Sustainability & resources',
     subtitle: 'Use less. Keep value in circulation.',
     summary: 'Help communities understand resource use, prevent avoidable waste and give everyday materials a useful next life.',
@@ -148,7 +151,7 @@ const mockTracks = [
   },
 ];
 
-export const tracks = mockTracks.map((track, index) => {
+const companyTracks = mockTracks.map((track, index) => {
   const base = {
   ...track,
   topics: track.topics.map((topic, topicIndex) => ({ ...topic, id: `topic-${topicIndex}` })),
@@ -169,6 +172,32 @@ export const tracks = mockTracks.map((track, index) => {
     { name: 'Event schedule', note: 'See the event’s published rounds and important dates.', href: '/schedule' },
     { name: 'All tracks', note: 'Return to the track overview and explore the other sample briefs.', href: '/tracks' },
   ],
+  }
+  if (index === 0) return createMyStartupWaveTrack(base)
+  if (index === 1) return createThinkRoboticsTrack(base)
+  if (index === 2) return createAgnesAITrack(base)
+  if (index === 3) {
+    const pendingTrack = {
+      ...base,
+      category: 'Problem statements TBA',
+      subtitle: 'TBA',
+      summary: 'Problem statement details will be announced soon.',
+      cardDescription: 'Problem statements TBA.',
+      problem: 'TBA',
+      hasPendingBriefs: true,
+    }
+    return { ...pendingTrack, problemStatements: Array.from({ length: 4 }, (_, problemIndex) => ({
+      ...pendingTrack,
+      id: `ps-${problemIndex + 1}`,
+      page: `${base.problemsPage}/ps-${problemIndex + 1}`,
+      path: `${base.problemsPath}/ps-${problemIndex + 1}`,
+      parentTrackPage: base.page,
+      parentTrackTitle: base.title,
+      problemNumber: String(problemIndex + 1).padStart(2, '0'),
+      title: 'TBA',
+      summary: 'Problem statement details will be announced soon.',
+      isPending: true,
+    })) }
   }
   return { ...base, problemStatements: (problemStatementMocks[index] || []).map(([title, summary, problem], problemIndex) => ({
     ...base,
@@ -192,6 +221,18 @@ export const tracks = mockTracks.map((track, index) => {
       'A simple status or history view that explains what happened and what the user can do next.',
     ],
   })) }
+});
+
+// Display order can change without breaking published company and brief URLs.
+const trackOrder = ['Simple Energy', 'Agnes AI', 'MyStartupWave', 'Think Robotics'];
+export const tracks = trackOrder.map((title, index) => {
+  const track = companyTracks.find(item => item.title === title);
+  const numeral = String(index + 1).padStart(2, '0');
+  return {
+    ...track,
+    numeral,
+    problemStatements: track.problemStatements.map(brief => ({ ...brief, numeral })),
+  };
 });
 
 export const getTrackByPage = (page) => tracks.find((track) => track.page === page);

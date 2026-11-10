@@ -18,8 +18,8 @@ test('tracks downward and upward scrolling across every boundary', () => {
 })
 
 test('a direct hash jump or smooth-scroll frame uses current geometry without stale entries', () => {
-  // Native anchors stop at scroll-margin-top: 95px.
-  for (let index = 0; index < starts.length; index++) assert.equal(select(starts[index] - 95), ids[index])
+  // Native anchors leave the root's 30px scroll padding; section padding clears the navbar.
+  for (let index = 0; index < starts.length; index++) assert.equal(select(starts[index] - 30), ids[index])
   assert.deepEqual([0, 1000, 2100, 2905].map(scroll => select(scroll)), ['problem', 'problem', 'ideas', 'judging'])
   const reversed = snapshot(2100).reverse()
   assert.equal(selectTrackSection(reversed, { viewportHeight: 900 }), 'ideas')

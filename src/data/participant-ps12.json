@@ -1,0 +1,117 @@
+[
+  {
+    "number": 1,
+    "problem": "Developers, founders and product teams often study successful applications through scattered screenshots, manual exploration and guesses about their architecture. A visual clone can repeat the original's weaknesses without explaining how the product works or proving that the new version is better. Choose a widely used, publicly accessible application, use generative AI to produce an evidence-backed teardown, and turn those findings into a working upgrade. The challenge is to connect analysis, original improvements and objective benchmarks, with a clear record of how each design decision follows from the teardown.",
+    "audience": "Developers and early-stage founders, with product managers, UX designers, engineering educators and innovation teams as additional users.",
+    "outcome": "A structured, interactive teardown and a deployed upgraded application with at least two significant original improvements, supported by a side-by-side comparison against the original.",
+    "required": [
+      { "title": "AI-assisted teardown", "text": "Cover the feature inventory, screen-by-screen UI, user flows, inferred system architecture, data model with an ER diagram, and API/endpoint map." },
+      { "title": "Evidence for every inference", "text": "Label each finding as observed, documented or AI-inferred, and attach its supporting screenshot, public document or permitted network trace." },
+      { "title": "Working upgraded application", "text": "Reproduce the target's core user journeys end to end in a functional, deployed application. Static mock-ups are insufficient." },
+      { "title": "At least two original improvements", "text": "Implement significant, non-trivial improvements, each justified by a weakness identified in the teardown. Possible directions include a new AI capability, a better workflow, offline support or accessibility." },
+      { "title": "Measured comparison", "text": "Compare the original and upgraded versions side by side using objective metrics, such as task completion time, steps per task, performance or accessibility." },
+      { "title": "Original implementation", "text": "Create your own code and design assets. Do not copy proprietary code, logos, images or copyrighted content." }
+    ],
+    "optional": [
+      { "title": "Reusable analysis pipeline", "text": "Analyse a second application with minimal changes, for example through screenshot-to-component-tree or flow-graph extraction." },
+      { "title": "Generated documentation", "text": "Automatically produce architecture diagrams and a product requirements document from the teardown." },
+      { "title": "Five-user usability study", "text": "Include usability test results from at least five real users. This specific sample size is a nice-to-have." },
+      { "title": "Web and mobile parity", "text": "Provide equivalent capabilities across web and mobile." }
+    ],
+    "workflow": "Explore an interactive report of the features, flows and architecture, then complete the same core tasks in the upgraded application and compare the original and upgraded flows.",
+    "deliverables": [
+      { "title": "Teardown walkthrough", "text": "Demonstrate the report and explain the generative AI workflow used to produce it." },
+      { "title": "Live application demo", "text": "Complete at least three core user journeys in the deployed upgraded application." },
+      { "title": "Benchmark evidence", "text": "Present the original-versus-upgrade comparison and explain the measured improvements." },
+      { "title": "Public repository", "text": "Provide the code, README, architecture diagram and an AI/prompt usage log." }
+    ],
+    "success": [
+      { "title": "Complete and working", "text": "Deliver all teardown sections, at least three working core journeys without critical bugs, and at least two original improvements demonstrated live." },
+      { "title": "A better user experience", "text": "In a short usability test, users should complete core tasks faster or in fewer steps, and at least 70% should prefer the upgrade." },
+      { "title": "Measured technical gains", "text": "Show gains on at least two metrics and at least 80% teardown-inference accuracy in judge spot-checks. A Lighthouse performance/accessibility score of at least 90 is an example metric, not a separate universal requirement." },
+      { "title": "A reason to switch", "text": "Explain who would use the upgraded product and why they would choose it over the original. Support assumed architecture and user value with evidence." },
+      { "title": "Responsible implementation", "text": "Use no copied proprietary code or brand assets, and document compliance with the target application's terms of service." }
+    ],
+    "constraints": [
+      { "title": "Legitimate public evidence", "text": "Use the public UI, public documentation, public APIs and observations of your own accounts. Any technology stack is allowed; decompiling, bypassing DRM or circumventing security controls is prohibited." },
+      { "title": "Performance", "text": "Match or beat the original on at least two measurable dimensions. Core pages should load in under 2.5 seconds on a standard connection; judge-checked teardown inferences must be at least 80% accurate." },
+      { "title": "Privacy and authentication", "text": "Do not scrape or store real user data. If authentication is implemented, use hashed passwords or a trusted identity provider. Follow OWASP Top 10 basics and the target's terms of service." },
+      { "title": "Deployment and devices", "text": "Provide a publicly reachable URL, or an installable mobile build, for judging. The product must run on a standard laptop and a mid-range smartphone." },
+      { "title": "Compute and costs", "text": "Solutions should use free tiers or open-source tooling. Your team is responsible for any paid API usage and must document it." },
+      { "title": "No impersonation", "text": "Do not mislead users into believing your upgrade is the original application. No look-alike login pages, impersonation or original brand assets." }
+    ],
+    "scope": [
+      { "title": "Build within this scope", "text": "Select and justify one target application; complete its AI-assisted teardown, working upgrade, benchmark comparison and documentation." },
+      { "title": "Leave out", "text": "Full feature parity, exact replication of proprietary algorithms, migrating real users or data, decompiling binaries, or bypassing authentication or paywalls." },
+      { "title": "Permitted simplifications", "text": "You may focus on the 3–5 most important user journeys. Simplify or mock backend services only where they are not central to the improvement, and disclose those choices." }
+    ],
+    "resources": [
+      { "title": "Models and hosting", "text": "Use generative AI APIs or open-source models you can access, at your own discretion and cost. The partner provides no technology credits or sandbox; arrange your own public hosting." },
+      { "title": "Permitted sources", "text": "Use the chosen application's public UI, official documentation and public API references. No private or personal data. You need access to a publicly accessible target application and generative AI tools." },
+      { "title": "Useful references", "text": "Consult the target's product documentation and app-store listings, OWASP Top 10, and WCAG 2.2 accessibility guidance." }
+    ],
+    "terms": [
+      { "title": "Data and permission", "text": "Use public information about the target and data you own or have permission to use. Do not scrape personal data or violate platform terms." },
+      { "title": "Ownership", "text": "Your team retains full ownership of its code, designs, models and other created IP. Participation transfers no ownership or commercial rights to MyStartupWave. The brief and challenge materials are non-confidential." },
+      { "title": "Branding", "text": "Use MyStartupWave's name or branding only with written permission. Reference the target's name descriptively in the teardown; exclude its logos, trademarks and brand assets from the upgraded product." },
+      { "title": "After the event", "text": "Any pilot, licensing, investment, employment or commercial collaboration requires mutual interest and a separate written agreement." }
+    ]
+  },
+  {
+    "number": 2,
+    "problem": "Students, freshers and career switchers repeatedly tailor resumes without knowing why an Applicant Tracking System rejects them. Complex formatting can hide relevant skills from parsers, generic scores rarely explain what to improve, and building a portfolio separately takes more time. Build a browser-based platform that understands a resume and a target job description, explains its ATS score, helps the user review precise improvements, and produces an ATS-safe one-page resume and a matching portfolio. Candidates must stay in control of edits, personal data and publishing; the system must never invent credentials.",
+    "audience": "Students, freshers and early-career applicants, with placement cells, counsellors, recruiters, hiring managers and training institutes as additional stakeholders.",
+    "outcome": "An end-to-end resume-to-portfolio flow: explainable job-specific scoring, user-approved improvements, an exactly one-page export in PDF and DOCX, and a responsive portfolio at a shareable URL.",
+    "required": [
+      { "title": "Robust resume parsing", "text": "Parse PDF and DOCX, including multi-column layouts, tables and unusual section headings, into contact, education, experience, projects, skills and certifications." },
+      { "title": "Explainable job-specific score", "text": "Return an ATS score from 0–100 with at least eight transparent parameters. Examples include keyword match, skills coverage, section completeness, parseability, action verbs, quantified achievements, length/density and readability; these example names are not a fixed required list." },
+      { "title": "Editable, line-level improvements", "text": "Give actionable suggestions, including AI-rewritten bullets, which the user can accept, edit or reject. Avoid generic tips." },
+      { "title": "Exactly one page", "text": "Condense, prioritise and lay out the resume intelligently while preserving critical content and ATS-safe formatting." },
+      { "title": "PDF and DOCX exports", "text": "Export the optimised resume in both ATS-friendly formats." },
+      { "title": "One-click portfolio", "text": "Generate a professional, responsive portfolio from the same resume data and publish it at a shareable URL." }
+    ],
+    "optional": [
+      { "title": "Comparison and history", "text": "Show before-and-after scores and maintain versions for each job application." },
+      { "title": "Portfolio options", "text": "Offer multiple themes, custom-domain support and GitHub or LinkedIn import." },
+      { "title": "Fairness checks", "text": "Flag details that should not appear on a resume, such as photo, age or marital status." },
+      { "title": "Localised experience", "text": "Support Indian and international resume conventions and regional-language interfaces." },
+      { "title": "Recruiter tools", "text": "Add a recruiter view that bulk-scores resumes against a job description." }
+    ],
+    "workflow": "Upload a resume and paste or link a job description; inspect the score breakdown; accept or edit suggestions with live score updates; download the one-page resume; then opt in to publishing a portfolio and share its link.",
+    "deliverables": [
+      { "title": "Three-resume live demo", "text": "Use at least three resumes of different quality and format, including a two-column, graphics-heavy resume, each scored against a real job description." },
+      { "title": "Show the full result", "text": "Demonstrate the improvement in score, the one-page export and a live portfolio URL through the end-to-end flow." }
+    ],
+    "success": [
+      { "title": "Complete judge-test flow", "text": "Correctly parse, score, improve, export and generate portfolios for all judge test resumes, including complex layouts." },
+      { "title": "Useful improvements, quickly", "text": "Achieve an average ATS-score increase of at least 25 points after suggestions are accepted, and an upload-to-published-portfolio flow under 5 minutes." },
+      { "title": "Parsing and export accuracy", "text": "Reach at least 90% field-level parsing accuracy and under 10 seconds per analysis. 100% of exports must fit exactly one page and re-parse cleanly through both your own parser and at least one external parser." },
+      { "title": "Operating value", "text": "Document the cost per analysis and present an adoption plan for at least one institutional customer segment." },
+      { "title": "Trustworthy suggestions", "text": "Judge spot-checks must find zero fabricated content, and users must be able to delete their data through a working flow." }
+    ],
+    "constraints": [
+      { "title": "Browser and document support", "text": "Work in a modern browser without installation. Support text-based PDF and DOCX. Either support scanned/image-only PDFs with OCR or reject them with a clear message." },
+      { "title": "ATS-safe layout", "text": "Use a single column and standard fonts, with no text inside images, headers or footers." },
+      { "title": "Deterministic scoring", "text": "Parse and score each resume in under 10 seconds, with at least 90% field-level accuracy. The same resume and job description must produce the same score within ±1." },
+      { "title": "Truthful AI assistance", "text": "Never invent or exaggerate experience, skills, employers, metrics or credentials. Clearly label AI-generated rewrites; do not encourage keyword stuffing or hidden text." },
+      { "title": "Personal-data controls", "text": "Use HTTPS, provide data deletion and require explicit consent before training models on uploaded resumes. Align with India's Digital Personal Data Protection Act, 2023 principles. Publishing must be opt-in, with control over public contact details." },
+      { "title": "Accessible operation and cost", "text": "Work on low-bandwidth mobile connections; portfolios should be lightweight static pages. Use free tiers or low-cost inference where possible and document processing cost per resume." }
+    ],
+    "scope": [
+      { "title": "Build within this scope", "text": "Cover parsing, job-description-aware scoring, explainable feedback, AI rewrite suggestions, single-page optimisation, export, portfolio generation and hosting." },
+      { "title": "Leave out", "text": "Real-employer ATS integration, applying to jobs for users and guaranteed interview outcomes are outside scope. Cover-letter generation is optional only." },
+      { "title": "Permitted simplifications", "text": "English-language resumes are sufficient for the core demo. Use a documented model of common ATS behaviour; ATS vendors differ and their algorithms are not fully public, so a score is an approximation, not a guarantee of shortlisting." }
+    ],
+    "resources": [
+      { "title": "Tools and hosting", "text": "Use open-source parsers and language models or generative AI APIs you can access, at your own discretion and cost. No partner technology credits or sandbox are supplied. Arrange document parsing, rewriting and static portfolio hosting." },
+      { "title": "Data and judging", "text": "Use consented resumes, synthetic resumes, public job descriptions or public resume datasets whose licences permit use. Judges will use a hidden set of resumes and job descriptions." },
+      { "title": "Useful references", "text": "Consult public ATS vendor parsing documentation, recruiter guidance and the Digital Personal Data Protection Act, 2023." }
+    ],
+    "terms": [
+      { "title": "Data permission", "text": "Use resumes only with their owners' explicit consent, or use synthetic resumes, public job descriptions and openly licensed datasets. Do not scrape personal data from job portals or social networks." },
+      { "title": "Ownership", "text": "Your team retains full ownership of its code, designs, models and other created IP. Participation transfers no ownership or commercial rights to MyStartupWave. The brief and challenge materials are non-confidential." },
+      { "title": "Branding", "text": "Use MyStartupWave's name or branding only with written permission. Third-party ATS vendors or job portals may be referenced only descriptively." },
+      { "title": "After the event", "text": "Any pilot, licensing, investment, employment or commercial collaboration requires mutual interest and a separate written agreement." }
+    ]
+  }
+]

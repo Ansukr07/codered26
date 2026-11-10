@@ -92,7 +92,8 @@ Google Meet evaluations for teams shortlisted from Round 1.
 **18th November 2026 | Top 50 Teams Announced**  
 Round 2 results will be published on the website.
 
-**3rd–4th December 2026 | 24-hour On-Campus Sprint**  
+**TBA | 24-hour On-Campus Sprint**
+
 CODE RED ’26 Grand Finale.
 
 ## 

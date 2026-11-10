@@ -1,0 +1,131 @@
+[
+  {
+    "number": 4,
+    "problem": "Quick-commerce operators, dark-store managers and riders must keep deliveries fast and economical as demand grows. At peak times and during rain, stock-outs or rider shortages, nearest-store routing and first-available rider assignment can create delays, cancellations and uneven workloads. Forecasting, picking, inventory and dispatch are often optimised separately, leaving little visibility across the complete order journey. Design a logistics or ordering innovation that improves the end-to-end operation, and prove its impact through a realistic, reproducible simulation. Around 10-minute delivery promises provide the industry context; the evaluation targets below define the required improvement.",
+    "audience": "Operations teams and dark-store managers, with delivery riders, customers, inventory planners and replenishment teams as stakeholders.",
+    "outcome": "Fulfil more orders within their promised delivery window, especially during peaks and disruptions, while improving delivery time, rider utilisation and stock availability without increasing cost per order.",
+    "required": [
+      {
+        "title": "One clear operational innovation",
+        "text": "Innovate in at least one of five directions: demand forecasting and inventory placement, order batching, rider dispatch and routing, dark-store picking, or the customer ordering experience. Integrate it into an end-to-end order flow. You do not need to innovate in all five."
+      },
+      {
+        "title": "A realistic city-zone simulator",
+        "text": "Model at least 3 dark stores, 30+ riders and thousands of orders per day, including realistic road travel times, demand peaks and SKU-level inventory."
+      },
+      {
+        "title": "A fair baseline",
+        "text": "Implement a baseline policy, such as nearest store plus first-available rider, in the same simulator. Compare both systems on identical scenarios."
+      },
+      {
+        "title": "Live operations visibility",
+        "text": "Build a real-time dashboard showing orders, store load, rider positions and status, SLA breaches and key performance indicators."
+      },
+      {
+        "title": "Adaptive decisions",
+        "text": "Respond in real time to demand surges and disruptions such as rain, rider shortages and store stock-outs."
+      },
+      {
+        "title": "Customer delivery estimates",
+        "text": "Predict accurate delivery ETAs and show them to the customer when an order is placed."
+      }
+    ],
+    "optional": [
+      { "title": "Predictive positioning", "text": "Pre-position inventory or riders ahead of forecast demand." },
+      { "title": "Stock-out recovery", "text": "Split orders across stores or suggest substitutions when items are unavailable." },
+      { "title": "Rider-aware assignment", "text": "Include fairness and fatigue in rider allocation." },
+      { "title": "Ordering prototype", "text": "Add smart recommendations and delivery-slot nudges in a customer-facing prototype." },
+      { "title": "Real open maps", "text": "Use an actual open road network, such as OpenStreetMap data for an Indian city." }
+    ],
+    "workflow": "Customers place orders and see ETAs → the system assigns, batches and routes orders → riders receive optimised tasks → operators monitor the dashboard and intervene when alerts fire.",
+    "deliverables": [
+      { "title": "Comparable simulation runs", "text": "Run the baseline and proposed system on the same simulated day, including at least one demand surge and one disruption." },
+      { "title": "Live dashboard demonstration", "text": "Show the complete ordering, picking, dispatch and delivery flow, including the system’s adaptive response." },
+      { "title": "Evidence of improvement", "text": "Present a side-by-side KPI comparison and explain why the improvement occurs. Provide reproducible scenarios that judges can rerun." }
+    ],
+    "success": [
+      { "title": "A measurable delivery gain", "text": "Achieve at least 15% lower average delivery time OR at least 20% higher on-time, within-SLA delivery rate against the baseline on the same scenario, without increasing cost per order." },
+      { "title": "Fast, accurate decisions", "text": "Make dispatch and routing decisions in under 2 seconds per order at 500+ concurrent active orders. Keep ETA mean absolute error below 2 minutes and make results reproducible." },
+      { "title": "Operational value", "text": "Quantify cost per order and orders per rider-hour, and present a credible pilot plan. Show better rider utilisation, more reliable ETAs and a higher share of orders meeting the promised SLA." },
+      { "title": "Safe operations", "text": "Demonstrate end-to-end operation and adaptive responses without unsafe rider speeds or workloads. Respect workload and break limits throughout the simulation." }
+    ],
+    "constraints": [
+      { "title": "Real-time and reproducible", "text": "Any technology stack is allowed. Run the decision engine in real time inside the simulation and use fixed random seeds so judges can repeat the scenarios." },
+      { "title": "Private data stays out", "text": "Do not use live data from a quick-commerce company’s private systems. Location and customer records must be synthetic or anonymised." },
+      { "title": "Planning, not unsafe speeds", "text": "Keep simulated speeds within realistic urban limits and respect road-safety and labour norms. Delivery gains must come from better planning." },
+      { "title": "Accessible hardware", "text": "The system should run on a standard laptop or free cloud tier. The dashboard must run in a browser." },
+      { "title": "Document paid services", "text": "Use open-source optimisation and mapping tools where possible. Document any paid API usage." },
+      { "title": "Simulation limitations", "text": "The impact estimate assumes simulated demand and traffic represent real operations. State those assumptions; a successful simulation does not itself establish real-world performance." }
+    ],
+    "scope": [
+      { "title": "In scope", "text": "Your logistics or ordering innovation, simulator, baseline comparison, operations dashboard and ETA model." },
+      { "title": "Out of scope", "text": "Live-rider deployment, payments, procurement contracts and physical hardware. Drone or robot concepts may be discussed but must be simulated. A full customer app is optional, not required." },
+      { "title": "Reasonable simplifications", "text": "One city zone and a limited catalogue, such as 200–500 SKUs, are sufficient. You may approximate travel times from open road networks. You will need suitable map data, optimisation libraries and simulation compute." }
+    ],
+    "resources": [
+      { "title": "Tools you can use", "text": "OpenStreetMap, OSRM or GraphHopper, Google OR-Tools, SimPy and other APIs available to your team are permitted. Tools and API credits are not provided by the partner; permitted services are used at your own discretion and cost." },
+      { "title": "Data and test setup", "text": "Generate synthetic order, inventory and rider data, or use public grocery/delivery datasets and open road networks within their licences. Build your own simulation environment; no sandbox is provided." },
+      { "title": "Useful references", "text": "Google OR-Tools vehicle-routing documentation, OpenStreetMap and OSRM documentation, and research on dynamic vehicle routing and last-mile delivery." }
+    ],
+    "terms": [
+      { "title": "Data and platform permissions", "text": "Use synthetic data, openly licensed datasets and open maps within their terms. Do not scrape or reverse-engineer a quick-commerce company’s apps, APIs or private data." },
+      { "title": "Ownership and confidentiality", "text": "Your team retains ownership of the code, designs, models and other IP it creates. Participation transfers no ownership or commercial rights to MyStartupWave. This brief and shared challenge materials are non-confidential." },
+      { "title": "Branding and future collaboration", "text": "MyStartupWave’s name or branding requires written permission. Existing quick-commerce companies may be named only descriptively for market context. Any later pilot, licensing, investment, employment or commercial collaboration requires mutual interest and a separate written agreement." }
+    ]
+  },
+  {
+    "number": 5,
+    "problem": "Creators, marketers, educators and small businesses need frequent short videos, but generation costs and long render queues make repeated revisions expensive. Many tools regenerate an entire clip for a small change, offer little visibility into compute spend and require a separate editor. Outputs may also flicker or lose consistency between subjects and shots. Build an efficient video-generation and editing product that reduces wasted computation while keeping quality high. Demonstrate the quality-versus-cost trade-off with transparent measurements against your own fair baseline; the challenge name is not a literal one-token generation requirement.",
+    "audience": "Independent creators, social media managers and small businesses, with agencies, education teams and developers as secondary users.",
+    "outcome": "Generate and edit useful short clips from text, images or existing footage, changing only the necessary parts and making the compute cost of each action visible.",
+    "required": [
+      { "title": "Text and image to video", "text": "Generate clips of at least 10–15 seconds at 720p or higher and 24 fps, with coherent motion and consistent subjects. Support both text-to-video and image-to-video." },
+      { "title": "An efficient generation pipeline", "text": "Substantially reduce compute or tokens per output second against a naïve baseline. Possible approaches include keyframe interpolation, latent/feature caching, shared-scene reuse, low-resolution drafts with selective upscaling, or combining generated and existing assets." },
+      { "title": "Incremental editing", "text": "Modify a single shot, segment or element and regenerate only the affected portion, rather than the entire clip." },
+      { "title": "A built-in timeline", "text": "Support trimming, sequencing, text overlays, transitions and an audio track in the same product." },
+      { "title": "A visible cost meter", "text": "For each job, show GPU-seconds or tokens consumed, generation time and estimated cost, with a comparison against your baseline pipeline." },
+      { "title": "Measured quality", "text": "Evaluate quality with objective metrics and human ratings. Examples include CLIP-based text–video alignment, temporal-consistency/flicker scores and FVD where feasible." }
+    ],
+    "optional": [
+      { "title": "Low-cost previews", "text": "Offer a storyboard or animatic before committing to a full render." },
+      { "title": "Cross-clip consistency", "text": "Use reference-image locking to maintain characters and brands across multiple clips." },
+      { "title": "Aspect-ratio adaptation", "text": "Adapt 16:9, 9:16 and 1:1 versions without fully regenerating the video." },
+      { "title": "Audio and captions", "text": "Add AI voice-over, captions and music synchronisation." },
+      { "title": "Provenance formats", "text": "Add watermarking or C2PA labels. These formats are optional; clearly labelling generated videos as AI-generated is mandatory." }
+    ],
+    "workflow": "Enter a prompt or upload media → optionally review a low-cost storyboard → generate the clip → edit individual shots on the timeline while seeing each action’s cost → export the finished video.",
+    "deliverables": [
+      { "title": "Live generation and editing", "text": "Generate at least two distinct clips from prompts and demonstrate one single-shot edit." },
+      { "title": "A like-for-like benchmark", "text": "Compare your product with the baseline on identical prompts. Show compute consumed, time taken and quality metrics, supported by human ratings." },
+      { "title": "Exported output and cost evidence", "text": "Provide the final exported videos, reproducible measurement methodology and reported cost per second of output video." }
+    ],
+    "success": [
+      { "title": "Efficiency with quality", "text": "Achieve at least a 5× reduction in GPU-seconds or tokens per output second against your baseline, with no more than a 10% drop on your chosen quality metrics and comparable human-rated quality." },
+      { "title": "Practical turnaround", "text": "Enable a user to produce a publishable 15-second clip, including at least one revision, in under 10 minutes. Generate a 10-second 720p clip in under 3 minutes on a single T4/A10-class GPU." },
+      { "title": "Affordable revisions", "text": "The success indicators specify single-shot edits at ≤ 25% of full-regeneration cost. Show a credible cost-per-clip and pricing model for small-business creators." },
+      { "title": "A complete, responsible product", "text": "Generation, incremental editing, timeline editing, cost metering and export must work end to end. Keep prompt/output safety filters active, label generated videos and avoid misuse of real people’s likenesses in demonstrations." }
+    ],
+    "constraints": [
+      { "title": "A fair baseline", "text": "Any model stack may be used, with open source preferred. Implement a fair baseline, such as the same base model generating full clips directly, and document a reproducible measurement method." },
+      { "title": "Single-shot edit threshold", "text": "The technical constraints require a single-shot edit to cost less than 25% of a full regeneration." },
+      { "title": "Safety, consent and user media", "text": "Filter prompts and outputs. Do not generate deepfakes of real people without consent, sexual or violent content, or misuse copyrighted characters and brands. Use uploaded media only for the user’s own job and clearly label outputs as AI-generated." },
+      { "title": "Hardware and budget", "text": "Run on a single GPU available through free or low-cost tiers, such as Colab or Kaggle, or through APIs. The front end must run in a browser. Event compute should stay within free tiers or modest credits, and cost per output second must be reported." },
+      { "title": "Prompt and quality limitations", "text": "The proposed efficiency techniques assume gains generalise across prompt types, with acceptable quality trade-offs. State the limits of your benchmark rather than assuming the same result for every prompt." }
+    ],
+    "scope": [
+      { "title": "In scope", "text": "Efficient generation, incremental editing, a timeline editor, cost metering, quality evaluation and a baseline comparison." },
+      { "title": "Out of scope", "text": "Training a foundation video model from scratch, long-form videos over 60 seconds, real-time/live generation and 4K output." },
+      { "title": "Reasonable simplifications", "text": "You may build on existing pre-trained models and fine-tune or distil them if useful. Short clips of 10–30 seconds are sufficient; a small benchmark set, such as 10–20 prompts, may be used for quality metrics. Secure GPU access and model weights with compatible licences." }
+    ],
+    "resources": [
+      { "title": "Models and tooling", "text": "Open-source models such as Stable Video Diffusion, CogVideoX, AnimateDiff, LTX-Video or Wan, FFmpeg and APIs available to your team are permitted. No tools or technology credits are provided by the partner; services are used at your own discretion and cost." },
+      { "title": "Media and compute", "text": "Use openly licensed stock footage/images, team-created media and public video-generation benchmark prompts within their licences. No sandbox is provided; use free GPU tiers or your own resources." },
+      { "title": "Useful references", "text": "Read the chosen models’ cards and papers, FFmpeg documentation and work on diffusion distillation, caching and frame interpolation." }
+    ],
+    "terms": [
+      { "title": "Licences and consent", "text": "Use openly licensed or team-created media and models whose licences permit your intended use; some open models restrict commercial use. Do not upload or generate content depicting real people without their consent." },
+      { "title": "Ownership and confidentiality", "text": "Your team retains ownership of the code, designs, models and other IP it creates. Participation transfers no ownership or commercial rights to MyStartupWave. This brief and shared challenge materials are non-confidential." },
+      { "title": "Branding and future collaboration", "text": "MyStartupWave’s name or branding requires written permission. Commercial video products may be named only descriptively for comparison. Any later pilot, licensing, investment, employment or commercial collaboration requires mutual interest and a separate written agreement." }
+    ]
+  }
+]

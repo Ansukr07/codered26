@@ -1,0 +1,161 @@
+[
+  {
+    "number": 3,
+    "problem": "Small online sellers, D2C brands and catalog teams need affordable, consistent product listings, while buyers need images they can trust. Manual photography and copywriting are slow; generic AI tools can change a product’s colour, shape, branding or printed text. Standalone image detectors also struggle with edited images and rarely explain their verdicts. Build one platform that combines fast catalog creation with trustworthy authenticity analysis, helping sellers publish attractive listings without misrepresenting the real product.",
+    "audience": "Small and medium sellers, D2C brands and independent vendors; also marketplace catalog and trust teams, agencies and buyers.",
+    "outcome": "Turn minimal text or a phone photo into a complete, marketplace-ready listing, with product-faithful images and understandable authenticity reports in the same platform.",
+    "required": [
+      {
+        "title": "Generate product images",
+        "text": "Create professional product images from descriptions or reference photos, including clean white-background packshots and at least one lifestyle or context scene."
+      },
+      {
+        "title": "Preserve product fidelity",
+        "text": "When a reference photo is supplied, preserve the product’s shape, colour, branding and printed text. Check fidelity and flag generated or enhanced outputs that fail."
+      },
+      {
+        "title": "Enhance and show consistent views",
+        "text": "Support background removal, lighting and colour correction, upscaling, and multiple consistent views, such as front, side and angled images."
+      },
+      {
+        "title": "Generate complete listings",
+        "text": "Produce titles, highlights, descriptions, structured specifications, tags or categories and SEO content. Adapt content to the character limits and rules of at least two target platforms."
+      },
+      {
+        "title": "Analyse image authenticity",
+        "text": "Estimate whether each uploaded image is a real photograph or AI-generated, with calibrated confidence. Include content-based pixel analysis; metadata alone is insufficient."
+      },
+      {
+        "title": "Explain the result",
+        "text": "Provide a trust report with visual indicators, such as suspicious-region heatmaps, plain-language reasons, and metadata and provenance checks, including EXIF and C2PA Content Credentials where present."
+      },
+      {
+        "title": "Export to both stores",
+        "text": "Provide one-click export to both Shopify and WooCommerce using their APIs or official product CSV import formats."
+      }
+    ],
+    "optional": [
+      {
+        "title": "Batch catalogs",
+        "text": "Process an entire catalog, for example 50 or more products supplied in a CSV."
+      },
+      {
+        "title": "Multilingual listings",
+        "text": "Offer English plus at least one Indian language."
+      },
+      {
+        "title": "Embedded provenance",
+        "text": "Embed disclosure labels or C2PA Content Credentials in generated images. This enhancement is optional; disclosure in exported listings remains required."
+      },
+      {
+        "title": "Partial manipulation detection",
+        "text": "Detect splicing or object insertion and removal, alongside fully synthetic images."
+      },
+      {
+        "title": "Guideline checker",
+        "text": "Check marketplace image dimensions, backgrounds and text overlays."
+      }
+    ],
+    "workflow": "Enter a description or upload a phone photo → review and edit the images and listing → check any image’s authenticity → review its trust report → export to Shopify or WooCommerce, or download a complete listing pack.",
+    "deliverables": [
+      {
+        "title": "Live catalog creation",
+        "text": "Create at least three complete listings across different product categories from minimal input."
+      },
+      {
+        "title": "Live authenticity test",
+        "text": "Analyse a judge-provided mixed set of real and AI-generated images, including compressed and cropped versions. Produce a report for every test image."
+      },
+      {
+        "title": "Working store export",
+        "text": "Demonstrate a successful export to either a Shopify development store or a WooCommerce test site. The product must still support both platforms."
+      }
+    ],
+    "success": [
+      {
+        "title": "Complete end-to-end experience",
+        "text": "Listing generation and export work for all demo products. A user can create a complete listing in under 5 minutes, and vendors rate generated images as publishable in at least 80% of cases."
+      },
+      {
+        "title": "Fast generation and detection",
+        "text": "Generate a complete listing, including images and text, in under 60 seconds per product. Return authenticity analysis in under 5 seconds per image."
+      },
+      {
+        "title": "Robust authenticity estimates",
+        "text": "Reach at least 85% accuracy on the judges’ balanced hidden test set, with no more than a 10-percentage-point accuracy drop on JPEG-compressed, resized or cropped versions of the same images. Confidence scores must be well calibrated."
+      },
+      {
+        "title": "Faithful and transparent output",
+        "text": "Preserve product fidelity in judge review, invent no product specifications, disclose AI-generated imagery and communicate uncertainty for every authenticity verdict."
+      },
+      {
+        "title": "Viable for small sellers",
+        "text": "Document generation cost per listing and justify a pricing model for small vendors, targeting a cost well below one professional product photograph."
+      }
+    ],
+    "constraints": [
+      {
+        "title": "Web and mobile access",
+        "text": "Use a web-based platform with any open-source or API model stack. The vendor interface must work in mobile browsers; the solution should run on cloud or free GPU tiers."
+      },
+      {
+        "title": "Ground every specification",
+        "text": "Generated text must not contain specifications absent from the input. Follow the official Shopify and WooCommerce export formats and the target platforms’ content rules."
+      },
+      {
+        "title": "Use uploads only for their task",
+        "text": "Use uploaded images and data only for the requested task. Do not use copyrighted or third-party brand imagery without permission."
+      },
+      {
+        "title": "Communicate uncertainty",
+        "text": "Authenticity results are probabilistic estimates, never definitive proof or legal certification. Show confidence levels and an inconclusive band to avoid false accusations. Detectors may not generalise to future image-generation models."
+      },
+      {
+        "title": "Disclose generated imagery",
+        "text": "Clearly disclose AI-generated images in exported listings, in line with the brief’s Consumer Protection (E-Commerce) Rules, 2020 requirements against misleading product information."
+      }
+    ],
+    "scope": [
+      {
+        "title": "In scope",
+        "text": "Image generation and enhancement, listing generation, explained authenticity detection, and Shopify and WooCommerce export belong in the same product."
+      },
+      {
+        "title": "Out of scope",
+        "text": "Payment processing, inventory or order management, live publishing to production marketplaces, legal certification of authenticity, and video generation."
+      },
+      {
+        "title": "Permitted simplifications",
+        "text": "You may focus on 2–3 product categories, use test stores for integrations, and target current mainstream image generators for detection."
+      }
+    ],
+    "resources": [
+      {
+        "title": "Models and infrastructure",
+        "text": "Use image-generation and vision models or AI APIs you can access, at your own discretion and cost; no partner API or technology credits are provided. Free GPU tiers are acceptable. Set up your own Shopify development store and local or hosted WooCommerce test site; both can be set up free."
+      },
+      {
+        "title": "Permitted data",
+        "text": "Use self-captured, public-domain or openly licensed product photos and real-versus-synthetic image datasets, within their licences. Detection will be evaluated on a hidden judge test set."
+      },
+      {
+        "title": "Useful references",
+        "text": "Shopify and WooCommerce API and product-import documentation; the C2PA Content Credentials specification; marketplace image guidelines; Consumer Protection (E-Commerce) Rules, 2020."
+      }
+    ],
+    "terms": [
+      {
+        "title": "Ownership and confidentiality",
+        "text": "Teams retain ownership of their code, designs, models and other created IP. Participation transfers no ownership or commercial rights to MyStartupWave. The brief and shared challenge materials are non-confidential."
+      },
+      {
+        "title": "Permissions and licences",
+        "text": "Use only self-captured, public-domain or properly licensed images and datasets within their terms. Do not scrape marketplace images or listings in breach of their terms of service."
+      },
+      {
+        "title": "Branding and future collaboration",
+        "text": "MyStartupWave branding requires written permission. Third-party brands, logos and marketplace names may be referenced only descriptively and must not create misleading imagery. Any later pilot, licensing, investment, employment or commercial collaboration requires mutual interest and a separate written agreement."
+      }
+    ]
+  }
+]

@@ -11,39 +11,22 @@ import './why-participate.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const finaleStart = new Date('2026-12-03T00:00:00+05:30').getTime()
-
 function Countdown() {
-  const [remaining, setRemaining] = useState(0)
-
-  useEffect(() => {
-    const initialTimer = window.setTimeout(() => setRemaining(Math.max(0, finaleStart - Date.now())), 0)
-    const timer = window.setInterval(() => setRemaining(Math.max(0, finaleStart - Date.now())), 1000)
-    return () => { window.clearTimeout(initialTimer); window.clearInterval(timer) }
-  }, [])
-
-  const totalSeconds = Math.floor(remaining / 1000)
-  const units = [
-    ['Days', Math.floor(totalSeconds / 86400)],
-    ['Hrs', Math.floor(totalSeconds / 3600) % 24],
-    ['Mins', Math.floor(totalSeconds / 60) % 60],
-    ['Secs', totalSeconds % 60],
-  ]
-
-  return <div className="shift-countdown" role="timer" aria-label={`Countdown to 3 December 2026: ${units.map(([name, value]) => `${value} ${name}`).join(', ')}`}>
-    {units.map(([name, value]) => <div className="shift-countdown-unit" key={name}>
-      <strong className={`shift-countdown-value${String(value).length > 2 ? ' shift-countdown-value--wide' : ''}`}>{String(value).padStart(2, '0')}</strong>
+  const units = ['Days', 'Hrs', 'Mins', 'Secs']
+  return <div className="shift-countdown" role="group" aria-label="Grand finale date TBA. Countdown will begin once the date is announced.">
+    {units.map(name => <div className="shift-countdown-unit" key={name} aria-hidden="true">
+      <strong className="shift-countdown-value">--</strong>
       <span>{name}</span>
     </div>)}
   </div>
 }
 
 const rounds = [
-  ['01', '22 OCTOBER', 'Code Red ’26 launch & registration', 'THE CHALLENGE BRIEFS GO LIVE ON THE WEBSITE AND REGISTRATION OPENS.'],
-  ['02', '7 NOVEMBER', 'Round 1 PPT submissions', 'REGISTRATION CLOSES. SUBMIT YOUR IDEA BY THE DEADLINE.'],
-  ['03', '14–15 NOVEMBER', 'Round 2 online evaluation', 'SHORTLISTED TEAMS ARE EVALUATED ONLINE VIA GOOGLE MEET.'],
-  ['04', '18 NOVEMBER', 'Top 50 teams announced', 'ROUND 2 RESULTS WILL BE PUBLISHED ON THE WEBSITE.'],
-  ['05', '3–4 DECEMBER', '24-hour on-campus sprint', 'THE CODE RED ’26 GRAND FINALE TAKES PLACE AT BMSIT&M.'],
+  ['01', '14–15 NOVEMBER', 'Code Red ’26 launch & registration', 'THE CHALLENGE BRIEFS GO LIVE ON THE WEBSITE AND REGISTRATION OPENS.'],
+  ['02', '27 NOVEMBER', 'Round 1 PPT submissions', 'REGISTRATION CLOSES. SUBMIT YOUR IDEA BY THE DEADLINE.'],
+  ['03', '12–13 DECEMBER', 'Round 2 online evaluation', 'SHORTLISTED TEAMS ARE EVALUATED ONLINE VIA GOOGLE MEET.'],
+  ['04', '14 DECEMBER', 'Top 50 teams announced', 'ROUND 2 RESULTS WILL BE PUBLISHED ON THE WEBSITE.'],
+  ['05', 'TBA', '24-hour on-campus sprint', 'THE CODE RED ’26 GRAND FINALE TAKES PLACE AT BMSIT&M.'],
 ]
 
 const participationReasons = [
@@ -187,7 +170,13 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
               </span>
             </h1>
           </div>
-          <div className="shift-hero-bottom-action anim-slide-up" style={{ transitionDelay: '0.2s' }}><RegisterButton href="https://unstop.com/o/qjIA3CN?utm_medium=Share&utm_source=ecell-bmsitm&utm_campaign=Online_coding_challenge" /></div>
+          <div className="shift-hero-bottom-action anim-slide-up" style={{ transitionDelay: '0.2s' }}>
+            <div className="shift-hero-copy">
+              <p className="shift-hero-slogan">Sprint into Creation</p>
+              <p className="shift-hero-promise">Build in 24 hours. Turn your idea into a venture.</p>
+            </div>
+            <RegisterButton href="https://unstop.com/o/qjIA3CN?utm_medium=Share&utm_source=ecell-bmsitm&utm_campaign=Online_coding_challenge" />
+          </div>
         </div>
       </div>
       <aside className="shift-hero-rail anim-slide-down" style={{ transitionDelay: '0.2s' }}>
@@ -195,16 +184,16 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
           <strong>National level<br />24-hour product sprint.</strong>
           <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "2rem", fontWeight: 400, display: "block", marginTop: "1.5rem", lineHeight: "1" }}>₹2,00,000 Prize Pool</span>
         </div>
-        <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>3–4 December 2026</h2></div><Countdown /></div>
+        <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>TBA</h2></div><Countdown /></div>
       </aside>
     </section>}
 
     {show('about') && <section id="about" className="shift-about" aria-labelledby="about-title">
-      <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national 24-hour hackathon and product development sprint in Bengaluru. Teams go beyond ideas to develop functional, market-ready products that solve real-world problems, with the opportunity for top teams to pitch at VentureX<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
+      <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national product development challenge in Bengaluru. Its 24-hour HackSprint turns ideas into working products with industry mentorship, prototyping infrastructure, and opportunities with hiring partners. Selected teams may qualify for VentureX, a separate event to pitch products, business models, and vision to investors—helping turn products into ventures<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
       <div className="shift-info-grid">
-        <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Four company based tracks</li><li>Details to be announced</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Four company tracks</li><li>Problem statements available</li></ul></article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>₹2,00,000 total prize pool</li><li>Recognition for standout teams</li></ul></article>
-        <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>24-hour offline sprint</li><li>3–4 December 2026</li><li>Teams of 3–4</li><li>Top 50 teams at BMSIT&amp;M</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>24-hour overnight sprint</li><li>Dates: TBA</li><li>Teams of 3–4</li><li>Top 50 teams at BMSIT&amp;M</li></ul></article>
       </div>
     </section>}
 

@@ -17,7 +17,8 @@ function wheelStyle(index, position, spacing, reduced = false) {
 }
 
 /** The reference's eight-degree arc, damped movement and delayed route commit. */
-export default function TrackWheel({ tracks, activeIndex, onNavigate }) {
+export default function TrackWheel({ tracks, activeIndex, onNavigate, kind = 'track' }) {
+  const itemLabel = kind === 'challenge' ? 'open challenge' : kind === 'problem' ? 'problem statement' : 'track'
   const root = useRef(null)
   const items = useRef([])
   const engine = useRef(null)
@@ -128,11 +129,13 @@ export default function TrackWheel({ tracks, activeIndex, onNavigate }) {
   return <nav
     ref={root}
     className="td-track-wheel"
-    aria-label="Choose a track. Drag, scroll horizontally, or use the arrow keys."
-    tabIndex={0}
+    data-kind={kind}
+    data-single={tracks.length === 1 ? '' : undefined}
+    aria-label={tracks.length === 1 ? `Current ${itemLabel}` : `Choose a ${itemLabel}. Drag, scroll horizontally, or use the arrow keys.`}
+    tabIndex={tracks.length === 1 ? -1 : 0}
     onKeyDown={event => {
       const api = engine.current
-      if (!api || event.altKey || event.ctrlKey || event.metaKey) return
+      if (!api || tracks.length < 2 || event.altKey || event.ctrlKey || event.metaKey) return
       let target
       if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') target = Math.round(api.state.target) - 1
       else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') target = Math.round(api.state.target) + 1
@@ -144,7 +147,7 @@ export default function TrackWheel({ tracks, activeIndex, onNavigate }) {
     }}
     onPointerDown={event => {
       const api = engine.current
-      if (!api || event.button !== 0 || !event.isPrimary) return
+      if (!api || tracks.length < 2 || event.button !== 0 || !event.isPrimary) return
       window.clearTimeout(api.state.clickTimer)
       window.clearTimeout(api.state.commitTimer)
       window.clearTimeout(api.state.settleTimer)
@@ -194,7 +197,7 @@ export default function TrackWheel({ tracks, activeIndex, onNavigate }) {
         event.preventDefault()
         engine.current?.move(index, true)
       }}
-    ><span>{track.numeral}</span>{track.title}</a>)}
+    ><span className="td-track-wheel__number">{kind === 'challenge' ? 'Open challenge' : `${kind === 'problem' ? 'PS ' : ''}${track.numeral}`}</span><span className="td-track-wheel__title">{track.title}</span></a>)}
     <span className="td-track-wheel__mark" aria-hidden="true" />
   </nav>
 }

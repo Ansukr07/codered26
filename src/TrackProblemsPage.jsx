@@ -11,6 +11,7 @@ export default function TrackProblemsPage({ track, onNavigate }) {
     onNavigate(page)
   }
   const count = track.problemStatements.length
+  const openChallenge = track.briefKind === 'open-challenge'
   return <div className="track-detail ps-index">
     <div className="ps-container">
       <div className="ps-breadcrumb"><a className="td-back" href="/tracks" onClick={follow('tracks')}><span aria-hidden="true">←</span> All tracks</a></div>
@@ -22,13 +23,15 @@ export default function TrackProblemsPage({ track, onNavigate }) {
         <p className="ps-track-summary">{track.summary}</p>
       </header>
       <section aria-labelledby="ps-heading" className="ps-selection">
-        <h2 id="ps-heading" className="sr-only">Problem statements</h2>
+        <h2 id="ps-heading" className="sr-only">{openChallenge ? 'Open challenge' : 'Problem statements'}</h2>
         <div className="ps-section-bar">
-          <p className="ps-count"><strong>{String(count).padStart(2, '0')}</strong> Problem {count === 1 ? 'statement' : 'statements'}</p>
+          <p className="ps-count"><strong>{track.hasPendingBriefs ? 'TBA' : String(count).padStart(2, '0')}</strong> {openChallenge ? 'Open challenge' : `Problem ${count === 1 ? 'statement' : 'statements'}`}</p>
         </div>
-        {count ? <ol className="ps-grid">{track.problemStatements.map((problem, index) => <li key={problem.id}>
-          <a className={`ps-card track-card track-card-${index % 4 + 1}`} href={problem.path} onClick={follow(problem.page)} aria-labelledby={`ps-title-${problem.id}`} aria-describedby={`ps-summary-${problem.id}`}>
-            <span className="track-top-flag">PS {problem.problemNumber}</span>
+        {count ? <ol className={`ps-grid${count === 1 ? ' ps-grid--single' : ''}`}>{track.problemStatements.map((problem, index) => {
+          const Card = problem.isPending ? 'article' : 'a'
+          return <li key={problem.id}>
+          <Card className={`ps-card track-card track-card-${index % 4 + 1}${problem.isPending ? ' ps-card--pending' : ''}`} href={problem.isPending ? undefined : problem.path} onClick={problem.isPending ? undefined : follow(problem.page)} aria-disabled={problem.isPending || undefined} aria-labelledby={`ps-title-${problem.id}`} aria-describedby={`ps-summary-${problem.id}`}>
+            <span className="track-top-flag">{problem.isPending ? 'PS TBA' : openChallenge ? 'Open challenge' : `PS ${problem.problemNumber}`}</span>
             <div className="track-card-body">
               <div className="tp-card-top">
                 <TrackPixelGrid />
@@ -37,11 +40,11 @@ export default function TrackProblemsPage({ track, onNavigate }) {
               <div className="track-card-content">
                 <p className="tp-p-medium ps-card-summary" id={`ps-summary-${problem.id}`}>{problem.summary}</p>
                 <span className="track-ghost-number" aria-hidden="true">{problem.problemNumber}</span>
-                <span className="ps-card-action td-button--motion"><TrackButtonContent arrow="↗">Read the brief</TrackButtonContent></span>
+                {problem.isPending ? <span className="ps-card-action">Details coming soon</span> : <span className="ps-card-action td-button--motion"><TrackButtonContent arrow="↗">Read the brief</TrackButtonContent></span>}
               </div>
             </div>
-          </a>
-        </li>)}</ol> : <p className="ps-empty">Problem statements will be announced here. Check back soon.</p>}
+          </Card>
+        </li>})}</ol> : <p className="ps-empty">Problem statements will be announced here. Check back soon.</p>}
       </section>
     </div>
   </div>

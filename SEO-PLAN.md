@@ -17,12 +17,12 @@ Live HTTP audit: `/`, `/tracks`, `/robots.txt`, `/sitemap.xml` and an invented U
 | P1 | Social crawlers receive generic information | Unique Open Graph and Twitter card metadata in initial HTML |
 | P1 | Every route contains unrelated hidden sections | Render only relevant sections on each secondary page |
 | P1 | Secondary pages lack a visible-route H1 | One accessible H1 per route; descriptive homepage H1 |
-| P1 | Event and organizer lack structured context | WebSite, WebPage, Organization and homepage Event JSON-LD with confirmed dates and venue |
+| P1 | Event and organizer lack structured context | WebSite, WebPage, Organization and homepage Event JSON-LD with venue; unannounced dates are omitted |
 | P1 | About route lacks navigation discovery | Add a crawlable footer About link |
 | P1 | Intro delays first content and storage can fail | Immediate initial reveal; handle blocked session storage; usable HTML without JavaScript |
 | P1 | HTML can silently regress | Add `npm run check:seo` for generated output |
 
-No invented entry fee, exact finale start time, ticket inventory, ratings or confirmed track details were added. Date-only event markup matches the published 3–4 December dates. The production site will retain its old behavior until these changes are deployed.
+No invented entry fee, exact finale start time, ticket inventory, ratings or confirmed track details were added. Finale dates are TBA, so event markup omits start and end dates until they are announced. The production site will retain its old behavior until these changes are deployed.
 
 ## Search intent and content map
 

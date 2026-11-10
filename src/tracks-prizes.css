@@ -192,6 +192,9 @@
 .track-card .tp-h-medium {
   font-size: clamp(1.8rem, 3.5vw, 2.7rem);
 }
+.track-card[data-partner] .tp-h-medium {
+  font-size: clamp(1.2rem, 2.6vw, 2rem);
+}
 
 .track-card-body {
   display: flex;

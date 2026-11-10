@@ -48,7 +48,7 @@ export function useBriefReveals(ref) {
     const root = ref.current
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
     if (!root || motion.matches) return
-    const nodes = [...root.querySelectorAll('.td-section-heading, .td-body-copy, .td-number-card, .td-tags, .td-focus-grid > li, .td-ideas li, .td-resource-grid > a, .td-criteria > div, .td-next-banner, .td-other-tracks > a')]
+    const nodes = [...root.querySelectorAll('.td-section-heading, .td-body-copy, .td-number-card, .td-tags, .td-focus-grid > li, .td-ideas li, .td-resource-grid > a, .td-criteria > div, .td-next-banner, .td-other-tracks > a, .td-visual-grid > .td-visual-item')]
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue
@@ -59,7 +59,7 @@ export function useBriefReveals(ref) {
     nodes.forEach(node => {
       node.dataset.reveal = 'pending'
       const siblings = [...node.parentElement.children]
-      const stagger = node.matches('li, .td-resource-grid > a, .td-criteria > div, .td-other-tracks > a')
+      const stagger = node.matches('li, .td-resource-grid > a, .td-criteria > div, .td-other-tracks > a, .td-visual-grid > .td-visual-item')
       node.style.setProperty('--td-reveal-delay', `${stagger ? siblings.indexOf(node) * 60 : 0}ms`)
       observer.observe(node)
     })
