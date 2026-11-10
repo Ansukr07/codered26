@@ -1,0 +1,240 @@
+/* =============================================
+   404 NOT FOUND PAGE
+   Matches Code Red '26 dark theme
+   ============================================= */
+
+.not-found {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 120px 6% 100px;
+  background: #000;
+}
+
+/* ── Decorative background grid ── */
+.nf-grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.nf-grid-line {
+  flex: 1;
+  border-right: 1px solid #ffffff08;
+}
+
+.nf-grid-line:last-child {
+  border-right: none;
+}
+
+/* Subtle radial glow behind the number */
+.not-found::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 900px;
+  max-height: 900px;
+  background: radial-gradient(circle, rgba(237, 32, 36, 0.09) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Content ── */
+.nf-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* ── Giant 404 glitch number ── */
+.nf-code-wrap {
+  line-height: 1;
+  user-select: none;
+}
+
+.nf-code {
+  display: block;
+  font-family: LilGrotesk, sans-serif;
+  font-weight: 800;
+  font-size: clamp(120px, 22vw, 300px);
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #ffffff18;
+  position: relative;
+  transition: color 0.1s;
+}
+
+/* The filled red "glitch" copy behind it */
+.nf-code::before,
+.nf-code::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-stroke: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.08s;
+}
+
+/* Red channel */
+.nf-code::before {
+  color: var(--red);
+  clip-path: polygon(0 20%, 100% 20%, 100% 42%, 0 42%);
+  translate: -4px 0;
+}
+
+/* Cream channel */
+.nf-code::after {
+  color: var(--cream);
+  clip-path: polygon(0 60%, 100% 60%, 100% 78%, 0 78%);
+  translate: 4px 0;
+  opacity: 0;
+}
+
+/* Triggered glitch state */
+.nf-code.is-glitching {
+  -webkit-text-stroke-color: #ffffff35;
+  animation: nf-glitch-main 0.45s steps(1) forwards;
+}
+
+.nf-code.is-glitching::before,
+.nf-code.is-glitching::after {
+  animation: nf-glitch-layer 0.45s steps(1) forwards;
+}
+
+@keyframes nf-glitch-main {
+  0%   { translate: 0; }
+  20%  { translate: -3px 2px; }
+  40%  { translate: 3px -1px; }
+  60%  { translate: -2px 0; }
+  80%  { translate: 2px 1px; }
+  100% { translate: 0; }
+}
+
+@keyframes nf-glitch-layer {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { opacity: 0.6; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── Heading ── */
+.nf-heading {
+  font-family: LilGrotesk, sans-serif;
+  font-weight: 600;
+  font-size: clamp(38px, 5.5vw, 80px);
+  letter-spacing: -2px;
+  line-height: 1.08;
+  color: var(--cream);
+}
+
+.nf-heading .script {
+  font-size: 1.25em;
+  line-height: 0.8;
+  display: inline-block;
+  transform: rotate(-3deg);
+  transform-origin: left bottom;
+}
+
+/* ── Sub-text ── */
+.nf-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 480px;
+}
+
+/* ── Actions ── */
+.nf-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nf-btn {
+  font-size: 13px;
+}
+
+.nf-link {
+  font-size: 12px;
+  border-bottom: 1px solid #ffffff44;
+  padding: 10px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--cream);
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nf-link:hover {
+  color: var(--red);
+}
+
+/* ── Corner label (editorial detail) ── */
+.nf-corner-label {
+  position: absolute;
+  bottom: 32px;
+  left: 6%;
+  right: 6%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #ffffff22;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .not-found {
+    padding: 100px 6% 90px;
+    min-height: 100svh;
+  }
+
+  .nf-inner {
+    gap: 22px;
+  }
+
+  .nf-sub {
+    font-size: 13px;
+  }
+
+  .nf-heading {
+    letter-spacing: -1.2px;
+  }
+
+  .nf-actions {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .nf-corner-label {
+    font-size: 8px;
+    bottom: 20px;
+  }
+}
+

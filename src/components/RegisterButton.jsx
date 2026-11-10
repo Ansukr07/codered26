@@ -26,7 +26,7 @@ export default function RegisterButton({ onClick, onMouseEnter, onMouseLeave, hr
   const handleClick = (e) => {
     if (href) {
       e.preventDefault();
-      window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Registration is coming soon. Please check back soon.' }));
+      window.dispatchEvent(new CustomEvent('navigate-to-404'));
     }
     setIsHovered(false);
     setIsPressed(true);

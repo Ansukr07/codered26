@@ -212,9 +212,7 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
   const briefKind = track.problemNumber ? (openChallenge ? 'challenge' : 'problem') : 'track'
   const previous = siblings[(position - 1 + siblings.length) % siblings.length]
   const next = siblings[(position + 1) % siblings.length]
-  const register = () => window.dispatchEvent(new CustomEvent('site-notice', {
-    detail: 'Registration is coming soon. Please check back soon.',
-  }))
+  const register = () => onNavigate('notFound')
   const follow = (page) => (event) => {
     if (!onNavigate || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
     event.preventDefault()
