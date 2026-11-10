@@ -39,7 +39,7 @@
 .shift-about{position:relative;display:flex;flex-direction:column}
 .shift-about-top{min-height:clamp(360px,43svh,540px)}
 .shift-about-copy{align-items:end}
-.shift-about-copy p{font-size:clamp(18px,1.7vw,26px);font-weight:500;line-height:1.2;max-width:520px}
+.shift-about-copy p{font-size:clamp(18px,1.7vw,26px);font-weight:500;line-height:1.2;max-width:560px}
 .shift-about-plus{font:400 clamp(110px,14vw,220px)/.75 LilGrotesk,Helvetica,sans-serif;align-self:end}
 .shift-info-grid{flex:1}
 .shift-info-grid article{min-height:380px;padding:34px clamp(28px,3.4vw,64px) 48px;display:flex;flex-direction:column;align-items:flex-start}
@@ -253,7 +253,7 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 
 /* Local type pairing for the information sections. */
 .shift-about h2,.shift-timeline-intro h2{font-family:Valentine,Georgia,serif;font-weight:400;letter-spacing:0;line-height:.9}
-.shift-about-copy p{font-family:LilGrotesk,LilGrotesk,sans-serif;letter-spacing:-.02em}
+.shift-about-copy p{font-family:LilGrotesk,LilGrotesk,sans-serif;letter-spacing:-.02em;text-align:justify}
 .shift-period{font-family:LilGrotesk,Helvetica,sans-serif}
 .shift-about-lead{font-family:inherit}
 
@@ -265,6 +265,26 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-countdown .shift-countdown-value--wide{font-size:clamp(22px,9cqw,40px)}
 .shift-countdown span{margin-top:13px;font:600 9px/1 LilGrotesk,LilGrotesk,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#bdbdbd}
 @media(max-width:700px){.shift-countdown{column-gap:16px;margin:22px 0 14px}.shift-countdown-unit:not(:last-child)::after{left:calc(100% + 8px);font-size:10px}.shift-countdown strong{font-size:clamp(22px,12cqw,34px)}.shift-countdown .shift-countdown-value--wide{font-size:clamp(18px,10cqw,28px)}.shift-countdown span{margin-top:10px;font-size:7px}}
+
+/* The hero grows when its title and event copy need more than one viewport. */
+#home.shift-hero{height:auto;min-height:100svh}
+#home .shift-hero-main,#home .shift-hero-rail{height:auto}
+#home .shift-hero-composition{height:auto;min-height:100svh;padding-top:clamp(110px,15svh,180px)}
+#home .shift-hero-presented,#home .shift-hero-display{transform:none}
+#home .shift-hero-bottom-action{align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+#home .shift-hero-copy{flex:1 1 260px;max-width:460px;min-width:0}
+#home .shift-hero-slogan{margin:0 0 8px;font:400 clamp(28px,2.8vw,42px)/1.05 Valentine,Georgia,serif;letter-spacing:0}
+#home .shift-hero-promise{margin:0;max-width:34ch;font:400 clamp(15px,1.3vw,18px)/1.4 LilGrotesk,Helvetica,sans-serif;letter-spacing:0}
+#home .shift-hero-bottom-action .new-register-btn{flex-shrink:0}
+#home .shift-rail-intro,#home .shift-countdown-panel{flex:1;height:auto}
+@media(max-width:700px){
+  #home .shift-hero-composition{padding-top:180px}
+  #home .shift-hero-bottom-action{flex-direction:column;align-items:flex-start;gap:24px;padding-top:28px}
+  #home .shift-hero-copy{flex:0 1 auto;max-width:100%}
+  #home .shift-hero-slogan{font-size:32px}
+  #home .shift-hero-promise{font-size:16px;max-width:30ch}
+  #home .shift-hero-bottom-action .new-register-btn{align-self:center;max-width:100%}
+}
 .shift-about-side p{font-family:LilGrotesk,LilGrotesk,sans-serif;font-size:16px;line-height:1.15;letter-spacing:.01em}
 .shift-info-grid h3{font-family:Valentine,Georgia,serif;font-weight:400;letter-spacing:0;line-height:.9}
 .shift-info-grid ul{font-family:LilGrotesk,LilGrotesk,sans-serif;letter-spacing:-.02em}

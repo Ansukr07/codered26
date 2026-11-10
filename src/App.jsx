@@ -89,14 +89,14 @@ const baseElements = Array.from({ length: totalElements }).map((_, i) => {
 
 const questions = [
   ['Who is eligible to participate?', 'Students enrolled in accredited higher education institutions across India.'],
-  ['What are the team size rules?', 'Teams must have 3 to 4 members. Cross-college and inter-departmental teams are welcome.'],
-  ['Is there an entry fee?', 'Round 1 online submission is free. A later confirmation fee may apply to shortlisted teams; the amount has not been announced.'],
-  ['How does Code Red ’26 work?', 'Submit a PPT online, pitch your idea online if shortlisted, and compete for a place among the top 50 teams at the 24-hour offline finale.'],
+  ['Is there an entry fee?', 'Round 1 online submission is free. Shortlisted offline finalists pay an administrative confirmation fee covering venue access, food, connectivity, and kits. The amount is to be confirmed.'],
+  ['What are the team size parameters?', 'Teams must comprise 3 to 4 members. Cross-college and inter-departmental team compositions are fully permitted.'],
+  ['Are pre-existing projects permitted?', 'No. All code, hardware wiring, and system configurations must be executed from scratch during the official 24-hour hackathon window. Standard open-source libraries and public APIs are permitted.'],
+  ['What hardware facilities are provided?', 'Hardware teams must bring their core development kits, such as Raspberry Pi, ESP32, and sensors. The host institution provides workbenches, power extensions, and basic assembly stations.'],
+  ['Is hospitality arranged for offline participants?', 'Yes. Registered finalists receive onsite hospitality, including catered meals, midnight snacks, beverages, continuous facility access, and designated rest areas.'],
+  ['How does Code Red ’26 work?', 'Submit your PPT online. Shortlisted teams pitch their prototype and methodology online and defend their approach. The top 50 teams advance to the 24-hour offline finale at BMSIT&M.'],
   ['When and where is the grand finale?', 'The 24-hour finale takes place on 3–4 December 2026 at BMS Institute of Technology & Management, Yelahanka, Bengaluru.'],
-  ['Can we use a pre-existing project?', 'No. Code, hardware wiring, and system configurations must be completed from scratch during the official 24-hour sprint. Standard open-source libraries and public APIs are permitted.'],
-  ['What should hardware teams bring?', 'Bring your core development kits, such as Raspberry Pi, ESP32, and sensors. The host provides workbenches, power extensions, and basic assembly stations.'],
-  ['Is hospitality provided to finalists?', 'Yes. Registered finalists receive meals, midnight snacks, beverages, continuous facility access, and designated rest areas.'],
-  ['What happens after the hackathon?', 'Promising projects may qualify for VentureX, a separate opportunity to pitch products and business models to investors.'],
+  ['What happens after the hackathon?', 'Promising projects may qualify for VentureX, a separate event to pitch their products, business models, and vision to investors.'],
 ]
 
 function App({ initialPage }) {

@@ -116,14 +116,25 @@ for route in ['dist/tracks/track-2/index.html', 'dist/tracks/track-2/problems/in
     assert 'Think Robotics' in listing and '/tracks/track-2/problems/ps-1' in listing
     assert 'Connected Cities' not in listing
 main = html_lib.unescape(Path('dist/tracks/index.html').read_text(encoding='utf-8'))
-assert '>Track 2 · 1 problem statement</span>' in main, 'Main track flag singular/count incorrect'
-assert 'Track 2 · 1 problem statements' not in main
+assert '>Track 4 · 1 problem statement</span>' in main, 'Main track flag singular/count incorrect'
+assert 'Track 4 · 1 problem statements' not in main
 for old_number in [2, 3, 4]:
     assert not Path(f'dist/tracks/track-2/problems/ps-{old_number}').exists(), 'Old mock route remains in build'
 
-route_check = subprocess.run(['node', '--input-type=module', '-e', "import {tracks,trackRoutes} from './src/trackData.js'; import {getParticipantBrief} from './src/participantBriefs.js'; console.log(JSON.stringify({count:tracks[1].problemStatements.length,title:tracks[1].title,official:tracks[1].hasOfficialBriefs,mock:tracks[1].isMock,mode:tracks[1].heroMode,paths:trackRoutes.filter(r=>r.track.slug==='track-2'&&r.kind==='brief').map(r=>r.path),one:getParticipantBrief(1,'track-1').required[0].title,two:getParticipantBrief(1,'track-2').required[0].title}));"], check=True, capture_output=True, text=True)
+route_check = subprocess.run(['node', '--input-type=module', '-e', "import {tracks,trackRoutes} from './src/trackData.js'; import {getParticipantBrief} from './src/participantBriefs.js'; const t=tracks.find(track=>track.slug==='track-2'); console.log(JSON.stringify({count:t.problemStatements.length,title:t.title,numeral:t.numeral,briefNumerals:t.problemStatements.map(brief=>brief.numeral),official:t.hasOfficialBriefs,mock:t.isMock,mode:t.heroMode,order:tracks.map(track=>[track.title,track.slug,track.numeral]),paths:trackRoutes.filter(r=>r.track.slug==='track-2'&&r.kind==='brief').map(r=>r.path),one:getParticipantBrief(1,'track-1').required[0].title,two:getParticipantBrief(1,'track-2').required[0].title}));"], check=True, capture_output=True, text=True)
 routes = json.loads(route_check.stdout)
-assert routes == {'count': 1, 'title': 'Think Robotics', 'official': True, 'mock': False, 'mode': 'diagram', 'paths': ['/tracks/track-2/problems/ps-1'], 'one': 'AI-assisted teardown', 'two': 'One connected, extensible model'}, 'Track identity, route or participant lookup regression'
+assert routes == {
+    'count': 1, 'title': 'Think Robotics', 'numeral': '04', 'briefNumerals': ['04'],
+    'official': True, 'mock': False, 'mode': 'diagram',
+    'order': [
+        ['Simple Energy', 'track-4', '01'],
+        ['Agnes AI', 'track-3', '02'],
+        ['MyStartupWave', 'track-1', '03'],
+        ['Think Robotics', 'track-2', '04'],
+    ],
+    'paths': ['/tracks/track-2/problems/ps-1'],
+    'one': 'AI-assisted teardown', 'two': 'One connected, extensible model',
+}, 'Track order, identity, route or participant lookup regression'
 
 assert source['source']['pages'] == len(source['pages']) == 7
 assert [page['page'] for page in source['pages']] == list(range(1, 8))
@@ -139,4 +150,4 @@ for original_page, archive in zip(reader.pages, source['pages']):
     assert norm(original_page.extract_text(extraction_mode='layout')) == norm(archive['text']), f'Archive page {archive["page"]} incomplete'
 
 print(f'Think Robotics: {len(page.items)} participant cards, 4 workflows, 3 evaluation stages, 6 ordered criteria, one correct PS route and all 7 original PDF pages verified.')
-print('PASS: Track 2 content, source archive, singular listing and track-scoped PS lookup are correct.')
+print('PASS: Think Robotics content, source archive, display order, singular listing and track-scoped PS lookup are correct.')

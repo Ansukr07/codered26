@@ -114,7 +114,7 @@ const mockTracks = [
     ],
   },
   {
-    title: 'Circular Future',
+    title: 'Simple Energy',
     category: 'Sustainability & resources',
     subtitle: 'Use less. Keep value in circulation.',
     summary: 'Help communities understand resource use, prevent avoidable waste and give everyday materials a useful next life.',
@@ -151,7 +151,7 @@ const mockTracks = [
   },
 ];
 
-export const tracks = mockTracks.map((track, index) => {
+const companyTracks = mockTracks.map((track, index) => {
   const base = {
   ...track,
   topics: track.topics.map((topic, topicIndex) => ({ ...topic, id: `topic-${topicIndex}` })),
@@ -198,6 +198,18 @@ export const tracks = mockTracks.map((track, index) => {
       'A simple status or history view that explains what happened and what the user can do next.',
     ],
   })) }
+});
+
+// Display order can change without breaking published company and brief URLs.
+const trackOrder = ['Simple Energy', 'Agnes AI', 'MyStartupWave', 'Think Robotics'];
+export const tracks = trackOrder.map((title, index) => {
+  const track = companyTracks.find(item => item.title === title);
+  const numeral = String(index + 1).padStart(2, '0');
+  return {
+    ...track,
+    numeral,
+    problemStatements: track.problemStatements.map(brief => ({ ...brief, numeral })),
+  };
 });
 
 export const getTrackByPage = (page) => tracks.find((track) => track.page === page);
