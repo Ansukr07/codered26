@@ -95,7 +95,7 @@ const questions = [
   ['What hardware facilities are provided?', 'Hardware teams must bring their core development kits, such as Raspberry Pi, ESP32, and sensors. The host institution provides workbenches, power extensions, and basic assembly stations.'],
   ['Is hospitality arranged for offline participants?', 'Yes. Registered finalists receive onsite hospitality, including catered meals, midnight snacks, beverages, continuous facility access, and designated rest areas.'],
   ['How does Code Red ’26 work?', 'Submit your PPT online. Shortlisted teams pitch their prototype and methodology online and defend their approach. The top 50 teams advance to the 24-hour offline finale at BMSIT&M.'],
-  ['When and where is the grand finale?', 'The 24-hour finale takes place on 3–4 December 2026 at BMS Institute of Technology & Management, Yelahanka, Bengaluru.'],
+  ['When and where is the grand finale?', 'Grand finale dates: TBA. The 24-hour finale will take place at BMS Institute of Technology & Management, Yelahanka, Bengaluru.'],
   ['What happens after the hackathon?', 'Promising projects may qualify for VentureX, a separate event to pitch their products, business models, and vision to investors.'],
 ]
 
@@ -197,7 +197,7 @@ function PageContent({ initialPage }) {
       <main id="main">
         {currentPage !== 'home' && currentPage !== 'team' && currentPage !== 'notFound' && !selectedTrack && <h1 className="sr-only">{pages[currentPage].title}</h1>}
         {currentPage === 'notFound' && <NotFoundPage onNavigate={navigatePage} />}
-        {currentPage !== 'notFound' && (trackRoute?.kind === 'problems' || (trackRoute?.kind === 'overview' && selectedTrack.hasOfficialBriefs) ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <TeamPage /> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />)}
+        {currentPage !== 'notFound' && (trackRoute?.kind === 'problems' || trackRoute?.brief?.isPending || (trackRoute?.kind === 'overview' && (selectedTrack.hasOfficialBriefs || selectedTrack.hasPendingBriefs)) ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <TeamPage /> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />)}
         {['home', 'faq'].includes(currentPage) && <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
             <noscript><dl>{questions.map(([question, answer]) => <div key={question}><dt>{question}</dt><dd>{answer}</dd></div>)}</dl></noscript>
             <div className="faq-grid">
@@ -276,7 +276,7 @@ function PageContent({ initialPage }) {
           ))}
         </div>
       </footer>
-      <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e => { if (e.target === dialog.current) dialog.current.close() }}><button className="dialog-close" onClick={() => dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt="" /><span className="eyebrow">CODE RED ’26</span><h2 id="registration-title">Build in 24 hours.<br /><span className="script red">Go beyond.</span></h2><p>Registration opens on 22 October and closes on 7 November. Submit your idea as a PPT for Round 1.</p><p className="dialog-note">The 24-hour grand finale is on 3–4 December 2026 at BMSIT&amp;M.</p><button className="button primary" onClick={() => dialog.current.close()}>Got it <span>↗</span></button></dialog>
+      <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e => { if (e.target === dialog.current) dialog.current.close() }}><button className="dialog-close" onClick={() => dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt="" /><span className="eyebrow">CODE RED ’26</span><h2 id="registration-title">Build in 24 hours.<br /><span className="script red">Go beyond.</span></h2><p>Registration opens on 22 October and closes on 7 November. Submit your idea as a PPT for Round 1.</p><p className="dialog-note">Grand finale dates: TBA. Venue: BMSIT&amp;M.</p><button className="button primary" onClick={() => dialog.current.close()}>Got it <span>↗</span></button></dialog>
     </div>
   </>
 }

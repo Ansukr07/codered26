@@ -176,6 +176,29 @@ const companyTracks = mockTracks.map((track, index) => {
   if (index === 0) return createMyStartupWaveTrack(base)
   if (index === 1) return createThinkRoboticsTrack(base)
   if (index === 2) return createAgnesAITrack(base)
+  if (index === 3) {
+    const pendingTrack = {
+      ...base,
+      category: 'Problem statements TBA',
+      subtitle: 'TBA',
+      summary: 'Problem statement details will be announced soon.',
+      cardDescription: 'Problem statements TBA.',
+      problem: 'TBA',
+      hasPendingBriefs: true,
+    }
+    return { ...pendingTrack, problemStatements: Array.from({ length: 4 }, (_, problemIndex) => ({
+      ...pendingTrack,
+      id: `ps-${problemIndex + 1}`,
+      page: `${base.problemsPage}/ps-${problemIndex + 1}`,
+      path: `${base.problemsPath}/ps-${problemIndex + 1}`,
+      parentTrackPage: base.page,
+      parentTrackTitle: base.title,
+      problemNumber: String(problemIndex + 1).padStart(2, '0'),
+      title: 'TBA',
+      summary: 'Problem statement details will be announced soon.',
+      isPending: true,
+    })) }
+  }
   return { ...base, problemStatements: (problemStatementMocks[index] || []).map(([title, summary, problem], problemIndex) => ({
     ...base,
     id: `ps-${problemIndex + 1}`,

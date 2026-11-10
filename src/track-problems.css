@@ -31,6 +31,8 @@
 .ps-index .ps-grid.ps-grid--single { grid-template-columns: minmax(0, 1fr); }
 .ps-grid li { min-width: 0; display: flex; }
 .ps-index .ps-card { width: 100%; min-width: 0; text-decoration: none; }
+.ps-index .ps-card--pending { cursor: default; }
+.ps-index .ps-card--pending:hover .track-card-body::before { opacity: .2; animation: none; }
 .ps-index .tp-card-top { aspect-ratio: auto; height: 144px; }
 .ps-index .tp-inner-box { height: auto; min-height: 50%; }
 .ps-index .tp-inner-text { padding-block: 10px; }

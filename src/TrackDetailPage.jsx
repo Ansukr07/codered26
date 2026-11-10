@@ -241,7 +241,7 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
         </>}
         <section id="next" className="td-brief-section td-next">
           <div className="td-next-banner" aria-labelledby="td-register-title">
-            <p className="td-kicker">3–4 December 2026 · BMSIT&amp;M, Bengaluru</p>
+            <p className="td-kicker">Date TBA · BMSIT&amp;M, Bengaluru</p>
             <h2 id="td-register-title">Register for {track.title}</h2>
             <p className="td-register-summary">Teams of 3–4. Turn ideas into working products during Code Red’s 24-hour finale.</p>
             <div className="td-register-actions">

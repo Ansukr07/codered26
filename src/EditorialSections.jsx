@@ -11,28 +11,11 @@ import './why-participate.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const finaleStart = new Date('2026-12-03T00:00:00+05:30').getTime()
-
 function Countdown() {
-  const [remaining, setRemaining] = useState(0)
-
-  useEffect(() => {
-    const initialTimer = window.setTimeout(() => setRemaining(Math.max(0, finaleStart - Date.now())), 0)
-    const timer = window.setInterval(() => setRemaining(Math.max(0, finaleStart - Date.now())), 1000)
-    return () => { window.clearTimeout(initialTimer); window.clearInterval(timer) }
-  }, [])
-
-  const totalSeconds = Math.floor(remaining / 1000)
-  const units = [
-    ['Days', Math.floor(totalSeconds / 86400)],
-    ['Hrs', Math.floor(totalSeconds / 3600) % 24],
-    ['Mins', Math.floor(totalSeconds / 60) % 60],
-    ['Secs', totalSeconds % 60],
-  ]
-
-  return <div className="shift-countdown" role="timer" aria-label={`Countdown to 3 December 2026: ${units.map(([name, value]) => `${value} ${name}`).join(', ')}`}>
-    {units.map(([name, value]) => <div className="shift-countdown-unit" key={name}>
-      <strong className={`shift-countdown-value${String(value).length > 2 ? ' shift-countdown-value--wide' : ''}`}>{String(value).padStart(2, '0')}</strong>
+  const units = ['Days', 'Hrs', 'Mins', 'Secs']
+  return <div className="shift-countdown" role="group" aria-label="Grand finale date TBA. Countdown will begin once the date is announced.">
+    {units.map(name => <div className="shift-countdown-unit" key={name} aria-hidden="true">
+      <strong className="shift-countdown-value">--</strong>
       <span>{name}</span>
     </div>)}
   </div>
@@ -43,7 +26,7 @@ const rounds = [
   ['02', '27 NOVEMBER', 'Round 1 PPT submissions', 'REGISTRATION CLOSES. SUBMIT YOUR IDEA BY THE DEADLINE.'],
   ['03', '12–13 DECEMBER', 'Round 2 online evaluation', 'SHORTLISTED TEAMS ARE EVALUATED ONLINE VIA GOOGLE MEET.'],
   ['04', '14 DECEMBER', 'Top 50 teams announced', 'ROUND 2 RESULTS WILL BE PUBLISHED ON THE WEBSITE.'],
-  ['05', '3–4 DECEMBER', '24-hour on-campus sprint', 'THE CODE RED ’26 GRAND FINALE TAKES PLACE AT BMSIT&M.'],
+  ['05', 'TBA', '24-hour on-campus sprint', 'THE CODE RED ’26 GRAND FINALE TAKES PLACE AT BMSIT&M.'],
 ]
 
 const participationReasons = [
@@ -201,7 +184,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
           <strong>National level<br />24-hour product sprint.</strong>
           <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "2rem", fontWeight: 400, display: "block", marginTop: "1.5rem", lineHeight: "1" }}>₹2,00,000 Prize Pool</span>
         </div>
-        <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>3–4 December 2026</h2></div><Countdown /></div>
+        <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>TBA</h2></div><Countdown /></div>
       </aside>
     </section>}
 
@@ -210,7 +193,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
       <div className="shift-info-grid">
         <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Four company tracks</li><li>Problem statements available</li></ul></article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>₹2,00,000 total prize pool</li><li>Recognition for standout teams</li></ul></article>
-        <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>24-hour overnight sprint</li><li>3–4 December 2026</li><li>Teams of 3–4</li><li>Top 50 teams at BMSIT&amp;M</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>24-hour overnight sprint</li><li>Dates: TBA</li><li>Teams of 3–4</li><li>Top 50 teams at BMSIT&amp;M</li></ul></article>
       </div>
     </section>}
 
