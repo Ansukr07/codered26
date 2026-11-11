@@ -82,6 +82,8 @@
   width: 100%;
 }
 
+.sponsors-grid-top.sponsors-grid-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
 /* Individual Grid Item */
 .sponsors-grid__item {
   position: relative;
@@ -131,23 +133,30 @@
 }
 
 .sponsors-logo.is-give-my-certificate {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(290px, 34vw, 450px);
-  max-width: none;
-  padding: 1.25rem 0.75rem 0 2rem;
+  width: 88%;
+  max-width: 390px;
+  padding-top: 1.25rem;
+  gap: 2.5%;
   box-sizing: border-box;
 }
 
 .sponsors-logo.is-give-my-certificate img {
   display: block;
-  width: 100%;
+  width: 10%;
   height: auto;
+  flex-shrink: 0;
   filter: none;
   opacity: 1;
+}
+
+.sponsors-logo.is-give-my-certificate .sponsors-logo-wordmark {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 2.1vw, 1.875rem);
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: #737171;
+  transition: color 0.35s ease;
 }
 
 /* Specific Logo Sizing */
@@ -174,6 +183,23 @@
 .sponsors-logo.is-xyz {
   width: clamp(110px, 13vw, 170px);
 }
+
+.sponsors-grid-companies .sponsors-logo { margin-top: 20px; }
+.sponsors-logo.is-simple-energy { width: clamp(180px, 20vw, 270px); }
+.sponsors-logo.is-think-robotics { width: clamp(260px, 32vw, 430px); }
+.sponsors-logo.is-agnes-ai {
+  width: clamp(190px, 20vw, 270px);
+  display: grid;
+  grid-template-columns: 29.4% 1fr;
+  gap: 9.8%;
+}
+.sponsors-logo.is-agnes-ai img.sponsors-logo-mark,
+.sponsors-grid__item:hover .sponsors-logo.is-agnes-ai img.sponsors-logo-mark {
+  filter: none;
+  opacity: 1;
+}
+.sponsors-logo.is-mystartupwave { width: clamp(110px, 14vw, 175px); }
+.sponsors-logo:is(.is-think-robotics, .is-mystartupwave) img { filter: none; opacity: 1; }
 
 /* Coming Soon Placeholders */
 .sponsors-coming-soon {
@@ -267,14 +293,14 @@
   .sponsors-grid__item:hover .sponsors-logo.is-fueler img {
     filter: none;
   }
+  .sponsors-grid__item:hover .sponsors-logo.is-mystartupwave img {
+    filter: none;
+  }
   .sponsors-grid__item:hover .sponsors-logo.is-give-my-certificate img {
     filter: none;
   }
-  .sponsors-grid__item:has(.sponsors-logo.is-give-my-certificate):hover {
-    background-color: var(--sp-card-bg);
-  }
-  .sponsors-grid__item:has(.sponsors-logo.is-give-my-certificate):hover .sponsors-top {
-    color: var(--sp-text);
+  .sponsors-grid__item:hover .sponsors-logo.is-give-my-certificate .sponsors-logo-wordmark {
+    color: #ffffff;
   }
   .sponsors-grid__item:hover .sponsors-coming-soon span {
     color: #ffffff;
@@ -439,6 +465,7 @@
     grid-template-columns: 1fr;
     border-bottom: 0;
   }
+  .sponsors-grid-top.sponsors-grid-three { grid-template-columns: 1fr; }
   .sponsors-grid-bottom {
     grid-template-columns: 1fr;
   }
@@ -452,9 +479,8 @@
   .sponsors-grid-bottom .sponsors-grid__item {
     height: 140px;
   }
-  .sponsors-logo.is-give-my-certificate {
-    padding: 1.25rem 0.75rem 0 2rem;
-    transform: translateX(1.8rem);
+  .sponsors-logo.is-give-my-certificate .sponsors-logo-wordmark {
+    font-size: clamp(1rem, 5.5vw, 1.375rem);
   }
   .sponsors-top {
     top: 0.75rem;

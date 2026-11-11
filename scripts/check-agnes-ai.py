@@ -152,7 +152,7 @@ for route in ['dist/tracks/track-3/index.html', 'dist/tracks/track-3/problems/in
     assert 'Open challenge' in listing and 'PS 01' not in listing
     assert 'Care for All' not in listing
 main = html_lib.unescape(Path('dist/tracks/index.html').read_text(encoding='utf-8'))
-assert '>Track 2 · Open challenge</span>' in main, 'Main track flag implies multiple/fixed PS'
+assert '>Track 2</span>' in main, 'Main track flag should show only the track number'
 for old_number in [2, 3, 4]:
     assert not Path(f'dist/tracks/track-3/problems/ps-{old_number}').exists(), 'Old mock route remains in build'
 

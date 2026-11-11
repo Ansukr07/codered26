@@ -116,8 +116,8 @@ for route in ['dist/tracks/track-2/index.html', 'dist/tracks/track-2/problems/in
     assert 'Think Robotics' in listing and '/tracks/track-2/problems/ps-1' in listing
     assert 'Connected Cities' not in listing
 main = html_lib.unescape(Path('dist/tracks/index.html').read_text(encoding='utf-8'))
-assert '>Track 4 · 1 problem statement</span>' in main, 'Main track flag singular/count incorrect'
-assert 'Track 4 · 1 problem statements' not in main
+assert '>Track 4</span>' in main, 'Main track flag should show only the track number'
+assert '>Track 4 ·' not in main
 for old_number in [2, 3, 4]:
     assert not Path(f'dist/tracks/track-2/problems/ps-{old_number}').exists(), 'Old mock route remains in build'
 
