@@ -138,7 +138,7 @@ function useHeroLayout(stageRef, diagram) {
 function TrackHero({ track }) {
   const heroRef = useRef(null)
   const stageRef = useRef(null)
-  const diagram = track.heroMode === 'diagram' || track.slug === 'track-1'
+  const diagram = track.heroMode === 'diagram'
   const demo = useDemoPrompt(track, stageRef, diagram)
   const anchor = useHeroLayout(stageRef, diagram)
   useTrackEntrance(heroRef)

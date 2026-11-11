@@ -151,7 +151,10 @@ const mockTracks = [
   },
 ];
 
-const companyTracks = mockTracks.map((track, index) => {
+// Assign route numbers in display order, before creating each partner's briefs.
+const trackOrder = [3, 2, 0, 1];
+export const tracks = trackOrder.map((sourceIndex, index) => {
+  const track = mockTracks[sourceIndex];
   const base = {
   ...track,
   topics: track.topics.map((topic, topicIndex) => ({ ...topic, id: `topic-${topicIndex}` })),
@@ -173,10 +176,10 @@ const companyTracks = mockTracks.map((track, index) => {
     { name: 'All tracks', note: 'Return to the track overview and explore the other sample briefs.', href: '/tracks' },
   ],
   }
-  if (index === 0) return createMyStartupWaveTrack(base)
-  if (index === 1) return createThinkRoboticsTrack(base)
-  if (index === 2) return createAgnesAITrack(base)
-  if (index === 3) {
+  if (sourceIndex === 0) return createMyStartupWaveTrack(base)
+  if (sourceIndex === 1) return createThinkRoboticsTrack(base)
+  if (sourceIndex === 2) return createAgnesAITrack(base)
+  if (sourceIndex === 3) {
     const pendingTrack = {
       ...base,
       category: 'Problem statements TBA',
@@ -199,7 +202,7 @@ const companyTracks = mockTracks.map((track, index) => {
       isPending: true,
     })) }
   }
-  return { ...base, problemStatements: (problemStatementMocks[index] || []).map(([title, summary, problem], problemIndex) => ({
+  return { ...base, problemStatements: (problemStatementMocks[sourceIndex] || []).map(([title, summary, problem], problemIndex) => ({
     ...base,
     id: `ps-${problemIndex + 1}`,
     page: `${base.problemsPage}/ps-${problemIndex + 1}`,
@@ -221,18 +224,6 @@ const companyTracks = mockTracks.map((track, index) => {
       'A simple status or history view that explains what happened and what the user can do next.',
     ],
   })) }
-});
-
-// Display order can change without breaking published company and brief URLs.
-const trackOrder = ['Simple Energy', 'Agnes AI', 'MyStartupWave', 'Think Robotics'];
-export const tracks = trackOrder.map((title, index) => {
-  const track = companyTracks.find(item => item.title === title);
-  const numeral = String(index + 1).padStart(2, '0');
-  return {
-    ...track,
-    numeral,
-    problemStatements: track.problemStatements.map(brief => ({ ...brief, numeral })),
-  };
 });
 
 export const getTrackByPage = (page) => tracks.find((track) => track.page === page);

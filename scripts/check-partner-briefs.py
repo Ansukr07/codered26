@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import subprocess
 import unicodedata
 
 
@@ -153,7 +154,7 @@ expected_ids = ['problem', 'focus', 'deliverables', 'judging', 'resources', 'ter
 groups = ['required', 'optional', 'deliverables', 'success', 'constraints', 'scope', 'resources']
 for brief, original in zip(participants, source_briefs):
     number = brief['number']
-    path = Path(f'dist/tracks/track-1/problems/ps-{number}/index.html')
+    path = Path(f'dist/tracks/track-3/problems/ps-{number}/index.html')
     html = path.read_text(encoding='utf-8')
     page = ParticipantPage()
     page.feed(html)
@@ -191,3 +192,51 @@ for brief, original in zip(participants, source_briefs):
     assert participant_words < original_words * .7, f'{path}: copy still resembles the full document'
     print(f'PS{number}: {len(page.items)} participant cards; {participant_words} words vs {original_words} source words; critical requirements and source archive verified')
 print('PASS: all five participant briefs retain critical requirements without reproducing partner templates.')
+
+
+# Numeric URLs, visible numbering and nested brief links must share the same order.
+route_check = subprocess.run(['node', '--input-type=module', '-e', """
+import assert from 'node:assert/strict';
+import { tracks, trackRoutes, getTrackRoute } from './src/trackData.js';
+import { getParticipantBrief, participantBriefs } from './src/participantBriefs.js';
+assert.deepEqual(tracks.map(track => track.title), [
+  'Simple Energy', 'Agnes AI', 'MyStartupWave', 'Think Robotics',
+]);
+assert.equal(new Set(trackRoutes.map(route => route.path)).size, trackRoutes.length, 'Duplicate route path');
+assert.equal(new Set(trackRoutes.map(route => route.page)).size, trackRoutes.length, 'Duplicate route page');
+for (const [index, track] of tracks.entries()) {
+  const slug = `track-${index + 1}`;
+  const page = `tracks/${slug}`;
+  const numeral = String(index + 1).padStart(2, '0');
+  assert.equal(track.slug, slug);
+  assert.equal(track.numeral, numeral);
+  assert.equal(track.page, page);
+  assert.equal(track.path, `/${page}`);
+  assert.equal(track.problemsPage, `${page}/problems`);
+  assert.equal(track.problemsPath, `/${page}/problems`);
+  assert.equal(getTrackRoute(page).track, track);
+  assert.equal(getTrackRoute(track.problemsPage).track, track);
+  for (const brief of track.problemStatements) {
+    const briefPage = `${page}/problems/ps-${Number(brief.problemNumber)}`;
+    assert.equal(brief.slug, slug);
+    assert.equal(brief.numeral, numeral);
+    assert.equal(brief.page, briefPage);
+    assert.equal(brief.path, `/${briefPage}`);
+    assert.equal(brief.parentTrackPage, page);
+    assert.equal(brief.parentTrackTitle, track.title);
+    assert.equal(getTrackRoute(briefPage).brief, brief);
+    assert.equal(getTrackRoute(briefPage).track, track);
+    if (track.hasOfficialBriefs) {
+      assert(getParticipantBrief(Number(brief.problemNumber), slug), `${briefPage}: missing participant brief`);
+    }
+  }
+}
+for (const brief of participantBriefs) {
+  const track = tracks.find(track => track.slug === brief.trackSlug);
+  assert(track?.hasOfficialBriefs, 'Participant brief assigned to a pending or missing track');
+  assert(track.problemStatements.some(problem => Number(problem.problemNumber) === brief.number));
+}
+assert.equal(getParticipantBrief(1, 'track-1'), undefined, 'Pending track inherited an official brief');
+console.log('PASS: Every track and brief URL matches its displayed number, with unique routes and correct parent links.');
+"""], check=True, capture_output=True, text=True)
+print(route_check.stdout.strip())
