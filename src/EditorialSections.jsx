@@ -181,10 +181,28 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
       </div>
       <aside className="shift-hero-rail anim-slide-down" style={{ transitionDelay: '0.2s' }}>
         <div className="shift-rail-intro anim-slide-up" style={{ transitionDelay: '0.3s' }}>
-          <strong>National level<br />24-hour product sprint.</strong>
-          <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "2rem", fontWeight: 400, display: "block", marginTop: "1.5rem", lineHeight: "1" }}>₹2,00,000 Prize Pool</span>
+          <div className="shift-venturex-panel">
+            <strong className="shift-venturex-heading">
+              Your finish line here is your startup’s day one.
+            </strong>
+            <p className="shift-venturex-desc">
+              Top Code Red teams get direct access to pitch at VentureX and turn ideas into reality.
+            </p>
+            <a
+              href="https://venture-x-bmsit.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="shift-venturex-cta"
+            >
+              EXPLORE VENTUREX <span className="shift-venturex-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
-        <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}><div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>TBA</h2></div><Countdown /></div>
+        <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}>
+          
+          <strong>National level<br />24-hour product sprint.</strong>
+          <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "clamp(1.4rem, 1.7vw, 2rem)", fontWeight: 400, display: "block", marginTop: "1.5rem", lineHeight: "1", whiteSpace: "nowrap" }}>₹2,00,000 Prize Pool</span>
+        <div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>TBA</h2></div><Countdown /></div>
       </aside>
     </section>}
 

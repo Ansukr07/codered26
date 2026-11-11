@@ -216,7 +216,7 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-vivaldi-tagline{max-width:205px;opacity:.74}
 .shift-rail-intro{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:0;overflow:hidden;padding:20px 10% 30px}
 .shift-rail-intro strong{display:block;min-width:0;max-width:100%;font:600 clamp(18px,1.55vw,24px)/1.14 LilGrotesk,LilGrotesk,sans-serif;letter-spacing:-.02em}
-.shift-rail-tagline{display:block;width:min(100%,205px);height:auto;margin-top:10px}
+.shift-rail-tagline{display:block;width:auto;max-width:100%;height:auto;margin-top:10px;white-space:nowrap}
 .shift-rail-intro span{font:700 11px/1.2 Consolas,monospace;letter-spacing:.06em}
 .shift-rail-status{display:flex;flex-direction:column;padding:32px 10% 30px}
 .shift-rail-status h2{margin-bottom:25px}.shift-rail-status ol{display:flex;flex-direction:column;font:inherit}
@@ -277,6 +277,14 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 #home .shift-hero-promise{margin:0;max-width:34ch;font:400 clamp(15px,1.3vw,18px)/1.4 LilGrotesk,Helvetica,sans-serif;letter-spacing:0}
 #home .shift-hero-bottom-action .new-register-btn{flex-shrink:0}
 #home .shift-rail-intro,#home .shift-countdown-panel{flex:1;height:auto}
+#home .shift-rail-intro{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:clamp(32px,3.5vw,48px) clamp(24px,2.8vw,40px) clamp(38px,4.5vw,58px)}
+.shift-venturex-panel{width:100%;display:flex;flex-direction:column;align-items:flex-start;margin-top:auto}
+.shift-rail-intro .shift-venturex-heading{display:block;font:600 clamp(24px,2.1vw,34px)/1.15 LilGrotesk,Helvetica,sans-serif;letter-spacing:-.025em;color:var(--shift-ink,#222);margin:0 0 clamp(12px,1.2vw,18px)}
+.shift-rail-intro .shift-venturex-desc{font:400 clamp(15px,1.15vw,18px)/1.45 LilGrotesk,Helvetica,sans-serif;letter-spacing:-.01em;color:rgba(34,34,34,.82);margin:0 0 clamp(18px,1.8vw,26px);max-width:36ch}
+.shift-venturex-cta{display:inline-flex;align-items:center;gap:8px;font:700 clamp(11px,.85vw,13px)/1.2 Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--shift-ink,#222);text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:4px;transition:gap .2s ease,color .2s ease,border-color .2s ease}
+.shift-venturex-cta:hover{color:var(--shift-red,#ff503e);gap:12px}
+.shift-venturex-arrow{display:inline-block;font-size:1.15em;line-height:1;transition:transform .2s ease}
+.shift-venturex-cta:hover .shift-venturex-arrow{transform:translate(2px,-2px)}
 @media(max-width:700px){
   #home .shift-hero-composition{padding-top:180px}
   #home .shift-hero-bottom-action{flex-direction:column;align-items:flex-start;gap:24px;padding-top:28px}
@@ -284,6 +292,10 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
   #home .shift-hero-slogan{font-size:32px}
   #home .shift-hero-promise{font-size:16px;max-width:30ch}
   #home .shift-hero-bottom-action .new-register-btn{align-self:center;max-width:100%}
+  #home .shift-rail-intro{padding:28px 7% 32px;justify-content:flex-end}
+  .shift-rail-intro .shift-venturex-heading{font-size:clamp(17px,4.2vw,22px);line-height:1.16;margin-bottom:10px}
+  .shift-rail-intro .shift-venturex-desc{font-size:clamp(12px,3vw,14px);line-height:1.35;margin-bottom:14px}
+  .shift-venturex-cta{font-size:10px;gap:6px;padding-bottom:3px}
 }
 .shift-about-side p{font-family:LilGrotesk,LilGrotesk,sans-serif;font-size:16px;line-height:1.15;letter-spacing:.01em}
 .shift-info-grid h3{font-family:Valentine,Georgia,serif;font-weight:400;letter-spacing:0;line-height:.9}
