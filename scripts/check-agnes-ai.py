@@ -138,11 +138,9 @@ for phrase in ['Care for All', 'Care demo', 'PEOPLE · ACCESS · COORDINATION',
                'Submission Checklist', 'THE GUIDING PRINCIPLE', 'Download original PDF']:
     assert phrase not in html, f'Unwanted source/admin/mock content: {phrase}'
 assert 'td-connections' in html and 'class="tds-scene' not in html, 'Old CareScene used for Agnes AI'
-wheel = re.search(r'<nav[^>]*class="td-track-wheel"[^>]*>(.*?)</nav>', html, re.S)
-assert wheel and 'aria-label="Current open challenge"' in html
-assert re.findall(r'<a\b[^>]*href="([^"]+)"', wheel[1]) == ['/tracks/track-2/problems/ps-1']
-assert wheel[1].count('aria-current="page"') == 1
-assert 'PS 01' not in html_lib.unescape(wheel[1]), 'Single open challenge displays an invented PS number'
+assert 'td-track-wheel' not in html, 'Removed challenge selector is present'
+assert 'td-hero-foot' not in html, 'Removed scroll strip is present'
+assert 'href="/tracks/track-2/problems"' in html, 'Parent track link is missing'
 assert 'Other problem statements' not in html and 'PREVIOUS PS' not in html and 'NEXT PS' not in html
 
 for route in ['dist/tracks/track-2/index.html', 'dist/tracks/track-2/problems/index.html']:

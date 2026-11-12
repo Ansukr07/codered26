@@ -162,7 +162,8 @@ for brief, original in zip(participants, source_briefs):
     assert page.h1s == 1, f'{path}: expected one H1'
     assert [id for id in page.ids if id in expected_ids] == expected_ids, f'{path}: participant sections or order missing'
     assert not page.downloads, f'{path}: PDF download control restored'
-    assert 'Choose a problem statement.' in html and 'data-kind="problem"' in html
+    assert 'td-track-wheel' not in html, f'{path}: removed PS selector is present'
+    assert 'td-hero-foot' not in html, f'{path}: removed scroll strip is present'
     for phrase in ['Submission Checklist', 'Brief completeness', 'THE GUIDING PRINCIPLE', 'Business and Adoption Context', 'Industry Engagement', 'Partner information &amp; industry context']:
         assert phrase not in html, f'{path}: partner template text remains: {phrase}'
     for field in ['problem', 'workflow']:

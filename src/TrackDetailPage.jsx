@@ -1,12 +1,12 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { tracks } from './trackData.js'
 import { useTrackEntrance, useBriefReveals } from './trackMotion.js'
-import TrackWheel from './TrackWheel.jsx'
 import TrackBriefRail from './TrackBriefRail.jsx'
 import TrackScene from './TrackScene.jsx'
 import TrackButtonContent from './TrackButtonContent.jsx'
 import OfficialBriefContent, { officialBriefSections } from './OfficialBriefContent.jsx'
 import useTrackSectionHighlight from './useTrackSectionHighlight.js'
+import { getHeroConnections } from './heroConnections.js'
 import './track-detail.css'
 
 const sections = [
@@ -69,7 +69,7 @@ function useDemoPrompt(track, stageRef, cycle = true) {
   return { ...demo, prompt, text: letters.slice(0, demo.count).join(''), done, running }
 }
 
-function useHeroLayout(stageRef, diagram) {
+function useHeroLayout(stageRef, diagram, measuredConnections = false) {
   const [anchor, setAnchor] = useState({ left: 31, right: 69, y: 35 })
 
   useLayoutEffect(() => {
@@ -78,11 +78,11 @@ function useHeroLayout(stageRef, diagram) {
     const intro = stage.closest('.td-intro')
     const topbar = intro.querySelector('.td-topbar')
     const heading = hero.querySelector('.td-heading')
-    const foot = hero.querySelector('.td-hero-foot')
     const demo = stage.querySelector('.td-demo')
     const search = stage.querySelector('.td-search')
     const calls = stage.querySelector('.td-scene-calls')
     const ticker = stage.querySelector('.td-scene-ticker')
+    const topics = [...stage.querySelectorAll('.td-topic')]
     let frame = 0
     let disposed = false
     const measure = () => {
@@ -99,7 +99,7 @@ function useHeroLayout(stageRef, diagram) {
           : ticker.offsetHeight + (reduced ? calls.offsetHeight + 260 : short ? Math.max(calls.offsetHeight, 220) : calls.offsetHeight + 180)
         const heroStyle = window.getComputedStyle(hero)
         const stageStyle = window.getComputedStyle(stage)
-        const fixedHeight = topbar.offsetHeight + heading.offsetHeight + foot.offsetHeight
+        const fixedHeight = topbar.offsetHeight + heading.offsetHeight
           + (Number.parseFloat(heroStyle.paddingTop) || 0) + (Number.parseFloat(stageStyle.marginTop) || 0)
         const minimumStageHeight = Math.max(stageMinimum, diagram ? 0 : Number.parseFloat(stageStyle.minHeight) || 0)
         const minimum = `${Math.ceil(fixedHeight + minimumStageHeight)}px`
@@ -115,12 +115,25 @@ function useHeroLayout(stageRef, diagram) {
           right: (query.right - outer.left) / outer.width * 100,
           y: (query.top + query.height / 2 - outer.top) / outer.height * 100,
         }
-        setAnchor(previous => ['left', 'right', 'y'].some(key => Math.abs(previous[key] - next[key]) > .1) ? next : previous)
+        if (measuredConnections && topics.every(topic => topic.offsetWidth > 0)) {
+          const frameBounds = { left: query.left - outer.left, right: query.right - outer.left, top: query.top - outer.top, height: query.height }
+          const topicPorts = topics.map((topic, index) => {
+            const style = getComputedStyle(topic)
+            const bounds = topic.getBoundingClientRect()
+            // Ignore the active card's 2px decorative translation to keep paths steady.
+            const centerX = parseFloat(style.left)
+            const centerY = parseFloat(style.top)
+            return { x: centerX + (index < 3 ? bounds.width / 2 - 3 : -bounds.width / 2 + 3), y: centerY }
+          })
+          next.connections = { viewBox: `0 0 ${outer.width} ${outer.height}`, routes: getHeroConnections(frameBounds, topicPorts) }
+        }
+        const signature = value => value?.connections ? `${value.connections.viewBox}:${value.connections.routes.map(route => route.path).join('|')}` : ''
+        setAnchor(previous => ['left', 'right', 'y'].some(key => Math.abs(previous[key] - next[key]) > .1) || signature(previous) !== signature(next) ? next : previous)
       }
     }
     const schedule = () => { if (!disposed && !frame) frame = window.requestAnimationFrame(measure) }
     const observer = new ResizeObserver(schedule)
-    for (const element of [stage, topbar, heading, foot, demo, search, calls, ticker].filter(Boolean)) observer.observe(element)
+    for (const element of [stage, topbar, heading, demo, search, calls, ticker, ...(measuredConnections ? topics : [])].filter(Boolean)) observer.observe(element)
     window.addEventListener('resize', schedule, { passive: true })
     document.fonts?.ready.then(schedule, schedule)
     schedule()
@@ -130,7 +143,7 @@ function useHeroLayout(stageRef, diagram) {
       window.removeEventListener('resize', schedule)
       window.cancelAnimationFrame(frame)
     }
-  }, [diagram, stageRef])
+  }, [diagram, stageRef, measuredConnections])
 
   return anchor
 }
@@ -139,24 +152,29 @@ function TrackHero({ track }) {
   const heroRef = useRef(null)
   const stageRef = useRef(null)
   const diagram = track.heroMode === 'diagram'
+  const isOfficialBrief = Boolean(track.officialBrief)
+  const isRea = track.officialBrief?.company === 'MyStartupWave' && track.officialBrief.number === 1
   const demo = useDemoPrompt(track, stageRef, diagram)
-  const anchor = useHeroLayout(stageRef, diagram)
+  const anchor = useHeroLayout(stageRef, diagram, isOfficialBrief)
   useTrackEntrance(heroRef)
   const positions = [[12, 16], [9, 49], [15, 82], [88, 16], [91, 49], [85, 82]]
 
-  return <section ref={heroRef} className={`td-hero${diagram ? '' : ' td-hero--scene'}`} aria-labelledby="td-title">
+  const paths = isOfficialBrief ? anchor.connections?.routes.map(route => route.path) || [] : positions.map(([x, y], index) => {
+    const end = index < 3 ? anchor.left : anchor.right
+    const mid = (x + end) / 2
+    return `M ${x} ${y} C ${mid} ${y}, ${mid} ${anchor.y}, ${end} ${anchor.y}`
+  })
+
+  return <section ref={heroRef} className={`td-hero${diagram ? '' : ' td-hero--scene'}${isOfficialBrief ? ' td-hero--brief' : ''}${isRea ? ' td-hero--rea' : ''}`} aria-labelledby="td-title">
     <div className="td-heading">
-      <p className="td-kicker">{track.problemNumber ? `${track.parentTrackTitle} · ${track.briefKind === 'open-challenge' ? 'Open challenge' : `PS ${track.problemNumber}`}` : `Track ${track.numeral}`} <span> / </span> {track.category}</p>
+      <p className="td-kicker">{isOfficialBrief ? <>{track.parentTrackTitle}<span> / </span>{track.briefKind === 'open-challenge' ? 'Open challenge' : `PS ${track.problemNumber}`}</> : <>{track.problemNumber ? `${track.parentTrackTitle} · ${track.briefKind === 'open-challenge' ? 'Open challenge' : `PS ${track.problemNumber}`}` : `Track ${track.numeral}`} <span> / </span> {track.category}</>}</p>
       <h1 id="td-title"><span className="td-title-mask"><span>{track.title}</span></span></h1>
-      <p className="td-subtitle">{track.subtitle}</p>
+      <p className="td-subtitle">{isRea ? 'Understand an app. Build a better version.' : track.subtitle}</p>
     </div>
     <div ref={stageRef} className={`td-stage${demo.running ? ' td-stage--running' : ''}`}>
       {diagram ? <>
-      <svg className="td-connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        {positions.map(([x, y], i) => {
-          const end = i < 3 ? anchor.left : anchor.right
-          const mid = (x + end) / 2
-          const path = `M ${x} ${y} C ${mid} ${y}, ${mid} ${anchor.y}, ${end} ${anchor.y}`
+      <svg className="td-connections" viewBox={isOfficialBrief ? anchor.connections?.viewBox || '0 0 100 100' : '0 0 100 100'} preserveAspectRatio="none" aria-hidden="true">
+        {paths.map((path, i) => {
           return <g key={i} className={track.topics[i].id === demo.prompt.topicId ? 'td-path--active' : ''}>
             <path d={path} className="td-connection" vectorEffect="non-scaling-stroke" />
             <path d={path} className="td-pulse" vectorEffect="non-scaling-stroke" pathLength="100" />
@@ -189,7 +207,6 @@ function TrackHero({ track }) {
         <div className="td-scene-ticker"><span>FOCUS AREAS</span><div><div className="td-scene-ticker-run" data-running={demo.running}>{[0, 1].map(copy => <div key={copy} aria-hidden={copy === 1 ? true : undefined}>{track.topics.map(topic => <span key={topic.label}>{topic.label}<i aria-hidden="true">✳</i></span>)}</div>)}</div></div></div>
       </>}
     </div>
-    <div className="td-hero-foot"><span>IDEAS INTO IMPACT.</span><a href="#problem">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a><span>CODE RED ’26</span></div>
   </section>
 }
 
@@ -207,7 +224,6 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
   const siblings = track.problemNumber ? parentTrack.problemStatements : trackLinks
   const siblingIndex = siblings.findIndex(item => item.page === track.page)
   const position = track.problemNumber ? siblingIndex : index
-  const wheelItems = track.problemNumber ? siblings.map(item => ({ ...item, numeral: item.problemNumber, ...(openChallenge ? { title: item.parentTrackTitle } : {}) })) : trackLinks
   const railSections = track.officialBrief ? (openChallenge ? [officialBriefSections[0], ['directions', 'Suggested directions'], ...officialBriefSections.slice(1)] : officialBriefSections) : sections
   const briefKind = track.problemNumber ? (openChallenge ? 'challenge' : 'problem') : 'track'
   const previous = siblings[(position - 1 + siblings.length) % siblings.length]
@@ -223,7 +239,6 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
     <div className="td-intro">
       <div className="td-topbar">
         <a className="td-back" href={parentTrack.problemsPath} onClick={follow(parentTrack.problemsPage)}><span aria-hidden="true">←</span> {openChallenge ? `${parentTrack.title} track` : 'Problem statements'}</a>
-        <TrackWheel tracks={wheelItems} activeIndex={position} onNavigate={onNavigate} kind={briefKind} />
       </div>
       <TrackHero key={track.page} track={track} />
     </div>

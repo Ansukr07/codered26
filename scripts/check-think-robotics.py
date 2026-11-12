@@ -104,10 +104,9 @@ for phrase in ['MyStartupWave', 'Reverse Engineer Anything', 'Connected Cities',
                'Submission Checklist', 'THE GUIDING PRINCIPLE', 'Download original PDF', 'What comes next']:
     assert phrase not in html, f'Unwanted source/admin/mock content: {phrase}'
 assert 'td-connections' in html and 'class="tds-scene' not in html, 'Old city scene used for knowledge graph'
-wheel = re.search(r'<nav[^>]*class="td-track-wheel"[^>]*>(.*?)</nav>', html, re.S)
-assert wheel and 'aria-label="Current problem statement"' in html
-assert re.findall(r'<a\b[^>]*href="([^"]+)"', wheel[1]) == ['/tracks/track-4/problems/ps-1']
-assert wheel[1].count('aria-current="page"') == 1
+assert 'td-track-wheel' not in html, 'Removed PS selector is present'
+assert 'td-hero-foot' not in html, 'Removed scroll strip is present'
+assert 'href="/tracks/track-4/problems"' in html, 'Parent track link is missing'
 assert 'Other problem statements' not in html and 'PREVIOUS PS' not in html and 'NEXT PS' not in html
 
 for route in ['dist/tracks/track-4/index.html', 'dist/tracks/track-4/problems/index.html']:

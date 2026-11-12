@@ -33,6 +33,7 @@
 .td-track-wheel__number { font-size: 23px; font-weight: 600; }
 .td-track-wheel__item > .td-track-wheel__title { font: inherit; }
 .td-track-wheel__item:hover { text-decoration: underline; text-underline-offset: 5px; }
+.td-track-wheel[data-kind="problem"] .td-track-wheel__item:hover { color: var(--td-red, #ed2024); text-decoration: none; }
 .td-track-wheel__mark {
   position: absolute;
   bottom: 17px;
