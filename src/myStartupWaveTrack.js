@@ -45,6 +45,7 @@ export function createMyStartupWaveTrack(base) {
     cardDescription: `${sourceBriefs.length} industry problem statements covering generative AI, career technology, commerce and logistics.`,
     isMock: false,
     hasOfficialBriefs: true,
+    heroMode: 'diagram',
   }
   return {
     ...company,

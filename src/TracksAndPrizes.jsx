@@ -133,7 +133,7 @@ export function TracksSection({ onNavigate }) {
         <div className="tracks-grid" ref={trackGridRef} onScroll={handleTrackScroll}>
           {tracks.map((track, idx) => (
             <a key={track.slug} href={track.problemsPath} onClick={event => followTrack(event, track)} className={`track-card track-card-${idx + 1}`} data-partner={track.hasOfficialBriefs ? '' : undefined}>
-              <span className="track-top-flag">{track.hasOfficialBriefs ? `Track ${idx + 1} · ${track.briefKind === 'open-challenge' ? 'Open challenge' : `${track.problemStatements.length} problem ${track.problemStatements.length === 1 ? 'statement' : 'statements'}`}` : `Track ${idx + 1} · To be announced`}</span>
+              <span className="track-top-flag">{`Track ${idx + 1}`}</span>
 
               <div className="track-card-body">
                 <div className="tp-card-top">

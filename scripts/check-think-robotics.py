@@ -23,7 +23,7 @@ assert source['company'] == 'Think Robotics'
 assert source['fullTitle'] == 'Customer Knowledge Graph for Hybrid B2B Commerce'
 assert all(domain in brief['problem'] for domain in ['robotics', 'industrial automation', 'electronic components', 'drones', '3D printing']), 'Partner domain context missing'
 
-path = Path('dist/tracks/track-2/problems/ps-1/index.html')
+path = Path('dist/tracks/track-4/problems/ps-1/index.html')
 html = path.read_text(encoding='utf-8')
 page = ParticipantPage()
 page.feed(html)
@@ -104,35 +104,34 @@ for phrase in ['MyStartupWave', 'Reverse Engineer Anything', 'Connected Cities',
                'Submission Checklist', 'THE GUIDING PRINCIPLE', 'Download original PDF', 'What comes next']:
     assert phrase not in html, f'Unwanted source/admin/mock content: {phrase}'
 assert 'td-connections' in html and 'class="tds-scene' not in html, 'Old city scene used for knowledge graph'
-wheel = re.search(r'<nav[^>]*class="td-track-wheel"[^>]*>(.*?)</nav>', html, re.S)
-assert wheel and 'aria-label="Current problem statement"' in html
-assert re.findall(r'<a\b[^>]*href="([^"]+)"', wheel[1]) == ['/tracks/track-2/problems/ps-1']
-assert wheel[1].count('aria-current="page"') == 1
+assert 'td-track-wheel' not in html, 'Removed PS selector is present'
+assert 'td-hero-foot' not in html, 'Removed scroll strip is present'
+assert 'href="/tracks/track-4/problems"' in html, 'Parent track link is missing'
 assert 'Other problem statements' not in html and 'PREVIOUS PS' not in html and 'NEXT PS' not in html
 
-for route in ['dist/tracks/track-2/index.html', 'dist/tracks/track-2/problems/index.html']:
+for route in ['dist/tracks/track-4/index.html', 'dist/tracks/track-4/problems/index.html']:
     listing = Path(route).read_text(encoding='utf-8')
     assert len(re.findall(r'<a\b[^>]*class="[^"]*\bps-card\b', listing)) == 1, f'{route}: expected one PS card'
-    assert 'Think Robotics' in listing and '/tracks/track-2/problems/ps-1' in listing
+    assert 'Think Robotics' in listing and '/tracks/track-4/problems/ps-1' in listing
     assert 'Connected Cities' not in listing
 main = html_lib.unescape(Path('dist/tracks/index.html').read_text(encoding='utf-8'))
-assert '>Track 4 · 1 problem statement</span>' in main, 'Main track flag singular/count incorrect'
-assert 'Track 4 · 1 problem statements' not in main
+assert '>Track 4</span>' in main, 'Main track flag should show only the track number'
+assert '>Track 4 ·' not in main
 for old_number in [2, 3, 4]:
-    assert not Path(f'dist/tracks/track-2/problems/ps-{old_number}').exists(), 'Old mock route remains in build'
+    assert not Path(f'dist/tracks/track-4/problems/ps-{old_number}').exists(), 'Old mock route remains in build'
 
-route_check = subprocess.run(['node', '--input-type=module', '-e', "import {tracks,trackRoutes} from './src/trackData.js'; import {getParticipantBrief} from './src/participantBriefs.js'; const t=tracks.find(track=>track.slug==='track-2'); console.log(JSON.stringify({count:t.problemStatements.length,title:t.title,numeral:t.numeral,briefNumerals:t.problemStatements.map(brief=>brief.numeral),official:t.hasOfficialBriefs,mock:t.isMock,mode:t.heroMode,order:tracks.map(track=>[track.title,track.slug,track.numeral]),paths:trackRoutes.filter(r=>r.track.slug==='track-2'&&r.kind==='brief').map(r=>r.path),one:getParticipantBrief(1,'track-1').required[0].title,two:getParticipantBrief(1,'track-2').required[0].title}));"], check=True, capture_output=True, text=True)
+route_check = subprocess.run(['node', '--input-type=module', '-e', "import {tracks,trackRoutes} from './src/trackData.js'; import {getParticipantBrief} from './src/participantBriefs.js'; const t=tracks.find(track=>track.slug==='track-4'); console.log(JSON.stringify({count:t.problemStatements.length,title:t.title,numeral:t.numeral,briefNumerals:t.problemStatements.map(brief=>brief.numeral),official:t.hasOfficialBriefs,mock:t.isMock,mode:t.heroMode,order:tracks.map(track=>[track.title,track.slug,track.numeral]),paths:trackRoutes.filter(r=>r.track.slug==='track-4'&&r.kind==='brief').map(r=>r.path),one:getParticipantBrief(1,'track-3').required[0].title,two:getParticipantBrief(1,'track-4').required[0].title}));"], check=True, capture_output=True, text=True)
 routes = json.loads(route_check.stdout)
 assert routes == {
     'count': 1, 'title': 'Think Robotics', 'numeral': '04', 'briefNumerals': ['04'],
     'official': True, 'mock': False, 'mode': 'diagram',
     'order': [
-        ['Simple Energy', 'track-4', '01'],
-        ['Agnes AI', 'track-3', '02'],
-        ['MyStartupWave', 'track-1', '03'],
-        ['Think Robotics', 'track-2', '04'],
+        ['Simple Energy', 'track-1', '01'],
+        ['Agnes AI', 'track-2', '02'],
+        ['MyStartupWave', 'track-3', '03'],
+        ['Think Robotics', 'track-4', '04'],
     ],
-    'paths': ['/tracks/track-2/problems/ps-1'],
+    'paths': ['/tracks/track-4/problems/ps-1'],
     'one': 'AI-assisted teardown', 'two': 'One connected, extensible model',
 }, 'Track order, identity, route or participant lookup regression'
 

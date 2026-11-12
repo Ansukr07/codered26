@@ -19,7 +19,7 @@ const DotArrowIcon = () => (
   </svg>
 );
 
-const SponsorCard = ({ href, name, logoSrc, logoClass, isComingSoon }) => {
+const SponsorCard = ({ href, name, logoSrc, logoIconSrc, logoClass, wordmark, isComingSoon }) => {
   const isLink = Boolean(href);
   const Tag = isLink ? 'a' : 'div';
   const linkProps = isLink ? { href, target: "_blank", rel: "noopener noreferrer" } : {};
@@ -40,7 +40,9 @@ const SponsorCard = ({ href, name, logoSrc, logoClass, isComingSoon }) => {
         </div>
       ) : (
         <div className={`sponsors-logo ${logoClass}`}>
-          <img src={logoSrc} alt={name} loading="lazy" fetchPriority="low" decoding="async" />
+          {logoIconSrc && <img className="sponsors-logo-mark" src={logoIconSrc} alt="" aria-hidden="true" loading="lazy" fetchPriority="low" decoding="async" />}
+          <img src={logoSrc} alt={wordmark ? '' : name} loading="lazy" fetchPriority="low" decoding="async" />
+          {wordmark && <span className="sponsors-logo-wordmark">{name}</span>}
         </div>
       )}
     </Tag>
@@ -55,14 +57,19 @@ export default function SponsorsSection() {
           <h2 className="sponsors-title">Partners</h2>
         </div>
         <div className="sponsors-bento">
+          <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
+            <SponsorCard href="https://www.simpleenergy.in/" name="Simple Energy" logoSrc="/sponsors/simple-energy.svg" logoClass="is-simple-energy" />
+            <SponsorCard href="https://www.mystartupwave.com/" name="MyStartupWave" logoSrc="/sponsors/mystartupwave.png" logoClass="is-mystartupwave" />
+            <SponsorCard href="https://agnes-ai.com/" name="Agnes AI" logoIconSrc="/sponsors/agnes-ai-icon.png" logoSrc="/sponsors/agnes-ai-wordmark.png" logoClass="is-agnes-ai" />
+          </div>
           <div className="sponsors-grid-top">
-            <SponsorCard isComingSoon />
+            <SponsorCard href="https://thinkrobotics.com/" name="Think Robotics" logoSrc="/sponsors/think-robotics.png" logoClass="is-think-robotics" />
             <SponsorCard href="https://unstop.com/" name="Unstop" logoSrc="/sponsors/unstop.svg" logoClass="is-unstop" />
           </div>
           <div className="sponsors-grid-bottom">
             <SponsorCard href="https://gen.xyz/" name=".xyz" logoSrc="/sponsors/xyz-logo-white.svg" logoClass="is-xyz" />
             <SponsorCard href="https://fueler.io/" name="Fueler" logoSrc="/sponsors/fueler.svg" logoClass="is-fueler" />
-            <SponsorCard href="https://givemycertificate.com/" name="Give My Certificate" logoSrc="/sponsors/give-my-certificate.png" logoClass="is-give-my-certificate" />
+            <SponsorCard href="https://givemycertificate.com/" name="Give My Certificate" logoSrc="/sponsors/give-my-certificate-icon.png" logoClass="is-give-my-certificate" wordmark />
           </div>
         </div>
         <a className="sponsors-button" data-arrow-button="" href="https://drive.google.com/file/d/1R868KjV0qfIvK2croIpPDb5R0J6qH9JY/view" target="_blank" rel="noopener noreferrer">

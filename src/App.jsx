@@ -89,14 +89,14 @@ const baseElements = Array.from({ length: totalElements }).map((_, i) => {
 });
 
 const questions = [
+  ['How does Code Red ’26 work?', 'Submit your PPT online. Shortlisted teams pitch their prototype and methodology online and defend their approach. The top 50 teams advance to the 24-hour offline finale at BMSIT&M.'],
   ['Who is eligible to participate?', 'Students enrolled in accredited higher education institutions across India.'],
-  ['Is there an entry fee?', 'Round 1 online submission is free. Shortlisted offline finalists pay an administrative confirmation fee covering venue access, food, connectivity, and kits. The amount is to be confirmed.'],
   ['What are the team size parameters?', 'Teams must comprise 3 to 4 members. Cross-college and inter-departmental team compositions are fully permitted.'],
-  ['Are pre-existing projects permitted?', 'No. All code, hardware wiring, and system configurations must be executed from scratch during the official 24-hour hackathon window. Standard open-source libraries and public APIs are permitted.'],
+  ['Is there an entry fee?', 'Round 1 online submission is free. Shortlisted offline finalists pay an administrative confirmation fee covering venue access, food, connectivity, and kits. The amount is to be confirmed.'],
+  ['When and where is the grand finale?', 'The 24-hour finale takes place on 28–29 December 2026 at BMS Institute of Technology & Management, Yelahanka, Bengaluru.'],
+  ['Are pre-existing projects permitted?', 'Yes. Participants are encouraged to start developing their projects from Round 1 itself. Teams can work on their ideas, develop prototypes, write code and integrate hardware throughout the competition. The 24-hour Product Development Sprint at BMSIT&M will provide an opportunity to further enhance, refine and demonstrate their products. Standard open-source libraries and public APIs are permitted.'],
   ['What hardware facilities are provided?', 'Hardware teams must bring their core development kits, such as Raspberry Pi, ESP32, and sensors. The host institution provides workbenches, power extensions, and basic assembly stations.'],
   ['Is hospitality arranged for offline participants?', 'Yes. Registered finalists receive onsite hospitality, including catered meals, midnight snacks, beverages, continuous facility access, and designated rest areas.'],
-  ['How does Code Red ’26 work?', 'Submit your PPT online. Shortlisted teams pitch their prototype and methodology online and defend their approach. The top 50 teams advance to the 24-hour offline finale at BMSIT&M.'],
-  ['When and where is the grand finale?', 'Grand finale dates: TBA. The 24-hour finale will take place at BMS Institute of Technology & Management, Yelahanka, Bengaluru.'],
   ['What happens after the hackathon?', 'Promising projects may qualify for VentureX, a separate event to pitch their products, business models, and vision to investors.'],
 ]
 
@@ -278,7 +278,7 @@ function PageContent({ initialPage, initialTeamPage }) {
           ))}
         </div>
       </footer>
-      <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e => { if (e.target === dialog.current) dialog.current.close() }}><button className="dialog-close" onClick={() => dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt="" /><span className="eyebrow">CODE RED ’26</span><h2 id="registration-title">Build in 24 hours.<br /><span className="script red">Go beyond.</span></h2><p>Registration opens on 22 October and closes on 7 November. Submit your idea as a PPT for Round 1.</p><p className="dialog-note">Grand finale dates: TBA. Venue: BMSIT&amp;M.</p><button className="button primary" onClick={() => dialog.current.close()}>Got it <span>↗</span></button></dialog>
+      <dialog ref={dialog} aria-labelledby="registration-title" className="registration-dialog" onClick={e => { if (e.target === dialog.current) dialog.current.close() }}><button className="dialog-close" onClick={() => dialog.current.close()} aria-label="Close registration details">×</button><img src={art('Artboard 1 copy')} alt="" /><span className="eyebrow">CODE RED ’26</span><h2 id="registration-title">Build in 24 hours.<br /><span className="script red">Go beyond.</span></h2><p>Registration opens on 22 October and closes on 7 November. Submit your idea as a PPT for Round 1.</p><p className="dialog-note">Grand finale dates: 28–29 December 2026. Venue: BMSIT&amp;M.</p><button className="button primary" onClick={() => dialog.current.close()}>Got it <span>↗</span></button></dialog>
     </div>
   </>
 }

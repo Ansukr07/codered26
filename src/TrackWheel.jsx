@@ -3,15 +3,15 @@ import './track-wheel.css'
 
 const clamp = (value, last) => Math.max(0, Math.min(last, value))
 
-function wheelStyle(index, position, spacing, reduced = false) {
+function wheelStyle(index, position, spacing, reduced = false, kind = 'track') {
   const distance = index - position
   const angle = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, distance * 8 * Math.PI / 180))
   const radius = spacing / (8 * Math.PI / 180)
   const absolute = Math.abs(distance)
   return {
     transform: `translate(calc(${(radius * Math.sin(angle)).toFixed(1)}px - 50%), calc(${(radius * (1 - Math.cos(angle))).toFixed(1)}px - 50%)) rotate(${(angle * 180 / Math.PI).toFixed(2)}deg) scale(${Math.max(.7, 1 - .12 * absolute).toFixed(3)})`,
-    opacity: Math.max(0, Math.min(1, 1.05 - .42 * absolute)),
-    filter: reduced || absolute < .3 ? 'none' : `blur(${Math.min(2.4, .9 * absolute).toFixed(2)}px)`,
+    opacity: Math.max(0, Math.min(1, kind === 'problem' ? 1.05 - .3 * absolute : 1.05 - .42 * absolute)),
+    filter: kind === 'problem' || reduced || absolute < .3 ? 'none' : `blur(${Math.min(2.4, .9 * absolute).toFixed(2)}px)`,
     '--td-wheel-progress': Math.max(0, 1 - Math.min(absolute, 1)),
   }
 }
@@ -36,7 +36,7 @@ export default function TrackWheel({ tracks, activeIndex, onNavigate, kind = 'tr
     }
     const paint = () => items.current.forEach((item, index) => {
       if (!item) return
-      const style = wheelStyle(index, state.position, state.spacing, motion.matches)
+      const style = wheelStyle(index, state.position, state.spacing, motion.matches, kind)
       item.style.transform = style.transform
       item.style.opacity = style.opacity
       item.style.filter = style.filter
@@ -188,16 +188,17 @@ export default function TrackWheel({ tracks, activeIndex, onNavigate, kind = 'tr
       className="td-track-wheel__item"
       href={track.path}
       draggable={false}
+      aria-label={kind === 'problem' ? `PS ${track.numeral} — ${track.title}` : undefined}
       aria-current={index === activeIndex ? 'page' : undefined}
       data-selected={index === selected ? '' : undefined}
       tabIndex={index === selected ? 0 : -1}
-      style={wheelStyle(index, activeIndex, 220)}
+      style={wheelStyle(index, activeIndex, 220, false, kind)}
       onClick={event => {
         if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return
         event.preventDefault()
         engine.current?.move(index, true)
       }}
-    ><span className="td-track-wheel__number">{kind === 'challenge' ? 'Open challenge' : `${kind === 'problem' ? 'PS ' : ''}${track.numeral}`}</span><span className="td-track-wheel__title">{track.title}</span></a>)}
+    ><span className="td-track-wheel__number">{kind === 'challenge' ? 'Open challenge' : `${kind === 'problem' ? 'PS ' : ''}${track.numeral}`}</span>{kind !== 'problem' && <span className="td-track-wheel__title">{track.title}</span>}</a>)}
     <span className="td-track-wheel__mark" aria-hidden="true" />
   </nav>
 }

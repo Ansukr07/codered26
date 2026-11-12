@@ -22,7 +22,7 @@ assert brief['number'] == source['number'] == 1
 assert source['company'] == 'Agnes AI'
 assert (source.get('fullTitle') or source['title']) == 'AI for Science and Physical AI'
 
-page_path = Path('dist/tracks/track-3/problems/ps-1/index.html')
+page_path = Path('dist/tracks/track-2/problems/ps-1/index.html')
 html = page_path.read_text(encoding='utf-8')
 page = ParticipantPage()
 page.feed(html)
@@ -138,30 +138,28 @@ for phrase in ['Care for All', 'Care demo', 'PEOPLE · ACCESS · COORDINATION',
                'Submission Checklist', 'THE GUIDING PRINCIPLE', 'Download original PDF']:
     assert phrase not in html, f'Unwanted source/admin/mock content: {phrase}'
 assert 'td-connections' in html and 'class="tds-scene' not in html, 'Old CareScene used for Agnes AI'
-wheel = re.search(r'<nav[^>]*class="td-track-wheel"[^>]*>(.*?)</nav>', html, re.S)
-assert wheel and 'aria-label="Current open challenge"' in html
-assert re.findall(r'<a\b[^>]*href="([^"]+)"', wheel[1]) == ['/tracks/track-3/problems/ps-1']
-assert wheel[1].count('aria-current="page"') == 1
-assert 'PS 01' not in html_lib.unescape(wheel[1]), 'Single open challenge displays an invented PS number'
+assert 'td-track-wheel' not in html, 'Removed challenge selector is present'
+assert 'td-hero-foot' not in html, 'Removed scroll strip is present'
+assert 'href="/tracks/track-2/problems"' in html, 'Parent track link is missing'
 assert 'Other problem statements' not in html and 'PREVIOUS PS' not in html and 'NEXT PS' not in html
 
-for route in ['dist/tracks/track-3/index.html', 'dist/tracks/track-3/problems/index.html']:
+for route in ['dist/tracks/track-2/index.html', 'dist/tracks/track-2/problems/index.html']:
     listing = Path(route).read_text(encoding='utf-8')
     assert len(re.findall(r'<a\b[^>]*class="[^"]*\bps-card\b', listing)) == 1, f'{route}: expected one open challenge card'
-    assert 'Agnes AI' in listing and '/tracks/track-3/problems/ps-1' in listing
+    assert 'Agnes AI' in listing and '/tracks/track-2/problems/ps-1' in listing
     assert 'Open challenge' in listing and 'PS 01' not in listing
     assert 'Care for All' not in listing
 main = html_lib.unescape(Path('dist/tracks/index.html').read_text(encoding='utf-8'))
-assert '>Track 2 · Open challenge</span>' in main, 'Main track flag implies multiple/fixed PS'
+assert '>Track 2</span>' in main, 'Main track flag should show only the track number'
 for old_number in [2, 3, 4]:
-    assert not Path(f'dist/tracks/track-3/problems/ps-{old_number}').exists(), 'Old mock route remains in build'
+    assert not Path(f'dist/tracks/track-2/problems/ps-{old_number}').exists(), 'Old mock route remains in build'
 
-route_check = subprocess.run(['node', '--input-type=module', '-e', "import {tracks,trackRoutes} from './src/trackData.js'; import {getParticipantBrief} from './src/participantBriefs.js'; const t=tracks.find(track=>track.slug==='track-3'); console.log(JSON.stringify({count:t.problemStatements.length,title:t.title,numeral:t.numeral,briefNumerals:t.problemStatements.map(brief=>brief.numeral),official:t.hasOfficialBriefs,mock:t.isMock,mode:t.heroMode,kind:t.problemStatements[0].briefKind,paths:trackRoutes.filter(r=>r.track.slug==='track-3'&&r.kind==='brief').map(r=>r.path),one:getParticipantBrief(1,'track-1').required[0].title,two:getParticipantBrief(1,'track-2').required[0].title,three:getParticipantBrief(1,'track-3').required.length,topics:t.problemStatements[0].topics.length,prompts:t.problemStatements[0].prompts.length}));"], check=True, capture_output=True, text=True)
+route_check = subprocess.run(['node', '--input-type=module', '-e', "import {tracks,trackRoutes} from './src/trackData.js'; import {getParticipantBrief} from './src/participantBriefs.js'; const t=tracks.find(track=>track.slug==='track-2'); console.log(JSON.stringify({count:t.problemStatements.length,title:t.title,numeral:t.numeral,briefNumerals:t.problemStatements.map(brief=>brief.numeral),official:t.hasOfficialBriefs,mock:t.isMock,mode:t.heroMode,kind:t.problemStatements[0].briefKind,paths:trackRoutes.filter(r=>r.track.slug==='track-2'&&r.kind==='brief').map(r=>r.path),one:getParticipantBrief(1,'track-3').required[0].title,two:getParticipantBrief(1,'track-4').required[0].title,three:getParticipantBrief(1,'track-2').required.length,topics:t.problemStatements[0].topics.length,prompts:t.problemStatements[0].prompts.length}));"], check=True, capture_output=True, text=True)
 routes = json.loads(route_check.stdout)
 assert routes == {
     'count': 1, 'title': 'Agnes AI', 'numeral': '02', 'briefNumerals': ['02'],
     'official': True, 'mock': False,
-    'mode': 'diagram', 'kind': 'open-challenge', 'paths': ['/tracks/track-3/problems/ps-1'],
+    'mode': 'diagram', 'kind': 'open-challenge', 'paths': ['/tracks/track-2/problems/ps-1'],
     'one': 'AI-assisted teardown', 'two': 'One connected, extensible model',
     'three': len(brief['required']), 'topics': 6, 'prompts': 6,
 }, 'Track identity, route, diagram or scoped participant lookup regression'
@@ -194,5 +192,5 @@ assert source_urls == expected_urls, 'PDF resource links changed'
 rendered_urls = {html_lib.unescape(url) for url in re.findall(r'<a\b[^>]*href="([^"]+)"', html)}
 assert source_urls <= rendered_urls, 'Source resource references are missing or not clickable'
 
-print(f'Agnes AI: {len(page.items)} participant cards, one open challenge, four suggested directions, stable track-3 URL and all four original PDF pages verified.')
+print(f'Agnes AI: {len(page.items)} participant cards, one open challenge, four suggested directions, matching track-2 URL and all four original PDF pages verified.')
 print('PASS: Open-choice wording, Agnes use, evaluation, safety, API reliability, individual finalist credits and resource links are correct.')
