@@ -35,6 +35,8 @@
 }
 .faq .faq-answer p {
   margin: 0;
+  max-width: 750px;
+  text-align: justify;
 }
 @media (prefers-reduced-motion: reduce) {
   .faq .faq-answer,
