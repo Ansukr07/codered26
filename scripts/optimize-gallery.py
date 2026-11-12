@@ -1,4 +1,4 @@
-"""Create high-quality web copies of the original gallery photos."""
+"""Build responsive WebP gallery images from local originals or existing masters."""
 
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -8,27 +8,39 @@ from PIL import Image, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "gallery-originals"
-if not SOURCE.exists():
-    SOURCE = ROOT / "public" / "gallery"
-OUTPUT = ROOT / "public" / "gallery" / "optimized"
-OUTPUT.mkdir(exist_ok=True)
+ORIGINALS = ROOT / "gallery-originals"
+MASTERS = ROOT / "public" / "gallery" / "optimized"
+OUTPUT = ROOT / "public" / "gallery" / "responsive"
+FOOTER_IMAGES = ROOT / "public" / "images"
+WIDTHS = (480, 960, 1440)
+QUALITY = 80
+OUTPUT.mkdir(parents=True, exist_ok=True)
 
-for source in sorted(SOURCE.iterdir()):
-    if source.suffix.lower() not in {".heic", ".jpg", ".jpeg"}:
-        continue
 
+def render(source: Path, stem: str) -> None:
     with TemporaryDirectory() as temporary:
         readable = source
         if source.suffix.lower() == ".heic":
-            readable = Path(temporary) / f"{source.stem}.png"
+            readable = Path(temporary) / f"{stem}.png"
             subprocess.run(["heif-convert", str(source), str(readable)], check=True)
 
         with Image.open(readable) as opened:
-            photo = ImageOps.exif_transpose(opened).convert("RGB")
-            is_heic = source.suffix.lower() == ".heic"
-            max_edge = 3600 if is_heic else 4500
-            photo.thumbnail((max_edge, max_edge), Image.Resampling.LANCZOS)
-            destination = OUTPUT / f"{source.stem}.webp"
-            photo.save(destination, "WEBP", quality=90 if is_heic else 94, method=6)
-            print(f"{source.name}: {source.stat().st_size:,} -> {destination.stat().st_size:,} bytes, {photo.width}x{photo.height}")
+            image = ImageOps.exif_transpose(opened).convert("RGB")
+            for width in WIDTHS:
+                copy = image.copy()
+                copy.thumbnail((width, width * 2), Image.Resampling.LANCZOS)
+                destination = OUTPUT / f"{stem}-{width}.webp"
+                copy.save(destination, "WEBP", quality=QUALITY, method=6)
+                print(f"{destination.relative_to(ROOT)}: {destination.stat().st_size:,} bytes")
+
+
+for master in sorted(MASTERS.glob("*.webp")):
+    original = next(
+        (path for path in ORIGINALS.glob(f"{master.stem}.*") if path.suffix.lower() in {".heic", ".jpg", ".jpeg"}),
+        master,
+    )
+    render(original, master.stem)
+
+for name in ("footimg2", "footimg3", "footimg5", "footimg7", "footimg8"):
+    source = next(FOOTER_IMAGES.glob(f"{name} (1).*"))
+    render(source, name)

@@ -40,7 +40,7 @@ export default function NotFoundPage({ onNavigate }) {
         {/* Headline */}
         <h1 className="nf-heading">
           Lost in the{' '}
-          <span className="script red">void.</span>
+          <span className="red">void.</span>
         </h1>
 
         <p className="nf-sub">
@@ -55,12 +55,6 @@ export default function NotFoundPage({ onNavigate }) {
             onClick={() => onNavigate('home')}
           >
             Back to Home <span>↗</span>
-          </button>
-          <button
-            className="text-link nf-link"
-            onClick={() => onNavigate('tracks')}
-          >
-            Explore Tracks <span>→</span>
           </button>
         </div>
       </div>

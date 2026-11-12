@@ -143,12 +143,8 @@
   color: var(--cream);
 }
 
-.nf-heading .script {
-  font-size: 1.25em;
-  line-height: 0.8;
-  display: inline-block;
-  transform: rotate(-3deg);
-  transform-origin: left bottom;
+.nf-heading .red {
+  color: var(--red);
 }
 
 /* ── Sub-text ── */
@@ -171,26 +167,6 @@
 
 .nf-btn {
   font-size: 13px;
-}
-
-.nf-link {
-  font-size: 12px;
-  border-bottom: 1px solid #ffffff44;
-  padding: 10px 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--cream);
-  background: none;
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.nf-link:hover {
-  color: var(--red);
 }
 
 /* ── Corner label (editorial detail) ── */

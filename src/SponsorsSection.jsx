@@ -40,8 +40,8 @@ const SponsorCard = ({ href, name, logoSrc, logoIconSrc, logoClass, wordmark, is
         </div>
       ) : (
         <div className={`sponsors-logo ${logoClass}`}>
-          {logoIconSrc && <img className="sponsors-logo-mark" src={logoIconSrc} alt="" aria-hidden="true" />}
-          <img src={logoSrc} alt={wordmark ? '' : name} />
+          {logoIconSrc && <img className="sponsors-logo-mark" src={logoIconSrc} alt="" aria-hidden="true" loading="lazy" fetchPriority="low" decoding="async" />}
+          <img src={logoSrc} alt={wordmark ? '' : name} loading="lazy" fetchPriority="low" decoding="async" />
           {wordmark && <span className="sponsors-logo-wordmark">{name}</span>}
         </div>
       )}
