@@ -40,7 +40,7 @@ const SponsorCard = ({ href, name, logoSrc, logoClass, isComingSoon }) => {
         </div>
       ) : (
         <div className={`sponsors-logo ${logoClass}`}>
-          <img src={logoSrc} alt={name} />
+          <img src={logoSrc} alt={name} loading="lazy" fetchPriority="low" decoding="async" />
         </div>
       )}
     </Tag>

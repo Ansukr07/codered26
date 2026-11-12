@@ -5,9 +5,12 @@ import './index.css'
 import App from './App.jsx'
 
 const root = document.getElementById('root')
+const initialTeamPage = window.location.pathname.replace(/^\/+|\/+$/g, '') === 'team'
+  ? (await import('./TeamPage.jsx')).default
+  : undefined
 const app = (
   <StrictMode>
-    <App />
+    <App initialTeamPage={initialTeamPage} />
     <Analytics />
   </StrictMode>
 )

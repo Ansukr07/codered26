@@ -31,6 +31,9 @@ for (const [page, info] of Object.entries(pages)) {
   const filename = page === 'home' ? 'dist/index.html' : page === 'notFound' ? 'dist/404.html' : `dist${info.path}/index.html`
   await mkdir(resolve(filename, '..'), { recursive: true })
   await writeFile(filename, html)
+  if (page !== 'home' && page !== 'notFound') {
+    await writeFile(`dist/${page}.html`, html)
+  }
 }
 await writeFile('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`)
 await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${Object.entries(pages).filter(([page, info]) => page !== 'notFound' && !info.isMock).map(([, info]) => `<url><loc>${siteUrl}${info.path}</loc></url>`).join('')}</urlset>\n`)

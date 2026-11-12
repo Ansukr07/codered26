@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useLayoutEffect } from 'react'
+import { lazy, Suspense, useRef, useState, useEffect, useLayoutEffect } from 'react'
 import { ReactLenis, useLenis } from 'lenis/react'
 import './App.css'
 import './reference-components.css'
@@ -16,6 +16,7 @@ import { getTrackRoute } from './trackData.js'
 import { pages, updateSeo } from './seo.js'
 
 const base = '/codered2026/codered2026'
+const DeferredTeamPage = lazy(() => import('./TeamPage.jsx'))
 const art = (name) => `${base}/vector files/elements/${name}.svg`
 
 const revolvingImagesList = [
@@ -99,13 +100,14 @@ const questions = [
   ['What happens after the hackathon?', 'Promising projects may qualify for VentureX, a separate event to pitch their products, business models, and vision to investors.'],
 ]
 
-function App({ initialPage }) {
+function App({ initialPage, initialTeamPage }) {
   return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: true }}>
-    <PageContent initialPage={initialPage} />
+    <PageContent initialPage={initialPage} initialTeamPage={initialTeamPage} />
   </ReactLenis>
 }
 
-function PageContent({ initialPage }) {
+function PageContent({ initialPage, initialTeamPage }) {
+  const TeamComponent = initialTeamPage || DeferredTeamPage
   const lenis = useLenis()
   const [currentPage, setCurrentPage] = useState(() => initialPage || pageFromLocation());
   const trackRoute = getTrackRoute(currentPage);
@@ -197,7 +199,7 @@ function PageContent({ initialPage }) {
       <main id="main">
         {currentPage !== 'home' && currentPage !== 'team' && currentPage !== 'notFound' && !selectedTrack && <h1 className="sr-only">{pages[currentPage].title}</h1>}
         {currentPage === 'notFound' && <NotFoundPage onNavigate={navigatePage} />}
-        {currentPage !== 'notFound' && (trackRoute?.kind === 'problems' || trackRoute?.brief?.isPending || (trackRoute?.kind === 'overview' && (selectedTrack.hasOfficialBriefs || selectedTrack.hasPendingBriefs)) ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <TeamPage /> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />)}
+        {currentPage !== 'notFound' && (trackRoute?.kind === 'problems' || trackRoute?.brief?.isPending || (trackRoute?.kind === 'overview' && (selectedTrack.hasOfficialBriefs || selectedTrack.hasPendingBriefs)) ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <Suspense fallback={<div className="team-page-loading" aria-label="Loading team page" />}><TeamComponent /></Suspense> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />)}
         {['home', 'faq'].includes(currentPage) && <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
             <noscript><dl>{questions.map(([question, answer]) => <div key={question}><dt>{question}</dt><dd>{answer}</dd></div>)}</dl></noscript>
             <div className="faq-grid">
