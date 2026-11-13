@@ -130,7 +130,7 @@ function PageContent({ initialPage, initialTeamPage }) {
     if (page === currentPage) {
       changePage();
     } else if (window.playPagePreloader) {
-      window.playPagePreloader(changePage);
+      window.playPagePreloader(changePage, page, currentPage);
     } else {
       changePage();
     }
@@ -161,7 +161,7 @@ function PageContent({ initialPage, initialTeamPage }) {
         setCurrentPage(page);
         setOpenFaq(null);
       };
-      if (window.playPagePreloader) window.playPagePreloader(changePage);
+      if (window.playPagePreloader) window.playPagePreloader(changePage, page, currentPage);
       else changePage();
     };
     window.addEventListener('popstate', syncPage);

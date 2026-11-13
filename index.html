@@ -6,6 +6,22 @@
     <link rel="icon" type="image/svg+xml" href="/logos/Asset%2026.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#101010" />
+    <script id="preloader-route-policy">
+        window.shouldPlayPagePreloader = (page, fromPage) => {
+            const normalize = (page) => {
+                const value = String(page || '');
+                const path = (value.startsWith('#/') ? value.slice(2) : value).split(/[?#]/)[0];
+                return path.replace(/^\/+|\/+$/g, '') || 'home';
+            };
+            const route = normalize(page);
+            const returningToTracks = route === 'tracks' && normalize(fromPage).startsWith('tracks/');
+            return !returningToTracks && ['home', 'about', 'tracks', 'prizes', 'schedule', 'sponsors', 'faq', 'team'].includes(route);
+        };
+        const initialPreloaderPage = window.location.hash.startsWith('#/')
+            ? window.location.hash.slice(2)
+            : window.location.pathname;
+        document.documentElement.dataset.preloader = window.shouldPlayPagePreloader(initialPreloaderPage) ? 'play' : 'skip';
+    </script>
     <style>
         @font-face {
             font-family: LilGrotesk;
@@ -26,6 +42,8 @@
             display: grid;
             background: #ed2024;
         }
+        html[data-preloader="skip"] #preloader,
+        html[data-preloader="skip"] #intro-text { display: none; }
 
         #intro-text {
             position: fixed;
@@ -71,41 +89,59 @@
     <script type="module" src="/src/main.jsx"></script>
 
     <!-- Preloader Logic -->
-    <script>
-        // ── Add class so scrollbar turns red during preloader ──
-        document.documentElement.classList.add('preloader-active');
+    <script id="preloader-controller">
+        const playInitialPreloader = document.documentElement.dataset.preloader === 'play';
+        if (playInitialPreloader) {
+            document.documentElement.classList.add('preloader-active');
+            document.body.style.overflow = 'hidden';
+        }
 
-        // ── Prevent scrolling while preloader is running ──
-        document.body.style.overflow = 'hidden';
-
-        // ── Check tab memory immediately ──
-        let isFirstVisit = false;
-        if (!sessionStorage.getItem('CR_TAB_MEMORY')) {
-            isFirstVisit = true;
-            sessionStorage.setItem('CR_TAB_MEMORY', 'true');
+        let mainPageVisited = false;
+        function firstMainPageVisit() {
+            if (mainPageVisited) return false;
+            mainPageVisited = true;
+            try {
+                const seen = sessionStorage.getItem('CR_TAB_MEMORY');
+                sessionStorage.setItem('CR_TAB_MEMORY', 'true');
+                return !seen;
+            } catch {
+                return true;
+            }
         }
 
         document.addEventListener("DOMContentLoaded", () => {
             const preloader = document.getElementById("preloader");
+            let transitionVersion = 0;
+            let totalBlocks = 0;
+            let blocks = [];
 
-            // ── Build pixel grid ──
-            const isMobile = window.innerWidth <= 768;
-            const columns = isMobile ? 6 : 10;
-            const squareSize = preloader.offsetWidth / columns;
-            const rows = Math.ceil(preloader.offsetHeight / squareSize);
-            const totalBlocks = columns * rows;
-
-            preloader.style.gridTemplateColumns = `repeat(${columns}, ${squareSize}px)`;
-            preloader.style.gridTemplateRows = `repeat(${rows}, ${squareSize}px)`;
-
-            const blocks = [];
-            for (let i = 0; i < totalBlocks; i++) {
-                const block = document.createElement("div");
-                block.classList.add("block");
-                preloader.appendChild(block);
-                blocks.push(block);
+            // Build only when a main page opens, using the current viewport.
+            function buildPixelGrid() {
+                const columns = window.innerWidth <= 768 ? 6 : 10;
+                const squareSize = window.innerWidth / columns;
+                const rows = Math.ceil(window.innerHeight / squareSize);
+                totalBlocks = columns * rows;
+                preloader.style.gridTemplateColumns = `repeat(${columns}, ${squareSize}px)`;
+                preloader.style.gridTemplateRows = `repeat(${rows}, ${squareSize}px)`;
+                preloader.replaceChildren();
+                blocks = [];
+                for (let i = 0; i < totalBlocks; i++) {
+                    const block = document.createElement("div");
+                    block.classList.add("block");
+                    preloader.appendChild(block);
+                    blocks.push(block);
+                }
+                preloader.style.background = 'transparent';
             }
-            preloader.style.background = 'transparent';
+
+            function finishPreloader() {
+                preloader.style.display = 'none';
+                document.getElementById('intro-text').style.display = 'none';
+                document.documentElement.dataset.preloader = 'skip';
+                document.documentElement.classList.remove('preloader-active');
+                document.body.style.overflow = '';
+                window.dispatchEvent(new Event('preloaderComplete'));
+            }
 
             // ── Fisher-Yates shuffle ──
             function shuffle(array) {
@@ -192,7 +228,7 @@
             }
 
             // ── Pixel dissolution ──
-            function runDissolution(delay = 100, stagger = 8) {
+            function runDissolution(delay = 100, stagger = 8, version = transitionVersion) {
                 return new Promise(resolve => {
                     const shuffledBlocks = shuffle([...blocks]);
                     setTimeout(() => {
@@ -200,38 +236,49 @@
                             setTimeout(() => block.classList.add('hide'), index * stagger);
                         });
                         setTimeout(() => {
-                            preloader.style.display = 'none';
-                            document.documentElement.classList.remove('preloader-active');
-                            window.dispatchEvent(new Event('preloaderComplete'));
-                            document.body.style.overflow = '';
+                            if (version === transitionVersion) finishPreloader();
                             resolve();
                         }, (totalBlocks - 1) * stagger + 350);
                     }, delay);
                 });
             }
 
-            let pageTransitionRunning = false;
-            window.playPagePreloader = (changePage) => {
-                if (pageTransitionRunning) return;
-                pageTransitionRunning = true;
+            function revealPage(version, stagger) {
+                const intro = firstMainPageVisit() ? runIntro() : Promise.resolve();
+                intro.then(() => {
+                    if (version === transitionVersion) return runDissolution(100, stagger, version);
+                });
+            }
+
+            window.playPagePreloader = (changePage, page, fromPage) => {
+                const version = ++transitionVersion;
+                if (!window.shouldPlayPagePreloader(page, fromPage)) {
+                    finishPreloader();
+                    changePage();
+                    return;
+                }
+                document.documentElement.dataset.preloader = 'play';
                 document.documentElement.classList.add('preloader-active');
                 document.body.style.overflow = 'hidden';
-                blocks.forEach(block => block.classList.remove('hide'));
+                document.getElementById('intro-text').style.display = 'none';
                 preloader.style.display = 'grid';
+                buildPixelGrid();
 
                 requestAnimationFrame(() => {
+                    if (version !== transitionVersion) return;
                     changePage();
                     requestAnimationFrame(() => {
-                        runDissolution(100, 10).then(() => { pageTransitionRunning = false; });
+                        if (version === transitionVersion) revealPage(version, 10);
                     });
                 });
             };
 
             // ── Sequence: intro (if first visit) → dissolution ──
-            if (isFirstVisit) {
-                runIntro().then(runDissolution);
+            if (playInitialPreloader) {
+                buildPixelGrid();
+                revealPage(++transitionVersion, 8);
             } else {
-                runDissolution();
+                finishPreloader();
             }
         });
     </script>

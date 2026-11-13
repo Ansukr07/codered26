@@ -83,10 +83,13 @@
 }
 
 .sponsors-grid-top.sponsors-grid-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sponsors-grid-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 /* Individual Grid Item */
 .sponsors-grid__item {
   position: relative;
+  min-width: 0;
+  min-height: 0;
   background-color: var(--sp-card-bg);
   display: flex;
   align-items: center;
@@ -98,13 +101,8 @@
   transition: background-color 0.25s ease;
 }
 
-.sponsors-grid-top .sponsors-grid__item {
-  height: clamp(220px, 22vw, 300px);
-}
-
-.sponsors-grid-bottom .sponsors-grid__item {
-  height: clamp(170px, 16vw, 220px);
-}
+.sponsors-grid-top .sponsors-grid__item,
+.sponsors-grid-bottom .sponsors-grid__item { aspect-ratio: 3 / 2; }
 
 /* Logo container */
 .sponsors-logo {
@@ -151,7 +149,7 @@
 
 .sponsors-logo.is-give-my-certificate .sponsors-logo-wordmark {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(1rem, 2.1vw, 1.875rem);
+  font-size: clamp(.75rem, 1.5vw, 1.5rem);
   font-weight: 700;
   line-height: 1.1;
   white-space: nowrap;
@@ -173,7 +171,8 @@
 }
 
 .sponsors-logo.is-unstop {
-  width: clamp(180px, 20vw, 260px);
+  width: clamp(150px, 16vw, 210px);
+  max-width: 68%;
 }
 
 .sponsors-logo.is-fueler {
@@ -181,16 +180,17 @@
 }
 
 .sponsors-logo.is-xyz {
-  width: clamp(110px, 13vw, 170px);
+  width: clamp(90px, 10.5vw, 140px);
 }
 
 .sponsors-grid-companies .sponsors-logo { margin-top: 20px; }
+.sponsors-grid-bottom .sponsors-logo:not(.is-give-my-certificate) { margin-top: 20px; }
 .sponsors-logo.is-simple-energy { width: clamp(180px, 20vw, 270px); }
 .sponsors-logo.is-think-robotics { width: clamp(260px, 32vw, 430px); }
 .sponsors-logo.is-agnes-ai {
   width: clamp(190px, 20vw, 270px);
   display: grid;
-  grid-template-columns: 29.4% 1fr;
+  grid-template-columns: 29.4% minmax(0, 1fr);
   gap: 9.8%;
 }
 .sponsors-logo.is-agnes-ai img.sponsors-logo-mark,
@@ -198,7 +198,18 @@
   filter: none;
   opacity: 1;
 }
+.sponsors-logo.is-agnes-ai img { min-width: 0; }
 .sponsors-logo.is-mystartupwave { width: clamp(110px, 14vw, 175px); }
+.sponsors-logo.is-niveus-solutions { width: clamp(170px, 19vw, 260px); }
+.sponsors-logo.is-sahasranshu { width: 84%; max-width: 350px; gap: 12px; }
+.sponsors-logo.is-sahasranshu img { width: 28%; flex: none; }
+.sponsors-logo.is-sahasranshu .sponsors-logo-wordmark { width: min-content; flex: none; font: 600 clamp(18px, 1.8vw, 28px)/1.25 LilGrotesk, sans-serif; letter-spacing: .025em; }
+.sponsors-logo.is-cassette-labs { width: 82%; max-width: 380px; display: grid; grid-template-columns: 18% minmax(0, 1fr); gap: 5%; }
+.sponsors-logo.is-cassette-labs img { min-width: 0; }
+.sponsors-logo.is-cassette-labs .sponsors-logo-mark { aspect-ratio: 1; }
+/* The official wordmark includes transparent padding; fit the lettering to its grid cell. */
+.sponsors-logo.is-cassette-labs img:not(.sponsors-logo-mark) { transform: scale(1.2875) translate(1.1111%, .2258%); }
+.sponsors-logo.is-sahasranshu .sponsors-logo-wordmark { transition: color .35s ease; }
 .sponsors-logo:is(.is-think-robotics, .is-mystartupwave) img { filter: none; opacity: 1; }
 
 /* Coming Soon Placeholders */
@@ -226,6 +237,7 @@
   position: absolute;
   top: 1rem;
   left: 1rem;
+  right: 1rem;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -240,6 +252,8 @@
 }
 
 .sponsors-eyebrow {
+  min-width: 0;
+  line-height: 1.3;
   margin: 0;
   font-size: inherit;
   font-weight: inherit;
@@ -249,6 +263,7 @@
 
 .sponsors-brackets {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
 }
 
@@ -300,6 +315,9 @@
     filter: none;
   }
   .sponsors-grid__item:hover .sponsors-logo.is-give-my-certificate .sponsors-logo-wordmark {
+    color: #ffffff;
+  }
+  .sponsors-grid__item:hover .sponsors-logo.is-sahasranshu .sponsors-logo-wordmark {
     color: #ffffff;
   }
   .sponsors-grid__item:hover .sponsors-coming-soon span {
@@ -446,12 +464,6 @@
   .sponsors-section {
     padding: 5rem 1.5rem 6rem;
   }
-  .sponsors-grid-top .sponsors-grid__item {
-    height: 200px;
-  }
-  .sponsors-grid-bottom .sponsors-grid__item {
-    height: 160px;
-  }
   .sponsors-button {
     height: 3.5rem;
   }
@@ -466,6 +478,7 @@
     border-bottom: 0;
   }
   .sponsors-grid-top.sponsors-grid-three { grid-template-columns: 1fr; }
+  .sponsors-grid-four { grid-template-columns: 1fr; }
   .sponsors-grid-bottom {
     grid-template-columns: 1fr;
   }
@@ -473,18 +486,13 @@
   .sponsors-grid-bottom .is-coming-soon {
     display: none;
   }
-  .sponsors-grid-top .sponsors-grid__item {
-    height: 160px;
-  }
-  .sponsors-grid-bottom .sponsors-grid__item {
-    height: 140px;
-  }
   .sponsors-logo.is-give-my-certificate .sponsors-logo-wordmark {
     font-size: clamp(1rem, 5.5vw, 1.375rem);
   }
   .sponsors-top {
     top: 0.75rem;
     left: 0.75rem;
+    right: 0.75rem;
     font-size: 0.72rem;
   }
   .sponsors-button {

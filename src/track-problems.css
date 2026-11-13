@@ -54,10 +54,31 @@
 .track-detail .ps-card:focus-visible .ps-card-action { --td-button-motion: 1; }
 .ps-card:focus-visible .track-card-body::before { opacity: .55; animation: tp-static .22s steps(1, end) infinite; }
 @media (hover: hover) and (pointer: fine) {
-  .ps-index .ps-card:hover .track-card-body::before { opacity: .55; }
+  .ps-index .ps-card:hover .track-card-body::before { opacity: .2; }
   .track-detail .ps-card:hover .ps-card-action { --td-button-motion: 1; }
 }
 .ps-empty { border: 1px solid #1e1b1840; padding: 32px; font-size: 18px; line-height: 1.5; }
+
+/* Effects belong to the company/PS selection pages, leaving the main Tracks page alone. */
+.ps-index .ps-grid > li[data-reveal="visible"] { animation-duration: .6s; }
+.ps-index a.ps-card { --ps-card-active: 0; }
+.ps-index a.ps-card > :is(.track-top-flag, .track-card-body) {
+  translate: 0 calc(-4px * var(--ps-card-active));
+  transition: translate .35s cubic-bezier(.22,1,.36,1);
+}
+.ps-index a.ps-card:is(:hover,:focus-visible) .track-card-body::before { animation: none; opacity: .2; }
+.ps-index a.ps-card:focus-visible { --ps-card-active: 1; }
+/* The label still rolls; both the dotted arrow and action arrow stay in place. */
+.track-detail.ps-index .ps-card-action.td-button--motion { --td-button-motion-shift: 0px; }
+.ps-index .ps-card-action .td-motion-arrow--main { transform: none; opacity: 1; }
+.ps-index .ps-card-action .td-motion-arrow--incoming { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .ps-index a.ps-card:hover { --ps-card-active: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ps-index a.ps-card > :is(.track-top-flag, .track-card-body) { translate: none; transition: none; }
+}
+
 @media (max-width: 900px) {
   .ps-header { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .ps-track-summary { justify-self: start; max-width: 65ch; }

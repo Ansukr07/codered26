@@ -1,10 +1,14 @@
+import { useRef } from 'react'
 import { tracks } from './trackData.js'
 import { TrackPixelGrid, DotArrowSVG } from './TracksAndPrizes.jsx'
 import TrackButtonContent from './TrackButtonContent.jsx'
+import { useBriefReveals } from './trackMotion.js'
 import './track-detail.css'
 import './track-problems.css'
 
 export default function TrackProblemsPage({ track, onNavigate }) {
+  const cardsRef = useRef(null)
+  useBriefReveals(cardsRef)
   const follow = page => event => {
     if (!onNavigate || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
     event.preventDefault()
@@ -46,7 +50,7 @@ export default function TrackProblemsPage({ track, onNavigate }) {
         <div className="ps-section-bar">
           <p className="ps-count"><strong>{isStartupRoot ? String(startupTracks.length).padStart(2, '0') : track.hasPendingBriefs ? 'TBA' : String(count).padStart(2, '0')}</strong> {isStartupRoot ? 'Startup tracks' : openChallenge ? 'Open challenge' : `Problem ${count === 1 ? 'statement' : 'statements'}`}</p>
         </div>
-        {cards.length ? <ol className={`ps-grid${cards.length === 1 ? ' ps-grid--single' : ''}`}>{cards.map((item, index) => {
+        {cards.length ? <ol ref={cardsRef} className={`ps-grid${cards.length === 1 ? ' ps-grid--single' : ''}`}>{cards.map((item, index) => {
           const pending = !isStartupRoot && item.isPending
           const Card = pending ? 'article' : 'a'
           const itemId = isStartupRoot ? `startup-${index + 1}` : item.id
