@@ -151,7 +151,7 @@ export function TracksSection({ onNavigate }) {
 
                 <div className="track-card-content">
                   <p className="tp-p-medium">
-                    <strong>Track {idx + 1}:</strong> {track.hasOfficialBriefs ? track.cardDescription : 'Company based problem statement to be announced.'}
+                    <strong>Track {idx + 1}:</strong> {track.cardDescription}
                   </p>
 
                   {/* Huge striped background number a-la timeline */}
@@ -233,7 +233,7 @@ const animatePrizeAsset = (event, isHovering) => {
 
 export function PrizesSection() {
   const prizes = [
-    { place: '1st place', amount: '₹30,000', asset: '/assets-for-prize/1st.svg', sparkle: 's1' },
+    { place: '1st place', amount: '₹25,000', asset: '/assets-for-prize/1st.svg', sparkle: 's1' },
     { place: '2nd place', amount: '₹20,000', asset: '/assets-for-prize/2nd.svg', sparkle: 's3', starAsset: '/assets-for-prize/black%20star.svg' },
   ];
 
@@ -287,7 +287,7 @@ export function PrizesSection() {
               zIndex: 10,
               whiteSpace: 'nowrap'
             }}>
-              Rs.&nbsp;2,00,000<span style={{ color: 'var(--p-accent)' }}></span>
+              Rs.&nbsp;2,25,000<sup className="prize-pool-plus">+</sup>
             </h4>
           </div>
 

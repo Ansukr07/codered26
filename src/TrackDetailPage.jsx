@@ -7,6 +7,7 @@ import TrackButtonContent from './TrackButtonContent.jsx'
 import OfficialBriefContent, { officialBriefSections } from './OfficialBriefContent.jsx'
 import useTrackSectionHighlight from './useTrackSectionHighlight.js'
 import { getHeroConnections } from './heroConnections.js'
+import { getMobileHeroCompression, MOBILE_HERO_SPACE_BUDGET } from './mobileHeroFit.js'
 import './track-detail.css'
 
 const sections = [
@@ -76,6 +77,8 @@ function useHeroLayout(stageRef, diagram, measuredConnections = false) {
     const stage = stageRef.current
     const hero = stage.closest('.td-hero')
     const intro = stage.closest('.td-intro')
+    const page = intro.closest('.track-detail')
+    const visibleViewport = window.visualViewport
     const topbar = intro.querySelector('.td-topbar')
     const heading = hero.querySelector('.td-heading')
     const demo = stage.querySelector('.td-demo')
@@ -88,6 +91,23 @@ function useHeroLayout(stageRef, diagram, measuredConnections = false) {
     const measure = () => {
       frame = 0
       if (disposed) return
+      const heroStyle = window.getComputedStyle(hero)
+      const stageStyle = window.getComputedStyle(stage)
+      if (diagram && measuredConnections && window.matchMedia('(max-width: 639.98px)').matches) {
+        const currentCompression = Number.parseFloat(page.style.getPropertyValue('--td-mobile-fit')) || 0
+        const flowHeight = (Number.parseFloat(window.getComputedStyle(page).paddingTop) || 0)
+          + topbar.offsetHeight + (Number.parseFloat(heroStyle.paddingTop) || 0)
+          + heading.offsetHeight + (Number.parseFloat(stageStyle.marginTop) || 0) + demo.offsetHeight
+        const compression = getMobileHeroCompression({
+          flowHeight,
+          currentCompression,
+          viewportHeight: Math.min(window.innerHeight, visibleViewport?.height || window.innerHeight),
+        })
+        if (compression === 0) page.style.removeProperty('--td-mobile-fit')
+        else if (Math.abs(compression - currentCompression) * MOBILE_HERO_SPACE_BUDGET > 1.5) {
+          page.style.setProperty('--td-mobile-fit', compression.toFixed(4))
+        }
+      } else page.style.removeProperty('--td-mobile-fit')
       const outer = stage.getBoundingClientRect()
       if (!outer.width || !outer.height) return
 
@@ -97,8 +117,6 @@ function useHeroLayout(stageRef, diagram, measuredConnections = false) {
         const short = window.matchMedia('(max-height: 850px)').matches
         const stageMinimum = diagram ? demo.offsetHeight + 20
           : ticker.offsetHeight + (reduced ? calls.offsetHeight + 260 : short ? Math.max(calls.offsetHeight, 220) : calls.offsetHeight + 180)
-        const heroStyle = window.getComputedStyle(hero)
-        const stageStyle = window.getComputedStyle(stage)
         const fixedHeight = topbar.offsetHeight + heading.offsetHeight
           + (Number.parseFloat(heroStyle.paddingTop) || 0) + (Number.parseFloat(stageStyle.marginTop) || 0)
         const minimumStageHeight = Math.max(stageMinimum, diagram ? 0 : Number.parseFloat(stageStyle.minHeight) || 0)
@@ -135,12 +153,15 @@ function useHeroLayout(stageRef, diagram, measuredConnections = false) {
     const observer = new ResizeObserver(schedule)
     for (const element of [stage, topbar, heading, demo, search, calls, ticker, ...(measuredConnections ? topics : [])].filter(Boolean)) observer.observe(element)
     window.addEventListener('resize', schedule, { passive: true })
+    visibleViewport?.addEventListener('resize', schedule, { passive: true })
     document.fonts?.ready.then(schedule, schedule)
     schedule()
     return () => {
       disposed = true
       observer.disconnect()
       window.removeEventListener('resize', schedule)
+      visibleViewport?.removeEventListener('resize', schedule)
+      page.style.removeProperty('--td-mobile-fit')
       window.cancelAnimationFrame(frame)
     }
   }, [diagram, stageRef, measuredConnections])
@@ -218,16 +239,21 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
   const pageRef = useRef(null)
   useBriefReveals(pageRef)
   const activeSection = useTrackSectionHighlight(pageRef, track.page)
-  const index = tracks.findIndex((item) => item.page === parentTrack.page)
   const openChallenge = track.briefKind === 'open-challenge'
-  const trackLinks = tracks.map(item => ({ ...item, page: item.problemsPage, path: item.problemsPath }))
-  const siblings = track.problemNumber ? parentTrack.problemStatements : trackLinks
-  const siblingIndex = siblings.findIndex(item => item.page === track.page)
-  const position = track.problemNumber ? siblingIndex : index
+  const isProblem = Boolean(track.problemNumber)
+  const trackGroup = parentTrack.startupParent
+    ? tracks.find(item => item.page === parentTrack.startupParent.page)?.subtracks || []
+    : tracks
+  const trackLinks = trackGroup.map(item => ({ ...item, page: item.problemsPage, path: item.problemsPath }))
+  const siblings = isProblem ? (parentTrack.problemStatements || []).filter(item => !item.isPending) : trackLinks
+  const position = siblings.findIndex(item => item.page === (isProblem ? track.page : parentTrack.problemsPage))
+  const hasSiblingNavigation = position >= 0 && siblings.length > 1
   const railSections = track.officialBrief ? (openChallenge ? [officialBriefSections[0], ['directions', 'Suggested directions'], ...officialBriefSections.slice(1)] : officialBriefSections) : sections
   const briefKind = track.problemNumber ? (openChallenge ? 'challenge' : 'problem') : 'track'
-  const previous = siblings[(position - 1 + siblings.length) % siblings.length]
-  const next = siblings[(position + 1) % siblings.length]
+  const previous = hasSiblingNavigation ? siblings[(position - 1 + siblings.length) % siblings.length] : null
+  const next = hasSiblingNavigation ? siblings[(position + 1) % siblings.length] : null
+  const backTrack = !isProblem && parentTrack.startupParent ? parentTrack.startupParent : parentTrack
+  const backLabel = backTrack !== parentTrack ? backTrack.title : openChallenge ? `${parentTrack.title} track` : 'Problem statements'
   const register = () => onNavigate('notFound')
   const follow = (page) => (event) => {
     if (!onNavigate || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
@@ -238,7 +264,7 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
   return <div ref={pageRef} className={`track-detail${track.officialBrief ? ' track-detail--official' : ''}`}>
     <div className="td-intro">
       <div className="td-topbar">
-        <a className="td-back" href={parentTrack.problemsPath} onClick={follow(parentTrack.problemsPage)}><span aria-hidden="true">←</span> {openChallenge ? `${parentTrack.title} track` : 'Problem statements'}</a>
+        <a className="td-back td-back--button" href={backTrack.problemsPath} onClick={follow(backTrack.problemsPage)}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6" /></svg><span>{backLabel}</span></a>
       </div>
       <TrackHero key={track.page} track={track} />
     </div>
@@ -265,7 +291,7 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
             </div>
             <p className="td-register-note">Registration coming soon</p>
           </div>
-          {siblings.length > 1 && <nav className="td-other-tracks" aria-label={track.problemNumber ? 'Other problem statements' : 'Other tracks'}>
+          {hasSiblingNavigation && <nav className="td-other-tracks" aria-label={isProblem ? 'Other problem statements' : parentTrack.startupParent ? 'Other startup tracks' : 'Other tracks'}>
             <a href={previous.path} onClick={follow(previous.page)}><span>← PREVIOUS {track.problemNumber ? 'PS' : 'TRACK'} / {previous.problemNumber || previous.numeral}</span><strong>{previous.title}</strong></a>
             <a href={next.path} onClick={follow(next.page)}><span>NEXT {track.problemNumber ? 'PS' : 'TRACK'} / {next.problemNumber || next.numeral} →</span><strong>{next.title}</strong></a>
           </nav>}

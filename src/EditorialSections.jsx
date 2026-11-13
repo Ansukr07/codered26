@@ -6,34 +6,54 @@ import { TracksSection, PrizesSection } from './TracksAndPrizes'
 import GallerySection from './GallerySection'
 import SponsorsSection from './SponsorsSection'
 import RegisterButton from './components/RegisterButton'
+import { FINALE_COUNTDOWN_DATE, getCountdownState } from './countdown.js'
 import './editorial.css'
 import './why-participate.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const finaleStart = new Date('2026-12-28T00:00:00+05:30').getTime()
-
 function Countdown() {
-  const [remaining, setRemaining] = useState(null)
+  const [countdown, setCountdown] = useState(null)
 
   useEffect(() => {
-    const updateRemaining = () => setRemaining(Math.max(0, finaleStart - Date.now()))
-    const initialTimer = window.setTimeout(updateRemaining, 0)
-    const timer = window.setInterval(updateRemaining, 1000)
-    return () => { window.clearTimeout(initialTimer); window.clearInterval(timer) }
+    let timer
+    const refresh = () => {
+      window.clearTimeout(timer)
+      const next = getCountdownState()
+      setCountdown(next)
+      if (next.remainingMs > 0 && !document.hidden) {
+        // Align updates with displayed second changes, including the final tick.
+        timer = window.setTimeout(refresh, next.remainingMs % 1000 || 1000)
+      }
+    }
+    const handleVisibility = () => {
+      if (document.hidden) window.clearTimeout(timer)
+      else refresh()
+    }
+
+    // Keep server output and the first client render identical.
+    timer = window.setTimeout(refresh, 0)
+    document.addEventListener('visibilitychange', handleVisibility)
+    window.addEventListener('pageshow', refresh)
+    return () => {
+      window.clearTimeout(timer)
+      document.removeEventListener('visibilitychange', handleVisibility)
+      window.removeEventListener('pageshow', refresh)
+    }
   }, [])
 
-  const totalSeconds = remaining === null ? null : Math.floor(remaining / 1000)
   const units = [
-    ['Days', totalSeconds === null ? null : Math.floor(totalSeconds / 86400)],
-    ['Hrs', totalSeconds === null ? null : Math.floor(totalSeconds / 3600) % 24],
-    ['Mins', totalSeconds === null ? null : Math.floor(totalSeconds / 60) % 60],
-    ['Secs', totalSeconds === null ? null : totalSeconds % 60],
+    ['Days', countdown?.days ?? null],
+    ['Hrs', countdown?.hours ?? null],
+    ['Mins', countdown?.minutes ?? null],
+    ['Secs', countdown?.seconds ?? null],
   ]
 
-  const countdownLabel = remaining === null
-    ? 'Countdown to 28 December 2026'
-    : `Countdown to 28 December 2026: ${units.map(([name, value]) => `${value} ${name}`).join(', ')}`
+  const countdownLabel = countdown === null
+    ? `Countdown to ${FINALE_COUNTDOWN_DATE}`
+    : countdown.remainingMs === 0
+      ? 'The Code Red grand finale has started.'
+      : `Countdown to ${FINALE_COUNTDOWN_DATE}: ${units.map(([name, value]) => `${value} ${name}`).join(', ')}`
 
   return <div className="shift-countdown" role="timer" aria-label={countdownLabel}>
     {units.map(([name, value]) => <div className="shift-countdown-unit" key={name}>
@@ -44,7 +64,7 @@ function Countdown() {
 }
 
 const rounds = [
-  ['01', '14–15 NOVEMBER', 'Code Red ’26 launch & registration', 'THE CHALLENGE BRIEFS GO LIVE ON THE WEBSITE AND REGISTRATION OPENS.'],
+  ['01', '14 NOVEMBER', 'Code Red ’26 launch & registration', 'THE CHALLENGE BRIEFS GO LIVE ON THE WEBSITE AND REGISTRATION OPENS.'],
   ['02', '27 NOVEMBER', 'Round 1 PPT submissions', 'REGISTRATION CLOSES. SUBMIT YOUR IDEA BY THE DEADLINE.'],
   ['03', '2 DECEMBER', 'Round 1 results', 'ROUND 1 RESULTS WILL BE PUBLISHED ON THE WEBSITE.'],
   ['04', '12–13 DECEMBER', 'Round 2 online evaluation', 'SHORTLISTED TEAMS ARE EVALUATED ONLINE VIA GOOGLE MEET.'],
@@ -54,7 +74,7 @@ const rounds = [
 ]
 
 const participationReasons = [
-  ['Compete & Win', 'Battle for a ₹2,00,000 prize pool and recognition.'],
+  ['Compete & Win', 'Battle for a ₹2,25,000+ prize pool and recognition.'],
   ['Build Real Products', 'Turn bold ideas into functional prototypes in 24 hours.'],
   ['Learn from Experts', 'Get guidance and feedback from experienced industry mentors.'],
   ['Challenge Yourself', 'Push your skills through intense real-world problem-solving.'],
@@ -195,10 +215,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
             </h1>
           </div>
           <div className="shift-hero-bottom-action anim-slide-up" style={{ transitionDelay: '0.2s' }}>
-            <div className="shift-hero-copy">
-              <p className="shift-hero-slogan">Sprint into Creation</p>
-              <p className="shift-hero-promise">Build in 24 hours. Turn your idea into a venture.</p>
-            </div>
+            <p className="shift-hero-slogan">Sprint into Creation</p>
             <RegisterButton href="https://unstop.com/o/qjIA3CN?utm_medium=Share&utm_source=ecell-bmsitm&utm_campaign=Online_coding_challenge" />
           </div>
         </div>
@@ -218,23 +235,30 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
               rel="noreferrer"
               className="shift-venturex-cta"
             >
-              EXPLORE VENTUREX <span className="shift-venturex-arrow" aria-hidden="true">↗</span>
+              <span className="shift-venturex-cta-label">Explore VentureX</span>
+              <span className="shift-venturex-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
         <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}>
-          
-          <strong>National level<br />24-hour product sprint.</strong>
-          <span className="shift-rail-tagline" style={{ fontFamily: "Valentine, Georgia, serif", fontSize: "clamp(1.4rem, 1.7vw, 2rem)", fontWeight: 400, display: "block", marginTop: "1.5rem", lineHeight: "1", whiteSpace: "nowrap" }}>₹2,00,000 Prize Pool</span>
-        <div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>28–29 December 2026</h2></div><Countdown /></div>
+          <div className="shift-event-summary">
+            <strong>National level<br />24-hour product sprint.</strong>
+            <div className="shift-prize-pool"><strong className="shift-prize-amount">₹2,25,000+</strong><span className="shift-prize-label">Prize pool</span></div>
+          </div>
+          <div className="shift-rail-spacer" aria-hidden="true" />
+          <div className="shift-finale-group">
+            <div className="shift-countdown-heading"><span>24-HOUR GRAND FINALE</span><h2>28–29 December 2026</h2></div>
+            <Countdown />
+          </div>
+        </div>
       </aside>
     </section>}
 
     {show('about') && <section id="about" className="shift-about" aria-labelledby="about-title">
       <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national-level product development challenge, bringing together innovators, developers, and problem-solvers from across the nation. Participants collaborate to turn ideas into functional prototypes through hands-on development and industry mentorship. Taking innovation a step further, selected teams may qualify for VentureX, an event where they pitch their products, business models, and vision to investors, exploring the potential to turn products into ventures<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
       <div className="shift-info-grid">
-        <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Four company tracks</li><li>Problem statements available</li></ul></article>
-        <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>₹2,00,000 total prize pool</li><li>Recognition for standout teams</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Four main tracks</li><li>Problem statements available</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>₹2,25,000+ total prize pool</li><li>Recognition for standout teams</li></ul></article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>24-hour overnight sprint</li><li>28–29 December 2026</li><li>Teams of 3–4</li><li>Top 50 teams at BMSIT&amp;M</li></ul></article>
       </div>
     </section>}

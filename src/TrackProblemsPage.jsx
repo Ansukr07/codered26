@@ -10,41 +10,65 @@ export default function TrackProblemsPage({ track, onNavigate }) {
     event.preventDefault()
     onNavigate(page)
   }
-  const count = track.problemStatements.length
+  const problems = track.problemStatements || []
+  const startupTracks = track.subtracks || []
+  const isStartupRoot = startupTracks.length > 0
+  const startupParent = track.startupParent
+  const startupSiblings = startupParent ? tracks.find(item => item.slug === startupParent.slug)?.subtracks || [] : []
+  const activeMainSlug = startupParent?.slug || track.slug
+  const count = problems.length
   const openChallenge = track.briefKind === 'open-challenge'
+  const selectionTitle = isStartupRoot ? 'Startup tracks' : openChallenge ? 'Open challenge' : 'Problem statements'
+  const cards = isStartupRoot ? startupTracks : problems
   return <div className="track-detail ps-index">
     <div className="ps-container">
-      <div className="ps-breadcrumb"><a className="td-back" href="/tracks" onClick={follow('tracks')}><span aria-hidden="true">←</span> All tracks</a></div>
-      <nav className="ps-track-nav" aria-label="Choose a track">
-        {tracks.map((item, index) => <a key={item.slug} href={item.problemsPath} onClick={follow(item.problemsPage)} aria-label={`Track ${index + 1}: ${item.title}`} aria-current={item.slug === track.slug ? 'page' : undefined} title={item.title}><span>Track {index + 1}</span><span className="ps-track-nav-number" aria-hidden="true">{item.numeral}</span></a>)}
-      </nav>
+      <div className="ps-breadcrumb">
+        <a className="td-back" href="/tracks" onClick={follow('tracks')}><span aria-hidden="true">←</span> All tracks</a>
+        {startupParent && <><span className="ps-breadcrumb-separator" aria-hidden="true">/</span><a className="ps-parent-link" href={startupParent.problemsPath} onClick={follow(startupParent.problemsPage)}>{startupParent.title}</a></>}
+      </div>
+      {!startupParent && <nav className="ps-track-nav" aria-label="Choose a track">
+        {tracks.map((item, index) => <a key={item.slug} href={item.problemsPath} onClick={follow(item.problemsPage)} aria-label={`Track ${index + 1}: ${item.title}`} aria-current={item.slug === activeMainSlug ? 'page' : undefined} title={item.title}>
+          <span className="ps-track-nav-name">{item.title}</span>
+          <span className="ps-track-nav-number" aria-hidden="true">{item.numeral}</span>
+        </a>)}
+      </nav>}
+      {startupSiblings.length > 0 && <nav className="ps-track-nav ps-startup-nav" aria-label="Choose a startup track">
+        {startupSiblings.map(item => <a key={item.slug} href={item.problemsPath} onClick={follow(item.problemsPage)} aria-current={item.slug === track.slug ? 'page' : undefined}>
+          <span className="ps-track-nav-name">{item.title}</span>
+        </a>)}
+      </nav>}
       <header className="ps-header">
-        <div className="ps-heading-copy"><p className="ps-category">Track {track.numeral} / {track.category}</p><h1>{track.title}</h1></div>
+        <div className="ps-heading-copy"><p className="ps-category">{startupParent ? startupParent.title : `Track ${track.numeral}`} / {track.category}</p><h1>{track.title}</h1></div>
         <p className="ps-track-summary">{track.summary}</p>
       </header>
       <section aria-labelledby="ps-heading" className="ps-selection">
-        <h2 id="ps-heading" className="sr-only">{openChallenge ? 'Open challenge' : 'Problem statements'}</h2>
+        <h2 id="ps-heading" className="sr-only">{selectionTitle}</h2>
         <div className="ps-section-bar">
-          <p className="ps-count"><strong>{track.hasPendingBriefs ? 'TBA' : String(count).padStart(2, '0')}</strong> {openChallenge ? 'Open challenge' : `Problem ${count === 1 ? 'statement' : 'statements'}`}</p>
+          <p className="ps-count"><strong>{isStartupRoot ? String(startupTracks.length).padStart(2, '0') : track.hasPendingBriefs ? 'TBA' : String(count).padStart(2, '0')}</strong> {isStartupRoot ? 'Startup tracks' : openChallenge ? 'Open challenge' : `Problem ${count === 1 ? 'statement' : 'statements'}`}</p>
         </div>
-        {count ? <ol className={`ps-grid${count === 1 ? ' ps-grid--single' : ''}`}>{track.problemStatements.map((problem, index) => {
-          const Card = problem.isPending ? 'article' : 'a'
-          return <li key={problem.id}>
-          <Card className={`ps-card track-card track-card-${index % 4 + 1}${problem.isPending ? ' ps-card--pending' : ''}`} href={problem.isPending ? undefined : problem.path} onClick={problem.isPending ? undefined : follow(problem.page)} aria-disabled={problem.isPending || undefined} aria-labelledby={`ps-title-${problem.id}`} aria-describedby={`ps-summary-${problem.id}`}>
-            <span className="track-top-flag">{problem.isPending ? 'PS TBA' : openChallenge ? 'Open challenge' : `PS ${problem.problemNumber}`}</span>
+        {cards.length ? <ol className={`ps-grid${cards.length === 1 ? ' ps-grid--single' : ''}`}>{cards.map((item, index) => {
+          const pending = !isStartupRoot && item.isPending
+          const Card = pending ? 'article' : 'a'
+          const itemId = isStartupRoot ? `startup-${index + 1}` : item.id
+          const numeral = isStartupRoot ? String(index + 1).padStart(2, '0') : item.problemNumber
+          const page = isStartupRoot ? item.problemsPage : item.page
+          const path = isStartupRoot ? item.problemsPath : item.path
+          return <li key={itemId}>
+          <Card className={`ps-card track-card track-card-${index % 4 + 1}${isStartupRoot ? ' ps-company-card' : ''}${pending ? ' ps-card--pending' : ''}`} href={pending ? undefined : path} onClick={pending ? undefined : follow(page)} aria-disabled={pending || undefined} aria-labelledby={`ps-title-${itemId}`} aria-describedby={`ps-summary-${itemId}`}>
+            <span className="track-top-flag">{isStartupRoot ? `Startup ${numeral}` : pending ? 'PS TBA' : openChallenge ? 'Open challenge' : `PS ${item.problemNumber}`}</span>
             <div className="track-card-body">
               <div className="tp-card-top">
                 <TrackPixelGrid />
-                <div className="tp-inner-box"><div className="tp-inner-icon" aria-hidden="true"><DotArrowSVG /></div><div className="tp-inner-text"><h3 className="tp-h-medium" id={`ps-title-${problem.id}`}>{problem.title}</h3></div></div>
+                <div className="tp-inner-box"><div className="tp-inner-icon" aria-hidden="true"><DotArrowSVG /></div><div className="tp-inner-text"><h3 className="tp-h-medium" id={`ps-title-${itemId}`}>{item.title}</h3></div></div>
               </div>
               <div className="track-card-content">
-                <p className="tp-p-medium ps-card-summary" id={`ps-summary-${problem.id}`}>{problem.summary}</p>
-                <span className="track-ghost-number" aria-hidden="true">{problem.problemNumber}</span>
-                {problem.isPending ? <span className="ps-card-action">Details coming soon</span> : <span className="ps-card-action td-button--motion"><TrackButtonContent arrow="↗">Read the brief</TrackButtonContent></span>}
+                <p className="tp-p-medium ps-card-summary" id={`ps-summary-${itemId}`}>{isStartupRoot ? item.cardDescription || item.summary : item.summary}</p>
+                <span className="track-ghost-number" aria-hidden="true">{numeral}</span>
+                {pending ? <span className="ps-card-action">Details coming soon</span> : <span className="ps-card-action td-button--motion"><TrackButtonContent arrow="↗">{isStartupRoot ? 'View track' : 'Read the brief'}</TrackButtonContent></span>}
               </div>
             </div>
           </Card>
-        </li>})}</ol> : <p className="ps-empty">Problem statements will be announced here. Check back soon.</p>}
+        </li>})}</ol> : <p className="ps-empty">Problem statement details are TBA. They will be announced here.</p>}
       </section>
     </div>
   </div>

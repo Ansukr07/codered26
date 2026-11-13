@@ -42,7 +42,7 @@ function Cards({ items, kind, className, numbered = false, list = false }) {
 
 export default function OfficialBriefContent({ track }) {
   const source = track.officialBrief
-  const brief = source && getParticipantBrief(source.number, track.slug)
+  const brief = source && getParticipantBrief(source.number, track.briefOwner || track.slug)
   if (!brief) return null
 
   return <>

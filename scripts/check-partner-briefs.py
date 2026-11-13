@@ -154,7 +154,7 @@ expected_ids = ['problem', 'focus', 'deliverables', 'judging', 'resources', 'ter
 groups = ['required', 'optional', 'deliverables', 'success', 'constraints', 'scope', 'resources']
 for brief, original in zip(participants, source_briefs):
     number = brief['number']
-    path = Path(f'dist/tracks/track-3/problems/ps-{number}/index.html')
+    path = Path(f'dist/tracks/track-4/mystartupwave/problems/ps-{number}/index.html')
     html = path.read_text(encoding='utf-8')
     page = ParticipantPage()
     page.feed(html)
@@ -195,13 +195,13 @@ for brief, original in zip(participants, source_briefs):
 print('PASS: all five participant briefs retain critical requirements without reproducing partner templates.')
 
 
-# Numeric URLs, visible numbering and nested brief links must share the same order.
+# Main-track numbering, startup ownership and nested brief links must agree.
 route_check = subprocess.run(['node', '--input-type=module', '-e', """
 import assert from 'node:assert/strict';
-import { tracks, trackRoutes, getTrackRoute } from './src/trackData.js';
+import { tracks, allTracks, trackRoutes, getTrackRoute } from './src/trackData.js';
 import { getParticipantBrief, participantBriefs } from './src/participantBriefs.js';
 assert.deepEqual(tracks.map(track => track.title), [
-  'Simple Energy', 'Agnes AI', 'MyStartupWave', 'Think Robotics',
+  'Niveus Solutions', 'Simple Energy', 'Agnes AI', 'Startup Track',
 ]);
 assert.equal(new Set(trackRoutes.map(route => route.path)).size, trackRoutes.length, 'Duplicate route path');
 assert.equal(new Set(trackRoutes.map(route => route.page)).size, trackRoutes.length, 'Duplicate route page');
@@ -217,10 +217,33 @@ for (const [index, track] of tracks.entries()) {
   assert.equal(track.problemsPath, `/${page}/problems`);
   assert.equal(getTrackRoute(page).track, track);
   assert.equal(getTrackRoute(track.problemsPage).track, track);
+}
+const startup = tracks[3];
+assert.deepEqual(startup.subtracks.map(track => track.title), [
+  'Think Robotics', 'MyStartupWave', 'Sahasranshu Technologies', 'Cassette Labs',
+]);
+assert.deepEqual(startup.subtracks.map(track => track.slug), [
+  'think-robotics', 'mystartupwave', 'sahasranshu-technologies', 'cassette-labs',
+]);
+for (const [index, company] of startup.subtracks.entries()) {
+  const page = `${startup.page}/${company.slug}`;
+  assert.equal(company.numeral, String(index + 1).padStart(2, '0'));
+  assert.equal(company.page, page);
+  assert.equal(company.path, `/${page}`);
+  assert.equal(company.problemsPage, `${page}/problems`);
+  assert.equal(company.problemsPath, `/${page}/problems`);
+  assert.equal(company.startupParent.page, startup.page);
+  assert.equal(company.startupParent.problemsPage, startup.problemsPage);
+}
+assert.equal(startup.problemStatements.length, 0, 'Startup root must list companies, not duplicate their PS');
+for (const track of allTracks) {
+  const page = track.page;
+  assert.equal(getTrackRoute(page).track, track);
+  assert.equal(getTrackRoute(track.problemsPage).track, track);
   for (const brief of track.problemStatements) {
-    const briefPage = `${page}/problems/ps-${Number(brief.problemNumber)}`;
-    assert.equal(brief.slug, slug);
-    assert.equal(brief.numeral, numeral);
+    const briefPage = `${track.problemsPage}/ps-${Number(brief.problemNumber)}`;
+    assert.equal(brief.slug, track.slug);
+    assert.equal(brief.numeral, track.numeral);
     assert.equal(brief.page, briefPage);
     assert.equal(brief.path, `/${briefPage}`);
     assert.equal(brief.parentTrackPage, page);
@@ -228,16 +251,21 @@ for (const [index, track] of tracks.entries()) {
     assert.equal(getTrackRoute(briefPage).brief, brief);
     assert.equal(getTrackRoute(briefPage).track, track);
     if (track.hasOfficialBriefs) {
-      assert(getParticipantBrief(Number(brief.problemNumber), slug), `${briefPage}: missing participant brief`);
+      assert.equal(brief.briefOwner, track.briefOwner);
+      assert(getParticipantBrief(Number(brief.problemNumber), track.briefOwner), `${briefPage}: missing participant brief`);
     }
   }
 }
 for (const brief of participantBriefs) {
-  const track = tracks.find(track => track.slug === brief.trackSlug);
+  const track = allTracks.find(track => track.briefOwner === brief.trackSlug);
   assert(track?.hasOfficialBriefs, 'Participant brief assigned to a pending or missing track');
   assert(track.problemStatements.some(problem => Number(problem.problemNumber) === brief.number));
 }
 assert.equal(getParticipantBrief(1, 'track-1'), undefined, 'Pending track inherited an official brief');
-console.log('PASS: Every track and brief URL matches its displayed number, with unique routes and correct parent links.');
+assert.equal(getParticipantBrief(1, 'track-2'), undefined, 'Pending track inherited an official brief');
+for (const track of allTracks.filter(track => track.hasPendingBriefs)) {
+  assert.equal(track.problemStatements.length, 0, `${track.title}: invented pending PS count`);
+}
+console.log('PASS: Four main tracks, four startup companies, unique nested brief routes and stable participant ownership are correct.');
 """], check=True, capture_output=True, text=True)
 print(route_check.stdout.strip())

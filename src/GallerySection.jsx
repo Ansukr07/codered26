@@ -21,7 +21,6 @@ export default function GallerySection({ followedByFaq = false }) {
   const windowRef = useRef(null)
   const cardsRef = useRef([])
   const offsetRef = useRef(0)
-  const pausedRef = useRef(false)
   const loadedRef = useRef(new Set([0, 1, 2, 3, 4]))
   const [loadedPhotos, setLoadedPhotos] = useState(() => new Set([0, 1, 2, 3, 4]))
 
@@ -45,7 +44,7 @@ export default function GallerySection({ followedByFaq = false }) {
       const gap = isPhone ? 28 : 40
       const stride = cardWidth + gap
       const loopWidth = cardsRef.current.length * stride
-      if (loopWidth && !pausedRef.current) offsetRef.current = (offsetRef.current + delta * (isPhone ? .08 : .147)) % loopWidth
+      if (loopWidth) offsetRef.current = (offsetRef.current + delta * (isPhone ? .08 : .147)) % loopWidth
       cardsRef.current.forEach((card, index) => {
         if (!card || !loopWidth) return
         let x = ((index * stride - stride * .43 - offsetRef.current) % loopWidth + loopWidth) % loopWidth
@@ -98,7 +97,7 @@ export default function GallerySection({ followedByFaq = false }) {
       <h2 id="gallery-title">Previous Editions</h2>
       <p>Moments from previous Code Red editions.</p>
     </motion.div>
-    <div className={`event-gallery-window${reducedMotion ? ' event-gallery-window--static' : ''}`} ref={windowRef} onPointerEnter={() => { pausedRef.current = true }} onPointerLeave={() => { pausedRef.current = false }}>
+    <div className={`event-gallery-window${reducedMotion ? ' event-gallery-window--static' : ''}`} ref={windowRef}>
       <div className="event-gallery-track">
         {(reducedMotion ? photos : [...photos, ...photos]).map((photo, index) => <figure
           className="event-gallery-frame"
