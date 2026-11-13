@@ -1,17 +1,22 @@
 import { trackRoutes } from './trackData.js'
 
 export const siteUrl = 'https://www.codered26.xyz'
+const trackPageTitle = ({ kind, track, brief }) => {
+  if (kind === 'brief') return `${brief.fullTitle || brief.title} — ${track.title} ${track.briefKind === 'open-challenge' ? 'Open Challenge' : `PS ${brief.problemNumber}`} | Code Red 2026`
+  if (kind === 'problems') return `${track.title} — ${track.subtracks?.length ? 'Company Tracks' : track.briefKind === 'open-challenge' ? 'Open Challenge' : 'Problem Statements'} | Code Red 2026`
+  return `${track.title} — ${track.startupParent ? 'Startup Track' : `Track ${track.numeral}`} | Code Red 2026`
+}
 export const pages = {
   ...Object.fromEntries(trackRoutes.map(route => [route.page, {
     path: route.path,
-    title: route.kind === 'problems' ? `${route.track.title} — ${route.track.briefKind === 'open-challenge' ? 'Open Challenge' : 'Problem Statements'} | Code Red 2026` : route.kind === 'brief' ? `${route.brief.fullTitle || route.brief.title} — ${route.track.title} ${route.track.briefKind === 'open-challenge' ? 'Open Challenge' : `PS ${route.brief.problemNumber}`} | Code Red 2026` : `${route.track.title} — Track ${route.track.numeral} | Code Red 2026`,
+    title: trackPageTitle(route),
     description: (route.brief || route.track).summary,
     isMock: (route.brief || route.track).isMock,
   }])),
-  home: { path: '/', title: 'Code Red 2026 | 24-Hour Hackathon in Bengaluru | BMSIT&M', description: 'Join Code Red 2026, E-Cell BMSIT&M’s national 24-hour product sprint in Bengaluru on 28–29 December. Teams of 3–4 compete for a ₹2,00,000 prize pool.' },
+  home: { path: '/', title: 'Code Red 2026 | 24-Hour Hackathon in Bengaluru | BMSIT&M', description: 'Join Code Red 2026, E-Cell BMSIT&M’s national 24-hour product sprint in Bengaluru on 28–29 December. Teams of 3–4 compete for a ₹2,25,000+ prize pool.' },
   about: { path: '/about', title: 'About Code Red 2026 | BMSIT&M Student Hackathon', description: 'Discover Code Red 2026 at BMSIT&M, Bengaluru: a national student product development sprint, online selection rounds and a 24-hour offline finale.' },
-  tracks: { path: '/tracks', title: 'Hackathon Tracks & Problem Statements | Code Red 2026', description: 'Explore Code Red 2026’s company tracks: MyStartupWave’s five briefs, Think Robotics’ Customer Knowledge Graph and Agnes AI’s open science and physical AI challenge.' },
-  prizes: { path: '/prizes', title: '₹2,00,000 Hackathon Prize Pool | Code Red 2026', description: 'See prizes and awards for Code Red 2026, the national 24-hour product development sprint at BMSIT&M, Bengaluru, with a total ₹2,00,000 prize pool.' },
+  tracks: { path: '/tracks', title: 'Hackathon Tracks & Problem Statements | Code Red 2026', description: 'Explore Niveus Solutions, Simple Energy, Agnes AI and Startup Track. Startup companies include Think Robotics, MyStartupWave, Sahasranshu Technologies and Cassette Labs.' },
+  prizes: { path: '/prizes', title: '₹2,25,000+ Hackathon Prize Pool | Code Red 2026', description: 'See prizes and awards for Code Red 2026, the national 24-hour product development sprint at BMSIT&M, Bengaluru, with a total ₹2,25,000+ prize pool.' },
   schedule: { path: '/schedule', title: 'Hackathon Schedule & Timeline | Code Red 2026', description: 'See the Code Red 2026 schedule, from registration and online evaluation rounds to the 24-hour grand finale at BMSIT&M, Bengaluru.' },
   sponsors: { path: '/sponsors', title: 'Partners | Code Red 2026 at BMSIT&M', description: 'Meet the partners supporting student builders at BMSIT&M’s national product development sprint, Code Red 2026.' },
   team: { path: '/team', title: 'Meet the Team | Code Red 2026', description: 'Meet the student team behind Code Red 2026 at BMSIT&M, from coordinators to technology, design, marketing, events, relations, content and media.' },

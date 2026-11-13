@@ -6,9 +6,9 @@ import agnesAI from './data/participant-agnes-ai.json' with { type: 'json' }
 
 // Edited participant copy. Complete documents remain in each partner's source archive.
 export const participantBriefs = [
-  ...[...ps12, ...ps3, ...ps45].map(brief => ({ ...brief, trackSlug: 'track-3' })),
-  ...thinkRobotics.map(brief => ({ ...brief, trackSlug: 'track-4' })),
-  ...agnesAI.map(brief => ({ ...brief, trackSlug: 'track-2' })),
+  ...[...ps12, ...ps3, ...ps45].map(brief => ({ ...brief, trackSlug: 'mystartupwave' })),
+  ...thinkRobotics.map(brief => ({ ...brief, trackSlug: 'think-robotics' })),
+  ...agnesAI.map(brief => ({ ...brief, trackSlug: 'agnes-ai' })),
 ]
 
 export function getParticipantBrief(number, trackSlug) {

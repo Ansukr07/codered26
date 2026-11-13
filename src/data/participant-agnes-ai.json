@@ -160,11 +160,6 @@
         "title": "API integration and error handling",
         "text": "Use the public integration and error-handling reference when implementing bounded retries, backoff and useful failure messages.",
         "href": "https://wiki.agnes-ai.com/en/docs/faqs"
-      },
-      {
-        "title": "Agnes Harness",
-        "text": "This public development resource is optional. Using it does not provide access to private research systems.",
-        "href": "https://github.com/AgnesAI-Labs/agnes-harness"
       }
     ]
   }

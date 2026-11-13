@@ -43,7 +43,7 @@ Whether you're a developer, designer, entrepreneur, researcher, or someone who s
 | :---- | :---- |
 | **Duration** | 24 Hours Non-Stop |
 | **Format** | Round 1: Online ppt submission Round 2: Idea Pitching, Online Round 3: Offline 24hr development sprint. |
-| **Prize Pool** | ₹2,00,000 INR |
+| **Prize Pool** | ₹2,25,000+ INR |
 | **Team Size** | 3 – 4 Members |
 | **Venue** | BMS Institute of Technology Management, Yelahanka, Bengaluru |
 
@@ -59,12 +59,14 @@ Whether you're a developer, designer, entrepreneur, researcher, or someone who s
 
 *Note for Enterprise Sponsors: Corporate-sponsored problem statements will be integrated directly into these core technical tracks upon confirmation.*
 
-Company based tracks and problem statements:                     
+The four main tracks are:
 
-### Track 1: Track 2:
+1. Niveus Solutions
+2. Simple Energy
+3. Agnes AI
+4. Startup Track
 
-Track 3:  
-Track 4:
+Startup Track contains Think Robotics, MyStartupWave, Sahasranshu Technologies and Cassette Labs. Problem statements not yet supplied are TBA.
 
 ## **5\. Event Timeline & Execution Phases**
 
@@ -120,7 +122,7 @@ CODE RED ’26 Grand Finale.
 
 **Compete & Win**
 
-Battle for a ₹2,00,000 prize pool and recognition.
+Battle for a ₹2,25,000+ prize pool and recognition.
 
 **Build Real Products**
 
@@ -148,7 +150,7 @@ Top teams may qualify for VentureX, a separate investor-pitching event.
 | ----- | ----- |
 | 1\. Hero | Powerful tagline, registration button, prize pool, countdown |
 | 2\. About Code Red | What the hackathon is and what makes it special |
-| 3\. Event Highlights | ₹2 lakh prize pool, 24 hours, top 50 teams, team size |
+| 3\. Event Highlights | ₹2,25,000+ prize pool, 24 hours, top 50 teams, team size |
 | 4\. Why Participate? | Prizes, mentorship, skills, networking, career opportunities |
 | 5\. Tracks & Problem Statements | Four tracks with detailed problem statements |
 | 6\. How It Works | PPT submission → Online pitch → Top 50 → Offline finale |

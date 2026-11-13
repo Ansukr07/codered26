@@ -544,6 +544,15 @@
   color: var(--p-bg);
 }
 
+.prize-pool-plus {
+  display: inline-block;
+  margin-left: .14em;
+  color: var(--p-accent);
+  font: 600 .38em/1 LilGrotesk, Helvetica, sans-serif;
+  letter-spacing: 0;
+  vertical-align: super;
+}
+
 .prize-award-asset {
   position: absolute;
   width: 50%;

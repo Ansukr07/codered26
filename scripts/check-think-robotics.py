@@ -23,7 +23,7 @@ assert source['company'] == 'Think Robotics'
 assert source['fullTitle'] == 'Customer Knowledge Graph for Hybrid B2B Commerce'
 assert all(domain in brief['problem'] for domain in ['robotics', 'industrial automation', 'electronic components', 'drones', '3D printing']), 'Partner domain context missing'
 
-path = Path('dist/tracks/track-4/problems/ps-1/index.html')
+path = Path('dist/tracks/track-4/think-robotics/problems/ps-1/index.html')
 html = path.read_text(encoding='utf-8')
 page = ParticipantPage()
 page.feed(html)
@@ -106,32 +106,33 @@ for phrase in ['MyStartupWave', 'Reverse Engineer Anything', 'Connected Cities',
 assert 'td-connections' in html and 'class="tds-scene' not in html, 'Old city scene used for knowledge graph'
 assert 'td-track-wheel' not in html, 'Removed PS selector is present'
 assert 'td-hero-foot' not in html, 'Removed scroll strip is present'
-assert 'href="/tracks/track-4/problems"' in html, 'Parent track link is missing'
+assert 'href="/tracks/track-4/think-robotics/problems"' in html, 'Parent company problem list link is missing'
 assert 'Other problem statements' not in html and 'PREVIOUS PS' not in html and 'NEXT PS' not in html
 
-for route in ['dist/tracks/track-4/index.html', 'dist/tracks/track-4/problems/index.html']:
+for route in ['dist/tracks/track-4/think-robotics/index.html', 'dist/tracks/track-4/think-robotics/problems/index.html']:
     listing = Path(route).read_text(encoding='utf-8')
     assert len(re.findall(r'<a\b[^>]*class="[^"]*\bps-card\b', listing)) == 1, f'{route}: expected one PS card'
-    assert 'Think Robotics' in listing and '/tracks/track-4/problems/ps-1' in listing
+    assert 'Think Robotics' in listing and '/tracks/track-4/think-robotics/problems/ps-1' in listing
+    assert 'href="/tracks/track-4/problems"' in listing and 'Startup Track' in listing, 'Startup parent breadcrumb missing'
     assert 'Connected Cities' not in listing
 main = html_lib.unescape(Path('dist/tracks/index.html').read_text(encoding='utf-8'))
 assert '>Track 4</span>' in main, 'Main track flag should show only the track number'
 assert '>Track 4 ·' not in main
 for old_number in [2, 3, 4]:
-    assert not Path(f'dist/tracks/track-4/problems/ps-{old_number}').exists(), 'Old mock route remains in build'
+    assert not Path(f'dist/tracks/track-4/think-robotics/problems/ps-{old_number}').exists(), 'Old mock route remains in build'
 
-route_check = subprocess.run(['node', '--input-type=module', '-e', "import {tracks,trackRoutes} from './src/trackData.js'; import {getParticipantBrief} from './src/participantBriefs.js'; const t=tracks.find(track=>track.slug==='track-4'); console.log(JSON.stringify({count:t.problemStatements.length,title:t.title,numeral:t.numeral,briefNumerals:t.problemStatements.map(brief=>brief.numeral),official:t.hasOfficialBriefs,mock:t.isMock,mode:t.heroMode,order:tracks.map(track=>[track.title,track.slug,track.numeral]),paths:trackRoutes.filter(r=>r.track.slug==='track-4'&&r.kind==='brief').map(r=>r.path),one:getParticipantBrief(1,'track-3').required[0].title,two:getParticipantBrief(1,'track-4').required[0].title}));"], check=True, capture_output=True, text=True)
+route_check = subprocess.run(['node', '--input-type=module', '-e', "import {tracks,allTracks,trackRoutes} from './src/trackData.js'; import {getParticipantBrief} from './src/participantBriefs.js'; const t=allTracks.find(track=>track.briefOwner==='think-robotics'); console.log(JSON.stringify({count:t.problemStatements.length,title:t.title,numeral:t.numeral,briefNumerals:t.problemStatements.map(brief=>brief.numeral),official:t.hasOfficialBriefs,mock:t.isMock,mode:t.heroMode,order:tracks.map(track=>[track.title,track.slug,track.numeral]),paths:trackRoutes.filter(r=>r.track.briefOwner==='think-robotics'&&r.kind==='brief').map(r=>r.path),one:getParticipantBrief(1,'mystartupwave').required[0].title,two:getParticipantBrief(1,'think-robotics').required[0].title}));"], check=True, capture_output=True, text=True)
 routes = json.loads(route_check.stdout)
 assert routes == {
-    'count': 1, 'title': 'Think Robotics', 'numeral': '04', 'briefNumerals': ['04'],
+    'count': 1, 'title': 'Think Robotics', 'numeral': '01', 'briefNumerals': ['01'],
     'official': True, 'mock': False, 'mode': 'diagram',
     'order': [
-        ['Simple Energy', 'track-1', '01'],
-        ['Agnes AI', 'track-2', '02'],
-        ['MyStartupWave', 'track-3', '03'],
-        ['Think Robotics', 'track-4', '04'],
+        ['Niveus Solutions', 'track-1', '01'],
+        ['Simple Energy', 'track-2', '02'],
+        ['Agnes AI', 'track-3', '03'],
+        ['Startup Track', 'track-4', '04'],
     ],
-    'paths': ['/tracks/track-4/problems/ps-1'],
+    'paths': ['/tracks/track-4/think-robotics/problems/ps-1'],
     'one': 'AI-assisted teardown', 'two': 'One connected, extensible model',
 }, 'Track order, identity, route or participant lookup regression'
 

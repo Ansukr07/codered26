@@ -130,7 +130,7 @@ function PageContent({ initialPage, initialTeamPage }) {
     if (page === currentPage) {
       changePage();
     } else if (window.playPagePreloader) {
-      window.playPagePreloader(changePage);
+      window.playPagePreloader(changePage, page, currentPage);
     } else {
       changePage();
     }
@@ -161,7 +161,7 @@ function PageContent({ initialPage, initialTeamPage }) {
         setCurrentPage(page);
         setOpenFaq(null);
       };
-      if (window.playPagePreloader) window.playPagePreloader(changePage);
+      if (window.playPagePreloader) window.playPagePreloader(changePage, page, currentPage);
       else changePage();
     };
     window.addEventListener('popstate', syncPage);
@@ -199,7 +199,7 @@ function PageContent({ initialPage, initialTeamPage }) {
       <main id="main">
         {currentPage !== 'home' && currentPage !== 'team' && currentPage !== 'notFound' && !selectedTrack && <h1 className="sr-only">{pages[currentPage].title}</h1>}
         {currentPage === 'notFound' && <NotFoundPage onNavigate={navigatePage} />}
-        {currentPage !== 'notFound' && (trackRoute?.kind === 'problems' || trackRoute?.brief?.isPending || (trackRoute?.kind === 'overview' && (selectedTrack.hasOfficialBriefs || selectedTrack.hasPendingBriefs)) ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <Suspense fallback={<div className="team-page-loading" aria-label="Loading team page" />}><TeamComponent /></Suspense> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />)}
+        {currentPage !== 'notFound' && (trackRoute?.kind === 'problems' || trackRoute?.kind === 'overview' || trackRoute?.brief?.isPending ? <TrackProblemsPage key={currentPage} track={selectedTrack} onNavigate={navigatePage} /> : selectedTrack ? <TrackDetailPage key={currentPage} track={trackRoute.brief} parentTrack={selectedTrack} onNavigate={navigatePage} /> : currentPage === 'team' ? <Suspense fallback={<div className="team-page-loading" aria-label="Loading team page" />}><TeamComponent /></Suspense> : <EditorialSections key={currentPage} page={currentPage} onNavigate={navigatePage} />)}
         {['home', 'faq'].includes(currentPage) && <section id="faqs" className="section faq" style={{ padding: '94px 6% 150px' }}>
             <noscript><dl>{questions.map(([question, answer]) => <div key={question}><dt>{question}</dt><dd>{answer}</dd></div>)}</dl></noscript>
             <div className="faq-grid">

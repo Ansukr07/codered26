@@ -48,7 +48,7 @@ export function useBriefReveals(ref) {
     const root = ref.current
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
     if (!root || motion.matches) return
-    const nodes = [...root.querySelectorAll('.td-section-heading, .td-body-copy, .td-number-card, .td-tags, .td-focus-grid > li, .td-ideas li, .td-resource-grid > a, .td-criteria > div, .td-next-banner, .td-other-tracks > a, .td-visual-grid > .td-visual-item')]
+    const nodes = [...root.querySelectorAll('.td-section-heading, .td-body-copy, .td-number-card, .td-tags, .td-focus-grid > li, .td-ideas li, .td-resource-grid > a, .td-criteria > div, .td-next-banner, .td-other-tracks > a, .td-visual-grid > .td-visual-item, .ps-grid > li')]
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue
@@ -87,12 +87,21 @@ export function useBriefReveals(ref) {
         if (heading) delete heading.dataset.reveal
       }
     }
+    // Keyboard navigation must never focus content that is still visually hidden.
+    const revealFocused = event => {
+      const node = event.target.closest?.('[data-reveal]')
+      if (!node || !root.contains(node)) return
+      delete node.dataset.reveal
+      observer.unobserve(node)
+    }
     root.addEventListener('animationend', finishReveal)
+    root.addEventListener('focusin', revealFocused)
     return () => {
       observer.disconnect()
       ruleObserver.disconnect()
       motion.removeEventListener('change', revealAll)
       root.removeEventListener('animationend', finishReveal)
+      root.removeEventListener('focusin', revealFocused)
       nodes.forEach(node => { delete node.dataset.reveal })
       rules.forEach(rule => { delete rule.dataset.rule })
     }
