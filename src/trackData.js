@@ -41,8 +41,16 @@ const agnesAI = createAgnesAITrack(createTrackBase({
 const xpRobotics = pendingTrack(createTrackBase({
   title: 'XP Robotics', slug: 'track-4', page: 'tracks/track-4', numeral: '04',
 }))
+const unisys = {
+  ...pendingTrack(createTrackBase({
+    title: 'Unisys', slug: 'track-5', page: 'tracks/track-5', numeral: '05',
+  })),
+  subtitle: 'Challenges to be announced · BMSIT students only',
+  summary: 'Challenge details will be announced soon. This track is open only for BMSIT students.',
+  cardDescription: 'Challenges will be announced soon. Open exclusively for BMSIT students.',
+}
 const startup = createTrackBase({
-  title: 'Startup Track', slug: 'track-5', page: 'tracks/track-5', numeral: '05',
+  title: 'Startup Track', slug: 'track-6', page: 'tracks/track-6', numeral: '06',
   category: 'Startup company challenges',
   subtitle: 'Explore the startup company tracks',
   summary: 'Choose a startup company to explore its challenges.',
@@ -67,7 +75,7 @@ startup.subtracks = [
   briefOwner: slug,
 })))
 
-export const tracks = [niveus, simpleEnergy, agnesAI, xpRobotics, startup]
+export const tracks = [niveus, simpleEnergy, agnesAI, xpRobotics, unisys, startup]
 export const allTracks = tracks.flatMap(track => [track, ...(track.subtracks || [])])
 export const getTrackByPage = page => allTracks.find(track => track.page === page)
 

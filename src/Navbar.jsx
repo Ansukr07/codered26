@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { REGISTER_URL } from './components/RegisterButton';
 import './Navbar.css';
 const logoImage = '/logos/Asset%2026.svg';
 
@@ -137,8 +138,8 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
           <div className="nav-footer">
             <button type="button" className="nav-btn-pitchdeck" onClick={() => { closeMenu(); showNotice('Coming Soon'); }}>PPT TEMPLATE</button>
             <div className="nav-footer-row">
-              <button type="button" className="nav-btn-action" onClick={() => { closeMenu(); showNotice('Coming Soon'); }}>REGISTER NOW</button>
-              <button type="button" className="nav-btn-action" onClick={() => { closeMenu(); showNotice('Coming Soon'); }}>BROCHURE</button>
+              <button type="button" className="nav-btn-action" onClick={() => { closeMenu(); window.open(REGISTER_URL, '_blank', 'noopener, noreferrer'); }}>REGISTER NOW</button>
+              <button type="button" className="nav-btn-action" onClick={() => { closeMenu(); window.open('https://drive.google.com/file/d/1tgCUXo4nW9v6nEZ_4klPbX4lGOQqv4WN/view?usp=sharing', '_blank', 'noopener, noreferrer'); }}>BROCHURE</button>
             </div>
           </div>
         </div>

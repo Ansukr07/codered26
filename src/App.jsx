@@ -7,7 +7,7 @@ import './revolving-footer.css'
 import Navbar from './Navbar.jsx'
 import EditorialSections from './EditorialSections.jsx'
 import './routes.css'
-import RegisterButton from './components/RegisterButton'
+import RegisterButton, { REGISTER_URL } from './components/RegisterButton'
 import TeamPage from './TeamPage.jsx'
 import TrackDetailPage from './TrackDetailPage.jsx'
 import TrackProblemsPage from './TrackProblemsPage.jsx'
@@ -136,8 +136,7 @@ function PageContent({ initialPage, initialTeamPage }) {
     }
   };
 
-  const register = () => window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Coming Soon' }))
-
+  const register = () => window.open(REGISTER_URL, '_blank', 'noopener, noreferrer')
   useLayoutEffect(() => {
     const hashTarget = window.location.hash && document.getElementById(window.location.hash.slice(1));
     if (hashTarget) {

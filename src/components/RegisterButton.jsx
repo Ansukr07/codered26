@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import DottedArrow from "./DottedArrow";
 import "./RegisterButton.css";
 
+export const REGISTER_URL = 'https://unstop.com/p/codered26-bms-insitute-of-technology-and-management-1810268?utm_medium=Share&utm_source=ecell-bmsitm&utm_campaign=Online_coding_challenge';
+
 export default function RegisterButton({ onClick, onMouseEnter, onMouseLeave, href, size }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
@@ -24,17 +26,13 @@ export default function RegisterButton({ onClick, onMouseEnter, onMouseLeave, hr
   };
 
   const handleClick = (e) => {
-    if (href) {
-      e.preventDefault();
-      window.dispatchEvent(new CustomEvent('navigate-to-404'));
-    }
     setIsHovered(false);
     setIsPressed(true);
     clearTimeout(pressTimer.current);
     pressTimer.current = setTimeout(() => {
       setIsPressed(false);
     }, 1000);
-    
+
     if (onClick) onClick(e);
   };
 

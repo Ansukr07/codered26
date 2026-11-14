@@ -59,13 +59,14 @@ Whether you're a developer, designer, entrepreneur, researcher, or someone who s
 
 *Note for Enterprise Sponsors: Corporate-sponsored challenges will be integrated directly into these core technical tracks upon confirmation.*
 
-The five main tracks are:
+The six main tracks are:
 
 1. Niveus Solutions
 2. Simple Energy
 3. Agnes AI
 4. XP Robotics
-5. Startup Track
+5. Unisys — open only for BMSIT students
+6. Startup Track
 
 Startup Track contains Think Robotics, MyStartupWave, Sahasranshu Technologies and Cassette Labs. Challenges not yet supplied are TBA.
 
