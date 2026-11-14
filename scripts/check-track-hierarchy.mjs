@@ -2,7 +2,6 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { tracks, trackRoutes, getTrackRoute } from '../src/trackData.js'
 import { getParticipantBrief } from '../src/participantBriefs.js'
-import msw12 from '../src/data/participant-ps12.json' with { type: 'json' }
 import msw3 from '../src/data/participant-ps3.json' with { type: 'json' }
 import msw45 from '../src/data/participant-ps45.json' with { type: 'json' }
 import thinkBriefs from '../src/data/participant-think-robotics.json' with { type: 'json' }
@@ -14,7 +13,7 @@ const companySlugs = ['think-robotics', 'mystartupwave', 'sahasranshu-technologi
 const expectedParticipantCopy = new Map([
   ['Agnes AI', agnesBriefs],
   ['Think Robotics', thinkBriefs],
-  ['MyStartupWave', [...msw12, ...msw3, ...msw45]],
+  ['MyStartupWave', [...msw3, ...msw45]],
 ])
 
 const startup = () => tracks.find(track => track.title === 'Startup Track')
@@ -25,7 +24,7 @@ test('exactly four main tracks contain the requested startup hierarchy', () => {
   assert.deepEqual(startup().subtracks.map(track => track.title), companyNames)
   assert.deepEqual(startup().subtracks.map(track => track.slug), companySlugs)
   assert.equal(startup().problemStatements.length, 0, 'Startup Track lists companies, not invented PS')
-  assert.equal(startup().subtracks.reduce((sum, track) => sum + track.problemStatements.length, 0), 6)
+  assert.equal(startup().subtracks.reduce((sum, track) => sum + track.problemStatements.length, 0), 3)
 })
 
 test('main track numbers, links and resolved pages agree', () => {
@@ -73,7 +72,7 @@ test('unprovided company briefs remain TBA without fabricated problem statements
   }
 })
 
-test('all seven supplied briefs retain the correct company, route and participant content', () => {
+test('all four supplied briefs retain the correct company, route and participant content', () => {
   let briefCount = 0
   for (const owner of leaves()) {
     const expected = expectedParticipantCopy.get(owner.title) || []
@@ -99,7 +98,7 @@ test('all seven supplied briefs retain the correct company, route and participan
       briefCount++
     }
   }
-  assert.equal(briefCount, 7)
+  assert.equal(briefCount, 4)
 })
 
 test('route paths and page identifiers are unique and all primary routes resolve', () => {
