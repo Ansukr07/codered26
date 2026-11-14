@@ -82,6 +82,7 @@
   width: 100%;
 }
 
+.sponsors-grid-top.sponsors-grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .sponsors-grid-top.sponsors-grid-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .sponsors-grid-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
@@ -185,7 +186,7 @@
 
 .sponsors-grid-companies .sponsors-logo { margin-top: 20px; }
 .sponsors-grid-bottom .sponsors-logo:not(.is-give-my-certificate) { margin-top: 20px; }
-.sponsors-logo.is-simple-energy { width: clamp(180px, 20vw, 270px); }
+.sponsors-logo.is-simple-energy { width: clamp(240px, 28vw, 420px); }
 .sponsors-logo.is-think-robotics { width: clamp(260px, 32vw, 430px); }
 .sponsors-logo.is-agnes-ai {
   width: clamp(190px, 20vw, 270px);
@@ -200,16 +201,16 @@
 }
 .sponsors-logo.is-agnes-ai img { min-width: 0; }
 .sponsors-logo.is-mystartupwave { width: clamp(110px, 14vw, 175px); }
-.sponsors-logo.is-niveus-solutions { width: clamp(170px, 19vw, 260px); }
+.sponsors-logo.is-niveus-solutions { width: clamp(230px, 26vw, 390px); }
+.sponsors-logo.is-unisys { width: clamp(200px, 21vw, 320px); }
+.sponsors-logo.is-unisys img { filter: none; }
 .sponsors-logo.is-niveus-solutions img { filter: none; }
 .sponsors-logo.is-sahasranshu { width: 84%; max-width: 350px; gap: 12px; }
 .sponsors-logo.is-sahasranshu img { width: 28%; flex: none; }
 .sponsors-logo.is-sahasranshu .sponsors-logo-wordmark { width: min-content; flex: none; font: 600 clamp(18px, 1.8vw, 28px)/1.25 LilGrotesk, sans-serif; letter-spacing: .025em; }
-.sponsors-logo.is-cassette-labs { width: 82%; max-width: 380px; display: grid; grid-template-columns: 18% minmax(0, 1fr); gap: 5%; }
+.sponsors-logo.is-cassette-labs { width: 82%; max-width: 380px; }
 .sponsors-logo.is-cassette-labs img { min-width: 0; }
-.sponsors-logo.is-cassette-labs .sponsors-logo-mark { aspect-ratio: 1; }
-/* The official wordmark includes transparent padding; fit the lettering to its grid cell. */
-.sponsors-logo.is-cassette-labs img:not(.sponsors-logo-mark) { transform: scale(1.2875) translate(1.1111%, .2258%); }
+.sponsors-logo.is-cassette-labs img:not(.sponsors-logo-mark) { filter: none; }
 .sponsors-logo.is-sahasranshu .sponsors-logo-wordmark { transition: color .35s ease; }
 .sponsors-logo:is(.is-think-robotics, .is-mystartupwave) img { filter: none; opacity: 1; }
 
@@ -313,6 +314,9 @@
     filter: none;
   }
   .sponsors-grid__item:hover .sponsors-logo.is-niveus-solutions img {
+    filter: none;
+  }
+  .sponsors-grid__item:hover .sponsors-logo.is-cassette-labs img {
     filter: none;
   }
   .sponsors-grid__item:hover .sponsors-logo.is-give-my-certificate img {
@@ -482,6 +486,7 @@
     border-bottom: 0;
   }
   .sponsors-grid-top.sponsors-grid-three { grid-template-columns: 1fr; }
+  .sponsors-grid-top.sponsors-grid-two { grid-template-columns: 1fr; }
   .sponsors-grid-four { grid-template-columns: 1fr; }
   .sponsors-grid-bottom {
     grid-template-columns: 1fr;
