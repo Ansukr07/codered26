@@ -31,6 +31,8 @@
       "name": "Ansu Kumar",
       "position": "Tech Head",
       "image": "./assets/team/ansu.png",
+      "imageScale": 1.8,
+      "imageScaleOrigin": "48% 48%",
       "socials": {"instagram": "https://www.instagram.com/ansu_kumar07/", "linkedin": "https://www.linkedin.com/in/ansu-kumar-24359230a/"}
     },
     {

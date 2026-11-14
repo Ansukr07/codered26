@@ -7,7 +7,7 @@ import msw45 from '../src/data/participant-ps45.json' with { type: 'json' }
 import thinkBriefs from '../src/data/participant-think-robotics.json' with { type: 'json' }
 import agnesBriefs from '../src/data/participant-agnes-ai.json' with { type: 'json' }
 
-const mainNames = ['Niveus Solutions', 'Simple Energy', 'Agnes AI', 'Startup Track']
+const mainNames = ['Niveus Solutions', 'Simple Energy', 'Agnes AI', 'XP Robotics', 'Startup Track']
 const companyNames = ['Think Robotics', 'MyStartupWave', 'Sahasranshu Technologies', 'Cassette Labs']
 const companySlugs = ['think-robotics', 'mystartupwave', 'sahasranshu-technologies', 'cassette-labs']
 const expectedParticipantCopy = new Map([
@@ -19,7 +19,7 @@ const expectedParticipantCopy = new Map([
 const startup = () => tracks.find(track => track.title === 'Startup Track')
 const leaves = () => tracks.flatMap(track => track.subtracks?.length ? track.subtracks : [track])
 
-test('exactly four main tracks contain the requested startup hierarchy', () => {
+test('exactly five main tracks contain the requested startup hierarchy', () => {
   assert.deepEqual(tracks.map(track => track.title), mainNames)
   assert.deepEqual(startup().subtracks.map(track => track.title), companyNames)
   assert.deepEqual(startup().subtracks.map(track => track.slug), companySlugs)
@@ -44,7 +44,7 @@ test('main track numbers, links and resolved pages agree', () => {
 
 test('each startup company stays beneath Startup Track with a resolvable return path', () => {
   for (const [index, company] of startup().subtracks.entries()) {
-    const page = `tracks/track-4/${companySlugs[index]}`
+    const page = `tracks/track-5/${companySlugs[index]}`
     assert.equal(company.numeral, String(index + 1).padStart(2, '0'))
     assert.equal(company.page, page)
     assert.equal(company.path, `/${page}`)
@@ -61,7 +61,7 @@ test('each startup company stays beneath Startup Track with a resolvable return 
 })
 
 test('unprovided company briefs remain TBA without fabricated problem statements', () => {
-  const pendingNames = ['Niveus Solutions', 'Simple Energy', 'Sahasranshu Technologies', 'Cassette Labs']
+  const pendingNames = ['Niveus Solutions', 'Simple Energy', 'XP Robotics', 'Sahasranshu Technologies', 'Cassette Labs']
   for (const name of pendingNames) {
     const company = leaves().find(track => track.title === name)
     assert(company, `${name}: company exists`)

@@ -38,8 +38,11 @@ const simpleEnergy = pendingTrack(createTrackBase({
 const agnesAI = createAgnesAITrack(createTrackBase({
   title: 'Agnes AI', slug: 'track-3', page: 'tracks/track-3', numeral: '03', briefOwner: 'agnes-ai',
 }))
+const xpRobotics = pendingTrack(createTrackBase({
+  title: 'XP Robotics', slug: 'track-4', page: 'tracks/track-4', numeral: '04',
+}))
 const startup = createTrackBase({
-  title: 'Startup Track', slug: 'track-4', page: 'tracks/track-4', numeral: '04',
+  title: 'Startup Track', slug: 'track-5', page: 'tracks/track-5', numeral: '05',
   category: 'Startup company challenges',
   subtitle: 'Explore the startup company tracks',
   summary: 'Choose a startup company to explore its challenges.',
@@ -64,7 +67,7 @@ startup.subtracks = [
   briefOwner: slug,
 })))
 
-export const tracks = [niveus, simpleEnergy, agnesAI, startup]
+export const tracks = [niveus, simpleEnergy, agnesAI, xpRobotics, startup]
 export const allTracks = tracks.flatMap(track => [track, ...(track.subtracks || [])])
 export const getTrackByPage = page => allTracks.find(track => track.page === page)
 

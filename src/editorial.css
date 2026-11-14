@@ -298,7 +298,7 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-venturex-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:46px;max-width:100%;box-sizing:border-box;padding:11px 16px;border:1px solid var(--shift-ink,#222);background:transparent;color:var(--shift-ink,#222);text-decoration:none;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
 .shift-rail-intro .shift-venturex-cta-label{font:600 14px/1.2 LilGrotesk,Helvetica,sans-serif;letter-spacing:0}
 .shift-rail-intro .shift-venturex-arrow{flex:none;font:400 20px/1 LilGrotesk,Helvetica,sans-serif;letter-spacing:0;transition:transform .2s ease}
-.shift-venturex-cta:is(:hover,:focus-visible){background:var(--red,#ed2024);border-color:var(--red,#ed2024);color:#fff}
+.shift-venturex-cta:is(:hover,:focus-visible){background:#1e1b18;border-color:#1e1b18;color:#fff}
 .shift-venturex-cta:is(:hover,:focus-visible) .shift-venturex-arrow{transform:translate(2px,-2px)}
 .shift-venturex-cta:focus-visible{outline:2px solid var(--shift-ink,#222);outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.shift-venturex-cta,.shift-venturex-arrow{transition:none}}

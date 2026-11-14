@@ -139,9 +139,9 @@ test('desktop and mobile main page initial loads retain the intro and finish unl
 })
 
 test('opening Home from a direct subpage still plays the first main-page intro', async () => {
-  const page = browser('/tracks/track-4/mystartupwave/problems/ps-1')
+  const page = browser('/tracks/track-5/mystartupwave/problems/ps-1')
   let destination
-  page.window.playPagePreloader(() => { destination = 'home' }, 'home', 'tracks/track-4/mystartupwave/problems/ps-1')
+  page.window.playPagePreloader(() => { destination = 'home' }, 'home', 'tracks/track-5/mystartupwave/problems/ps-1')
   assert.equal(page.active(), true)
   assert.equal(page.elements.preloader.style.display, 'grid')
   await page.tick()
@@ -183,7 +183,7 @@ test('main page transitions dissolve while nested and error destinations skip im
   assert.notEqual(page.elements['intro-text'].style.display, 'flex')
   await page.settle()
   let destination
-  for (const target of ['tracks', 'tracks/track-4/problems', 'tracks/track-4/mystartupwave/problems/ps-1', 'notFound', 'home']) {
+  for (const target of ['tracks', 'tracks/track-5/problems', 'tracks/track-5/mystartupwave/problems/ps-1', 'notFound', 'home']) {
     page.window.playPagePreloader(() => { destination = target }, target)
     if (mainPages.includes(target)) {
       assert.equal(page.active(), true, target)
