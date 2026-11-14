@@ -31,7 +31,7 @@ export default function TrackBriefRail({ sections, activeSection, title, kind = 
   const rowY = (index) => 6 + index * rowHeight + rowHeight / 2
   const height = 12 + sections.length * rowHeight
 
-  return <nav className="td-branched" aria-label={kind === 'challenge' ? 'In this open challenge' : kind === 'problem' ? 'In this problem statement' : 'In this track brief'} data-open={expanded ? '' : undefined} style={{ '--td-branched-row': `${rowHeight}px` }}>
+  return <nav className="td-branched" aria-label={kind === 'challenge' ? 'In this open challenge' : kind === 'problem' ? 'In this challenge' : 'In this track brief'} data-open={expanded ? '' : undefined} style={{ '--td-branched-row': `${rowHeight}px` }}>
     <span className="td-branched__marker" aria-hidden="true" data-active={activeIndex >= 0 ? '' : undefined} />
     <button className="td-branched__head" type="button" aria-expanded={expanded} aria-controls={bodyId} onClick={() => setExpanded(value => !value)}>
       <span>On this page{title ? ` · ${title}` : ''}</span>

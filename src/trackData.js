@@ -21,10 +21,10 @@ function createTrackBase({ title, slug, page, numeral, ...details }) {
 function pendingTrack(base) {
   return {
     ...base,
-    category: 'Problem statements TBA',
-    subtitle: 'Problem statements to be announced',
-    summary: 'Problem statement details will be announced soon.',
-    cardDescription: 'Problem statements will be announced soon.',
+    category: 'Challenges TBA',
+    subtitle: 'Challenges to be announced',
+    summary: 'Challenge details will be announced soon.',
+    cardDescription: 'Challenges will be announced soon.',
     hasPendingBriefs: true,
   }
 }
@@ -42,7 +42,7 @@ const startup = createTrackBase({
   title: 'Startup Track', slug: 'track-4', page: 'tracks/track-4', numeral: '04',
   category: 'Startup company challenges',
   subtitle: 'Explore the startup company tracks',
-  summary: 'Choose a startup company to explore its problem statements.',
+  summary: 'Choose a startup company to explore its challenges.',
   cardDescription: 'Explore Think Robotics, MyStartupWave, Sahasranshu Technologies and Cassette Labs.',
 })
 

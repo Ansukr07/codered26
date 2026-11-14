@@ -253,7 +253,7 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
   const previous = hasSiblingNavigation ? siblings[(position - 1 + siblings.length) % siblings.length] : null
   const next = hasSiblingNavigation ? siblings[(position + 1) % siblings.length] : null
   const backTrack = !isProblem && parentTrack.startupParent ? parentTrack.startupParent : parentTrack
-  const backLabel = backTrack !== parentTrack ? backTrack.title : openChallenge ? `${parentTrack.title} track` : 'Problem statements'
+  const backLabel = backTrack !== parentTrack ? backTrack.title : openChallenge ? `${parentTrack.title} track` : 'Challenges'
   const register = () => onNavigate('notFound')
   const follow = (page) => (event) => {
     if (!onNavigate || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
@@ -291,7 +291,7 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
             </div>
             <p className="td-register-note">Registration coming soon</p>
           </div>
-          {hasSiblingNavigation && <nav className="td-other-tracks" aria-label={isProblem ? 'Other problem statements' : parentTrack.startupParent ? 'Other startup tracks' : 'Other tracks'}>
+          {hasSiblingNavigation && <nav className="td-other-tracks" aria-label={isProblem ? 'Other challenges' : parentTrack.startupParent ? 'Other startup tracks' : 'Other tracks'}>
             <a href={previous.path} onClick={follow(previous.page)}><span>← PREVIOUS {track.problemNumber ? 'PS' : 'TRACK'} / {previous.problemNumber || previous.numeral}</span><strong>{previous.title}</strong></a>
             <a href={next.path} onClick={follow(next.page)}><span>NEXT {track.problemNumber ? 'PS' : 'TRACK'} / {next.problemNumber || next.numeral} →</span><strong>{next.title}</strong></a>
           </nav>}

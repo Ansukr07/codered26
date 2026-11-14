@@ -49,7 +49,7 @@ export default function OfficialBriefContent({ track }) {
     <section id="problem" className="td-brief-section td-source-group" data-participant-brief={brief.number}>
       <div className="td-problem td-source-intro">
         <div className="td-number-card td-source-number-card">
-          <span>{source.company} / {track.briefKind === 'open-challenge' ? 'Open challenge' : 'Problem statement'}</span>
+          <span>{source.company} / {track.briefKind === 'open-challenge' ? 'Open challenge' : 'Challenge'}</span>
           <strong>{String(brief.number).padStart(2, '0')}</strong>
           <p>{source.title}</p>
         </div>
@@ -69,7 +69,7 @@ export default function OfficialBriefContent({ track }) {
     {brief.directions?.length > 0 && <section id="directions" className="td-brief-section td-source-group">
       <SectionHeading label="Suggested directions">Choose a focused direction.</SectionHeading>
       <div className="td-source-body td-source-sections">
-        <p className="td-body-copy td-directions-intro">{brief.directionsIntro || 'These are starting points, not fixed problem statements. Choose one and narrow it to a specific user, task and measurable outcome, or propose another relevant scientific, engineering or physical-world problem.'}</p>
+        <p className="td-body-copy td-directions-intro">{brief.directionsIntro || 'These are starting points, not fixed challenges. Choose one and narrow it to a specific user, task and measurable outcome, or propose another relevant scientific, engineering or physical-world problem.'}</p>
         <Cards items={brief.directions} kind="directions" className="td-capability-grid" numbered list />
       </div>
     </section>}

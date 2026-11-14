@@ -18,7 +18,7 @@ function wheelStyle(index, position, spacing, reduced = false, kind = 'track') {
 
 /** The reference's eight-degree arc, damped movement and delayed route commit. */
 export default function TrackWheel({ tracks, activeIndex, onNavigate, kind = 'track' }) {
-  const itemLabel = kind === 'challenge' ? 'open challenge' : kind === 'problem' ? 'problem statement' : 'track'
+  const itemLabel = kind === 'challenge' ? 'open challenge' : kind === 'problem' ? 'challenge' : 'track'
   const root = useRef(null)
   const items = useRef([])
   const engine = useRef(null)

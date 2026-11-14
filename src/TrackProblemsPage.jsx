@@ -22,7 +22,7 @@ export default function TrackProblemsPage({ track, onNavigate }) {
   const activeMainSlug = startupParent?.slug || track.slug
   const count = problems.length
   const openChallenge = track.briefKind === 'open-challenge'
-  const selectionTitle = isStartupRoot ? 'Startup tracks' : openChallenge ? 'Open challenge' : 'Problem statements'
+  const selectionTitle = isStartupRoot ? 'Startup tracks' : openChallenge ? 'Open challenge' : 'Challenges'
   const cards = isStartupRoot ? startupTracks : problems
   return <div className="track-detail ps-index">
     <div className="ps-container">
@@ -48,7 +48,7 @@ export default function TrackProblemsPage({ track, onNavigate }) {
       <section aria-labelledby="ps-heading" className="ps-selection">
         <h2 id="ps-heading" className="sr-only">{selectionTitle}</h2>
         <div className="ps-section-bar">
-          <p className="ps-count"><strong>{isStartupRoot ? String(startupTracks.length).padStart(2, '0') : track.hasPendingBriefs ? 'TBA' : String(count).padStart(2, '0')}</strong> {isStartupRoot ? 'Startup tracks' : openChallenge ? 'Open challenge' : `Problem ${count === 1 ? 'statement' : 'statements'}`}</p>
+          <p className="ps-count"><strong>{isStartupRoot ? String(startupTracks.length).padStart(2, '0') : track.hasPendingBriefs ? 'TBA' : String(count).padStart(2, '0')}</strong> {isStartupRoot ? 'Startup tracks' : openChallenge ? 'Open challenge' : `Challenge${count === 1 ? '' : 's'}`}</p>
         </div>
         {cards.length ? <ol ref={cardsRef} className={`ps-grid${cards.length === 1 ? ' ps-grid--single' : ''}`}>{cards.map((item, index) => {
           const pending = !isStartupRoot && item.isPending
@@ -72,7 +72,7 @@ export default function TrackProblemsPage({ track, onNavigate }) {
               </div>
             </div>
           </Card>
-        </li>})}</ol> : <p className="ps-empty">Problem statement details are TBA. They will be announced here.</p>}
+        </li>})}</ol> : <p className="ps-empty">Challenge details are TBA. They will be announced here.</p>}
       </section>
     </div>
   </div>
