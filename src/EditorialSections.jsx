@@ -281,7 +281,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
     </section>}
 
     {show('tracks') && <TracksSection onNavigate={onNavigate} />}
-    {show('sponsors') && <SponsorsSection />}
+    {show('partners') && <SponsorsSection />}
     {show('prizes') && <PrizesSection />}
 
     {show('schedule') && <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">

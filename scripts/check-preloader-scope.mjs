@@ -12,7 +12,7 @@ const inlineScript = id => {
 }
 const policy = inlineScript('preloader-route-policy')
 const controller = inlineScript('preloader-controller')
-const mainPages = ['home', 'about', 'tracks', 'prizes', 'schedule', 'sponsors', 'faq', 'team']
+const mainPages = ['home', 'about', 'tracks', 'prizes', 'schedule', 'partners', 'faq', 'team']
 
 // Run the actual inline controller with a small DOM and a deterministic clock.
 function browser(pathname, { hash = '', seen = false, blockedStorage = false, width = 1280, height = 720 } = {}) {
