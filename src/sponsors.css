@@ -201,6 +201,7 @@
 .sponsors-logo.is-agnes-ai img { min-width: 0; }
 .sponsors-logo.is-mystartupwave { width: clamp(110px, 14vw, 175px); }
 .sponsors-logo.is-niveus-solutions { width: clamp(170px, 19vw, 260px); }
+.sponsors-logo.is-niveus-solutions img { filter: none; }
 .sponsors-logo.is-sahasranshu { width: 84%; max-width: 350px; gap: 12px; }
 .sponsors-logo.is-sahasranshu img { width: 28%; flex: none; }
 .sponsors-logo.is-sahasranshu .sponsors-logo-wordmark { width: min-content; flex: none; font: 600 clamp(18px, 1.8vw, 28px)/1.25 LilGrotesk, sans-serif; letter-spacing: .025em; }
@@ -309,6 +310,9 @@
     filter: none;
   }
   .sponsors-grid__item:hover .sponsors-logo.is-mystartupwave img {
+    filter: none;
+  }
+  .sponsors-grid__item:hover .sponsors-logo.is-niveus-solutions img {
     filter: none;
   }
   .sponsors-grid__item:hover .sponsors-logo.is-give-my-certificate img {
