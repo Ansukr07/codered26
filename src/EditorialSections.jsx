@@ -195,7 +195,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
         <img className="shift-hero-corner-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" />
         <img className="shift-hero-ribbon" src="/codered2026/codered2026/vector%20files/elements/Asset%2018.svg" alt="" aria-hidden="true" />
         <div className="shift-hero-composition">
-          <div className="shift-hero-topline anim-slide-up"><p className="shift-hero-presented">E-CELL × BMSIT&amp;M PRESENTS</p><a className="shift-mobile-register" href="#register" onClick={(event) => { event.preventDefault(); onNavigate('notFound'); }}>REGISTER NOW ↗</a></div>
+          <div className="shift-hero-topline anim-slide-up"><p className="shift-hero-presented">E-CELL × BMSIT&amp;M PRESENTS</p><a className="shift-mobile-register" href="#register" onClick={(event) => { event.preventDefault(); window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Coming Soon' })); }}>REGISTER NOW ↗</a></div>
           <div className="shift-hero-text-wrapper">
             <div className="shift-hero-first-line" aria-hidden="true">
               <span style={{ display: 'block' }}>
@@ -216,7 +216,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
           </div>
           <div className="shift-hero-bottom-action anim-slide-up" style={{ transitionDelay: '0.2s' }}>
             <p className="shift-hero-slogan">Sprint into Creation</p>
-            <RegisterButton href="https://unstop.com/o/qjIA3CN?utm_medium=Share&utm_source=ecell-bmsitm&utm_campaign=Online_coding_challenge" />
+            <RegisterButton onClick={() => window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Coming Soon' }))} />
           </div>
         </div>
       </div>

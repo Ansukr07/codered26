@@ -136,7 +136,7 @@ function PageContent({ initialPage, initialTeamPage }) {
     }
   };
 
-  const register = () => navigatePage('notFound')
+  const register = () => window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Coming Soon' }))
 
   useLayoutEffect(() => {
     const hashTarget = window.location.hash && document.getElementById(window.location.hash.slice(1));
