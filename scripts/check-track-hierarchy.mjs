@@ -6,6 +6,7 @@ import msw3 from '../src/data/participant-ps3.json' with { type: 'json' }
 import msw45 from '../src/data/participant-ps45.json' with { type: 'json' }
 import thinkBriefs from '../src/data/participant-think-robotics.json' with { type: 'json' }
 import agnesBriefs from '../src/data/participant-agnes-ai.json' with { type: 'json' }
+import cassetteBriefs from '../src/data/participant-cassette-labs.json' with { type: 'json' }
 
 const mainNames = ['Niveus Solutions', 'Simple Energy', 'Agnes AI', 'XP Robotics', 'Unisys', 'Startup Track']
 const companyNames = ['Think Robotics', 'MyStartupWave', 'Sahasranshu Technologies', 'Cassette Labs']
@@ -14,6 +15,7 @@ const expectedParticipantCopy = new Map([
   ['Agnes AI', agnesBriefs],
   ['Think Robotics', thinkBriefs],
   ['MyStartupWave', [...msw3, ...msw45]],
+  ['Cassette Labs', cassetteBriefs],
 ])
 
 const startup = () => tracks.find(track => track.title === 'Startup Track')
@@ -24,7 +26,7 @@ test('exactly six main tracks contain the requested startup hierarchy', () => {
   assert.deepEqual(startup().subtracks.map(track => track.title), companyNames)
   assert.deepEqual(startup().subtracks.map(track => track.slug), companySlugs)
   assert.equal(startup().problemStatements.length, 0, 'Startup Track lists companies, not invented PS')
-  assert.equal(startup().subtracks.reduce((sum, track) => sum + track.problemStatements.length, 0), 3)
+  assert.equal(startup().subtracks.reduce((sum, track) => sum + track.problemStatements.length, 0), 4)
 })
 
 test('main track numbers, links and resolved pages agree', () => {
@@ -61,7 +63,7 @@ test('each startup company stays beneath Startup Track with a resolvable return 
 })
 
 test('unprovided company briefs remain TBA without fabricated problem statements', () => {
-  const pendingNames = ['Niveus Solutions', 'Simple Energy', 'XP Robotics', 'Unisys', 'Sahasranshu Technologies', 'Cassette Labs']
+  const pendingNames = ['Niveus Solutions', 'Simple Energy', 'XP Robotics', 'Unisys', 'Sahasranshu Technologies']
   for (const name of pendingNames) {
     const company = leaves().find(track => track.title === name)
     assert(company, `${name}: company exists`)
@@ -72,7 +74,7 @@ test('unprovided company briefs remain TBA without fabricated problem statements
   }
 })
 
-test('all four supplied briefs retain the correct company, route and participant content', () => {
+test('all five supplied briefs retain the correct company, route and participant content', () => {
   let briefCount = 0
   for (const owner of leaves()) {
     const expected = expectedParticipantCopy.get(owner.title) || []
@@ -98,7 +100,7 @@ test('all four supplied briefs retain the correct company, route and participant
       briefCount++
     }
   }
-  assert.equal(briefCount, 4)
+  assert.equal(briefCount, 5)
 })
 
 test('route paths and page identifiers are unique and all primary routes resolve', () => {

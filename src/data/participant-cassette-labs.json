@@ -1,0 +1,61 @@
+[
+  {
+    "number": 1,
+    "problem": "Hospitals lose patient time, staff capacity and revenue because the patient journey is fragmented across phone calls, front-desk queues, appointment systems, WhatsApp messages, billing desks and follow-up calls — while urgent patient needs wait behind routine admin work. Your startup’s AI receptionist can answer calls and support patients from their first interaction to the end of their hospital journey. Build a voice-first AI hospital receptionist that manages a patient’s end-to-end journey — from the first inbound call to post-visit follow-up — while safely escalating clinical risk and handing off to hospital staff when needed. It should act as an intelligent operations layer for the hospital: understanding patient intent, keeping context across the journey, taking actions in hospital systems and coordinating communications.",
+    "audience": "Front-desk teams handling high call volumes, scheduling requests and no-show recovery; patients who want answers without navigating a rigid IVR menu; and hospital administrators who need visibility into call volume, escalations and workflow bottlenecks.",
+    "outcome": "A reliable, safe, production-ready patient-journey orchestration system that feels like a capable hospital front-desk colleague — it completes real work, remembers context, coordinates systems, knows its limits and escalates safely when a patient needs a human.",
+    "required": [
+      { "title": "Live voice interface", "text": "Handle a realistic multi-turn patient call with streaming speech recognition, natural turn-taking, interruption handling and natural voice response." },
+      { "title": "Patient-journey state machine", "text": "A persistent state machine that tracks the patient across the full workflow, keeping conversational state across calls or channels where feasible." },
+      { "title": "Hospital tool integrations", "text": "Tools or realistic mock APIs for scheduling, patient records, department availability, notifications, queue status, billing/report status and staff escalation." },
+      { "title": "Grounded hospital knowledge", "text": "Retrieval grounded in approved hospital knowledge sources for policies, departments, doctors, procedures, preparation instructions and frequently asked questions." },
+      { "title": "Clinical-safety and escalation layer", "text": "Prevent diagnosis, treatment advice and unsafe autonomous decisions — the system is a hospital operations assistant, not a medical decision-making system." },
+      { "title": "Human handoff mechanism", "text": "Transfer to staff with a concise call summary, collected data, urgency level and the reason for escalation." },
+      { "title": "Multilingual support", "text": "English plus at least one Indian language; Hindi-English code-switching is strongly encouraged." },
+      { "title": "Supervisor dashboard", "text": "Show live calls, conversation state, extracted information, tool calls, escalation alerts and audit history." }
+    ],
+    "optional": [
+      { "title": "Proactive outreach", "text": "System-initiated reminders, document requests and no-show recovery calls instead of purely inbound handling." },
+      { "title": "Beyond-voice channels", "text": "SMS, WhatsApp or web companions that supplement the primary voice interface." },
+      { "title": "Deeper multilingual coverage", "text": "More Indian languages and smoother code-switching beyond the minimum requirement." },
+      { "title": "Workflow analytics", "text": "Administrator views for no-show risks, queue bottlenecks and staffing patterns derived from call history." }
+    ],
+    "workflow": "Patient calls → intent is identified and the request classified as administrative, logistical or urgent → verification or guided registration → structured pre-visit intake → appointment orchestration → confirmations, reminders and preparation → in-hospital coordination → post-visit follow-up → escalation to a triage nurse or staff member whenever clinical risk appears.",
+    "deliverables": [
+      { "title": "Working end-to-end prototype", "text": "A voice-first receptionist covering registration, intake, scheduling, preparation, in-hospital coordination and follow-up." },
+      { "title": "Journey demo", "text": "A live or recorded demo of at least three patient journeys: new-patient registration and booking; returning-patient rescheduling and pre-visit preparation; and urgent-symptom detection with safe escalation." },
+      { "title": "Supervisor/staff dashboard", "text": "Live calls, conversation state, extracted information, escalations and audit history for the front-desk team." },
+      { "title": "Architecture diagram", "text": "The voice pipeline, agent orchestration, tools, data stores and the escalation path." },
+      { "title": "Evaluation report", "text": "Test scenarios, success rate, escalation accuracy, latency and failure cases from your evaluation suite." },
+      { "title": "Product brief", "text": "The target hospital user, workflow, deployment model and path to production." }
+    ],
+    "success": [
+      { "title": "End-to-end journey completion — 25%", "text": "Registration, intake, scheduling, preparation and follow-up workflows complete." },
+      { "title": "Conversation quality — 20%", "text": "Natural interaction, interruption handling, clarification, memory and multilingual support." },
+      { "title": "Safety and escalation — 20%", "text": "Red-flag detection, appropriate boundaries, human handoff and auditability." },
+      { "title": "System integration — 15%", "text": "Realistic tool use, state consistency, scheduling accuracy and recovery from failures." },
+      { "title": "Reliability and grounding — 10%", "text": "Handling of incomplete data, errors, unknown questions and hallucination prevention." },
+      { "title": "Product experience — 10%", "text": "Supervisor dashboard, usability, accessibility, deployment readiness and demo quality." }
+    ],
+    "constraints": [
+      { "title": "Voice-first interface", "text": "The primary interface must be voice; SMS, WhatsApp, web or dashboard interfaces may supplement it." },
+      { "title": "State across channels", "text": "Maintain conversational state across multiple calls or channels where feasible." },
+      { "title": "Real-time interaction", "text": "Design for real-time interaction with a clearly measured latency budget." },
+      { "title": "Realistic mock systems", "text": "Mock hospital systems are allowed, but integrations must be realistic and clearly documented." },
+      { "title": "Failure and fallback behaviour", "text": "Show how the system behaves when a tool fails, data is incomplete or the patient changes topic." },
+      { "title": "Disclose the AI boundary", "text": "State which components use AI models, which rules are deterministic and where human oversight is required." }
+    ],
+    "scope": [
+      { "title": "In scope", "text": "A voice-first hospital operations assistant covering the defined patient-journey stages, with tool actions, grounded answers from approved knowledge sources and safe escalation." },
+      { "title": "Out of scope", "text": "Diagnosis or treatment advice, medical decision-making, a generic chatbot or a simple appointment-booking IVR." },
+      { "title": "Safety requirements", "text": "Escalate immediately on urgency or caller distress, use only approved hospital knowledge sources, minimise sensitive data exposure in logs and dashboards, maintain an audit trail and always provide an obvious path to a human staff member." },
+      { "title": "Evaluation depth", "text": "An evaluation suite with at least 50 test scenarios — routine bookings, incomplete information, angry or confused callers, ambiguous symptoms, emergency red flags, rescheduling and sensitive-data attempts." }
+    ],
+    "resources": [
+      { "title": "Evaluation scenarios", "text": "Build your 50-scenario suite across routine bookings, incomplete information, distressed callers, ambiguous symptoms, emergency red flags and sensitive-data attempts." },
+      { "title": "Core user stories", "text": "Cover the patient, front-desk staff and hospital administrator stories listed in the brief when designing journeys." },
+      { "title": "Hospital knowledge sources", "text": "Ground retrieval in approved policies, departments, doctors, procedures, preparation instructions and FAQs." },
+      { "title": "Cassette Labs team", "text": "Clarify scope, mock APIs or escalation rules with the challenge desk before building." }
+    ]
+  }
+]

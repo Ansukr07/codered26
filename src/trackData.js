@@ -1,6 +1,7 @@
 import { createMyStartupWaveTrack } from './myStartupWaveTrack.js'
 import { createThinkRoboticsTrack } from './thinkRoboticsTrack.js'
 import { createAgnesAITrack } from './agnesAITrack.js'
+import { createCassetteLabsTrack } from './cassetteLabsTrack.js'
 
 function createTrackBase({ title, slug, page, numeral, ...details }) {
   return {
@@ -67,7 +68,7 @@ startup.subtracks = [
   ['Think Robotics', 'think-robotics', createThinkRoboticsTrack],
   ['MyStartupWave', 'mystartupwave', createMyStartupWaveTrack],
   ['Sahasranshu Technologies', 'sahasranshu-technologies', pendingTrack],
-  ['Cassette Labs', 'cassette-labs', pendingTrack],
+  ['Cassette Labs', 'cassette-labs', createCassetteLabsTrack],
 ].map(([title, slug, createTrack], index) => createTrack(createTrackBase({
   title, slug, page: `${startup.page}/${slug}`,
   numeral: String(index + 1).padStart(2, '0'),

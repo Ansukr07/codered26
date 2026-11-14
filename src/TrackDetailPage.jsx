@@ -5,6 +5,7 @@ import TrackBriefRail from './TrackBriefRail.jsx'
 import TrackScene from './TrackScene.jsx'
 import TrackButtonContent from './TrackButtonContent.jsx'
 import OfficialBriefContent, { officialBriefSections } from './OfficialBriefContent.jsx'
+import { REGISTER_URL } from './components/RegisterButton'
 import useTrackSectionHighlight from './useTrackSectionHighlight.js'
 import { getHeroConnections } from './heroConnections.js'
 import { getMobileHeroCompression, MOBILE_HERO_SPACE_BUDGET } from './mobileHeroFit.js'
@@ -254,7 +255,7 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
   const next = hasSiblingNavigation ? siblings[(position + 1) % siblings.length] : null
   const backTrack = !isProblem && parentTrack.startupParent ? parentTrack.startupParent : parentTrack
   const backLabel = backTrack !== parentTrack ? backTrack.title : openChallenge ? `${parentTrack.title} track` : 'Challenges'
-  const register = () => onNavigate('notFound')
+  const register = () => window.open(REGISTER_URL, '_blank', 'noopener, noreferrer')
   const follow = (page) => (event) => {
     if (!onNavigate || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
     event.preventDefault()
@@ -289,7 +290,6 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
               <button className="td-button td-button--motion" type="button" onClick={register}><TrackButtonContent arrow="↗">Register your team</TrackButtonContent></button>
               <a className="td-button td-button--outline td-button--motion" href="/faq" onClick={follow('faq')}><TrackButtonContent>Participation details</TrackButtonContent></a>
             </div>
-            <p className="td-register-note">Registration coming soon</p>
           </div>
           {hasSiblingNavigation && <nav className="td-other-tracks" aria-label={isProblem ? 'Other challenges' : parentTrack.startupParent ? 'Other startup tracks' : 'Other tracks'}>
             <a href={previous.path} onClick={follow(previous.page)}><span>← PREVIOUS {track.problemNumber ? 'PS' : 'TRACK'} / {previous.problemNumber || previous.numeral}</span><strong>{previous.title}</strong></a>
