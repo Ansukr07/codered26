@@ -205,7 +205,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
               </span>
             </div>
             <h1 id="hero-title" className="shift-hero-display">
-              <span className="sr-only">Code Red 2026 — National 24-hour hackathon in Bengaluru</span>
+              <span className="sr-only">Code Red 2026 — National 24-hour product sprint in Bengaluru</span>
               <span aria-hidden="true" style={{ display: 'block' }}>
                 {"RED".split('').map((char, i) => (
                   <span key={i} className="anim-slide-up" style={{ display: 'inline-block', transitionDelay: `${0.32 + i * 0.08}s` }}>{char}</span>

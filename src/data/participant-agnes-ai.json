@@ -1,7 +1,7 @@
 [
   {
     "number": 1,
-    "problem": "Scientific and engineering work often means moving between documents, data, code and specialist tools, then checking whether an AI output is actually usable. Choose one user, one workflow bottleneck and one measurable outcome. Build a functional product that uses Agnes AI to help that user complete a scientific, engineering or physical-world task, with evidence that the result improves on a stated baseline. This is one open challenge: the four suggested product directions are starting points, not fixed problem statements. You may propose another relevant problem with a clear user and evaluation method.",
+    "problem": "Scientific and engineering work often means moving between documents, data, code and specialist tools, then checking whether an AI output is actually usable. Choose one user, one workflow bottleneck and one measurable outcome. Build a functional product that uses Agnes AI to help that user complete a scientific, engineering or physical-world task, with evidence that the result improves on a stated baseline. This is one open challenge: the four suggested product directions are starting points, not fixed challenges. You may propose another relevant challenge with a clear user and evaluation method.",
     "audience": "Choose a specific researcher, engineer, scientific developer or disaster-response planner. Domain experts, supervisors and potential adopters can help check whether the result fits that user's next step.",
     "outcome": "A focused, working Agnes-powered workflow that takes a task or question to a checked output. Demonstrate a relevant improvement in correctness, speed, effort, cost or planning quality; a narrow, reproducible result is sufficient.",
     "directions": [

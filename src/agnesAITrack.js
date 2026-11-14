@@ -16,7 +16,7 @@ export function createAgnesAITrack(base) {
     title: 'Agnes AI',
     category: 'Science, engineering & physical AI',
     subtitle: 'AI for Science and Physical AI',
-    summary: 'Choose a focused scientific, engineering or physical-world problem. Explore four suggested directions or propose your own, then build and validate a product powered by Agnes AI.',
+    summary: 'Choose a focused scientific, engineering or physical-world challenge. Explore four suggested directions or propose your own, then build and validate a product powered by Agnes AI.',
     cardDescription: 'One open challenge: build a focused science, engineering or physical-world product with Agnes AI and demonstrate measurable value against a baseline.',
     isMock: false,
     hasOfficialBriefs: true,

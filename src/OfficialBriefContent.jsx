@@ -3,7 +3,7 @@ import './official-brief.css'
 
 // oxlint-disable-next-line react/only-export-components -- Shared navigation metadata for the brief rail.
 export const officialBriefSections = [
-  ['problem', 'The problem'],
+  ['problem', 'The challenge'],
   ['focus', 'What to build'],
   ['deliverables', 'Demo & deliverables'],
   ['judging', 'Success criteria'],
@@ -54,7 +54,7 @@ export default function OfficialBriefContent({ track }) {
           <p>{source.title}</p>
         </div>
         <div className="td-source-intro-copy">
-          <SectionHeading label="The problem">The challenge.</SectionHeading>
+          <SectionHeading label="The objective">The challenge.</SectionHeading>
           <p className="td-source-objective" data-participant-problem><Text>{brief.problem}</Text></p>
         </div>
       </div>
@@ -69,7 +69,7 @@ export default function OfficialBriefContent({ track }) {
     {brief.directions?.length > 0 && <section id="directions" className="td-brief-section td-source-group">
       <SectionHeading label="Suggested directions">Choose a focused direction.</SectionHeading>
       <div className="td-source-body td-source-sections">
-        <p className="td-body-copy td-directions-intro">{brief.directionsIntro || 'These are starting points, not fixed challenges. Choose one and narrow it to a specific user, task and measurable outcome, or propose another relevant scientific, engineering or physical-world problem.'}</p>
+        <p className="td-body-copy td-directions-intro">{brief.directionsIntro || 'These are starting points, not fixed challenges. Choose one and narrow it to a specific user, task and measurable outcome, or propose another relevant scientific, engineering or physical-world challenge.'}</p>
         <Cards items={brief.directions} kind="directions" className="td-capability-grid" numbered list />
       </div>
     </section>}

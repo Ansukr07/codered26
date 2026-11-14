@@ -11,7 +11,7 @@ import { getMobileHeroCompression, MOBILE_HERO_SPACE_BUDGET } from './mobileHero
 import './track-detail.css'
 
 const sections = [
-  ['problem', 'The problem'], ['focus', 'Focus areas'], ['ideas', 'Example projects'],
+  ['problem', 'The challenge'], ['focus', 'Focus areas'], ['ideas', 'Example projects'],
   ['judging', 'Judging'], ['next', 'Explore more'],
 ]
 
@@ -274,11 +274,11 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
         {track.officialBrief ? <OfficialBriefContent track={track} /> : <>
         <section id="problem" className="td-brief-section td-problem">
           <div className="td-number-card"><span>BRIEF / {track.category}</span><strong>{track.problemNumber || track.numeral}</strong><p>{track.title}</p></div>
-          <div><SectionHeading label="The problem">{track.subtitle}</SectionHeading><p className="td-body-copy">{track.problem}</p><div className="td-tags">{track.focus.map((area) => <span key={area.title}>{area.title}</span>)}</div></div>
+          <div><SectionHeading label="The objective">{track.subtitle}</SectionHeading><p className="td-body-copy">{track.problem}</p><div className="td-tags">{track.focus.map((area) => <span key={area.title}>{area.title}</span>)}</div></div>
         </section>
         <section id="focus" className="td-brief-section"><SectionHeading label="Focus areas">Where you can make<br />a difference.</SectionHeading><ol className="td-focus-grid">{track.focus.map((area, i) => <li key={area.title}><span className="td-focus-number">{String(i + 1).padStart(2, '0')}</span><h3>{area.title}</h3><p>{area.text}</p></li>)}</ol></section>
-        <section id="ideas" className="td-brief-section td-ideas"><div><SectionHeading label="Example projects">A spark to<br />start with.</SectionHeading><p className="td-body-copy">A few directions to explore. Your team can approach the problem in its own way.</p></div><ol>{track.ideas.map((idea, i) => <li key={idea}><span>{String(i + 1).padStart(2, '0')}</span><p>{idea}</p></li>)}</ol></section>
-        <section id="judging" className="td-brief-section"><SectionHeading label="Judging">Build with purpose.</SectionHeading><dl className="td-criteria">{[['Originality', 'A thoughtful approach to the problem and a clear reason for your solution.'], ['Working prototype', 'A demonstrable core experience with a realistic scope.'], ['Usability', 'A product that is clear and accessible for its intended users.'], ['Potential impact', 'A useful outcome and a credible path to making it happen.']].map(([title, text]) => <div key={title}><dt>{title}</dt><dd>{text}</dd></div>)}</dl></section>
+        <section id="ideas" className="td-brief-section td-ideas"><div><SectionHeading label="Example projects">A spark to<br />start with.</SectionHeading><p className="td-body-copy">A few directions to explore. Your team can approach the challenge in its own way.</p></div><ol>{track.ideas.map((idea, i) => <li key={idea}><span>{String(i + 1).padStart(2, '0')}</span><p>{idea}</p></li>)}</ol></section>
+        <section id="judging" className="td-brief-section"><SectionHeading label="Judging">Build with purpose.</SectionHeading><dl className="td-criteria">{[['Originality', 'A thoughtful approach to the challenge and a clear reason for your solution.'], ['Working prototype', 'A demonstrable core experience with a realistic scope.'], ['Usability', 'A product that is clear and accessible for its intended users.'], ['Potential impact', 'A useful outcome and a credible path to making it happen.']].map(([title, text]) => <div key={title}><dt>{title}</dt><dd>{text}</dd></div>)}</dl></section>
         </>}
         <section id="next" className="td-brief-section td-next">
           <div className="td-next-banner" aria-labelledby="td-register-title">
