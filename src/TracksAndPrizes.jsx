@@ -287,7 +287,7 @@ export function PrizesSection() {
               zIndex: 10,
               whiteSpace: 'nowrap'
             }}>
-              Rs.&nbsp;2,25,000<sup className="prize-pool-plus">+</sup>
+              Rs.&nbsp;2,25,000<span className="prize-pool-plus">+</span><sup className="prize-pool-asterisk">*</sup>
             </h4>
           </div>
 

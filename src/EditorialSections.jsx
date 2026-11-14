@@ -74,7 +74,7 @@ const rounds = [
 ]
 
 const participationReasons = [
-  ['Compete & Win', 'Battle for a ₹2,25,000+ prize pool and recognition.'],
+  ['Compete & Win', 'Battle for a ₹2,25,000+* prize pool and recognition.'],
   ['Build Real Products', 'Turn bold ideas into functional prototypes in 24 hours.'],
   ['Learn from Experts', 'Get guidance and feedback from experienced industry mentors.'],
   ['Challenge Yourself', 'Push your skills through intense real-world problem-solving.'],
@@ -243,7 +243,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
         <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}>
           <div className="shift-event-summary">
             <strong>National level<br />24-hour product sprint.</strong>
-            <div className="shift-prize-pool"><strong className="shift-prize-amount">₹2,25,000+</strong><span className="shift-prize-label">Prize pool</span></div>
+            <div className="shift-prize-pool"><strong className="shift-prize-amount">₹2,25,000+<span className="shift-prize-asterisk">*</span></strong><span className="shift-prize-label">Prize pool</span></div>
           </div>
           <div className="shift-rail-spacer" aria-hidden="true" />
           <div className="shift-finale-group">
@@ -258,7 +258,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
       <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national-level product development challenge, bringing together innovators, developers, and problem-solvers from across the nation. Participants collaborate to turn ideas into functional prototypes through hands-on development and industry mentorship. Taking innovation a step further, selected teams may qualify for VentureX, an event where they pitch their products, business models, and vision to investors, exploring the potential to turn products into ventures<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
       <div className="shift-info-grid">
         <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Five main tracks</li><li>Challenges available</li></ul></article>
-        <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>₹2,25,000+ total prize pool</li><li>Recognition for standout teams</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>₹2,25,000+* total prize pool</li><li>Recognition for standout teams</li></ul></article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>24-hour overnight sprint</li><li>28–29 December 2026</li><li>Teams of 3–4</li><li>Top 50 teams at BMSIT&amp;M</li></ul></article>
       </div>
     </section>}

@@ -237,8 +237,9 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-event-summary,.shift-finale-group{display:flex;flex-direction:column;width:100%;min-width:0}
 .shift-event-summary{align-items:center;gap:26px;text-align:center}
 .shift-event-summary>strong{font:600 clamp(16px,1.1vw,18px)/1.3 LilGrotesk,Helvetica,sans-serif;letter-spacing:-.015em}
-.shift-prize-pool{display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:8px 10px}
+.shift-prize-pool{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px 10px}
 .shift-prize-pool .shift-prize-amount{font:600 clamp(32px,2.4vw,44px)/1.05 LilGrotesk,Helvetica,sans-serif;letter-spacing:-.03em;color:#f1eeeb;white-space:nowrap}
+.shift-prize-pool .shift-prize-asterisk{font-size:.45em;vertical-align:super}
 .shift-prize-label{font:500 13px/1.3 LilGrotesk,Helvetica,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#bdbdbd}
 .shift-rail-spacer{flex:1 0 48px;min-height:48px;width:100%}
 .shift-finale-group{gap:24px}
