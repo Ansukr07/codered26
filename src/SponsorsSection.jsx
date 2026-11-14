@@ -58,8 +58,8 @@ export default function SponsorsSection() {
         </div>
         <div className="sponsors-bento">
           <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-two">
-            <SponsorCard href="https://www.simpleenergy.in/" name="Simple Energy" logoSrc="/sponsors/simple-energy.svg" logoClass="is-simple-energy" />
             <SponsorCard href="https://niveussolutions.com.au/" name="Niveus Solutions" logoSrc="/sponsors/niveus-solutions.png" logoClass="is-niveus-solutions" />
+            <SponsorCard href="https://www.simpleenergy.in/" name="Simple Energy" logoSrc="/sponsors/simple-energy.png" logoClass="is-simple-energy" />
           </div>
           <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
             <SponsorCard href="https://agnes-ai.com/" name="Agnes AI" logoIconSrc="/sponsors/agnes-ai-icon.png" logoSrc="/sponsors/agnes-ai-wordmark.png" logoClass="is-agnes-ai" />
@@ -69,7 +69,7 @@ export default function SponsorsSection() {
           <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
             <SponsorCard href="https://cassettelabs.in/" name="Cassette Labs" logoSrc="/sponsors/cassette-labs.png" logoClass="is-cassette-labs" />
             <SponsorCard href="https://www.mystartupwave.com/" name="MyStartupWave" logoSrc="/sponsors/mystartupwave.png" logoClass="is-mystartupwave" />
-            <SponsorCard href="https://www.unisys.com/" name="Unisys" logoSrc="/sponsors/unisys.png" logoClass="is-unisys" />
+            <SponsorCard href="/tracks/track-4/problems" name="XP Robotics" logoSrc="/sponsors/xp-robotics.png" logoClass="is-xp-robotics" />
           </div>
           <div className="sponsors-grid-bottom sponsors-grid-four">
             <SponsorCard href="https://unstop.com/" name="Unstop" logoSrc="/sponsors/unstop.svg" logoClass="is-unstop" />

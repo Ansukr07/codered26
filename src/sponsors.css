@@ -204,6 +204,8 @@
 .sponsors-logo.is-niveus-solutions { width: clamp(230px, 26vw, 390px); }
 .sponsors-logo.is-unisys { width: clamp(200px, 21vw, 320px); }
 .sponsors-logo.is-unisys img { filter: none; }
+.sponsors-logo.is-xp-robotics { width: clamp(200px, 20vw, 280px); }
+.sponsors-logo.is-xp-robotics img { filter: none; }
 .sponsors-logo.is-niveus-solutions img { filter: none; }
 .sponsors-logo.is-sahasranshu { width: 84%; max-width: 350px; gap: 12px; }
 .sponsors-logo.is-sahasranshu img { width: 28%; flex: none; }
