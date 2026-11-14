@@ -57,16 +57,16 @@ export default function SponsorsSection() {
           <h2 className="sponsors-title">Partners</h2>
         </div>
         <div className="sponsors-bento">
-          <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-four">
-            <SponsorCard href="https://www.simpleenergy.in/" name="Simple Energy" logoSrc="/sponsors/simple-energy.svg" logoClass="is-simple-energy" />
-            <SponsorCard href="https://www.mystartupwave.com/" name="MyStartupWave" logoSrc="/sponsors/mystartupwave.png" logoClass="is-mystartupwave" />
-            <SponsorCard href="https://agnes-ai.com/" name="Agnes AI" logoIconSrc="/sponsors/agnes-ai-icon.png" logoSrc="/sponsors/agnes-ai-wordmark.png" logoClass="is-agnes-ai" />
-            <SponsorCard href="https://niveussolutions.com.au/" name="Niveus Solutions" logoSrc="/sponsors/niveus-solutions.png" logoClass="is-niveus-solutions" />
-          </div>
           <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
+            <SponsorCard href="https://www.simpleenergy.in/" name="Simple Energy" logoSrc="/sponsors/simple-energy.svg" logoClass="is-simple-energy" />
+            <SponsorCard href="https://niveussolutions.com.au/" name="Niveus Solutions" logoSrc="/sponsors/niveus-solutions.png" logoClass="is-niveus-solutions" />
+            <SponsorCard href="https://agnes-ai.com/" name="Agnes AI" logoIconSrc="/sponsors/agnes-ai-icon.png" logoSrc="/sponsors/agnes-ai-wordmark.png" logoClass="is-agnes-ai" />
+          </div>
+          <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-four">
             <SponsorCard href="https://thinkrobotics.com/" name="Think Robotics" logoSrc="/sponsors/think-robotics.png" logoClass="is-think-robotics" />
             <SponsorCard href="https://sahasranshu.com/" name="Sahasranshu Technologies" logoSrc="/sponsors/sahasranshu-technologies.png" logoClass="is-sahasranshu" wordmark />
             <SponsorCard href="https://cassettelabs.in/" name="Cassette Labs" logoIconSrc="/sponsors/cassette-labs-icon.svg" logoSrc="/sponsors/cassette-labs.png" logoClass="is-cassette-labs" />
+            <SponsorCard href="https://www.mystartupwave.com/" name="MyStartupWave" logoSrc="/sponsors/mystartupwave.png" logoClass="is-mystartupwave" />
           </div>
           <div className="sponsors-grid-bottom sponsors-grid-four">
             <SponsorCard href="https://unstop.com/" name="Unstop" logoSrc="/sponsors/unstop.svg" logoClass="is-unstop" />
