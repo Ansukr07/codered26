@@ -296,7 +296,7 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-venturex-panel{width:100%;display:flex;flex-direction:column;align-items:flex-start;margin-top:auto}
 .shift-rail-intro .shift-venturex-heading{display:block;font:400 clamp(32px,2.7vw,44px)/1.06 Valentine,Georgia,serif;letter-spacing:0;color:var(--shift-ink,#222);margin:0 0 clamp(14px,1.3vw,20px);text-wrap:balance}
 .shift-rail-intro .shift-venturex-desc{font:400 clamp(15px,1.15vw,18px)/1.5 LilGrotesk,Helvetica,sans-serif;letter-spacing:-.01em;color:rgba(34,34,34,.82);margin:0 0 clamp(20px,1.8vw,28px);max-width:36ch}
-.shift-venturex-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:46px;max-width:100%;box-sizing:border-box;padding:11px 16px;border:1px solid var(--shift-ink,#222);background:transparent;color:var(--shift-ink,#222);text-decoration:none;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
+.shift-venturex-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:46px;max-width:100%;box-sizing:border-box;padding:11px 16px;border:1px solid var(--shift-ink,#222);background:transparent;color:var(--shift-ink,#222);text-decoration:none;cursor:pointer;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
 .shift-rail-intro .shift-venturex-cta-label{font:600 14px/1.2 LilGrotesk,Helvetica,sans-serif;letter-spacing:0}
 .shift-rail-intro .shift-venturex-arrow{flex:none;font:400 20px/1 LilGrotesk,Helvetica,sans-serif;letter-spacing:0;transition:transform .2s ease}
 .shift-venturex-cta:is(:hover,:focus-visible){background:#1e1b18;border-color:#1e1b18;color:#fff}

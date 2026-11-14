@@ -229,15 +229,14 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
             <p className="shift-venturex-desc">
               Top Code Red teams get direct access to pitch at VentureX and turn ideas into reality.
             </p>
-            <a
-              href="https://venture-x-bmsit.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
               className="shift-venturex-cta"
+              onClick={() => window.dispatchEvent(new CustomEvent('site-notice', { detail: 'Coming Soon' }))}
             >
               <span className="shift-venturex-cta-label">Explore VentureX</span>
               <span className="shift-venturex-arrow" aria-hidden="true">↗</span>
-            </a>
+            </button>
           </div>
         </div>
         <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}>

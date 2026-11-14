@@ -135,10 +135,10 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
           </ul>
 
           <div className="nav-footer">
-            <button type="button" className="nav-btn-pitchdeck" onClick={() => { closeMenu(); onNavigate('notFound'); }}>PPT TEMPLATE</button>
+            <button type="button" className="nav-btn-pitchdeck" onClick={() => { closeMenu(); showNotice('Coming Soon'); }}>PPT TEMPLATE</button>
             <div className="nav-footer-row">
               <button type="button" className="nav-btn-action" onClick={() => { closeMenu(); showNotice('Coming Soon'); }}>REGISTER NOW</button>
-              <button type="button" className="nav-btn-action" onClick={() => { closeMenu(); onNavigate('notFound'); }}>BROCHURE</button>
+              <button type="button" className="nav-btn-action" onClick={() => { closeMenu(); showNotice('Coming Soon'); }}>BROCHURE</button>
             </div>
           </div>
         </div>
