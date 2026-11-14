@@ -109,7 +109,7 @@ CODE RED ’26 Grand Finale.
 | **Who is eligible to participate?** | Students enrolled in accredited higher education institutions across India. |
 | **Is there an entry fee?** | **Round 1 (Online Abstract Submission) is free of cost.** Teams shortlisted for the Round 2 Offline Finale pay an administrative confirmation fee of ₹ per team (covers venue access, food, connectivity, and kits). |
 | **What are the team size parameters?** | Teams must comprise **3 to 4 members**. Cross-college and inter-departmental team compositions are fully permitted. |
-| **Are pre-existing projects permitted?** | No. All code, hardware wiring, and system configurations must be executed **from scratch** during the official 24-hour sprint window. Standard open-source libraries and public APIs are permitted. |
+| **Are pre-existing projects permitted?** | No. Participants must develop their solutions based on the official tracks provided on the Code Red ’26 website. Teams can start working on their selected track from Round 1 itself and continue developing their solutions throughout the competition. Standard open-source libraries and public APIs are permitted. |
 | **What hardware facilities are provided?** | Hardware Track teams must bring their core development kits (e.g., Raspberry Pi, ESP32, sensors). The host institution provides workbench facilities, power distribution extensions, and basic assembly stations. |
 | **Is hospitality arranged for offline participants?** | Yes. Registered finalists receive complete onsite hospitality, including catered meals, midnight snacks, beverage stations, continuous facility access, and designated rest areas. |
 
@@ -128,7 +128,7 @@ Battle for a ₹2,25,000+ prize pool and recognition.
 
 **Build Real Products**
 
-Turn bold ideas into functional prototypes in 24 hours.
+Turn your ideas into working solutions and take them further at the grand finale.
 
 **Learn from Experts**
 

@@ -94,14 +94,14 @@ const questions = [
   ['What are the team size parameters?', 'Teams must comprise 3 to 4 members. Cross-college and inter-departmental team compositions are fully permitted.'],
   ['Is there an entry fee?', 'Round 1 online submission is free. Shortlisted offline finalists pay an administrative confirmation fee covering venue access, food, connectivity, and kits. The amount is to be confirmed.'],
   ['When and where is the grand finale?', 'The 24-hour finale takes place on 28–29 December 2026 at BMS Institute of Technology & Management, Yelahanka, Bengaluru.'],
-  ['Are pre-existing projects permitted?', 'Yes. Participants are encouraged to start developing their projects from Round 1 itself. Teams can work on their ideas, develop prototypes, write code and integrate hardware throughout the competition. The 24-hour Product Development Sprint at BMSIT&M will provide an opportunity to further enhance, refine and demonstrate their products. Standard open-source libraries and public APIs are permitted.'],
+  ['Are pre-existing projects permitted?', 'No. Participants must develop their solutions based on the official tracks provided on the Code Red ’26 website. Teams can start working on their selected track from Round 1 itself and continue developing their solutions throughout the competition. The 24-hour Product Development Sprint at BMSIT&M will provide an opportunity to further enhance, refine and demonstrate their products. Standard open-source libraries and public APIs are permitted.'],
   ['What hardware facilities are provided?', 'Hardware teams must bring their core development kits, such as Raspberry Pi, ESP32, and sensors. The host institution provides workbenches, power extensions, and basic assembly stations.'],
   ['Is hospitality arranged for offline participants?', 'Yes. Registered finalists receive onsite hospitality, including catered meals, midnight snacks, beverages, continuous facility access, and designated rest areas.'],
   ['What happens after the sprint?', 'Promising projects may qualify for VentureX, a separate event to pitch their products, business models, and vision to investors.'],
 ]
 
 function App({ initialPage, initialTeamPage }) {
-  return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: true }}>
+  return <ReactLenis root options={{ lerp: 0.07, smoothWheel: true, syncTouch: false }}>
     <PageContent initialPage={initialPage} initialTeamPage={initialTeamPage} />
   </ReactLenis>
 }

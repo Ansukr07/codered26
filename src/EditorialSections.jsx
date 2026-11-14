@@ -75,7 +75,7 @@ const rounds = [
 
 const participationReasons = [
   ['Compete & Win', 'Battle for a ₹2,25,000+* prize pool and recognition.'],
-  ['Build Real Products', 'Turn bold ideas into functional prototypes in 24 hours.'],
+  ['Build Real Products', 'Turn your ideas into working solutions and take them further at the grand finale.'],
   ['Learn from Experts', 'Get guidance and feedback from experienced industry mentors.'],
   ['Challenge Yourself', 'Push your skills through intense real-world problem-solving.'],
   ['Connect & Collaborate', 'Meet student innovators, developers, and builders across India.'],
