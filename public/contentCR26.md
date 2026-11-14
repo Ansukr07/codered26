@@ -78,11 +78,11 @@ Startup Track contains Think Robotics, MyStartupWave, Sahasranshu Technologies a
 * **ROUND 02 — ONLINE IDEA PITCH**  
   Shortlisted teams pitch their idea online to the judging panel and defend their approach.  
   ↓  
-* **TOP 50 TEAMS**  
-  The strongest 50 teams are selected.  
+* **TOP 60 TEAMS**  
+  The strongest 60 teams are selected.  
   ↓  
 * **GRAND FINALE — BMSIT\&M**  
-  The top 50 come to BMSIT\&M for the final product-development sprint, demonstration and final evaluation.
+  The top 60 come to BMSIT\&M for the final product-development sprint, demonstration and final evaluation.
 
 **22nd October 2026 | CODE RED ’26 Launch and Registration**  
 Challenge briefs go live on the website and registrations open.
@@ -93,7 +93,7 @@ Registration closes; this is the deadline for idea submissions.
 **14th–15th November 2026 | Round 2 — Online Evaluation**  
 Google Meet evaluations for teams shortlisted from Round 1.
 
-**18th November 2026 | Top 50 Teams Announced**  
+**18th November 2026 | Top 60 Teams Announced**  
 Round 2 results will be published on the website.
 
 **TBA | 24-hour On-Campus Sprint**
@@ -152,10 +152,10 @@ Top teams may qualify for VentureX, a separate investor-pitching event.
 | ----- | ----- |
 | 1\. Hero | Powerful tagline, registration button, prize pool, countdown |
 | 2\. About Code Red | What the sprint is and what makes it special |
-| 3\. Event Highlights | ₹2,25,000+ prize pool, 24 hours, top 50 teams, team size |
+| 3\. Event Highlights | ₹2,25,000+ prize pool, 24 hours, top 60 teams, team size |
 | 4\. Why Participate? | Prizes, mentorship, skills, networking, career opportunities |
 | 5\. Tracks & Challenges | Four tracks with detailed challenges |
-| 6\. How It Works | PPT submission → Online pitch → Top 50 → Offline finale |
+| 6\. How It Works | PPT submission → Online pitch → Top 60 → Offline finale |
 | 7\. Timeline | Registration, evaluation, results, finale dates |
 | 8\. Prize Pool | Prize distribution and special awards |
 | 9\. Evaluation Criteria | How teams are selected and judged |

@@ -89,7 +89,7 @@ const baseElements = Array.from({ length: totalElements }).map((_, i) => {
 });
 
 const questions = [
-  ['How does Code Red ’26 work?', 'Submit your PPT online. Shortlisted teams pitch their prototype and methodology online and defend their approach. The top 50 teams advance to the 24-hour offline finale at BMSIT&M.'],
+  ['How does Code Red ’26 work?', 'Submit your PPT online. Shortlisted teams pitch their prototype and methodology online and defend their approach. The top 60 teams advance to the 24-hour offline finale at BMSIT&M.'],
   ['Who is eligible to participate?', 'Students enrolled in accredited higher education institutions across India.'],
   ['What are the team size parameters?', 'Teams must comprise 3 to 4 members. Cross-college and inter-departmental team compositions are fully permitted.'],
   ['Is there an entry fee?', 'Round 1 online submission is free. Shortlisted offline finalists pay an administrative confirmation fee covering venue access, food, connectivity, and kits. The amount is to be confirmed.'],

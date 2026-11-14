@@ -285,7 +285,7 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
           <div className="td-next-banner" aria-labelledby="td-register-title">
             <p className="td-kicker">28–29 December 2026 · BMSIT&amp;M, Bengaluru</p>
             <h2 id="td-register-title">Register for {track.title}</h2>
-            <p className="td-register-summary">Teams of 3–4. Turn ideas into working products during Code Red’s 24-hour finale.</p>
+            <p className="td-register-summary">Teams of 3–4. Turn your ideas into working solutions and take them further at the grand finale.</p>
             <div className="td-register-actions">
               <button className="td-button td-button--motion" type="button" onClick={register}><TrackButtonContent arrow="↗">Register your team</TrackButtonContent></button>
               <a className="td-button td-button--outline td-button--motion" href="/faq" onClick={follow('faq')}><TrackButtonContent>Participation details</TrackButtonContent></a>
