@@ -7,7 +7,7 @@ const groups = [
   ['Co ordinators', 'Coordinators'],
   ['tech_domain', 'Tech Domain'],
   ['design_domain', 'Design Domain'],
-  ['media_marketing', 'Marketing'],
+  ['media_marketing', 'Media and Marketing'],
   ['events_ops', 'Events & operations'],
   ['corporate_relations', 'Corporate relations'],
   ['content_team', 'Content'],

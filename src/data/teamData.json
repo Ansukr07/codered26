@@ -91,6 +91,8 @@
       "name": "Manal Gupta",
       "position": "Marketing Head",
       "image": "./assets/team/manal.png",
+      "imageScale": 1.8,
+      "imageScaleOrigin": "40% 50%",
       "socials": {"instagram": "https://www.instagram.com/manal_gupta_/", "linkedin": "https://www.linkedin.com/in/manal-gupta-90429532a/"}
     },
     {
