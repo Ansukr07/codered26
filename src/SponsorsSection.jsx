@@ -69,7 +69,7 @@ export default function SponsorsSection() {
           <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
             <SponsorCard href="https://cassettelabs.in/" name="Cassette Labs" logoSrc="/sponsors/cassette-labs.png" logoClass="is-cassette-labs" />
             <SponsorCard href="https://www.mystartupwave.com/" name="MyStartupWave" logoSrc="/sponsors/mystartupwave.png" logoClass="is-mystartupwave" />
-            <SponsorCard href="/tracks/track-4/problems" name="XP Robotics" logoSrc="/sponsors/xp-robotics.png" logoClass="is-xp-robotics" />
+            <SponsorCard href="https://xprobotics.ai/" name="XP Robotics" logoSrc="/sponsors/xp-robotics.png" logoClass="is-xp-robotics" />
           </div>
           <div className="sponsors-grid-bottom sponsors-grid-four">
             <SponsorCard href="https://unstop.com/" name="Unstop" logoSrc="/sponsors/unstop.svg" logoClass="is-unstop" />
