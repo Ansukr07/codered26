@@ -1,0 +1,52 @@
+[
+  {
+    "number": 1,
+    "problem": "The rapid proliferation of satellites, space debris and unidentified orbital objects in Low Earth Orbit (LEO) is a growing challenge to the safety, security and sustainability of space operations. Existing Space Domain Awareness systems struggle to track smaller objects, maintain accurate orbital trajectories, detect anomalous movements and deliver timely collision-risk assessments. Build an indigenous, AI/ML-powered Space Domain Awareness platform that leverages ground-based and space-based LiDAR technologies, integrated with optical and radar sensors, to enable accurate detection, tracking, characterization and predictive analysis of orbital objects.",
+    "audience": "Satellite operators and national space agencies who need real-time situational awareness, visual analytics and decision support; space-traffic coordinators tracking assets in increasingly crowded orbits.",
+    "outcome": "A validated technology demonstrator that improves orbital tracking accuracy, reduces false collision alerts and enables earlier identification of potentially hazardous space events — establishing an indigenous, AI-enabled Space Domain Awareness capability that strengthens India’s space asset protection, space traffic coordination and long-term orbital sustainability.",
+    "required": [
+      { "title": "LiDAR-based object tracking", "text": "Leverage high-precision laser-ranging measurements to improve the positional accuracy of satellites and orbital debris." },
+      { "title": "AI/ML-powered sensor fusion", "text": "Integrate LiDAR, radar, optical observations and orbital catalogues into a unified, continuously updated space-object tracking picture." },
+      { "title": "Predictive orbital intelligence", "text": "Develop physics-informed machine learning models to estimate orbital trajectories, predict close approaches and assess collision risks with quantified uncertainty." },
+      { "title": "Anomaly detection", "text": "Identify unusual orbital manoeuvres, unexpected trajectory deviations and potentially hazardous proximity events." },
+      { "title": "Autonomous space surveillance", "text": "Enable intelligent sensor scheduling, observation prioritization, automated object association and explainable risk alerts." },
+      { "title": "Indigenous SDA command platform", "text": "Build a scalable, secure, on-premises platform providing real-time situational awareness, visual analytics and decision support for satellite operators and national space agencies." }
+    ],
+    "optional": [
+      { "title": "Catalogue federation", "text": "Correlate additional orbital catalogues and space-environment feeds to enrich the unified tracking picture." },
+      { "title": "Constellation-scale monitoring", "text": "Extend the tracking and prediction pipeline from individual objects to full constellations." },
+      { "title": "Deeper explainability", "text": "Richer explanations for risk alerts, showing which sensor observations drove each prediction." }
+    ],
+    "workflow": "LiDAR, radar and optical observations flow in → sensor fusion builds a unified, continuously updated space-object picture → physics-informed models estimate trajectories, predict close approaches and quantify collision risk → anomalies and hazardous proximity events are flagged → the command platform delivers real-time situational awareness and decision support to operators.",
+    "deliverables": [
+      { "title": "SDA prototype", "text": "An end-to-end demonstrator covering detection, tracking, characterization, sensor fusion and predictive analysis of orbital objects." },
+      { "title": "Predictive intelligence report", "text": "Orbital trajectory estimates, close-approach predictions and collision-risk assessments with quantified uncertainty." },
+      { "title": "Command platform demo", "text": "The on-premises platform showing real-time situational awareness, visual analytics and decision support for operators." },
+      { "title": "Evaluation report", "text": "Tracking accuracy, false-alert reduction, anomaly-detection performance and uncertainty quantification from your test set." }
+    ],
+    "success": [
+      { "title": "Tracking accuracy", "text": "Improved positional accuracy for satellites and orbital debris through LiDAR-based ranging." },
+      { "title": "Prediction quality", "text": "Reliable orbital trajectory estimates, close-approach predictions and collision risks with quantified uncertainty." },
+      { "title": "Anomaly detection", "text": "Unusual manoeuvres, trajectory deviations and hazardous proximity events identified early." },
+      { "title": "False-alert reduction", "text": "Fewer false collision alerts compared with the baseline." },
+      { "title": "Platform readiness", "text": "A scalable, secure, on-premises command platform delivering real-time situational awareness." }
+    ],
+    "constraints": [
+      { "title": "Multi-sensor integration", "text": "LiDAR, radar, optical observations and orbital catalogues must fuse into one continuously updated tracking picture." },
+      { "title": "Physics-informed models", "text": "Predictive models must be grounded in orbital physics and report uncertainty, not just point estimates." },
+      { "title": "Indigenous and on-premises", "text": "The command platform must be scalable, secure and run on-premises for satellite operators and national space agencies." },
+      { "title": "Autonomous yet explainable", "text": "Sensor scheduling, observation prioritization and object association should be automated with explainable risk alerts." }
+    ],
+    "scope": [
+      { "title": "In scope", "text": "Detection, tracking, characterization and predictive analysis of LEO orbital objects using LiDAR, radar, optical sensors and AI/ML — with an on-premises command platform for operators." },
+      { "title": "Out of scope", "text": "Physical sensor hardware development is not required — teams demonstrate the platform on provided formats, simulated or publicly available observation data." },
+      { "title": "Data note", "text": "The partner supplies no live sensor streams; generate realistic LiDAR, radar and optical observations to develop and demonstrate the system." }
+    ],
+    "resources": [
+      { "title": "Orbital catalogues", "text": "Orbital catalogue data for object association and the unified tracking picture." },
+      { "title": "LiDAR ranging data", "text": "Laser-ranging measurements to improve positional accuracy of satellites and debris." },
+      { "title": "Multi-sensor observations", "text": "Radar and optical observations to fuse with LiDAR into the tracking picture." },
+      { "title": "Sahasranshu Technologies team", "text": "Clarify data formats, sensor models and platform requirements with the challenge desk." }
+    ]
+  }
+]

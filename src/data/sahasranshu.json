@@ -1,0 +1,23 @@
+[
+  {
+    "number": 1,
+    "company": "Sahasranshu Technologies",
+    "companyAttribution": "Problem statement supplied directly by the partner for Code Red ’26.",
+    "title": "Space Domain Awareness",
+    "fullTitle": "AI/ML-Powered Space Domain Awareness Platform for Low Earth Orbit",
+    "subtitle": "For space asset protection and orbital sustainability",
+    "industry": "Space Tech / AI-ML & LiDAR",
+    "asOf": "2026-11-15",
+    "source": {
+      "filename": "Sahasranshu-Problem-Statement.txt",
+      "href": null,
+      "pages": 1
+    },
+    "pages": [
+      {
+        "page": 1,
+        "text": "Problem Statement\n\nThe rapid proliferation of satellites, space debris, and unidentified orbital objects in Low Earth Orbit (LEO) presents a growing challenge to the safety, security, and sustainability of space operations. Existing Space Domain Awareness (SDA) systems face limitations in tracking smaller objects, maintaining accurate orbital trajectories, detecting anomalous movements, and delivering timely collision-risk assessments.\n\nThe challenge is to develop an indigenous, AI/ML-powered Space Domain Awareness platform leveraging ground-based and space-based LiDAR technologies, integrated with optical and radar sensors, to enable accurate detection, tracking, characterization, and predictive analysis of orbital objects.\n\nThe proposed system should:\n\n1. LiDAR-Based Object Tracking: Leverage high-precision laser-ranging measurements to improve the positional accuracy of satellites and orbital debris.\n2. AI/ML-Powered Sensor Fusion: Integrate LiDAR, radar, optical observations, and orbital catalogues to generate a unified, continuously updated space-object tracking picture.\n3. Predictive Orbital Intelligence: Develop physics-informed machine learning models to estimate orbital trajectories, predict close approaches, and assess collision risks with quantified uncertainty.\n4. Anomaly Detection: Identify unusual orbital manoeuvres, unexpected trajectory deviations, and potentially hazardous proximity events.\n5. Autonomous Space Surveillance: Enable intelligent sensor scheduling, observation prioritization, automated object association, and explainable risk alerts.\n6. Indigenous SDA Command Platform: Build a scalable, secure, on-premises platform providing real-time situational awareness, visual analytics, and decision support for satellite operators and national space agencies.\n\nExpected Outcome\n\nA validated technology demonstrator capable of improving orbital tracking accuracy, reducing false collision alerts, and enabling earlier identification of potentially hazardous space events through AI-driven LiDAR and multi-sensor intelligence.\n\nStrategic Objective: Establish an indigenous, AI-enabled Space Domain Awareness capability that strengthens India’s space asset protection, space traffic coordination, and long-term orbital sustainability."
+      }
+    ]
+  }
+]
