@@ -288,7 +288,6 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
             <p className="td-register-summary">Teams of 3–4. Turn your ideas into working solutions and take them further at the grand finale.</p>
             <div className="td-register-actions">
               <button className="td-button td-button--motion" type="button" onClick={register}><TrackButtonContent arrow="↗">Register your team</TrackButtonContent></button>
-              <a className="td-button td-button--outline td-button--motion" href="/faq" onClick={follow('faq')}><TrackButtonContent>Participation details</TrackButtonContent></a>
             </div>
           </div>
           {hasSiblingNavigation && <nav className="td-other-tracks" aria-label={isProblem ? 'Other challenges' : parentTrack.startupParent ? 'Other startup tracks' : 'Other tracks'}>
