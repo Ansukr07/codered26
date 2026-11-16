@@ -63,13 +63,17 @@ export default function SponsorsSection() {
           </div>
           <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
             <SponsorCard href="https://agnes-ai.com/" name="Agnes AI" logoIconSrc="/sponsors/agnes-ai-icon.png" logoSrc="/sponsors/agnes-ai-wordmark.png" logoClass="is-agnes-ai" />
-            <SponsorCard href="https://thinkrobotics.com/" name="Think Robotics" logoSrc="/sponsors/think-robotics.png" logoClass="is-think-robotics" />
-            <SponsorCard href="https://sahasranshu.com/" name="Sahasranshu Technologies" logoSrc="/sponsors/sahasranshu-technologies.png" logoClass="is-sahasranshu" wordmark />
+            <SponsorCard href="https://www.unisys.com/" name="Unisys" logoSrc="/sponsors/unisys3.png" logoClass="is-unisys" />
+            <SponsorCard href="https://xprobotics.ai/" name="XP Robotics" logoSrc="/sponsors/xp-robotics.png" logoClass="is-xp-robotics" />
           </div>
           <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
+            <SponsorCard href="https://thinkrobotics.com/" name="Think Robotics" logoSrc="/sponsors/think-robotics.png" logoClass="is-think-robotics" />
+            <SponsorCard href="https://sahasranshu.com/" name="Sahasranshu Technologies" logoSrc="/sponsors/sahasranshu-technologies.png" logoClass="is-sahasranshu" wordmark />
             <SponsorCard href="https://cassettelabs.in/" name="Cassette Labs" logoSrc="/sponsors/cassette-labs.png" logoClass="is-cassette-labs" />
+          </div>
+          <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-two">
             <SponsorCard href="https://www.mystartupwave.com/" name="MyStartupWave" logoSrc="/sponsors/mystartupwave.png" logoClass="is-mystartupwave" />
-            <SponsorCard href="https://xprobotics.ai/" name="XP Robotics" logoSrc="/sponsors/xp-robotics.png" logoClass="is-xp-robotics" />
+            <SponsorCard href="https://aigrants.in/" name="AI Grants India" logoSrc="/sponsors/aigi.png" logoClass="is-aigi" />
           </div>
           <div className="sponsors-grid-bottom sponsors-grid-four">
             <SponsorCard href="https://unstop.com/" name="Unstop" logoSrc="/sponsors/unstop.svg" logoClass="is-unstop" />

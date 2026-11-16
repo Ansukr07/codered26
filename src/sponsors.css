@@ -202,8 +202,10 @@
 .sponsors-logo.is-agnes-ai img { min-width: 0; }
 .sponsors-logo.is-mystartupwave { width: clamp(110px, 14vw, 175px); }
 .sponsors-logo.is-niveus-solutions { width: clamp(230px, 26vw, 390px); }
-.sponsors-logo.is-unisys { width: clamp(200px, 21vw, 320px); }
-.sponsors-logo.is-unisys img { filter: none; }
+.sponsors-logo.is-unisys { width: clamp(180px, 20vw, 290px); }
+.sponsors-logo.is-unisys img { filter: none; opacity: 1; }
+.sponsors-logo.is-aigi { width: clamp(120px, 14vw, 185px); }
+.sponsors-logo.is-aigi img { filter: none; opacity: 1; }
 .sponsors-logo.is-xp-robotics { width: clamp(200px, 20vw, 280px); }
 .sponsors-logo.is-xp-robotics img { filter: none; }
 .sponsors-logo.is-niveus-solutions img { filter: none; }
