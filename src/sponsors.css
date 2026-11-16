@@ -206,6 +206,8 @@
 .sponsors-logo.is-unisys img { filter: none; opacity: 1; }
 .sponsors-logo.is-aigi { width: clamp(120px, 14vw, 185px); }
 .sponsors-logo.is-aigi img { filter: none; opacity: 1; }
+.sponsors-logo.is-heapify { width: clamp(90px, 11vw, 140px); }
+.sponsors-logo.is-heapify img { filter: none; opacity: 1; }
 .sponsors-logo.is-xp-robotics { width: clamp(200px, 20vw, 280px); }
 .sponsors-logo.is-xp-robotics img { filter: none; }
 .sponsors-logo.is-niveus-solutions img { filter: none; }
