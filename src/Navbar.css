@@ -298,11 +298,14 @@
 }
 
 .nav-btn-pitchdeck {
+  display: block;
   width: 100%;
   background: transparent;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 14px;
+  text-align: center;
+  text-decoration: none;
   font-family: LilGrotesk, sans-serif;
   font-size: 11px;
   letter-spacing: 1px;

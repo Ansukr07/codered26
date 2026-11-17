@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { REGISTER_URL } from './components/RegisterButton';
 import './Navbar.css';
 const logoImage = '/logos/Asset%2026.svg';
+const PPT_TEMPLATE_URL = 'https://docs.google.com/presentation/d/1vkKQvK9kMDYdVxp7_KhpW1tkRy79J-gI/edit?usp=sharing&ouid=111853442376170076625&rtpof=true&sd=true';
 
 const pageLinks = [
   ['home', 'Home'],
@@ -136,7 +137,7 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
           </ul>
 
           <div className="nav-footer">
-            <button type="button" className="nav-btn-pitchdeck" onClick={() => { closeMenu(); showNotice('Coming Soon'); }}>PPT TEMPLATE</button>
+            <a className="nav-btn-pitchdeck" href={PPT_TEMPLATE_URL} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>PPT TEMPLATE</a>
             <div className="nav-footer-row">
               <button type="button" className="nav-btn-action" onClick={() => { closeMenu(); window.open(REGISTER_URL, '_blank', 'noopener, noreferrer'); }}>REGISTER NOW</button>
               <button type="button" className="nav-btn-action" onClick={() => { closeMenu(); window.open('https://drive.google.com/file/d/1tgCUXo4nW9v6nEZ_4klPbX4lGOQqv4WN/view?usp=sharing', '_blank', 'noopener, noreferrer'); }}>BROCHURE</button>
