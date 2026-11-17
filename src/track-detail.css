@@ -245,6 +245,8 @@
   .td-demo-label { display: none; }
   .td-mic { width: 42px; height: 46px; }
   .td-answer span { font-size: 13px; padding: 5px 9px; }
+  .td-answer { min-height: 50px; padding-top: 12px; }
+  .td-summary { margin-top: 12px; }
   .td-actions { flex-direction: column; gap: 10px; }
   .td-button { font-size: 16px; min-height: 56px; }
   /* The 98px compression budget is shared with mobileHeroFit.js. */
@@ -252,8 +254,8 @@
   .td-hero--brief .td-heading { top: 0; }
   .td-hero--brief .td-heading h1 { margin: calc(12px - 4px * var(--td-mobile-fit,0)) 0 calc(16px - 6px * var(--td-mobile-fit,0)); }
   .td-hero--brief .td-stage { margin-top: calc(24px - 12px * var(--td-mobile-fit,0)); }
-  .td-hero--brief .td-answer { min-height: calc(58px - 4px * var(--td-mobile-fit,0)); padding-top: calc(10px - 4px * var(--td-mobile-fit,0)); }
-  .td-hero--brief .td-summary { margin-top: calc(14px - 6px * var(--td-mobile-fit,0)); }
+  .td-hero--brief .td-answer { min-height: calc(50px - 4px * var(--td-mobile-fit,0)); padding-top: calc(8px - 4px * var(--td-mobile-fit,0)); }
+  .td-hero--brief .td-summary { margin-top: calc(10px - 4px * var(--td-mobile-fit,0)); }
   .td-hero--brief .td-actions { margin-top: calc(40px - 24px * var(--td-mobile-fit,0)); gap: calc(10px - 2px * var(--td-mobile-fit,0)); }
   .td-hero--brief .td-button { min-height: calc(56px - 8px * var(--td-mobile-fit,0)); padding-block: calc(16px - 4px * var(--td-mobile-fit,0)); }
   .td-hero--brief :is(.td-subtitle, .td-search, .td-answer, .td-summary) { position: relative; top: 5px; }
