@@ -302,6 +302,7 @@
 .td-delivery-panel .td-source-bullet::marker { color: var(--td-paper); }
 .td-delivery-panel .td-visual-grid { gap: 0; }
 .td-delivery-panel .td-visual-item { padding: 18px 0; border-top: 1px solid #f6f2ea40; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 16px; }
+.td-delivery-panel .td-visual-item:first-child { border-top: 0; padding-top: 0; }
 .td-delivery-panel .td-visual-index { color: var(--td-paper); font-size: 18px; line-height: 1.7; margin: 0; }
 
 /* Rule panels, resource rows, and open success criteria. */
