@@ -42,9 +42,9 @@
 .ps-index .tp-card-top { aspect-ratio: auto; height: 144px; }
 .ps-index .tp-inner-box { height: auto; min-height: 50%; }
 .ps-index .tp-inner-text { padding-block: 10px; }
-.ps-index .ps-company-card .tp-card-top { display: flex; align-items: center; height: auto; min-height: 144px; padding: 28px 4.5%; }
-.ps-index .ps-company-card .tp-inner-box { position: relative; top: auto; left: auto; width: 100%; min-height: 72px; }
-.ps-index .ps-company-card .tp-inner-text { min-width: 0; }
+.ps-index :is(.ps-company-card, .ps-card--auto-title) .tp-card-top { display: flex; align-items: center; height: auto; min-height: 144px; padding: 28px 4.5%; }
+.ps-index :is(.ps-company-card, .ps-card--auto-title) .tp-inner-box { position: relative; top: auto; left: auto; width: 100%; min-height: 72px; }
+.ps-index :is(.ps-company-card, .ps-card--auto-title) .tp-inner-text { min-width: 0; }
 .ps-index .track-card .tp-h-medium { font-family: Valentine, Georgia, serif; font-weight: 400 !important; font-size: clamp(32px, 3.4vw, 46px); line-height: 1.08; white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; transform: none; }
 .ps-index .track-card-body::before { opacity: .2; }
 .ps-index .track-card-content { position: relative; min-height: 240px; padding: 28px 28px 22px; gap: 40px; }
@@ -103,7 +103,7 @@
   .ps-index .track-card-content { padding: 24px; min-height: 220px; gap: 32px; }
   .ps-index .ps-card-summary { font-size: 17px; }
   .ps-index .tp-card-top { height: 136px; }
-  .ps-index .ps-company-card .tp-card-top { min-height: 136px; padding-block: 24px; }
+  .ps-index :is(.ps-company-card, .ps-card--auto-title) .tp-card-top { min-height: 136px; padding-block: 24px; }
   .ps-index .track-ghost-number { font-size: 120px; }
 }
 @media (max-width: 360px) {

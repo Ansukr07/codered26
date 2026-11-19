@@ -3,6 +3,7 @@ import { createThinkRoboticsTrack } from './thinkRoboticsTrack.js'
 import { createAgnesAITrack } from './agnesAITrack.js'
 import { createCassetteLabsTrack } from './cassetteLabsTrack.js'
 import { createSahasranshuTrack } from './sahasranshuTrack.js'
+import { createNiveusTrack } from './niveusTrack.js'
 
 function createTrackBase({ title, slug, page, numeral, ...details }) {
   return {
@@ -31,8 +32,8 @@ function pendingTrack(base) {
   }
 }
 
-const niveus = pendingTrack(createTrackBase({
-  title: 'Niveus Solutions', slug: 'track-1', page: 'tracks/track-1', numeral: '01',
+const niveus = createNiveusTrack(createTrackBase({
+  title: 'Niveus Solutions', slug: 'track-1', page: 'tracks/track-1', numeral: '01', briefOwner: 'niveus',
 }))
 const simpleEnergy = pendingTrack(createTrackBase({
   title: 'Simple Energy', slug: 'track-2', page: 'tracks/track-2', numeral: '02',
