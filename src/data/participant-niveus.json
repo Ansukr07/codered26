@@ -1,0 +1,338 @@
+[
+  {
+    "number": 1,
+    "problem": "This challenge from NTT DATA’s Google Cloud Business Unit focuses on verified AI modernization of legacy code. Engineers often inherit undocumented COBOL, PL/I, RPG, older Java or stored procedures with few tests. A plausible AI translation can still silently change rounding, dates, fixed-width records or error handling. Choose one user, one modernization bottleneck and one measurable outcome. Build a working Gemini-powered product that helps understand, translate or test one legacy module, with executable evidence showing what behaviour is preserved and what still needs review.",
+    "audience": "Choose a modernization engineer, application developer, business analyst or solution architect and one specific workflow step. Application owners, QA leads and security reviewers are supporting stakeholders.",
+    "outcome": "Take a legacy artefact to a checked output that the user can inspect and use in the next modernization step. Demonstrate a relevant improvement in correctness, speed, coverage or reviewer effort against a stated baseline.",
+    "directionsIntro": "Choose one focused direction below or propose another modernization problem with a clear user, legacy artefact and executable evaluation. These are starting points within this challenge, not separate mandatory problem statements.",
+    "directions": [
+      {
+        "title": "Legacy batch translation",
+        "text": "Translate a small COBOL or similar batch program to Java, Python or Go. Run both versions on identical input files; measure identical-output records or time needed to reach output parity."
+      },
+      {
+        "title": "Business-rule extraction",
+        "text": "Turn a legacy module into a readable specification, linking each rule to its original source lines. Measure precision and recall against a hand-labelled rule set for the same module."
+      },
+      {
+        "title": "Characterization test generation",
+        "text": "Generate a safety-net test suite capturing the existing behaviour of an untested module. Measure line or branch coverage and the proportion of generated tests passing on unmodified code."
+      },
+      {
+        "title": "Stored-procedure refactoring",
+        "text": "Move database procedure logic into an application service. Compare query results on a sample database, measuring result parity and the number of procedures converted without manual fixes."
+      },
+      {
+        "title": "Service decomposition support",
+        "text": "Propose service boundaries for a small monolith using its call graph and data-access patterns. Evaluate against a documented reference decomposition or expert review while retaining an executable checking method."
+      }
+    ],
+    "required": [
+      {
+        "title": "One working modernization workflow",
+        "text": "Work on at least one real legacy module. Substantiate the bottleneck with a representative public sample, cited industry material or practitioner feedback. Identify your own contribution when extending an existing open-source tool."
+      },
+      {
+        "title": "Gemini inside the product",
+        "text": "Meaningfully use at least one Google Gemini model through the Gemini API or Vertex AI. Gemini used only as a coding assistant during development does not count. Choose your own interface, architecture, legacy language and target stack."
+      },
+      {
+        "title": "Executable checks and source traceability",
+        "text": "Check generated output using tests, side-by-side execution, output comparison or compilation. Trace generated output back to source lines and provide a repeatable evaluation script. Explain what each check proves and where uncertainty remains. Compilation alone does not establish behavioural equivalence."
+      },
+      {
+        "title": "User review of each change",
+        "text": "Let users supply a module and test inputs, inspect the proposed output alongside its evidence, and accept, edit or reject changes. Mark unverified output and security-sensitive logic for human review before merging or deployment."
+      },
+      {
+        "title": "A fair baseline comparison",
+        "text": "Name an appropriate manual workflow, conversion tool or simple AI baseline. Identify the specific limitation in your selected baseline. Use the same module, inputs, test data and evaluation conditions. Define task-specific targets and report correctness alongside time, token usage and cost per module."
+      }
+    ],
+    "optional": [
+      {
+        "title": "Verification and repair loops",
+        "text": "Feed compiler or test failures back to Gemini and track repeated attempts. Agent orchestration, including Google’s open-source Agent Development Kit, is optional."
+      },
+      {
+        "title": "Reviewer-friendly evidence",
+        "text": "Add per-function confidence or risk flags, clear diff views and attempt history to make generated changes easier to assess."
+      },
+      {
+        "title": "A deployable modernized service",
+        "text": "Run the modernized service in a local container or deploy it to Cloud Run. Cloud deployment is optional; a locally executed, reproducible module is sufficient."
+      }
+    ],
+    "workflow": "Supply a legacy module and test inputs → use Gemini to understand, translate or test it → compile, run and compare the result → inspect source-linked evidence and remaining risks → accept, edit or reject changes → repeat the documented baseline evaluation.",
+    "deliverables": [
+      {
+        "title": "Reviewable repository and README",
+        "text": "Provide a GitHub repository accessible for review. Document setup, the legacy sample and its licence, where Gemini is used and which model powers each feature. Any restricted repository access must be agreed in advance."
+      },
+      {
+        "title": "Reproducible evaluation and results",
+        "text": "Include test inputs, the evaluation script, baseline results and prototype measurements. Report every run, including failures and retries, plus limitations, known failure cases and required manual fixes rather than selecting only the best result."
+      },
+      {
+        "title": "A short working demonstration",
+        "text": "Show the complete workflow, actual Gemini use, executable checks and user review. Demonstrate invalid-input and API-failure handling. Label prerecorded demonstrations and explain how simplified tests differ from a real migration."
+      }
+    ],
+    "success": [
+      {
+        "title": "Functional, checked output",
+        "text": "Demonstrate an end-to-end result on a reproducible module. Use these success indicators as guidance; the organiser must confirm final judging rules. No fixed scoring weights or performance thresholds are supplied."
+      },
+      {
+        "title": "Evidence of technical improvement",
+        "text": "Choose an appropriate metric: output parity, test pass rate, branch coverage, rule-extraction precision and recall, or manual fixes. Explain failures and limitations as clearly as successful results."
+      },
+      {
+        "title": "User and operational value",
+        "text": "Compare effort, review time or confidence with the current workflow. Include practitioner feedback where available and label assumptions otherwise. Quantify demonstrated benefit, cost and time per module. Outline a pilot on a larger public codebase, including tooling, integration effort and data-residency considerations."
+      },
+      {
+        "title": "Safe and reliable operation",
+        "text": "Show code/data provenance, protected credentials, explicit uncertainty and human approval. Distinguish generated suggestions from tested results and account for external-service retries and failures."
+      }
+    ],
+    "constraints": [
+      {
+        "title": "Permitted code and protected credentials",
+        "text": "Use public open-source, self-written or synthetic code/data with compatible licences; document every sample’s source and licence. Never use client, employer or NTT DATA proprietary code. Keep keys server-side or in protected local configuration, out of repositories and demos."
+      },
+      {
+        "title": "No confidential model inputs",
+        "text": "Free-tier Gemini API requests may be used by Google to improve products. Send nothing confidential and make submissions shareable with reviewers. The organiser should not collect API keys or passwords. Follow applicable Google terms and third-party rights."
+      },
+      {
+        "title": "Changing limits and useful failure states",
+        "text": "Check model availability and rate limits in Google AI Studio before development and the final sprint; some models may be unavailable free. Recheck pricing before development. Handle HTTP 429 and temporary errors with bounded retries, backoff and a clear failure state."
+      },
+      {
+        "title": "Bring your own environment",
+        "text": "API calls require internet access. Teams provide compilers, runtimes and computing resources, including any GnuCOBOL toolchain. No mainframe, licensed converter, private NTT DATA system, dedicated event sandbox, event Google Cloud project or reserved model capacity is committed. NTT DATA is not providing client code, proprietary datasets or confidential material."
+      }
+    ],
+    "scope": [
+      {
+        "title": "Focused and reproducible is sufficient",
+        "text": "Small modules of a few hundred to a few thousand lines, synthetic inputs, simplified file/database I/O, local containers and partial language support are acceptable. State assumptions. Mainframe hardware, licensed conversion products and production deployment are not required."
+      },
+      {
+        "title": "Outside the challenge",
+        "text": "A generic code-chat wrapper, a concept deck without working functionality, proprietary/client code, or full-application migration and guaranteed-equivalence claims. Treat generated code as a proposal, never as production-ready or certified equivalent."
+      },
+      {
+        "title": "Ownership and accurate attribution",
+        "text": "Project ownership remains with participants; participation does not automatically transfer ownership or commercial rights to NTT DATA or Google. Respect licences and do not imply company endorsement or certification. Publicity needs participant permission and credit; later collaboration requires mutual interest and separate agreement."
+      }
+    ],
+    "resources": [
+      {
+        "title": "Gemini API access and documentation",
+        "text": "Rounds 1 and 2 use each team’s own Gemini free-tier account within current limits. Finalist credits and activation dates are unconfirmed; plan experiments without relying on them.",
+        "href": "https://ai.google.dev/gemini-api/docs"
+      },
+      {
+        "title": "Vertex AI",
+        "text": "Teams may use Vertex AI in their own Google Cloud projects at their own cost. Consult the public generative AI documentation.",
+        "href": "https://cloud.google.com/vertex-ai/generative-ai/docs"
+      },
+      {
+        "title": "Agent Development Kit",
+        "text": "Google’s open-source Agent Development Kit and Gen AI SDKs are optional supporting tools; select only what helps the chosen workflow.",
+        "href": "https://google.github.io/adk-docs/"
+      },
+      {
+        "title": "Cloud Run",
+        "text": "Public deployment documentation for teams choosing optional cloud hosting; local execution remains acceptable.",
+        "href": "https://cloud.google.com/run/docs"
+      },
+      {
+        "title": "GnuCOBOL",
+        "text": "An open-source COBOL compiler that teams can run in their own environment when it fits the selected sample.",
+        "href": "https://gnucobol.sourceforge.io/"
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "problem": "On-call engineers switch between dashboards, logs, traces and runbooks while alert storms obscure the original fault. This challenge from the NTT DATA Google Cloud Business Unit asks you to build a working Gemini-powered product that helps an engineer investigate a defined cloud-native incident faster. Choose one user, one investigation bottleneck and one measurable outcome. Support every conclusion with specific telemetry evidence and keep a human in charge of any system change. A narrow incident type with a reproducible fault-injection test is sufficient.",
+    "audience": "Choose a specific on-call engineer, SRE, platform engineer or DevOps user and the incident-response step you will improve. Incident commanders, application owners and service-desk teams are secondary stakeholders.",
+    "outcome": "Move from an alert or incident to a checked diagnosis or proposed action. Show what supports the conclusion, what remains uncertain, and how your product improves diagnosis accuracy, time, alert review or postmortem quality against a stated baseline.",
+    "directionsIntro": "These are starting points within one problem statement. Choose one focused direction or propose another operations problem with a clear user and evaluation method, such as cost-anomaly investigation or SLO-breach forecasting.",
+    "directions": [
+      {
+        "title": "Root-cause localization",
+        "text": "Identify the faulty service and likely cause, such as a crashed pod, injected latency, bad configuration or resource exhaustion. Cite log lines, metric windows or trace spans; compare top-1/top-3 accuracy or time to a correct diagnosis."
+      },
+      {
+        "title": "Alert grouping and noise reduction",
+        "text": "Group alerts sharing a cause into one explained incident. Measure grouping accuracy against known injected faults and the reduction in items an engineer must review."
+      },
+      {
+        "title": "Change-aware investigation",
+        "text": "Link incidents to deployments or configuration changes using commit history and Kubernetes events. Evaluate scenarios containing a known bad change."
+      },
+      {
+        "title": "Guarded runbook execution",
+        "text": "Turn a runbook into proposed diagnostic or remediation steps, executed only after human approval, preferably as a dry run first. Measure correct steps and unsafe actions blocked."
+      },
+      {
+        "title": "Evidence-backed postmortems",
+        "text": "Produce an incident timeline and draft postmortem with every statement linked to its source. Check factual accuracy against the known fault and measure reviewer edits required."
+      }
+    ],
+    "required": [
+      {
+        "title": "A working, bounded investigation",
+        "text": "Run your workflow on a microservices application with reproducible injected faults. Substantiate the bottleneck through cited SRE material, a representative scenario or practitioner feedback. If extending an open-source tool, identify your own new contribution."
+      },
+      {
+        "title": "Gemini inside the product",
+        "text": "Meaningfully use at least one Google Gemini model through the Gemini API or Vertex AI. Using Gemini only as a coding assistant does not qualify. Choose your application, interface, architecture and supporting tools."
+      },
+      {
+        "title": "Evidence that can be checked",
+        "text": "Link conclusions to specific logs, metrics, traces, events or configuration. Distinguish hypotheses from confirmed causes and show uncertainty. Explain the contribution beyond pasting raw logs into a chat interface or repeating monitoring alerts."
+      },
+      {
+        "title": "Human control over changes",
+        "text": "Let users submit an alert, follow the investigation, inspect evidence and confirm, correct or reject a diagnosis. Require explicit approval before any system change; users must be able to block proposed actions."
+      },
+      {
+        "title": "Repeatable, comparable evaluation",
+        "text": "Provide an evaluation script and documented scenarios with known causes. Compare your prototype and a named baseline using the same faults, telemetry and evaluation conditions. Identify the specific limitation in your selected baseline. Report every scenario, including misses, and handle missing data and API failures."
+      }
+    ],
+    "optional": [
+      {
+        "title": "Tool-connected agents",
+        "text": "Add orchestration and tool calls to log, metric, trace or Kubernetes APIs. Google's Agent Development Kit is optional."
+      },
+      {
+        "title": "Observability integrations",
+        "text": "Connect Google Cloud Observability or open-source tools such as Prometheus, Grafana and Jaeger when useful. Paid monitoring products are unnecessary."
+      },
+      {
+        "title": "Richer investigation support",
+        "text": "Consider dry-run remediation, uncertainty scores, investigation history or evaluation across several fault types. A narrow, well-tested incident type remains acceptable."
+      }
+    ],
+    "workflow": "Supply an alert or incident → collect relevant telemetry → investigate with Gemini and supporting tools → inspect evidence and uncertainty → confirm, correct or reject the diagnosis → approve or block any proposed change → verify the result and compare it with the baseline.",
+    "deliverables": [
+      {
+        "title": "Reviewable code and README",
+        "text": "Provide a GitHub repository accessible for review. Explain setup, where Gemini is used and which model powers each feature. Agree restricted repository access in advance if needed."
+      },
+      {
+        "title": "Application, faults and results",
+        "text": "Include the target application, fault-injection scripts, documented scenario set and known causes, evaluation script, baseline and prototype results, data provenance, limitations and known failures."
+      },
+      {
+        "title": "A short working demo",
+        "text": "Demonstrate an end-to-end investigation with actual Gemini use, cited evidence, human approval and missing-data or API-failure handling. Label recordings and explain differences between simplified tests and real operations."
+      }
+    ],
+    "success": [
+      {
+        "title": "Correctness and investigation effort",
+        "text": "Define task-specific targets and a relevant baseline: manual investigation, rule-based alert correlation or a single raw-log AI prompt. Report accuracy alongside time to diagnosis, token usage and cost per incident, including misses."
+      },
+      {
+        "title": "Evidence, review and safety",
+        "text": "Measure what fits your task: source-supported claims, root-cause accuracy, grouping accuracy, postmortem edits or unsafe actions blocked. Show protected credentials, least privilege, redaction, uncertainty and mandatory approval for changes."
+      },
+      {
+        "title": "User and operational value",
+        "text": "Compare user time, effort or confidence with the existing workflow. Include practitioner feedback where available and disclose assumptions otherwise. Estimate integration effort, cost as telemetry grows, and a small follow-up test on a larger environment."
+      },
+      {
+        "title": "An honest evaluation scope",
+        "text": "The brief suggests, for example, at least 10 injected faults across at least 3 fault types; this is illustrative, not a mandatory minimum. State your scenario coverage and limitations. Success indicators are guidelines; the organiser must confirm final judging rules."
+      }
+    ],
+    "constraints": [
+      {
+        "title": "Changing API limits",
+        "text": "Check Gemini model availability and current Google AI Studio rate limits before development and the final sprint. Limits vary by model/project; some models may lack free-tier access. Handle HTTP 429 and temporary errors with bounded retries, backoff and a clear failure state."
+      },
+      {
+        "title": "Control telemetry and context size",
+        "text": "Filter, summarise or retrieve relevant telemetry rather than sending everything to the model. Report context sizes, retries and failures as well as successful runs."
+      },
+      {
+        "title": "Protected credentials and permitted data",
+        "text": "Keep API keys and cluster credentials server-side or in protected local configuration, never in repositories or demos. Default to least-privilege, read-only access. Use team-generated telemetry or compatibly licensed public datasets, document provenance and redact secrets. Do not use employer/client production logs."
+      },
+      {
+        "title": "No confidential model inputs",
+        "text": "Free-tier Gemini requests may be used by Google to improve its products. Send nothing confidential. NTT DATA is not providing client telemetry or proprietary datasets."
+      },
+      {
+        "title": "Team-owned test environments only",
+        "text": "Run fault injection, investigation tools and remediation only on systems your team owns. Never change a system without explicit approval. Diagnoses remain hypotheses until confirmed; do not present the prototype as autonomous operations or production-ready."
+      },
+      {
+        "title": "Accounts, costs and availability",
+        "text": "Rounds 1 and 2 use each team's own Gemini API free-tier access. Vertex AI may be used in your own Google Cloud project at your cost. Finalist credits and allocation are unconfirmed: do not depend on them or assume reserved capacity."
+      },
+      {
+        "title": "Bring your own computing",
+        "text": "Internet access is required. A laptop running kind, minikube or Docker Compose is acceptable. No production cluster, private NTT DATA system, paid monitoring product, dedicated event sandbox or reserved GKE/model capacity is promised."
+      }
+    ],
+    "scope": [
+      {
+        "title": "In scope",
+        "text": "One focused incident-response step with meaningful Gemini use, working functionality and measurable evaluation. Small applications, local clusters, synthetic traffic, simplified telemetry and limited fault types are acceptable when assumptions are stated."
+      },
+      {
+        "title": "Outside the challenge",
+        "text": "A generic log-chat wrapper, a concept deck without working functionality, unapproved autonomous changes, production telemetry or unsupported production-readiness claims. Large clusters are not required."
+      },
+      {
+        "title": "Ownership and permitted use",
+        "text": "Participants retain project ownership; participation transfers no commercial rights to NTT DATA or Google. Respect service terms and code/data licences. Do not imply endorsement or certification. Project publicity needs team permission and credit; later collaboration requires separate agreement."
+      }
+    ],
+    "resources": [
+      {
+        "title": "Gemini API",
+        "text": "Consult integration documentation and recheck current models, limits and pricing.",
+        "href": "https://ai.google.dev/gemini-api/docs"
+      },
+      {
+        "title": "Vertex AI",
+        "text": "An alternative Gemini integration in your own Google Cloud project, at your cost.",
+        "href": "https://cloud.google.com/vertex-ai/generative-ai/docs"
+      },
+      {
+        "title": "Agent Development Kit",
+        "text": "Optional open-source tooling for tool-connected agent workflows.",
+        "href": "https://google.github.io/adk-docs/"
+      },
+      {
+        "title": "Online Boutique",
+        "text": "An example open-source microservices application for a team-run test environment.",
+        "href": "https://github.com/GoogleCloudPlatform/microservices-demo"
+      },
+      {
+        "title": "OpenTelemetry Demo",
+        "text": "Another example application for generating observability data in your own environment.",
+        "href": "https://opentelemetry.io/docs/demo/"
+      },
+      {
+        "title": "Chaos Mesh",
+        "text": "Example fault-injection tooling; your own reproducible scripts are also acceptable.",
+        "href": "https://chaos-mesh.org/"
+      },
+      {
+        "title": "Google SRE books",
+        "text": "Free public reference material for incident-response problems and evaluation context.",
+        "href": "https://sre.google/books/"
+      }
+    ]
+  }
+]

@@ -58,7 +58,7 @@ export default function TrackProblemsPage({ track, onNavigate }) {
           const page = isStartupRoot ? item.problemsPage : item.page
           const path = isStartupRoot ? item.problemsPath : item.path
           return <li key={itemId}>
-          <Card className={`ps-card track-card track-card-${index % 4 + 1}${isStartupRoot ? ' ps-company-card' : ''}${pending ? ' ps-card--pending' : ''}`} href={pending ? undefined : path} onClick={pending ? undefined : follow(page)} aria-disabled={pending || undefined} aria-labelledby={`ps-title-${itemId}`} aria-describedby={`ps-summary-${itemId}`}>
+          <Card className={`ps-card track-card track-card-${index % 4 + 1}${isStartupRoot ? ' ps-company-card' : ''}${item.autoCardHeading ? ' ps-card--auto-title' : ''}${pending ? ' ps-card--pending' : ''}`} href={pending ? undefined : path} onClick={pending ? undefined : follow(page)} aria-disabled={pending || undefined} aria-labelledby={`ps-title-${itemId}`} aria-describedby={`ps-summary-${itemId}`}>
             <span className="track-top-flag">{isStartupRoot ? `Startup ${numeral}` : pending ? 'PS TBA' : openChallenge ? 'Open challenge' : `PS ${item.problemNumber}`}</span>
             <div className="track-card-body">
               <div className="tp-card-top">

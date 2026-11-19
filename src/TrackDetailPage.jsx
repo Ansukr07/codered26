@@ -249,7 +249,7 @@ export default function TrackDetailPage({ track, parentTrack = track, onNavigate
   const siblings = isProblem ? (parentTrack.problemStatements || []).filter(item => !item.isPending) : trackLinks
   const position = siblings.findIndex(item => item.page === (isProblem ? track.page : parentTrack.problemsPage))
   const hasSiblingNavigation = position >= 0 && siblings.length > 1
-  const railSections = track.officialBrief ? (openChallenge ? [officialBriefSections[0], ['directions', 'Suggested directions'], ...officialBriefSections.slice(1)] : officialBriefSections) : sections
+  const railSections = track.officialBrief ? (openChallenge || track.hasSuggestedDirections ? [officialBriefSections[0], ['directions', 'Suggested directions'], ...officialBriefSections.slice(1)] : officialBriefSections) : sections
   const briefKind = track.problemNumber ? (openChallenge ? 'challenge' : 'problem') : 'track'
   const previous = hasSiblingNavigation ? siblings[(position - 1 + siblings.length) % siblings.length] : null
   const next = hasSiblingNavigation ? siblings[(position + 1) % siblings.length] : null
