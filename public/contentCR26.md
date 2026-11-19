@@ -65,7 +65,7 @@ The six main tracks are:
 2. Simple Energy
 3. Agnes AI
 4. XP Robotics
-5. Unisys — open only for BMSIT students
+5. Unisys
 6. Startup Track
 
 Startup Track contains Think Robotics, MyStartupWave, Sahasranshu Technologies and Cassette Labs. Challenges not yet supplied are TBA.
