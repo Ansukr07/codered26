@@ -323,6 +323,6 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
         </div>
       </div>
     </section>}
-    {show('schedule') && <GallerySection followedByFaq={page === 'home'} />}
+    {show('previous-editions') && <GallerySection followedByFaq={page === 'home'} />}
   </div>
 }
