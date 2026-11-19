@@ -223,6 +223,16 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
       <aside className="shift-hero-rail anim-slide-down" style={{ transitionDelay: '0.2s' }}>
         <div className="shift-rail-intro anim-slide-up" style={{ transitionDelay: '0.3s' }}>
           <div className="shift-venturex-panel">
+            <div className="shift-institution-logos">
+              <picture>
+                <source media="(min-width: 701px)" srcSet="/logos/bmsit-institution.png" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BMS Institute of Technology & Management" width="56" height="63" />
+              </picture>
+              <picture>
+                <source media="(min-width: 701px)" srcSet="/logos/bmsitm-25-years.png" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BMSIT&M — 25 years of excellence" width="56" height="56" />
+              </picture>
+            </div>
             <strong className="shift-venturex-heading">
               Your finish line here is your startup’s day one.
             </strong>

@@ -21,41 +21,43 @@
 
 @media(max-width:700px) {
   .custom-navbar {
-    width: 245px;
-    max-width: calc(100% - 24px);
-    left: auto;
-    right: 12px;
-    transform: translateY(0);
-    transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    transform: none;
+    transition: none;
   }
   .custom-navbar.nav-hidden {
-    transform: translateY(calc(-100% - 16px));
-    transition-duration: 0.55s, 0.3s;
-    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.4, 0, 1, 1);
-  }
-  .custom-navbar.open,
-  .custom-navbar.expanded {
-    width: calc(100% - 24px);
+    transform: none;
+    transition: none;
   }
   .navbar-dropdown {
     border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: none;
   }
-  .navbar-header {
+  .custom-navbar .navbar-header {
+    height: 64px;
+    padding: 11px 16px;
+    box-sizing: border-box;
+    background-color: #000;
+    transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: border-radius 0.3s;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   .custom-navbar.open .navbar-header {
+    background-color: #1a1a1a;
     border-radius: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .custom-navbar,
-  .custom-navbar.nav-hidden { transition: none; }
+  .custom-navbar.nav-hidden,
+  .custom-navbar .navbar-header { transition: none; }
 }
 
 .navbar-header {
@@ -89,6 +91,8 @@
   object-fit: contain;
 }
 
+.nav-mobile-mark { display: none; }
+
 .nav-title {
   position: absolute;
   left: 50%;
@@ -99,6 +103,15 @@
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+@media(max-width:700px) {
+  .nav-mobile-mark { display: block; }
+  .nav-mobile-mark img { display: block; height: 40px; width: auto; }
+  .nav-logo-img { height: 40px; }
+  .nav-title { display: none; }
+  .custom-navbar .nav-toggle { width: 40px; height: 40px; }
+  .custom-navbar .navbar-dropdown.show { max-height: calc(100dvh - 64px); }
 }
 
 .nav-toggle {
