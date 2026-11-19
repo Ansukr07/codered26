@@ -131,7 +131,7 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
           </button>
         </div>
 
-        <div id="navbar-dropdown" className={`navbar-dropdown ${isOpen ? 'show' : ''}`} inert={!isOpen}>
+        <div id="navbar-dropdown" className={`navbar-dropdown ${isOpen ? 'show' : ''}`} inert={!isOpen} data-lenis-prevent="">
           <ul className="nav-menu-list">
             {pageLinks.map(([page, label]) => (
               <li className="nav-menu-item" key={page}>
