@@ -50,6 +50,10 @@ export default function TrackProblemsPage({ track, onNavigate }) {
         <div className="ps-section-bar">
           <p className="ps-count"><strong>{isStartupRoot ? String(startupTracks.length).padStart(2, '0') : track.hasPendingBriefs ? 'TBA' : String(count).padStart(2, '0')}</strong> {isStartupRoot ? 'Startup tracks' : openChallenge ? 'Open challenge' : `Challenge${count === 1 ? '' : 's'}`}</p>
         </div>
+        {track.selectionNotice && <aside className="ps-selection-notice" role="note" aria-label="Important notice">
+          <strong>Important notice</strong>
+          <p>{track.selectionNotice}</p>
+        </aside>}
         {cards.length ? <ol ref={cardsRef} className={`ps-grid${cards.length === 1 ? ' ps-grid--single' : ''}`}>{cards.map((item, index) => {
           const pending = !isStartupRoot && item.isPending
           const Card = pending ? 'article' : 'a'

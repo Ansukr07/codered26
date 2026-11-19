@@ -45,9 +45,10 @@ const agnesAI = createAgnesAITrack(createTrackBase({
 const xpRobotics = pendingTrack(createTrackBase({
   title: 'XP Robotics', slug: 'track-4', page: 'tracks/track-4', numeral: '04',
 }))
-const unisys = createUnisysTrack(createTrackBase({
-  title: 'Unisys', slug: 'track-5', page: 'tracks/track-5', numeral: '05', briefOwner: 'unisys',
-}))
+const unisys = createUnisysTrack({
+  ...createTrackBase({ title: 'Unisys', slug: 'track-5', page: 'tracks/track-5', numeral: '05', briefOwner: 'unisys' }),
+  selectionNotice: 'Participants who choose this problem statement will be required to sign a non-disclosure agreement (NDA). Unisys will own all intellectual property rights to the project, and participants may not pursue or continue the project after the event.',
+})
 const startup = createTrackBase({
   title: 'Startup Track', slug: 'track-6', page: 'tracks/track-6', numeral: '06',
   category: 'Startup company challenges',

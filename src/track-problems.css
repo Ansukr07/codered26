@@ -33,6 +33,9 @@
 }
 .ps-count { display: flex; align-items: center; gap: 12px; font-size: 16px; }
 .ps-count strong { font-size: 20px; color: var(--td-red-text); }
+.ps-selection-notice { margin: 0 0 28px; padding: 20px 24px; border: 1px solid #9a312c66; border-left: 4px solid var(--td-red); background: #ed202408; }
+.ps-selection-notice strong { display: block; margin-bottom: 6px; color: var(--td-red-text); font: 600 13px/1.4 Consolas, monospace; letter-spacing: .06em; text-transform: uppercase; }
+.ps-selection-notice p { max-width: 90ch; margin: 0; font-size: 16px; line-height: 1.55; }
 .ps-index .ps-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
 .ps-index .ps-grid.ps-grid--single { grid-template-columns: minmax(0, 1fr); }
 .ps-grid li { min-width: 0; display: flex; }
