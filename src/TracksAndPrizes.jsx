@@ -296,7 +296,7 @@ export function PrizesSection() {
         <div className="prizes-title-row">
           <div className="prizes-title-text">
             <h3 className="tp-h-regular prizes-title-main">Prize distribution</h3>
-            <h3 className="tp-h-regular tp-opacity-50">Applies to all the tracks</h3>
+            <h3 className="tp-h-regular tp-opacity-50">Applies to all the tracks (except Unisys and XP Robotics)</h3>
           </div>
         </div>
         <div className="prize-outer-container">
