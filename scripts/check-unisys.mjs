@@ -125,5 +125,5 @@ test('the Unisys index and main Tracks card link to the new ten-PS selection', a
   assert(!index.includes('ps-empty'))
   assert(!index.includes('Challenges TBA'))
   const tracksPage = await readFile('dist/tracks/index.html', 'utf8')
-  assert(tracksPage.includes('Ten challenges in enterprise software'))
+  assert(tracksPage.includes(escape(owner.cardDescription)))
 })

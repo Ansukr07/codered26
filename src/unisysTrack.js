@@ -80,9 +80,9 @@ export function createUnisysTrack(base) {
   const company = {
     ...base,
     category: 'Enterprise software, quantum computing & AI',
-    subtitle: 'Industry challenges · BMSIT students only',
-    summary: 'Explore ten Unisys challenges in enterprise software, quantum computing, AI, sustainability and digital health. This track is open only for BMSIT students.',
-    cardDescription: 'Ten challenges in enterprise software, quantum computing, AI and sustainability. Open exclusively for BMSIT students.',
+    subtitle: 'Industry challenges',
+    summary: 'Explore ten Unisys challenges in enterprise software, quantum computing, AI, sustainability and digital health.',
+    cardDescription: 'Choose from 10 problem statements in AI-powered software, quantum computing, smart campuses and digital health.',
     isMock: false,
     hasOfficialBriefs: true,
     heroMode: 'diagram',
