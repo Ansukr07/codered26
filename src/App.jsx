@@ -44,7 +44,7 @@ const a = minRadius;
 const b = maxRadius - minRadius;
 const I_max = a * 1 + (b / 2) * 1 * 1;
 
-const pageNames = ['home', 'about', 'tracks', 'prizes', 'schedule', 'partners', 'faq', 'team'];
+const pageNames = ['home', 'about', 'tracks', 'prizes', 'schedule', 'previous-editions', 'partners', 'faq', 'team'];
 
 function pageFromLocation() {
   if (typeof window === 'undefined') return 'home';

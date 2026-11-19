@@ -11,6 +11,11 @@
   color: #ed2024;
 }
 
+.app-page--previous-editions .revolving-transition {
+  height: 120px;
+  margin-top: -120px;
+}
+
 /* Confine the footer blend to empty space after each track brief. */
 .app-page--track-detail .revolving-transition {
   height: 120px;
@@ -78,6 +83,10 @@
 }
 
 @media (max-width: 700px) {
+  .app-page--previous-editions .event-gallery {
+    padding-top: 98px;
+  }
+
   .app-page--about {
     --about-transition-space: 7rem;
   }

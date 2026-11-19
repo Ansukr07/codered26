@@ -15,7 +15,7 @@
             };
             const route = normalize(page);
             const returningToTracks = route === 'tracks' && normalize(fromPage).startsWith('tracks/');
-            return !returningToTracks && ['home', 'about', 'tracks', 'prizes', 'schedule', 'partners', 'faq', 'team'].includes(route);
+            return !returningToTracks && ['home', 'about', 'tracks', 'prizes', 'schedule', 'previous-editions', 'partners', 'faq', 'team'].includes(route);
         };
         const initialPreloaderPage = window.location.hash.startsWith('#/')
             ? window.location.hash.slice(2)
@@ -288,7 +288,7 @@
         .faq-list, .custom-navbar { display: none !important; }
     </style></noscript>
     <noscript><nav aria-label="Site pages" style="padding: 1rem; background: #101010; color: white">
-        <a href="/">Home</a> · <a href="/about">About</a> · <a href="/tracks">Tracks</a> · <a href="/prizes">Prizes</a> · <a href="/partners">Partners</a> · <a href="/faq">FAQ</a>
+        <a href="/">Home</a> · <a href="/about">About</a> · <a href="/tracks">Tracks</a> · <a href="/partners">Partners</a> · <a href="/prizes">Prizes</a> · <a href="/schedule">Schedule</a> · <a href="/previous-editions">Previous Editions</a> · <a href="/faq">FAQ</a>
     </nav></noscript>
 </body>
 
