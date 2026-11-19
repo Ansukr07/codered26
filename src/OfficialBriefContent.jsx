@@ -1,17 +1,6 @@
 import { getParticipantBrief } from './participantBriefs.js'
 import './official-brief.css'
 
-// oxlint-disable-next-line react/only-export-components -- Shared navigation metadata for the brief rail.
-export const officialBriefSections = [
-  ['problem', 'The challenge'],
-  ['focus', 'What to build'],
-  ['deliverables', 'Demo & deliverables'],
-  ['judging', 'Success criteria'],
-  ['resources', 'Scope & constraints'],
-  ['terms', 'Resources & help'],
-  ['next', 'Register'],
-]
-
 function SectionHeading({ label, children }) {
   return <div className="td-section-heading td-source-group-heading">
     <p className="td-kicker"><span className="td-dash" aria-hidden="true" /><span>{label}</span></p>
@@ -74,53 +63,54 @@ export default function OfficialBriefContent({ track }) {
       </div>
     </section>}
 
-    <section id="focus" className="td-brief-section td-source-group">
+    {(brief.required.length > 0 || brief.optional.length > 0 || brief.workflow) && <section id="focus" className="td-brief-section td-source-group">
       <SectionHeading label="Product capabilities">What to build.</SectionHeading>
       <div className="td-source-body td-source-sections">
-        <div className="td-capability-lane td-capability-lane--required">
+        {brief.required.length > 0 && <div className="td-capability-lane td-capability-lane--required">
           <h3 className="td-source-subheading td-capability-label">Required features</h3>
           <Cards items={brief.required} kind="required" className="td-capability-grid" numbered list />
-        </div>
-        <div className="td-capability-lane td-capability-lane--optional">
+        </div>}
+        {brief.optional.length > 0 && <div className="td-capability-lane td-capability-lane--optional">
           <h3 className="td-source-subheading td-capability-label">Optional ideas</h3>
           <Cards items={brief.optional} kind="optional" className="td-capability-grid" list />
-        </div>
-        <div className="td-interaction-strip">
+        </div>}
+        {brief.workflow && <div className="td-interaction-strip">
           <h3 className="td-source-label">Typical workflow</h3>
           <p data-participant-workflow><Text>{brief.workflow}</Text></p>
-        </div>
+        </div>}
       </div>
-    </section>
+    </section>}
 
-    <section id="deliverables" className="td-brief-section td-source-group">
+    {brief.deliverables.length > 0 && <section id="deliverables" className="td-brief-section td-source-group">
       <SectionHeading label="Demo & deliverables">Show it working.</SectionHeading>
       <div className="td-source-body td-delivery-panel td-source-sections">
         <Cards items={brief.deliverables} kind="deliverables" className="td-deliverable-grid" numbered list />
       </div>
-    </section>
+    </section>}
 
-    <section id="judging" className="td-brief-section td-source-group">
+    {(brief.success.length > 0 || brief.evaluationNote) && <section id="judging" className="td-brief-section td-source-group">
       <SectionHeading label="Success criteria">What success looks like.</SectionHeading>
       <div className="td-source-body td-source-sections">
         <Cards items={brief.success} kind="success" className="td-success-grid" numbered />
+        {brief.evaluationNote && <p className="td-body-copy td-participant-subheading">{brief.evaluationNote}</p>}
       </div>
-    </section>
+    </section>}
 
-    <section id="resources" className="td-brief-section td-source-group">
+    {(brief.scope.length > 0 || brief.constraints.length > 0) && <section id="resources" className="td-brief-section td-source-group">
       <SectionHeading label="Scope & constraints">Build within the brief.</SectionHeading>
       <div className="td-source-body td-source-sections">
-        <Cards items={brief.scope} kind="scope" className="td-scope-grid" />
-        <h3 className="td-source-subheading td-participant-subheading">Technical & safety requirements</h3>
-        <Cards items={brief.constraints} kind="constraints" className="td-constraint-grid" />
+        {brief.scope.length > 0 && <Cards items={brief.scope} kind="scope" className="td-scope-grid" />}
+        {brief.constraints.length > 0 && <><h3 className="td-source-subheading td-participant-subheading">Technical & safety requirements</h3>
+        <Cards items={brief.constraints} kind="constraints" className="td-constraint-grid" /></>}
       </div>
       {track.sourceClarifications?.map(note => <p className="td-source-clarification" key={note}><strong>Benchmark clarification:</strong> {note}</p>)}
-    </section>
+    </section>}
 
-    <section id="terms" className="td-brief-section td-source-group">
+    {brief.resources.length > 0 && <section id="terms" className="td-brief-section td-source-group">
       <SectionHeading label="Resources & help">Useful before you start.</SectionHeading>
       <div className="td-source-body td-source-sections">
         <Cards items={brief.resources} kind="resources" className="td-resource-list" numbered />
       </div>
-    </section>
+    </section>}
   </>
 }

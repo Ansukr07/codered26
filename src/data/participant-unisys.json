@@ -1,0 +1,855 @@
+[
+  {
+    "number": 1,
+    "sourceNumber": 3,
+    "title": "Intelligent Knowledge Graph Visualization",
+    "fullTitle": "Intelligent Knowledge Graph Visualization",
+    "problem": "Knowledge graphs reveal relationships, dependencies and hidden patterns in enterprise applications, but exploring them often requires Cypher queries and knowledge of Neo4j. Build an intuitive, interactive, AI-assisted knowledge graph visualization platform that lets technical and non-technical users explore those relationships without knowing graph databases or query languages. The interface should make complex knowledge understandable instead of overwhelming users with thousands of nodes.",
+    "audience": "Developers, architects and business users who need to understand enterprise application relationships and the effects of changes.",
+    "outcome": "Make complex enterprise application knowledge accessible through clear visual exploration, natural-language questions, contextual insights and component-level impact analysis.",
+    "required": [
+      {
+        "title": "Clear, interactive graph views",
+        "text": "Present complex knowledge graphs through clean, easy-to-understand visualizations. Avoid exposing thousands of nodes at once without a useful way to understand them."
+      },
+      {
+        "title": "Natural-language exploration",
+        "text": "Let users ask questions such as: which programs depend on a COBOL module; which business rules relate to a database table; and which components would be affected by modifying a field."
+      },
+      {
+        "title": "Multiple abstraction levels",
+        "text": "Support navigation from high-level application architecture down to individual programs, functions, variables and their dependencies."
+      },
+      {
+        "title": "Smart graph navigation",
+        "text": "Provide search, filtering, grouping, zooming and progressive expansion of relationships so users can investigate the relevant part of a graph."
+      },
+      {
+        "title": "AI-powered insights",
+        "text": "Use AI to summarize relationships, explain dependencies and highlight the potential impacts of a change."
+      },
+      {
+        "title": "Visual impact analysis",
+        "text": "Let a user select a component and instantly visualize its upstream and downstream dependencies."
+      },
+      {
+        "title": "Live Neo4j integration",
+        "text": "Connect to an existing Neo4j knowledge graph and dynamically retrieve the relevant nodes and relationships."
+      }
+    ],
+    "optional": [],
+    "workflow": "Connect to a Neo4j graph → search or ask a natural-language question → inspect a simplified application-level view → filter, group, zoom and expand relationships → drill into programs, functions or variables → select a component to inspect upstream/downstream impact and AI explanations.",
+    "deliverables": [
+      {
+        "title": "Working visualization prototype",
+        "text": "Demonstrate a modern, intuitive knowledge graph interface that makes complex enterprise application knowledge accessible to technical and non-technical users, including graph navigation, Neo4j integration and AI-assisted exploration."
+      }
+    ],
+    "success": [
+      {
+        "title": "User experience — 25%",
+        "text": "Simplicity, clarity and ease of navigation."
+      },
+      {
+        "title": "Visualization innovation — 25%",
+        "text": "Creative approaches to representing complex relationships."
+      },
+      {
+        "title": "Technical implementation — 20%",
+        "text": "Neo4j integration, performance and scalability."
+      },
+      {
+        "title": "AI capabilities — 15%",
+        "text": "Natural-language querying and contextual insights."
+      },
+      {
+        "title": "Practical usability — 15%",
+        "text": "Effectiveness in understanding real-world application dependencies."
+      }
+    ],
+    "constraints": [],
+    "scope": [
+      {
+        "title": "Enterprise application knowledge",
+        "text": "The graph may represent COBOL programs, database schemas, business rules and application dependencies. Participants may use sample datasets representing these elements."
+      },
+      {
+        "title": "Accessible exploration",
+        "text": "The platform must let users explore the graph without requiring graph-database or query-language knowledge; the solution should simplify complex views while retaining meaningful relationships."
+      }
+    ],
+    "resources": []
+  },
+  {
+    "number": 2,
+    "sourceNumber": 4,
+    "title": "Next-Generation Interactive Code Visualization Platform",
+    "fullTitle": "Next-Generation Interactive Code Visualization Platform",
+    "problem": "Static diagrams can show workflows and architecture, but large enterprise codebases need richer exploration. Build an intelligent, interactive code visualization platform that automatically turns source code into navigable representations of application architecture, dependencies, business logic and execution workflows. Understanding a codebase should feel as intuitive as exploring an interactive map, without manually defining all its diagrams.",
+    "audience": "People exploring an existing enterprise codebase and reviewing its architecture, dependencies, business logic or change impacts.",
+    "outcome": "Move from source code to accurate, interactive views that support drill-down, workflow exploration, bidirectional source navigation and AI-assisted understanding.",
+    "required": [
+      {
+        "title": "Automatic visualization from source",
+        "text": "Analyze source code and automatically generate architecture diagrams, dependency maps, call graphs and execution workflows rather than requiring manually defined diagrams."
+      },
+      {
+        "title": "Interactive drill-down",
+        "text": "Let users zoom, navigate, filter and progressively drill down from application-level architecture to individual modules, functions and statements."
+      },
+      {
+        "title": "Code dependency mapping",
+        "text": "Visualize relationships between programs, modules, functions, databases, APIs and external systems, including upstream and downstream dependencies."
+      },
+      {
+        "title": "Dynamic workflow visualization",
+        "text": "Generate interactive control-flow and business-process diagrams covering execution paths, conditional branches, data transformations and interactions between components."
+      },
+      {
+        "title": "Natural-language code understanding",
+        "text": "Support questions about a complete customer-transaction workflow, modules affected by a function change, data flowing from an API to a database, and dependencies of a COBOL program."
+      },
+      {
+        "title": "Bidirectional code navigation",
+        "text": "Clicking a diagram component should open its corresponding source code. Selecting source code should highlight its position in the visualization."
+      },
+      {
+        "title": "Intelligent simplification",
+        "text": "Automatically group related components, hide unnecessary detail and provide different abstraction levels so complex diagrams do not overwhelm users."
+      },
+      {
+        "title": "Language extensibility",
+        "text": "Design support for modern and legacy programming languages, including Java, Python, COBOL and FORTRAN. The demonstration may use one programming language, provided the architecture is designed for extensibility."
+      },
+      {
+        "title": "Export for documentation and reviews",
+        "text": "Enable visualization exports to formats such as SVG, PNG or interactive HTML for documentation and architecture reviews."
+      }
+    ],
+    "optional": [],
+    "workflow": "Load an existing codebase → generate architecture, dependency and workflow views → navigate and simplify the map → drill into modules, functions or statements → move between diagrams and matching source code → ask an AI-assisted question or inspect a change impact → export a visualization for review.",
+    "deliverables": [
+      {
+        "title": "Working visualization prototype",
+        "text": "Automatically generate interactive visualizations from an existing codebase, showing application architecture and component relationships, code dependencies and call graphs, and business logic and execution workflows."
+      },
+      {
+        "title": "Interactive source and AI demonstration",
+        "text": "Demonstrate navigation between diagrams and source code, AI-assisted exploration and impact analysis. One programming language is sufficient for the demo when the architecture supports extension to others."
+      }
+    ],
+    "success": [
+      {
+        "title": "Visualization innovation and user experience — 30%",
+        "text": "The quality and innovation of the visual exploration experience."
+      },
+      {
+        "title": "Code and dependency accuracy — 25%",
+        "text": "Accuracy of the code analysis and dependency relationships represented."
+      },
+      {
+        "title": "Interactive navigation and workflow exploration — 20%",
+        "text": "Effective navigation through source-linked diagrams and execution workflows."
+      },
+      {
+        "title": "AI-assisted understanding and insights — 15%",
+        "text": "The usefulness of AI-assisted exploration, explanations and change-impact insights."
+      },
+      {
+        "title": "Scalability and extensibility — 10%",
+        "text": "Ability to extend the approach to larger codebases and additional languages."
+      }
+    ],
+    "constraints": [],
+    "scope": [
+      {
+        "title": "Beyond static diagrams",
+        "text": "The platform should analyze source code and produce rich, navigable application views, rather than functioning only as a manually authored static-diagram tool."
+      },
+      {
+        "title": "A bounded language demonstration",
+        "text": "Participants may demonstrate one programming language while designing an extensible architecture for modern and legacy languages."
+      }
+    ],
+    "resources": []
+  },
+  {
+    "number": 3,
+    "sourceNumber": 5,
+    "title": "Quantum-Readiness Network Map",
+    "fullTitle": "Quantum-Readiness Network Map",
+    "problem": "Supply-chain signatures, certificates and secure connections rely on public-key cryptography such as RSA and elliptic curves. Some signed records must remain trustworthy for 10–30 years, while a company's suppliers, carriers and customs partners may migrate to post-quantum cryptography at different speeds. Existing inventory tools mostly inspect one organization's own cryptography. Build a tool that assesses, ranks and visualizes quantum-readiness across a supplier network using limited and incomplete information, including partners unwilling to share internal details.",
+    "audience": "Procurement, supply-chain risk and security teams assessing cryptographic dependencies across suppliers and other partners.",
+    "outcome": "Help a non-expert identify partners relying on quantum-vulnerable cryptography, prioritize upgrades by business risk and understand downstream effects or dependencies when a partner changes.",
+    "required": [
+      {
+        "title": "Assess partner readiness",
+        "text": "Assess each partner's quantum-readiness using the data actually available. The tool must work with limited and incomplete partner information."
+      },
+      {
+        "title": "Rank partners by risk",
+        "text": "Consider how long a partner's records must remain trustworthy, what flows through that partner, and the difficulty of migration when ranking risks and upgrade priorities."
+      },
+      {
+        "title": "Confidence for every assessment",
+        "text": "Show confidence for every assessment. When evidence is thin, say so rather than silently guessing."
+      },
+      {
+        "title": "A non-expert network view",
+        "text": "Visualize where the largest risks sit across the network, including how one lagging supplier affects partners downstream of it."
+      },
+      {
+        "title": "Useful prioritization answers",
+        "text": "Help users understand which partners still depend on cryptography expected to be vulnerable to quantum computing, which matter most because of record lifetimes, where upgrades should be requested first and who might be affected when an upgrade occurs."
+      }
+    ],
+    "optional": [],
+    "workflow": "Collect available supplier-network and cryptographic information → assess each partner's readiness → attach confidence and expose missing evidence → rank risks using record lifetime, flows and migration difficulty → visualize downstream dependencies → identify upgrade priorities and affected partners.",
+    "deliverables": [
+      {
+        "title": "Working readiness-assessment prototype",
+        "text": "Provide a web UI, CLI or API prototype that assesses each partner, ranks risk, shows confidence for every assessment and visualizes the network for non-expert users."
+      }
+    ],
+    "success": [
+      {
+        "title": "Risk-ranking accuracy",
+        "text": "Accuracy of the partner risk ranking."
+      },
+      {
+        "title": "Handling uncertainty",
+        "text": "Clear, defensible treatment of incomplete evidence and assessment confidence."
+      },
+      {
+        "title": "Prioritization logic",
+        "text": "Useful reasoning about which partners should upgrade first."
+      },
+      {
+        "title": "Usability and presentation clarity",
+        "text": "A network view and explanation that a non-expert can understand."
+      }
+    ],
+    "constraints": [
+      {
+        "title": "Incomplete information is part of the challenge",
+        "text": "Do not assume every partner will disclose internal cryptographic details. The assessment must make limited evidence and uncertainty visible."
+      }
+    ],
+    "scope": [
+      {
+        "title": "Supply-chain cryptographic dependencies",
+        "text": "Relevant examples include signed bills of lading, certificates of origin, quality records, device identities and partner APIs. Long-lived aerospace, pharmaceutical or defence records illustrate why record trust periods matter."
+      },
+      {
+        "title": "A network, not one isolated organization",
+        "text": "Assess readiness across a partner network, recognizing that a manufacturer can depend on hundreds of suppliers, carriers and customs systems and that a slow critical partner can affect the wider chain."
+      }
+    ],
+    "resources": [
+      {
+        "title": "Post-quantum standards cited in the brief",
+        "text": "The supplied brief references NIST FIPS 203, 204 and 205 as post-quantum standards relevant to quantum-readiness assessment."
+      }
+    ]
+  },
+  {
+    "number": 4,
+    "sourceNumber": 6,
+    "title": "GrammaForge: Grammar guided synthetic data Engine for proprietary Languages",
+    "fullTitle": "GrammaForge: Grammar guided synthetic data Engine for proprietary Languages",
+    "problem": "Proprietary-language Domain-Specific Language Models face a shortage of training code: public repositories are scarce, while production code can be restricted by privacy, confidentiality or sensitive business logic. Formal grammars exist, but ordinary rule-based generators can produce repetitive, semantically hollow code, and general-purpose LLMs can hallucinate low-resource syntax. Build an intelligent synthetic-data pipeline that uses a formal language grammar, a semantic specification and 5–20 seed programs to produce realistic instruction–response pairs for fine-tuning a proprietary-language DSLM.",
+    "audience": "Teams developing proprietary-language DSLMs for developers, maintainers and modernization teams that need code completion, explanation, migration or test-generation assistance.",
+    "outcome": "Produce a diverse, validator-checked fine-tuning dataset with complete grammar coverage, meaningful code and instructions that accurately describe their paired responses, without exposing proprietary production source.",
+    "required": [
+      {
+        "title": "Grammar, semantics and seeds as inputs",
+        "text": "Accept a formal syntax definition such as BNF, EBNF or an ANTLR grammar, a semantic specification and a small seed set of 5–20 programs."
+      },
+      {
+        "title": "Instruction–response training pairs",
+        "text": "Generate a dataset of instruction–response pairs suitable for fine-tuning a proprietary-language DSLM. Each instruction must accurately describe its corresponding response."
+      },
+      {
+        "title": "Complete grammar-scope coverage",
+        "text": "Cover the complete grammar scope with a sufficient number of distinct examples for every construct. Include each production rule, alternative and semantic feature enough times for the model to learn it."
+      },
+      {
+        "title": "Reference-parser verification",
+        "text": "Ensure responses are syntactically guaranteed by verifying them with the provided reference parser."
+      },
+      {
+        "title": "Realistic and diverse code",
+        "text": "Responses must be semantically realistic, avoid near-duplicates and resemble the seed programs in structure and idiom instead of being repetitive or semantically hollow."
+      }
+    ],
+    "optional": [
+      {
+        "title": "Recommended generation approaches",
+        "text": "The brief recommends grammar-constrained LLM decoding, LLM-assisted generation, fine-tuning and probabilistic or learned grammars as possible technologies for the solution."
+      }
+    ],
+    "workflow": "Provide a grammar, semantic specification and 5–20 seed programs → generate instruction–response pairs → check syntax with the reference parser → assess semantics, coverage and diversity → remove near-duplicates and check alignment with seed idioms → demonstrate the resulting fine-tuning dataset.",
+    "deliverables": [
+      {
+        "title": "Working generation pipeline",
+        "text": "Provide a working prototype or pipeline that turns the language specification and seed programs into synthetic training data."
+      },
+      {
+        "title": "Coverage demonstration",
+        "text": "Demonstrate coverage in the generated data through a sample demo."
+      },
+      {
+        "title": "Architecture and presentation",
+        "text": "Present the system architecture and explain the generation approach."
+      }
+    ],
+    "success": [
+      {
+        "title": "Generated-data and semantic validity",
+        "text": "Demonstrate the validity of generated code. Teams may use a language such as COBOL to show this."
+      },
+      {
+        "title": "Data diversity",
+        "text": "The generated dataset should provide varied examples rather than near-duplicates."
+      },
+      {
+        "title": "DSLM readiness",
+        "text": "The instruction–response data should be suitable for proprietary-language model fine-tuning."
+      },
+      {
+        "title": "Scalability and adaptability",
+        "text": "Show how the approach can scale and adapt to different proprietary languages or language versions."
+      }
+    ],
+    "constraints": [
+      {
+        "title": "Preserve confidentiality",
+        "text": "The source problem treats customer production code as unavailable for training because of privacy policies, confidentiality agreements or sensitive business logic. Generate synthetic data from the language specification rather than exposing proprietary source."
+      }
+    ],
+    "scope": [
+      {
+        "title": "Language-agnostic reuse",
+        "text": "A reusable grammar-to-dataset approach should be adaptable to new proprietary languages by changing the grammar and semantic rules, avoiding the cost of hand-writing training programs at scale."
+      },
+      {
+        "title": "Validator-checked data",
+        "text": "Quality checks should reduce hallucinated syntax. The same generation approach can also be useful as test-data or fuzzing input for compilers and migration tools; this is supporting context rather than an additional mandatory deliverable."
+      }
+    ],
+    "resources": []
+  },
+  {
+    "number": 5,
+    "sourceNumber": 7,
+    "title": "BenchForge: Building a Contamination-Resistant Benchmark for Proprietary-Language Code Models",
+    "fullTitle": "BenchForge: Building a Contamination-Resistant Benchmark for Proprietary-Language Code Models",
+    "problem": "Proprietary-language DSLM teams lack public evaluation corpora comparable to HumanEval or MBPP for popular languages. Internal production code cannot simply become a benchmark because of privacy and confidentiality, while small handwritten task sets are costly, cover little of the language and can be overfitted or leaked into training. Use a formal language definition, its semantic rules and a small set of seed examples to build a high-quality, contamination-resistant evaluation benchmark that can compare models, measure fine-tuning gains and reveal regressions.",
+    "audience": "Teams evaluating proprietary-language code models and deciding whether changes improve model quality or readiness for use.",
+    "outcome": "Produce a reproducible instruction-to-code benchmark with complete language coverage, verified reference solutions, automatic scoring and meaningful scores for individual constructs.",
+    "required": [
+      {
+        "title": "Generate from the language specification",
+        "text": "Use the language's formal definition, such as a BNF or ANTLR grammar plus semantic rules, together with a small seed set of examples to build the evaluation benchmark."
+      },
+      {
+        "title": "Automatically checkable instruction-to-code tasks",
+        "text": "Each task must contain a natural-language instruction and an automatic way to check a model's response, using executable tests or validator-based property checks."
+      },
+      {
+        "title": "Complete grammar coverage",
+        "text": "Cover the complete grammar scope with enough tasks for every construct to produce a statistically meaningful score per construct."
+      },
+      {
+        "title": "A range of difficulty",
+        "text": "Include tasks ranging from individual constructs to multi-construct, deeply nested programs."
+      },
+      {
+        "title": "Correct references and clear instructions",
+        "text": "Provide verified, correct reference solutions and unambiguous instructions."
+      },
+      {
+        "title": "Cheap to rerun and extend",
+        "text": "Make the benchmark inexpensive to rerun and extend so new versions can be generated when the language changes."
+      }
+    ],
+    "optional": [
+      {
+        "title": "Recommended benchmark tooling",
+        "text": "The brief recommends grammar tooling, automatic verification, LLM-assisted instruction writing, LLM-as-judge with human spot checks and instruction-ambiguity detection. These can support task creation and review; each task still requires an automatic checking method."
+      }
+    ],
+    "workflow": "Provide grammar, semantic rules and seed examples → generate tasks across constructs and difficulty levels → verify reference solutions and instruction clarity → produce automatic tests or property checks → run the scoring harness on model outputs → report coverage and per-construct results → regenerate or extend the benchmark as the language changes.",
+    "deliverables": [
+      {
+        "title": "Benchmark generator source code",
+        "text": "Submit the source code for the benchmark generator."
+      },
+      {
+        "title": "One-command reproducibility",
+        "text": "Provide a way to reproduce the benchmark with one command."
+      },
+      {
+        "title": "Generated benchmark",
+        "text": "Provide the instruction-to-code benchmark with its verified reference solutions and automatic checking methods."
+      },
+      {
+        "title": "Evaluation harness",
+        "text": "Include a script that accepts a model's outputs and scores them automatically."
+      },
+      {
+        "title": "Coverage report",
+        "text": "Report the benchmark's coverage of the language."
+      }
+    ],
+    "success": [
+      {
+        "title": "Grammar and semantic coverage",
+        "text": "Coverage of language constructs and semantic rules."
+      },
+      {
+        "title": "Task correctness and clarity",
+        "text": "Correct reference solutions, reliable checks and clear instructions."
+      },
+      {
+        "title": "Discriminative power",
+        "text": "The benchmark's ability to distinguish differences in model capability."
+      },
+      {
+        "title": "Reproducibility, engineering and report",
+        "text": "Reproducibility of the benchmark, implementation quality and the quality of its report."
+      },
+      {
+        "title": "Adaptability to held-out variation",
+        "text": "How well the benchmark approach adapts to held-out variation."
+      }
+    ],
+    "constraints": [
+      {
+        "title": "Do not repurpose restricted production code",
+        "text": "Internal production code is constrained by privacy policies, client confidentiality and sensitive business logic. Build the benchmark from the formal language definition and seed examples rather than assuming restricted production code can be exposed."
+      }
+    ],
+    "scope": [
+      {
+        "title": "Evaluation data, not just a small task list",
+        "text": "The benchmark must cover the full grammar, support statistically meaningful scores per construct and remain useful for comparing base models, fine-tuning gains and regressions."
+      },
+      {
+        "title": "Contamination resistance",
+        "text": "Avoid the weakness of a small handwritten benchmark that is easy to overfit to or leak into training. The source requires a contamination-resistant benchmark but does not prescribe a particular prevention method, seed count or numeric task-count threshold."
+      }
+    ],
+    "resources": []
+  },
+  {
+    "number": 6,
+    "sourceNumber": 8,
+    "problem": "Demonstrate how quantum computing can compromise classical public-key cryptography by implementing Shor’s Algorithm to factor small composite numbers and crack a scaled-down RSA encryption system.",
+    "audience": "Participants exploring quantum computing, cryptography and security through a small RSA demonstration.",
+    "outcome": "Find the factors of the small composite number and demonstrate how they reveal the secret in the scaled-down RSA system.",
+    "required": [
+      {
+        "title": "Implement Shor’s Algorithm",
+        "text": "Use Shor’s Algorithm to factor small composite numbers in the demonstration."
+      },
+      {
+        "title": "Demonstrate the RSA break",
+        "text": "Apply the recovered factors to crack the scaled-down RSA encryption system."
+      }
+    ],
+    "optional": [],
+    "workflow": "Choose a small composite and scaled-down RSA example → run Shor’s Algorithm → recover the factors → demonstrate the recovered RSA secret.",
+    "deliverables": [
+      {
+        "title": "Factors and RSA secret",
+        "text": "Demonstrate breaking the RSA secret and finding the factors."
+      }
+    ],
+    "success": [
+      {
+        "title": "Impact",
+        "text": "Demonstrate the impact of the approach."
+      },
+      {
+        "title": "Scalability",
+        "text": "Explain the scalability of the demonstrated approach."
+      }
+    ],
+    "constraints": [
+      {
+        "title": "Scaled-down demonstration",
+        "text": "The stated project uses small composite numbers and a scaled-down RSA encryption system."
+      }
+    ],
+    "scope": [
+      {
+        "title": "Problem domain",
+        "text": "Quantum computing, cryptography and security."
+      }
+    ],
+    "resources": [
+      {
+        "title": "Recommended quantum concepts",
+        "text": "Quantum computing concepts, quantum gates and QFT (Quantum Fourier Transform)."
+      },
+      {
+        "title": "Recommended software frameworks",
+        "text": "Python with IBM Qiskit or Google Cirq."
+      },
+      {
+        "title": "Execution environment options",
+        "text": "A local quantum simulator, such as Qiskit Aer, or IBM Quantum cloud access."
+      }
+    ]
+  },
+  {
+    "number": 7,
+    "sourceNumber": 9,
+    "problem": "Apply Quantum Machine Learning (QML) and quantum optimization to identify subtle, non-linear transaction anomalies in high-dimensional, heavily imbalanced financial datasets. The brief describes financial-fraud datasets as typically having millions of rows and fewer than 0.2% fraudulent cases; practical approaches therefore use hybrid quantum-classical architectures.",
+    "audience": "People building credit-card fraud detection and transaction-anomaly detection systems.",
+    "outcome": "Demonstrate a hybrid quantum-classical fraud-detection approach, with comparative performance evidence and visible circuit diagnostics.",
+    "required": [
+      {
+        "title": "Hybrid quantum-classical architecture",
+        "text": "Use classical layers to reduce feature dimensions and quantum circuits to map data into high-dimensional Hilbert spaces for separating complex fraud boundaries."
+      },
+      {
+        "title": "Choose a quantum method",
+        "text": "Use QSVM, HQNN, QAE or QAOA methods to solve the problem. These are alternatives in the brief, not a requirement to implement all four."
+      },
+      {
+        "title": "Address difficult transaction data",
+        "text": "Work on subtle, non-linear anomalies in high-dimensional, heavily imbalanced financial data."
+      }
+    ],
+    "optional": [],
+    "workflow": "Prepare transaction features → reduce dimensions using classical layers → apply the selected quantum method → identify fraud anomalies → compare performance and inspect circuit diagnostics.",
+    "deliverables": [
+      {
+        "title": "Working hybrid code",
+        "text": "Submit working hybrid quantum-classical code."
+      },
+      {
+        "title": "Comparative performance report",
+        "text": "Provide a comparative performance report."
+      },
+      {
+        "title": "Visual circuit diagnostics",
+        "text": "Show visual diagnostics of the quantum circuits."
+      },
+      {
+        "title": "Deployment roadmap",
+        "text": "Provide a deployment roadmap for the solution."
+      }
+    ],
+    "success": [
+      {
+        "title": "Innovation",
+        "text": "The innovation demonstrated by the approach."
+      },
+      {
+        "title": "Feasibility",
+        "text": "The feasibility of the proposed solution."
+      },
+      {
+        "title": "Impact",
+        "text": "The potential impact of the fraud-detection approach."
+      },
+      {
+        "title": "Scalability",
+        "text": "How the approach scales."
+      },
+      {
+        "title": "Accuracy",
+        "text": "The accuracy demonstrated by the solution."
+      },
+      {
+        "title": "Efficiency",
+        "text": "The efficiency of the implementation."
+      }
+    ],
+    "constraints": [],
+    "scope": [
+      {
+        "title": "Dataset context",
+        "text": "The millions-of-rows and below-0.2%-fraud figures describe typical datasets in the source; the brief does not set a mandatory dataset size or fraud percentage."
+      }
+    ],
+    "resources": [
+      {
+        "title": "Recommended technology",
+        "text": "Quantum Machine Learning (QML). The problem domain is quantum computing, cryptography and security."
+      }
+    ]
+  },
+  {
+    "number": 8,
+    "sourceNumber": 10,
+    "problem": "Develop an AI-powered system that creates a self-paced training plan for novice engineers from learning materials spread across PDFs, Word documents, presentations, OneNote pages, videos, transcripts and sample programs. The underlying system is complex, its training material has accumulated over decades without proper structure, and much of it is duplicated. Engineers receive different amounts of learning time depending on their team’s workload and need to become productive quickly.",
+    "audience": "Novice engineers learning a complex system from large, unstructured and duplicated collections of training material.",
+    "outcome": "Build foundational and production-critical knowledge first, reinforce important concepts, and fit the remaining material into an adaptable on-the-job learning plan.",
+    "required": [
+      {
+        "title": "Analyze the distributed materials",
+        "text": "Analyze learning material across PDFs, Word documents, presentations, OneNote pages, videos, transcripts and sample programs."
+      },
+      {
+        "title": "Structure the knowledge",
+        "text": "Organize the large, unstructured collection and account for duplicated information."
+      },
+      {
+        "title": "Identify concepts and relationships",
+        "text": "Identify concepts, prerequisites, dependencies and practical exercises."
+      },
+      {
+        "title": "Estimate the complete learning duration",
+        "text": "Automatically estimate the duration needed for a comprehensive learning path."
+      },
+      {
+        "title": "Accept the engineer’s time constraints",
+        "text": "Let engineers specify their available learning time. The source example is initial training within 3 weeks followed by 3 hours per week of on-the-job learning; these numbers illustrate configurable constraints, not a fixed schedule for every user."
+      },
+      {
+        "title": "Prioritize and defer intelligently",
+        "text": "Prioritize foundational and production-critical knowledge. Defer less essential topics to on-the-job learning while maximizing learning within the available time."
+      },
+      {
+        "title": "Assess and reinforce learning",
+        "text": "Schedule assessments and spaced repetition to reinforce important concepts."
+      }
+    ],
+    "optional": [],
+    "workflow": "Analyze and structure the learning materials → identify concepts, prerequisites, dependencies and exercises → estimate the full learning duration → accept time constraints → prioritize initial training → schedule assessments, spaced repetition and remaining on-the-job learning.",
+    "deliverables": [],
+    "success": [],
+    "constraints": [],
+    "scope": [
+      {
+        "title": "Problem domain",
+        "text": "AI applied to adaptive, self-paced training for novice engineers."
+      }
+    ],
+    "resources": []
+  },
+  {
+    "number": 9,
+    "sourceNumber": 11,
+    "problem": "Design an intelligent Smart Campus Operations System that analyzes campus occupancy, timetable schedules, equipment utilization, weather conditions and simulated or actual electricity consumption. Identify energy wastage and recommend actions that reduce consumption without negatively affecting students or faculty. The emphasis is on predicting, recommending and optimizing campus operations, rather than monitoring energy alone. An illustrative recommendation in the brief describes a computer lab staying powered for 2.5 hours after scheduled use, with a shutdown adjustment estimated to reduce weekly energy consumption by 12%; those figures are an example, not mandatory targets.",
+    "audience": "Campus operations teams, with student and faculty experience protected while energy use is improved.",
+    "outcome": "Combine forecasting, optimization and a dashboard to turn campus information into practical, explainable energy-saving recommendations.",
+    "required": [
+      {
+        "title": "Analyze campus operational inputs",
+        "text": "Analyze occupancy, timetable schedules, equipment utilization, weather conditions and simulated or actual electricity consumption."
+      },
+      {
+        "title": "Identify and predict energy wastage",
+        "text": "Go beyond passive energy monitoring to identify wastage and predict where operational changes can help."
+      },
+      {
+        "title": "Recommend and optimize actions",
+        "text": "Recommend actions to reduce consumption without negatively affecting the student or faculty experience."
+      }
+    ],
+    "optional": [
+      {
+        "title": "Digital twin",
+        "text": "A digital twin is explicitly listed as an optional advanced feature."
+      }
+    ],
+    "workflow": "Combine campus operational and electricity data → forecast usage and identify wastage → recommend and optimize actions → present the results in a dashboard.",
+    "deliverables": [
+      {
+        "title": "Forecasting",
+        "text": "Demonstrate forecasting as part of the solution."
+      },
+      {
+        "title": "Optimization",
+        "text": "Demonstrate optimization of campus operations."
+      },
+      {
+        "title": "Dashboard",
+        "text": "Provide a dashboard for the solution."
+      }
+    ],
+    "success": [
+      {
+        "title": "Problem understanding — 15%",
+        "text": "Show an understanding of the campus operations problem."
+      },
+      {
+        "title": "Innovation — 20%",
+        "text": "Demonstrate innovation in the approach."
+      },
+      {
+        "title": "Technical implementation — 25%",
+        "text": "Demonstrate a practical technical implementation."
+      },
+      {
+        "title": "Business/user impact — 20%",
+        "text": "Show the business or user impact of the solution."
+      },
+      {
+        "title": "Responsible AI, security & privacy — 10%",
+        "text": "Address responsible AI, security and privacy."
+      },
+      {
+        "title": "Demo & scalability — 10%",
+        "text": "Demonstrate the solution and its scalability."
+      }
+    ],
+    "constraints": [],
+    "scope": [
+      {
+        "title": "A substantive working solution",
+        "text": "A plain LLM wrapper will not score highly. Strong solutions should demonstrate some combination of data processing, reasoning/ML, measurable results, explainability, user experience and practical implementation."
+      }
+    ],
+    "resources": [
+      {
+        "title": "AI and Machine Learning",
+        "text": "A recommended technology family for the solution."
+      },
+      {
+        "title": "Agentic and Generative AI",
+        "text": "Another recommended technology family that may be combined with other approaches."
+      },
+      {
+        "title": "IoT and Edge Computing",
+        "text": "A recommended technology family. The brief encourages combining several emerging technologies rather than depending on only one."
+      }
+    ]
+  },
+  {
+    "number": 10,
+    "sourceNumber": 12,
+    "problem": "Build an AI system that continuously and privately screens new mothers for early signs of postpartum depression (PPD). The brief describes limited screening visits, stigma, scarce doctors and counselors in rural and low-resource areas, and symptoms emerging between visits in sleep, mood, voice and behavior. Combine questionnaire answers with text or voice check-ins and optional wearable signals. Flag at-risk mothers to a clinician or counselor in time, and never replace clinical diagnosis.",
+    "audience": "New mothers and the clinicians or counselors who review risk, including people in rural and low-resource settings.",
+    "outcome": "A private multimodal screening prototype that explains risk trends, supports clinical triage and provides a safe escalation route.",
+    "required": [
+      {
+        "title": "Continuous, private multimodal screening",
+        "text": "Combine questionnaire answers with text or voice check-ins to screen for early signs of PPD. Wearable signals are optional."
+      },
+      {
+        "title": "Clinician or counselor escalation",
+        "text": "Flag at-risk mothers to a clinician or counselor in time. Screening must never replace clinical diagnosis."
+      },
+      {
+        "title": "Mother-facing experience",
+        "text": "Provide the screening chatbot and a mother-facing dashboard through a mobile or web app."
+      },
+      {
+        "title": "Risk scoring and clinical review",
+        "text": "Provide a trained risk-scoring model and a clinician alert/triage view showing risk level, trend and an explanation of why the mother was flagged."
+      },
+      {
+        "title": "Privacy, fairness and safety",
+        "text": "Include consent, careful data handling, a bias and safety review, and an escalation design that covers self-harm indicators."
+      }
+    ],
+    "optional": [
+      {
+        "title": "Wearable sensing",
+        "text": "Optional wearable signals include sleep, heart-rate variability and activity, with edge ML."
+      }
+    ],
+    "workflow": "Collect consented questionnaire answers and text or voice check-ins → combine screening signals → score and explain risk trends → show the mother-facing and clinician views → flag risk and refer to a counselor or helpline, with an emergency flow for self-harm indicators.",
+    "deliverables": [
+      {
+        "title": "Working prototype",
+        "text": "A mobile or web app with the screening chatbot and a mother-facing dashboard."
+      },
+      {
+        "title": "Risk-scoring model",
+        "text": "A trained model, for example using EPDS plus text or voice features, with documented accuracy, sensitivity, specificity and false-negative analysis."
+      },
+      {
+        "title": "Clinician dashboard",
+        "text": "An alert and triage view showing risk level, trend and the explanation of why a mother was flagged."
+      },
+      {
+        "title": "Escalation workflow",
+        "text": "Automatic referral to a counselor or helpline, including an emergency flow for self-harm indicators."
+      },
+      {
+        "title": "Privacy and ethics plan",
+        "text": "A consent flow, data handling aligned with HIPAA, GDPR and India’s DPDP as named in the brief, and a bias and safety review."
+      },
+      {
+        "title": "Architecture and integration document",
+        "text": "The system design, including a FHIR-based integration approach for hospital systems."
+      },
+      {
+        "title": "Demo and pitch",
+        "text": "A short video, a deck and a pilot plan."
+      },
+      {
+        "title": "Source code and documentation",
+        "text": "A repository, a README and test results."
+      }
+    ],
+    "success": [
+      {
+        "title": "Innovation — 20%",
+        "text": "A novel multimodal approach, with originality beyond a simple questionnaire classifier."
+      },
+      {
+        "title": "Feasibility — 20%",
+        "text": "A working prototype, realistic data sources and a credible path to a pilot."
+      },
+      {
+        "title": "Impact — 20%",
+        "text": "Potential reach, benefit to mothers and health outcomes, and usefulness in low-resource settings."
+      },
+      {
+        "title": "Technical quality — 15%",
+        "text": "Model performance, a sound architecture, scalability and clean code."
+      },
+      {
+        "title": "Ethics, privacy and safety — 15%",
+        "text": "Consent, bias handling, explainability, clinical safeguards and escalation design."
+      }
+    ],
+    "evaluationNote": "The source lists five judging criteria totaling 90%. The remaining 10% is not specified; no extra criterion or redistribution has been assumed.",
+    "constraints": [
+      {
+        "title": "Screening does not replace diagnosis",
+        "text": "The system must never replace clinical diagnosis."
+      }
+    ],
+    "scope": [
+      {
+        "title": "Problem domain",
+        "text": "Healthcare and digital health focused on maternal and mental health, with Health IT and data privacy as supporting areas."
+      }
+    ],
+    "resources": [
+      {
+        "title": "Recommended language analysis",
+        "text": "NLP and LLMs for sentiment, risk phrases and journaling or chat analysis."
+      },
+      {
+        "title": "Recommended voice analysis",
+        "text": "Speech emotion and prosody ML, including tone, pace and pauses."
+      },
+      {
+        "title": "Recommended conversational interface",
+        "text": "A multilingual voice and chat assistant, using WhatsApp or a mobile app."
+      },
+      {
+        "title": "Recommended privacy and trust technologies",
+        "text": "Federated learning, on-device inference, encryption and consent management."
+      },
+      {
+        "title": "Recommended fairness techniques",
+        "text": "Explainable AI and bias testing across languages and demographics."
+      },
+      {
+        "title": "Recommended platform approach",
+        "text": "Cloud-native microservices with FHIR/HL7 integration for health records."
+      }
+    ]
+  }
+]
