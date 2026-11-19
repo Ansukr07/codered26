@@ -160,6 +160,11 @@
   width: 24px;
 }
 
+@media(max-width:700px) {
+  .nav-toggle .toggle-line { right: 8px; }
+  .nav-toggle:not(.open) .toggle-line.line-2 { width: 16px; }
+}
+
 .navbar-dropdown {
   display: flex;
   flex-direction: column;
