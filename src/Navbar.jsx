@@ -46,7 +46,7 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
       const hideDistance = isMobile ? 100 : 160;
       const showDistance = isMobile ? 24 : 40;
 
-      if (isOpen) {
+      if (isMobile || isOpen) {
         setIsHidden(false);
         scrollAnchorY.current = currentY;
         scrollDirection.current = 0;
@@ -114,6 +114,14 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
       <nav ref={navRef} className={`custom-navbar ${isOpen ? 'open' : ''} ${isExpanded ? 'expanded' : ''} ${isHidden ? 'nav-hidden' : ''}`} aria-label="Main navigation">
         <div className="navbar-header">
           <a className="nav-identity" href="/" onClick={followPageLink('home')} aria-label="CODERED home">
+            <picture className="nav-mobile-mark">
+              <source media="(max-width: 700px)" srcSet="/logos/bmsit-institution.png" />
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BMS Institute of Technology & Management" width="36" height="40" />
+            </picture>
+            <picture className="nav-mobile-mark">
+              <source media="(max-width: 700px)" srcSet="/logos/bmsitm-25-years.png" />
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BMSIT&M — 25 years of excellence" width="40" height="40" />
+            </picture>
             <img src={logoImage} alt="" className="nav-logo-img" />
             <span className="nav-title">CODERED<span style={{ color: '#D90A16' }}>’26</span></span>
           </a>
@@ -123,7 +131,7 @@ const Navbar = ({ activePage = 'home', onNavigate = () => {} }) => {
           </button>
         </div>
 
-        <div id="navbar-dropdown" className={`navbar-dropdown ${isOpen ? 'show' : ''}`} inert={!isOpen}>
+        <div id="navbar-dropdown" className={`navbar-dropdown ${isOpen ? 'show' : ''}`} inert={!isOpen} data-lenis-prevent="">
           <ul className="nav-menu-list">
             {pageLinks.map(([page, label]) => (
               <li className="nav-menu-item" key={page}>
