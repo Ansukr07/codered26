@@ -46,7 +46,7 @@
       },
       {
         "title": "A fair baseline comparison",
-        "text": "Name an appropriate manual workflow, conversion tool or simple AI baseline. Use the same module, inputs, test data and evaluation conditions. Define task-specific targets and report correctness alongside time, token usage and cost per module."
+        "text": "Name an appropriate manual workflow, conversion tool or simple AI baseline. Identify the specific limitation in your selected baseline. Use the same module, inputs, test data and evaluation conditions. Define task-specific targets and report correctness alongside time, token usage and cost per module."
       }
     ],
     "optional": [
@@ -107,11 +107,11 @@
       },
       {
         "title": "Changing limits and useful failure states",
-        "text": "Check model availability and rate limits in Google AI Studio before development and the final sprint; some models may be unavailable free. Handle HTTP 429 and temporary errors with bounded retries, backoff and a clear failure state."
+        "text": "Check model availability and rate limits in Google AI Studio before development and the final sprint; some models may be unavailable free. Recheck pricing before development. Handle HTTP 429 and temporary errors with bounded retries, backoff and a clear failure state."
       },
       {
         "title": "Bring your own environment",
-        "text": "API calls require internet access. Teams provide compilers, runtimes and computing resources, including any GnuCOBOL toolchain. No mainframe, licensed converter, private NTT DATA system, dedicated event sandbox or reserved model capacity is committed."
+        "text": "API calls require internet access. Teams provide compilers, runtimes and computing resources, including any GnuCOBOL toolchain. No mainframe, licensed converter, private NTT DATA system, dedicated event sandbox, event Google Cloud project or reserved model capacity is committed. NTT DATA is not providing client code, proprietary datasets or confidential material."
       }
     ],
     "scope": [
@@ -121,7 +121,7 @@
       },
       {
         "title": "Outside the challenge",
-        "text": "A generic code-chat wrapper, a concept deck without working functionality, proprietary/client code, or unsupported full-application migration and guaranteed-equivalence claims. Treat generated code as a proposal, never as production-ready or certified equivalent."
+        "text": "A generic code-chat wrapper, a concept deck without working functionality, proprietary/client code, or full-application migration and guaranteed-equivalence claims. Treat generated code as a proposal, never as production-ready or certified equivalent."
       },
       {
         "title": "Ownership and accurate attribution",
@@ -203,7 +203,7 @@
       },
       {
         "title": "Repeatable, comparable evaluation",
-        "text": "Provide an evaluation script and documented scenarios with known causes. Compare your prototype and a named baseline using the same faults, telemetry and evaluation conditions. Report every scenario, including misses, and handle missing data and API failures."
+        "text": "Provide an evaluation script and documented scenarios with known causes. Compare your prototype and a named baseline using the same faults, telemetry and evaluation conditions. Identify the specific limitation in your selected baseline. Report every scenario, including misses, and handle missing data and API failures."
       }
     ],
     "optional": [
@@ -272,7 +272,7 @@
       },
       {
         "title": "Team-owned test environments only",
-        "text": "Run fault injection and remediation only on systems your team owns. Never change a system without explicit approval. Diagnoses remain hypotheses until confirmed; do not present the prototype as autonomous operations or production-ready."
+        "text": "Run fault injection, investigation tools and remediation only on systems your team owns. Never change a system without explicit approval. Diagnoses remain hypotheses until confirmed; do not present the prototype as autonomous operations or production-ready."
       },
       {
         "title": "Accounts, costs and availability",
