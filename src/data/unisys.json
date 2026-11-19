@@ -1,0 +1,1002 @@
+[
+  {
+    "number": 1,
+    "sourceNumber": 3,
+    "company": "Unisys",
+    "title": "Intelligent Knowledge Graph Visualization",
+    "fullTitle": "Intelligent Knowledge Graph Visualization",
+    "asOf": "2026-11-19",
+    "source": {
+      "filename": "BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "href": "/briefs/unisys/BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "format": "docx",
+      "sha256": "8665a8b2cbd2bd531001d7f1ab1f3b5d7a97c61acd510b54460bf10afb7a758f"
+    },
+    "paragraphs": [
+      {
+        "text": "Problem Statement 3: Intelligent Knowledge Graph Visualization",
+        "index": 96
+      },
+      {
+        "text": "Problem Description",
+        "index": 97
+      },
+      {
+        "text": "Challenge: Make Complex Knowledge Graphs Simple, Visual, and Interactive!",
+        "index": 98
+      },
+      {
+        "text": "Knowledge graphs are powerful tools for understanding relationships, dependencies, and hidden patterns in complex enterprise applications. However, exploring large knowledge graphs often requires writing queries using languages such as Cypher in Neo4j, making them less accessible to developers, architects, and business users.",
+        "index": 99
+      },
+      {
+        "text": "Your challenge is to develop an intuitive, interactive, and AI-assisted Knowledge Graph Visualization Platform that allows users to explore complex relationships without requiring knowledge of graph databases or query languages.",
+        "index": 100
+      },
+      {
+        "text": "Key Expectations",
+        "index": 101
+      },
+      {
+        "text": "Intuitive Visualization: Present complex knowledge graphs through clean, interactive, and easy-to-understand visualizations rather than overwhelming users with thousands of nodes.",
+        "index": 102
+      },
+      {
+        "text": "Natural Language Exploration: Allow users to ask questions such as:",
+        "index": 103
+      },
+      {
+        "text": "\"Show me all programs dependent on this COBOL module.\"",
+        "index": 104
+      },
+      {
+        "text": "\"Which business rules are associated with this database table?\"",
+        "index": 105
+      },
+      {
+        "text": "\"What components will be impacted if I modify this field?\"",
+        "index": 106
+      },
+      {
+        "text": "Multi-Level Visualization: Support different abstraction levels, allowing users to navigate from a high-level application architecture down to individual programs, functions, variables, and dependencies.",
+        "index": 107
+      },
+      {
+        "text": "Smart Graph Navigation: Provide search, filtering, grouping, zooming, and progressive expansion of relationships.",
+        "index": 108
+      },
+      {
+        "text": "AI-Powered Insights: Use AI to summarize relationships, explain dependencies, and highlight potential change impacts.",
+        "index": 109
+      },
+      {
+        "text": "Visual Impact Analysis: Allow users to select a component and instantly visualize its upstream and downstream dependencies.",
+        "index": 110
+      },
+      {
+        "text": "Neo4j Integration: Connect to an existing Neo4j knowledge graph and dynamically retrieve relevant nodes and relationships.",
+        "index": 111
+      },
+      {
+        "text": "Problem Domain",
+        "index": 112
+      },
+      {
+        "text": "Intelligent Knowledge Graph Visualization",
+        "index": 113
+      },
+      {
+        "text": "Expected Deliverables",
+        "index": 114
+      },
+      {
+        "text": "A working prototype of a modern, intuitive knowledge graph visualization interface that makes complex enterprise application knowledge accessible to both technical and non-technical users.",
+        "index": 115
+      },
+      {
+        "text": "Participants may use sample datasets representing COBOL programs, database schemas, business rules, and application dependencies.",
+        "index": 116
+      },
+      {
+        "text": "Evaluation Criteria",
+        "index": 117
+      },
+      {
+        "text": "User Experience (25%): Simplicity, clarity, and ease of navigation.",
+        "index": 118
+      },
+      {
+        "text": "Visualization Innovation (25%): Creative approaches to representing complex relationships.",
+        "index": 119
+      },
+      {
+        "text": "Technical Implementation (20%): Neo4j integration, performance, and scalability.",
+        "index": 120
+      },
+      {
+        "text": "AI Capabilities (15%): Natural-language querying and contextual insights.",
+        "index": 121
+      },
+      {
+        "text": "Practical Usability (15%): Effectiveness in understanding real-world application dependencies.",
+        "index": 122
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "sourceNumber": 4,
+    "company": "Unisys",
+    "title": "Next-Generation Interactive Code Visualization Platform",
+    "fullTitle": "Next-Generation Interactive Code Visualization Platform",
+    "asOf": "2026-11-19",
+    "source": {
+      "filename": "BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "href": "/briefs/unisys/BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "format": "docx",
+      "sha256": "8665a8b2cbd2bd531001d7f1ab1f3b5d7a97c61acd510b54460bf10afb7a758f"
+    },
+    "paragraphs": [
+      {
+        "text": "Problem Statement 4: Next-Generation Interactive Code Visualization Platform",
+        "index": 123
+      },
+      {
+        "text": "Problem Description",
+        "index": 124
+      },
+      {
+        "text": "Challenge: Go Beyond Mermaid Diagrams. Make Code Come Alive!",
+        "index": 125
+      },
+      {
+        "text": "Traditional diagramming tools such as Mermaid are useful for visualizing workflows, dependencies, and system architectures. However, understanding large, complex enterprise applications requires more than static diagrams.",
+        "index": 126
+      },
+      {
+        "text": "Your challenge is to design and develop an intelligent, interactive code visualization platform that automatically transforms source code into rich, navigable visual representations of application architecture, dependencies, business logic, and execution workflows.",
+        "index": 127
+      },
+      {
+        "text": "The goal is to make understanding complex codebases as intuitive as exploring an interactive map.",
+        "index": 128
+      },
+      {
+        "text": "Key Expectations",
+        "index": 129
+      },
+      {
+        "text": "Automated Code Visualization: Analyze source code and automatically generate architecture diagrams, dependency maps, call graphs, and execution workflows without manually defining diagrams.",
+        "index": 130
+      },
+      {
+        "text": "Interactive Exploration: Enable users to zoom, navigate, filter, and progressively drill down from application-level architecture to individual modules, functions, and statements.",
+        "index": 131
+      },
+      {
+        "text": "Code Dependency Mapping: Visualize relationships between programs, modules, functions, databases, APIs, and external systems, including upstream and downstream dependencies.",
+        "index": 132
+      },
+      {
+        "text": "Dynamic Workflow Visualization: Generate interactive control-flow and business-process diagrams showing execution paths, conditional branches, data transformations, and interactions between components.",
+        "index": 133
+      },
+      {
+        "text": "AI-Powered Code Understanding: Allow users to ask natural-language questions such as:",
+        "index": 134
+      },
+      {
+        "text": "\"Show the complete workflow for processing a customer transaction.\"",
+        "index": 135
+      },
+      {
+        "text": "\"Which modules are impacted if I change this function?\"",
+        "index": 136
+      },
+      {
+        "text": "\"Visualize how data flows from this API to the database.\"",
+        "index": 137
+      },
+      {
+        "text": "\"Show all dependencies of this COBOL program.\"",
+        "index": 138
+      },
+      {
+        "text": "Bidirectional Code Navigation: Clicking a diagram component should navigate to the corresponding source code, while selecting source code should highlight its position in the visualization.",
+        "index": 139
+      },
+      {
+        "text": "Intelligent Diagram Simplification: Automatically group related components, hide unnecessary details, and provide different abstraction levels to avoid overwhelming users with complex diagrams.",
+        "index": 140
+      },
+      {
+        "text": "Multiple Language Support: Support modern and legacy programming languages, including Java, Python, COBOL, and FORTRAN.",
+        "index": 141
+      },
+      {
+        "text": "Export and Collaboration: Enable exporting visualizations to formats such as SVG, PNG, or interactive HTML for documentation and architecture reviews.",
+        "index": 142
+      },
+      {
+        "text": "Problem Domain",
+        "index": 143
+      },
+      {
+        "text": "Next-Generation Interactive Code Visualization Platform",
+        "index": 144
+      },
+      {
+        "text": "Expected Deliverables",
+        "index": 145
+      },
+      {
+        "text": "A working prototype that automatically generates interactive visualizations from an existing codebase, demonstrating:",
+        "index": 146
+      },
+      {
+        "text": "Application architecture and component relationships.",
+        "index": 147
+      },
+      {
+        "text": "Code-level dependencies and call graphs.",
+        "index": 148
+      },
+      {
+        "text": "Business logic and execution workflows.",
+        "index": 149
+      },
+      {
+        "text": "Interactive navigation between diagrams and source code.",
+        "index": 150
+      },
+      {
+        "text": "AI-assisted exploration and impact analysis.",
+        "index": 151
+      },
+      {
+        "text": "Participants may demonstrate the solution using one programming language while designing the architecture for extensibility.",
+        "index": 152
+      },
+      {
+        "text": "Evaluation Criteria",
+        "index": 153
+      },
+      {
+        "text": "Visualization innovation and user experience (30%)",
+        "index": 154
+      },
+      {
+        "text": "Accuracy of code and dependency analysis (25%)",
+        "index": 155
+      },
+      {
+        "text": "Interactive navigation and workflow exploration (20%)",
+        "index": 156
+      },
+      {
+        "text": "AI-assisted understanding and insights (15%)",
+        "index": 157
+      },
+      {
+        "text": "Scalability and extensibility (10%)",
+        "index": 158
+      }
+    ]
+  },
+  {
+    "number": 3,
+    "sourceNumber": 5,
+    "company": "Unisys",
+    "title": "Quantum-Readiness Network Map",
+    "fullTitle": "Quantum-Readiness Network Map",
+    "asOf": "2026-11-19",
+    "source": {
+      "filename": "BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "href": "/briefs/unisys/BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "format": "docx",
+      "sha256": "8665a8b2cbd2bd531001d7f1ab1f3b5d7a97c61acd510b54460bf10afb7a758f"
+    },
+    "paragraphs": [
+      {
+        "text": "Problem Statement 5: Quantum-Readiness Network Map",
+        "index": 159
+      },
+      {
+        "text": "Problem Description",
+        "index": 160
+      },
+      {
+        "text": "Today's public-key cryptography (RSA, elliptic curves) protects the signatures, certificates, and secure connections that global supply chains run on. Examples are signed bills of lading, certificates of origin, quality records, device identities, and partner APIs. A sufficiently powerful quantum computer is expected to break this cryptography. NIST published its first post-quantum standards in 2024 (FIPS 203, 204, 205). Its draft guidance proposes retiring RSA and elliptic-curve cryptography around 2030 and disallowing it by 2035.",
+        "index": 161
+      },
+      {
+        "text": "Two things make this urgent for supply chains:",
+        "index": 162
+      },
+      {
+        "text": "1. Records outlive algorithms. Some signed records, such as aerospace, pharmaceutical, and defense certifications, must stay trustworthy for 10 to 30 years. A signature made today could be forged once the algorithm is broken.",
+        "index": 163
+      },
+      {
+        "text": "2. No company migrates alone. A manufacturer depends on hundreds of suppliers, carriers, and customs systems, each moving to post-quantum cryptography at its own pace. A chain is only as safe as its slowest critical link.",
+        "index": 164
+      },
+      {
+        "text": "Existing tools can mostly inventory one organization's own cryptography; what is needed is a system that assesses readiness across a whole partner network, particularly when most partners won't share internal details.",
+        "index": 165
+      },
+      {
+        "text": "The expected value is that the procurement, supply chain risk, and security teams should be able to answer basic questions like:",
+        "index": 166
+      },
+      {
+        "text": "Which partners still rely on cryptography that quantum computers are expected to break?",
+        "index": 167
+      },
+      {
+        "text": "Which of those partners matter most, given how long their records must stay trustworthy?",
+        "index": 168
+      },
+      {
+        "text": "Where should we ask partners to upgrade first, and who might break when we upgrade?",
+        "index": 169
+      },
+      {
+        "text": "Challenge: Build a tool that assesses, ranks, and visualizes quantum-readiness across a supplier network, using limited and incomplete information.",
+        "index": 170
+      },
+      {
+        "text": "Problem Domain",
+        "index": 171
+      },
+      {
+        "text": "Security in global supply chain management",
+        "index": 172
+      },
+      {
+        "text": "Expected Deliverables",
+        "index": 173
+      },
+      {
+        "text": "A prototype (web UI, CLI, or API) that will:",
+        "index": 174
+      },
+      {
+        "text": "A. Assess each partner's quantum-readiness from the available data.",
+        "index": 175
+      },
+      {
+        "text": "B. Rank partners by risk, considering how long their records must stay trustworthy, what flows through them, and how hard they are to migrate.",
+        "index": 176
+      },
+      {
+        "text": "C. Show confidence for every assessment. When the data is thin, the tool should say so and not guess silently.",
+        "index": 177
+      },
+      {
+        "text": "D. Visualize the network so a non-expert can see where the biggest risks sit, including how one lagging supplier affects the partners downstream of it.",
+        "index": 178
+      },
+      {
+        "text": "Evaluation Criteria",
+        "index": 179
+      },
+      {
+        "text": "Accuracy of risk ranking, Handling of uncertainty, Prioritization logic, Usability, Presentation Clarity",
+        "index": 180
+      }
+    ]
+  },
+  {
+    "number": 4,
+    "sourceNumber": 6,
+    "company": "Unisys",
+    "title": "GrammaForge: Grammar guided synthetic data Engine for proprietary Languages",
+    "fullTitle": "GrammaForge: Grammar guided synthetic data Engine for proprietary Languages",
+    "asOf": "2026-11-19",
+    "source": {
+      "filename": "BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "href": "/briefs/unisys/BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "format": "docx",
+      "sha256": "8665a8b2cbd2bd531001d7f1ab1f3b5d7a97c61acd510b54460bf10afb7a758f"
+    },
+    "paragraphs": [
+      {
+        "text": "Problem Statement 6: GrammaForge: Grammar guided synthetic data Engine for proprietary Languages",
+        "index": 181
+      },
+      {
+        "text": "Problem Description",
+        "index": 182
+      },
+      {
+        "text": "Organizations developing a Domain-Specific Language Model (DSLM) for proprietary languages face a severe data bottleneck. Unlike public languages such as Python or SQL, proprietary languages have no large public code repositories for pre-training or fine-tuning. Existing production code is often locked behind data privacy policies and client confidentiality agreements, or contains sensitive business logic, so it cannot be used for training.",
+        "index": 183
+      },
+      {
+        "text": "Formal syntax definitions (BNF, EBNF or ANTLR grammars) usually do exist for these languages, but they don’t solve the problem on their own. Standard rule-based generators produce code that is syntactically valid but semantically hollow and repetitive. General-purpose LLMs, on the other hand, frequently hallucinate syntax when working with low-resource, proprietary grammars.",
+        "index": 184
+      },
+      {
+        "text": "Challenge: Build an intelligent synthetic data generation pipeline that takes a formal language grammar, a semantic specification and a small set of seed examples (5-20 programs), and produces a dataset of instruction-response pairs for fine-tuning a proprietary-language DSLM. The dataset must cover the complete grammar scope, with a sufficient number of distinct examples for every construct, so the model sees each production rule, alternative and semantic feature enough times to learn it. Responses must be syntactically guaranteed (verified by a provided reference parser) and semantically realistic. Each instruction must accurately describe its response. The dataset should avoid near-duplicates and resemble the seed examples in structure and idiom.",
+        "index": 185
+      },
+      {
+        "text": "Problem Domain",
+        "index": 186
+      },
+      {
+        "text": "Programming language engineering and compilers (grammars, parsing, ASTs),",
+        "index": 187
+      },
+      {
+        "text": "Applied generative AI for code, Synthetic data generation",
+        "index": 188
+      },
+      {
+        "text": "Recommended Emerging Technology to be Used in the Solution",
+        "index": 189
+      },
+      {
+        "text": "Grammar-constrained LLM decoding, LLM-assisted generation, Fine-tuning, Probabilistic / learned grammars",
+        "index": 190
+      },
+      {
+        "text": "Expected Deliverables",
+        "index": 191
+      },
+      {
+        "text": "Working Prototype/pipeline, Sample Demo showing coverage in data generation, Architecture and presentation",
+        "index": 192
+      },
+      {
+        "text": "Evaluation Criteria",
+        "index": 193
+      },
+      {
+        "text": "Synthetic and semantic validity (team can use languages like COBOL to demonstrate the validity of generated code), data diversity, DSLM readiness, scalability and adaptability",
+        "index": 194
+      },
+      {
+        "text": "Alignment with Business needs",
+        "index": 195
+      },
+      {
+        "text": "While building DSLMs for proprietary languages so that developers, maintainers and modernization teams get the same AI assistance (code completion, explanation, migration, test generation) that mainstream languages enjoy. The main blocker is data:",
+        "index": 196
+      },
+      {
+        "text": "Scarcity: real code in these languages is small in volume and unavailable to public models.",
+        "index": 197
+      },
+      {
+        "text": "Confidentiality: customer code often can’t be used for training. Synthetic data generated from the language specification avoids exposing proprietary source.",
+        "index": 198
+      },
+      {
+        "text": "Cost and speed: hand-writing training programs doesn’t scale. A spec-driven generator can produce millions of valid examples across new languages and versions.",
+        "index": 199
+      },
+      {
+        "text": "Reusability: a grammar-to-dataset pipeline is language-agnostic. Once proven, the same approach onboards new proprietary languages with only the grammar and semantic rules changing.",
+        "index": 200
+      },
+      {
+        "text": "Quality and safety: validator-checked data reduces hallucinated syntax in the resulting models, and the same generator doubles as a test-data and fuzzing tool for compilers and migration tools.",
+        "index": 201
+      },
+      {
+        "text": "The hackathon gives us a pool of novel approaches, benchmarked against a common measure, and a pipeline of candidate talent, with potential to adopt or extend winning ideas into our DSLM program.",
+        "index": 202
+      }
+    ]
+  },
+  {
+    "number": 5,
+    "sourceNumber": 7,
+    "company": "Unisys",
+    "title": "BenchForge: Building a Contamination-Resistant Benchmark for Proprietary-Language Code Models",
+    "fullTitle": "BenchForge: Building a Contamination-Resistant Benchmark for Proprietary-Language Code Models",
+    "asOf": "2026-11-19",
+    "source": {
+      "filename": "BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "href": "/briefs/unisys/BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "format": "docx",
+      "sha256": "8665a8b2cbd2bd531001d7f1ab1f3b5d7a97c61acd510b54460bf10afb7a758f"
+    },
+    "paragraphs": [
+      {
+        "text": "Problem Statement 7: BenchForge: Building a Contamination-Resistant Benchmark for Proprietary-Language Code Models",
+        "index": 203
+      },
+      {
+        "text": "Problem Description",
+        "index": 204
+      },
+      {
+        "text": "Organizations building Domain-Specific Language Models (DSLMs) for proprietary languages cannot tell whether their models are actually getting better. Public benchmarks such as HumanEval or MBPP exist only for popular languages like Python. For proprietary languages, three problems stand in the way:",
+        "index": 205
+      },
+      {
+        "text": "No benchmark exists. There is no public corpus of tasks and reference solutions for these languages.",
+        "index": 206
+      },
+      {
+        "text": "Internal code cannot be used. Production code is locked behind privacy policies, client confidentiality and sensitive business logic, so it can’t be turned into a benchmark.",
+        "index": 207
+      },
+      {
+        "text": "Hand-written benchmarks don’t scale. A few dozen handcrafted tasks are expensive to produce, cover a small part of the language, and are easy to overfit to or leak into training data.",
+        "index": 208
+      },
+      {
+        "text": "Without a reliable benchmark, teams can’t compare base models, measure fine-tuning gains, catch regressions, or decide whether a model is ready to ship.",
+        "index": 209
+      },
+      {
+        "text": "The language’s formal definition (a BNF or ANTLR grammar plus semantic rules) usually does exist. Your task is to use this specification, together with a small set of seed examples, to build a high-quality evaluation benchmark for the language.",
+        "index": 210
+      },
+      {
+        "text": "Your benchmark must:",
+        "index": 211
+      },
+      {
+        "text": "Contain tasks in an instruction-to-code format, each with a natural-language instruction and an automatic way to check a model’s answer (executable tests, or validator-based property checks)",
+        "index": 212
+      },
+      {
+        "text": "Cover the complete grammar scope, with enough tasks for every construct to give a statistically meaningful score per construct",
+        "index": 213
+      },
+      {
+        "text": "Span a range of difficulty levels, from single-construct tasks to multi-construct, deeply nested programs",
+        "index": 214
+      },
+      {
+        "text": "Have verified, correct reference solutions and unambiguous instructions",
+        "index": 215
+      },
+      {
+        "text": "Be cheap to re-run and extend, so new versions can be generated when the language changes",
+        "index": 216
+      },
+      {
+        "text": "Problem Domain",
+        "index": 217
+      },
+      {
+        "text": "Evaluation and benchmarking of generative AI for code, Programming language engineering (grammars, parsing, interpreters), Synthetic data and test-case generation, Model quality assurance and MLOps",
+        "index": 218
+      },
+      {
+        "text": "Recommended Emerging Technology to be Used in the Solution",
+        "index": 219
+      },
+      {
+        "text": "Grammar tooling, Automatic verification, LLM-assisted instruction writing, LLM-as-judge with human spot checks, instruction-ambiguity detection",
+        "index": 220
+      },
+      {
+        "text": "Expected Deliverables",
+        "index": 221
+      },
+      {
+        "text": "Benchmark generator source code, One-command reproducibility, Benchmark, Evaluation harness: a script that takes a model’s outputs and scores them automatically, Coverage report",
+        "index": 222
+      },
+      {
+        "text": "Evaluation Criteria",
+        "index": 223
+      },
+      {
+        "text": "Grammar and semantic coverage, Correctness and clarity of tasks, Discriminative power, Reproducibility, engineering, report, Adaptability to held-out variation",
+        "index": 224
+      }
+    ]
+  },
+  {
+    "number": 6,
+    "sourceNumber": 8,
+    "company": "Unisys",
+    "title": "Use Shor's Algorithm to break Weak Cryptographic Algorithms",
+    "fullTitle": "Use Shor's Algorithm to break Weak Cryptographic Algorithms",
+    "asOf": "2026-11-19",
+    "source": {
+      "filename": "BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "href": "/briefs/unisys/BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "format": "docx",
+      "sha256": "8665a8b2cbd2bd531001d7f1ab1f3b5d7a97c61acd510b54460bf10afb7a758f"
+    },
+    "paragraphs": [
+      {
+        "text": "Problem Statement 8: Use Shor's Algorithm to break Weak Cryptographic Algorithms",
+        "index": 225
+      },
+      {
+        "text": "Problem Description",
+        "index": 226
+      },
+      {
+        "text": "This project demonstrates how quantum computing compromises classical public-key cryptography by implementing Shor’s Algorithm to factor small composite numbers and crack a scaled-down RSA encryption system.",
+        "index": 227
+      },
+      {
+        "text": "Problem Domain",
+        "index": 228
+      },
+      {
+        "text": "Quantum Computing, Cryptography, Security",
+        "index": 229
+      },
+      {
+        "text": "Recommended Emerging Technology to be Used in the Solution",
+        "index": 230
+      },
+      {
+        "text": "Quantum Computing concepts, Quantum gates, QFT (Quantum Fourier Transform), etc.",
+        "index": 231
+      },
+      {
+        "text": "Software frameworks: Python with IBM Qiskit or Google Cirq.",
+        "index": 232
+      },
+      {
+        "text": "Execution environment: Local quantum simulator (such as Qiskit Aer) or IBM Quantum cloud access.",
+        "index": 233
+      },
+      {
+        "text": "Expected Deliverables",
+        "index": 234
+      },
+      {
+        "text": "Breaking the RSA secret, finding the factors",
+        "index": 235
+      },
+      {
+        "text": "Evaluation Criteria",
+        "index": 236
+      },
+      {
+        "text": "Impact, scalability",
+        "index": 237
+      }
+    ]
+  },
+  {
+    "number": 7,
+    "sourceNumber": 9,
+    "company": "Unisys",
+    "title": "Credit Card Fraud detection using Quantum Machine Learning",
+    "fullTitle": "Credit Card Fraud detection using Quantum Machine Learning",
+    "asOf": "2026-11-19",
+    "source": {
+      "filename": "BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "href": "/briefs/unisys/BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "format": "docx",
+      "sha256": "8665a8b2cbd2bd531001d7f1ab1f3b5d7a97c61acd510b54460bf10afb7a758f"
+    },
+    "paragraphs": [
+      {
+        "text": "Problem Statement 9: Credit Card Fraud detection using Quantum Machine Learning",
+        "index": 238
+      },
+      {
+        "text": "Problem Description",
+        "index": 239
+      },
+      {
+        "text": "Quantum credit card fraud detection applies Quantum Machine Learning (QML) and quantum optimization to identify subtle, non-linear transaction anomalies within high-dimensional, heavily imbalanced financial datasets.",
+        "index": 240
+      },
+      {
+        "text": "Because financial fraud datasets typically have millions of rows and less than 0.2% fraudulent cases, practical approaches use hybrid quantum-classical architectures. Classical layers reduce feature dimensions, while quantum circuits map data into high-dimensional Hilbert spaces to separate complex fraud boundaries.",
+        "index": 241
+      },
+      {
+        "text": "Use QSVM or HQNN or QAE or QAOA methods to solve the problem.",
+        "index": 242
+      },
+      {
+        "text": "Problem Domain",
+        "index": 243
+      },
+      {
+        "text": "Quantum Computing, Cryptography, Security",
+        "index": 244
+      },
+      {
+        "text": "Recommended Emerging Technology to be Used in the Solution",
+        "index": 245
+      },
+      {
+        "text": "QML (Quantum Machine Learning)",
+        "index": 246
+      },
+      {
+        "text": "Expected Deliverables",
+        "index": 247
+      },
+      {
+        "text": "Working hybrid code, a comparative performance report, visual circuit diagnostics, and a deployment roadmap.",
+        "index": 248
+      },
+      {
+        "text": "Evaluation Criteria",
+        "index": 249
+      },
+      {
+        "text": "Innovation, feasibility, impact, scalability, accuracy, efficiency",
+        "index": 250
+      }
+    ]
+  },
+  {
+    "number": 8,
+    "sourceNumber": 10,
+    "company": "Unisys",
+    "title": "Adaptive AI-Powered Training Plan Generator",
+    "fullTitle": "Adaptive AI-Powered Training Plan Generator",
+    "asOf": "2026-11-19",
+    "source": {
+      "filename": "BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "href": "/briefs/unisys/BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "format": "docx",
+      "sha256": "8665a8b2cbd2bd531001d7f1ab1f3b5d7a97c61acd510b54460bf10afb7a758f"
+    },
+    "paragraphs": [
+      {
+        "text": "Problem Statement 10: Adaptive AI-Powered Training Plan Generator",
+        "index": 251
+      },
+      {
+        "text": "Problem Description",
+        "index": 252
+      },
+      {
+        "text": "Develop an AI-powered system that creates a self-paced training plan for novice engineers by analyzing learning materials distributed across PDFs, Word documents, presentations, OneNote pages, videos, transcripts, and sample programs. The system should identify concepts, prerequisites, dependencies, and practical exercises, and automatically estimate the duration required for a comprehensive learning path.",
+        "index": 253
+      },
+      {
+        "text": "Engineers can then specify constraints, e.g. completing initial training within 3 weeks followed by 3 hours per week of on-the-job learning. The system should intelligently prioritize foundational and production-critical knowledge, defer less essential topics, and schedule assessments and spaced repetition to reinforce important concepts while maximizing learning within the available time.",
+        "index": 254
+      },
+      {
+        "text": "Problem Domain",
+        "index": 255
+      },
+      {
+        "text": "AI",
+        "index": 256
+      },
+      {
+        "text": "Background",
+        "index": 257
+      },
+      {
+        "text": "We have a complex system for which pure training can take a long duration.",
+        "index": 258
+      },
+      {
+        "text": "The documents are large in number and developed over decades without any proper structure and contain lots of duplicate information.",
+        "index": 259
+      },
+      {
+        "text": "The first issue is: We need a way to structure this.",
+        "index": 260
+      },
+      {
+        "text": "When we get new engineers to work on it, the duration they get to learn varies based on the workload of the team around that time.",
+        "index": 261
+      },
+      {
+        "text": "The engineer needs a way to quickly ramp up and be productive as quickly as possible.",
+        "index": 262
+      },
+      {
+        "text": "Covering the foundation and reinforcing important concepts is crucial.",
+        "index": 263
+      },
+      {
+        "text": "The rest of the material is required but can be covered on-the-job.",
+        "index": 264
+      }
+    ]
+  },
+  {
+    "number": 9,
+    "sourceNumber": 11,
+    "company": "Unisys",
+    "title": "Sustainable Smart Campus Operations",
+    "fullTitle": "Sustainable Smart Campus Operations",
+    "asOf": "2026-11-19",
+    "source": {
+      "filename": "BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "href": "/briefs/unisys/BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "format": "docx",
+      "sha256": "8665a8b2cbd2bd531001d7f1ab1f3b5d7a97c61acd510b54460bf10afb7a758f"
+    },
+    "paragraphs": [
+      {
+        "text": "Problem Statement 11: Sustainable Smart Campus Operations",
+        "index": 267
+      },
+      {
+        "text": "Problem Description",
+        "index": 268
+      },
+      {
+        "text": "Design an intelligent Smart Campus Operations System that analyzes campus occupancy, timetable schedules, equipment utilization, weather conditions and simulated or actual electricity consumption to identify energy wastage and recommend actions to reduce consumption without negatively affecting the student or faculty experience.",
+        "index": 269
+      },
+      {
+        "text": "For example:",
+        "index": 270
+      },
+      {
+        "text": "“Computer Lab 3 has historically remained powered for 2.5 hours after scheduled usage. Adjusting its shutdown schedule could reduce its estimated weekly energy consumption by 12%.”",
+        "index": 271
+      },
+      {
+        "text": "The emphasis should therefore be not only on monitoring energy, but on predicting, recommending and optimizing campus operations.",
+        "index": 272
+      },
+      {
+        "text": "Problem Domain",
+        "index": 273
+      },
+      {
+        "text": "Sustainability/Intelligent Operations",
+        "index": 274
+      },
+      {
+        "text": "Recommended Emerging Technology to be Used in the Solution",
+        "index": 275
+      },
+      {
+        "text": "Teams can combine several emerging technologies rather than depending on a single technology.",
+        "index": 276
+      },
+      {
+        "text": "AI/Machine Learning",
+        "index": 277
+      },
+      {
+        "text": "Agentic/Generative AI",
+        "index": 278
+      },
+      {
+        "text": "IoT/Edge Computing",
+        "index": 279
+      },
+      {
+        "text": "Digital Twin, optional advanced feature",
+        "index": 280
+      },
+      {
+        "text": "Expected Deliverables",
+        "index": 281
+      },
+      {
+        "text": "Forecasting + optimization + dashboard",
+        "index": 282
+      },
+      {
+        "text": "Evaluation Criteria",
+        "index": 283
+      },
+      {
+        "text": "Problem understanding – 15% Innovation – 20% Technical implementation – 25% Business/user impact – 20% Responsible AI, security & privacy – 10% Demo & scalability – 10% I would also explicitly tell teams that a plain LLM wrapper will not score highly. Strong solutions should demonstrate some combination of data processing, reasoning/ML, measurable results, explainability, user experience and practical implementation",
+        "index": 284
+      }
+    ]
+  },
+  {
+    "number": 10,
+    "sourceNumber": 12,
+    "company": "Unisys",
+    "title": "MindMom AI: Early Detection of Postpartum Depression Using Multimodal AI Screening",
+    "fullTitle": "MindMom AI: Early Detection of Postpartum Depression Using Multimodal AI Screening",
+    "asOf": "2026-11-19",
+    "source": {
+      "filename": "BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "href": "/briefs/unisys/BMSIT_CodeRed26_Problem_Statements_12.docx",
+      "format": "docx",
+      "sha256": "8665a8b2cbd2bd531001d7f1ab1f3b5d7a97c61acd510b54460bf10afb7a758f"
+    },
+    "paragraphs": [
+      {
+        "text": "Problem Statement 12: MindMom AI: Early Detection of Postpartum Depression Using Multimodal AI Screening",
+        "index": 295
+      },
+      {
+        "text": "Problem Description",
+        "index": 296
+      },
+      {
+        "text": "Postpartum depression (PPD) affects roughly 1 in 7 new mothers worldwide. Most cases go undiagnosed because:",
+        "index": 297
+      },
+      {
+        "text": "Screening (such as the EPDS questionnaire) happens only at a few clinic visits, if at all.",
+        "index": 298
+      },
+      {
+        "text": "Stigma stops mothers from reporting symptoms.",
+        "index": 299
+      },
+      {
+        "text": "Doctors and counselors are scarce, especially in rural and low-resource areas.",
+        "index": 300
+      },
+      {
+        "text": "Symptoms show up between visits, in sleep, mood, voice and behavior, when no one is watching.",
+        "index": 301
+      },
+      {
+        "text": "The challenge is to build an AI system that continuously and privately screens new mothers for early signs of PPD. It should combine questionnaire answers, text or voice check-ins and optional wearable signals. It must flag at-risk mothers to a clinician or counselor in time, and it must never replace clinical diagnosis.",
+        "index": 302
+      },
+      {
+        "text": "Problem Domain",
+        "index": 303
+      },
+      {
+        "text": "Healthcare / Digital Health (maternal and mental health), with Health IT and data privacy as supporting areas.",
+        "index": 304
+      },
+      {
+        "text": "Recommended Emerging Technology to be Used in the Solution",
+        "index": 305
+      },
+      {
+        "text": "Layer Technology",
+        "index": 306
+      },
+      {
+        "text": "Language analysis NLP and LLMs for sentiment, risk phrases and journaling or chat analysis",
+        "index": 307
+      },
+      {
+        "text": "Voice analysis Speech emotion and prosody ML (tone, pace, pauses)",
+        "index": 308
+      },
+      {
+        "text": "Sensing (optional) Wearable data such as sleep, heart rate variability and activity, with edge ML",
+        "index": 309
+      },
+      {
+        "text": "Conversational interface Multilingual voice and chat assistant (WhatsApp or mobile app)",
+        "index": 310
+      },
+      {
+        "text": "Privacy and trust Federated learning, on-device inference, encryption, consent management",
+        "index": 311
+      },
+      {
+        "text": "Fairness Explainable AI and bias testing across languages and demographics",
+        "index": 312
+      },
+      {
+        "text": "Platform Cloud-native microservices with FHIR/HL7 integration for health records",
+        "index": 313
+      },
+      {
+        "text": "Expected Deliverables",
+        "index": 314
+      },
+      {
+        "text": "Working prototype: a mobile or web app with the screening chatbot and a mother-facing dashboard. Risk-scoring model: a trained model (for example, on EPDS plus text or voice features) with documented accuracy, sensitivity, specificity and false-negative analysis. Clinician dashboard: an alert and triage view showing risk level, trend and explanation of why the mother was flagged. Escalation workflow: automatic referral to a counselor or helpline, including an emergency flow for self-harm indicators. Privacy and ethics plan: consent flow, data handling aligned with HIPAA, GDPR and India’s DPDP, and a bias and safety review. Architecture and integration document: the system design, with a FHIR-based integration approach for hospital systems. Demo and pitch: a short video, a deck and a pilot plan. Source code and documentation: a repository, a README and test results.",
+        "index": 315
+      },
+      {
+        "text": "Evaluation Criteria",
+        "index": 316
+      },
+      {
+        "text": "Criterion Weight What judges look for Innovation 20% A novel multimodal approach, with originality beyond a simple questionnaire classifier Feasibility20% A working prototype, realistic data sources and a credible path to a pilot Impact 20% Potential reach, benefit to mothers and health outcomes, usefulness in low-resource settings Technical quality 15% Model performance, a sound architecture, scalability and clean code Ethics, privacy and safety15% Consent, bias handling, explainability, clinical safeguards and escalation design",
+        "index": 317
+      }
+    ]
+  }
+]

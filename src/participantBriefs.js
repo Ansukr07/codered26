@@ -5,9 +5,11 @@ import agnesAI from './data/participant-agnes-ai.json' with { type: 'json' }
 import cassetteLabs from './data/participant-cassette-labs.json' with { type: 'json' }
 import sahasranshu from './data/participant-sahasranshu.json' with { type: 'json' }
 import niveus from './data/participant-niveus.json' with { type: 'json' }
+import unisys from './data/participant-unisys.json' with { type: 'json' }
 
 // Edited participant copy. Complete documents remain in each partner's source archive.
 export const participantBriefs = [
+  ...unisys.map(brief => ({ ...brief, trackSlug: 'unisys' })),
   ...niveus.map(brief => ({ ...brief, trackSlug: 'niveus' })),
   ...[...ps3, ...ps45].map(brief => ({ ...brief, trackSlug: 'mystartupwave' })),
   ...thinkRobotics.map(brief => ({ ...brief, trackSlug: 'think-robotics' })),
