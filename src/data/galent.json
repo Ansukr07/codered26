@@ -1,0 +1,24 @@
+[
+  {
+    "number": 1,
+    "company": "Galent",
+    "companyAttribution": "Problem statement supplied directly by the partner for Code Red ’26.",
+    "title": "Building a Cost-Efficient AI-Powered HR Assistant",
+    "fullTitle": "Building a Cost-Efficient AI-Powered HR Assistant",
+    "subtitle": "RAG-based HR assistance at a minimal targeted cost",
+    "industry": "AI / RAG & enterprise digital engineering",
+    "asOf": "2026-11-21",
+    "source": {
+      "filename": "Industry_problem_IT.pdf",
+      "href": "/briefs/galent/CODERED26-Challenge-Brief-Cost-Efficient-AI-HR-Assistant.pdf",
+      "pages": 1,
+      "sha256": "276933f218de0c4318b4109e70d42cccbb08b9f68da126060dcab69a5847b5ef"
+    },
+    "pages": [
+      {
+        "page": 1,
+        "text": "About Galent\n\nGalent is an AI-native digital engineering partner helping global enterprises build, modernize, and scale technology systems with measurable business outcomes.\n\nPowered by the GalentAI Platform, we deliver end-to-end, SDLC-aligned, AI-enabled services across Application Development & Modernization, Managed Services, Data & Platforms, and Context Engineering. Built to sit on top of existing enterprise technology stacks, the GalentAI Platform brings deterministic, auditable, and context-aware AI into every stage of software engineering.\n\nWe partner with enterprises across Banking & Financial Services, Healthcare & Life Sciences, Insurance, Communications, Media & Technology, and Industrial sectors, delivering AI-native engineering that is resilient, scalable, and outcome-driven from day one.\n\nContact Person\n\nMs. Jina Priya\n\nGlobal Head, Delivery Services at Galent\n\nE-Mail - Jinapriya.ajithadoss@galent.com\n\nContact No - 73977 32751\n\nProblem Statement: Building a Cost-Efficient AI-Powered HR Assistant\n\nOrganisations are increasingly adopting AI-powered chatbots to help employees access HR information relating to leave policies, payroll, employee benefits, insurance, reimbursements, onboarding and other HR processes. While Retrieval-Augmented Generation (RAG) enables intelligent, context-aware responses, the overall cost of operating these solutions can become significant with increasing employee adoption and query volumes.\n\nThe challenge is to design and develop a cost-efficient, scalable AI-powered HR Assistant that can handle an multi-step employee conversation at a very minimal targeted cost, including all associated costs such as LLM inference, embedding generation, vector database operations, document retrieval, reranking, context processing and an appropriate allocation of knowledge-base ingestion and infrastructure costs.\n\nStudents are expected to explore innovative approaches such as intelligent model selection, semantic caching, optimised retrieval, token consumption reduction and efficient infrastructure utilisation, while maintaining high response accuracy, reliability, data security and employee experience.\n\nThe solution must be demonstrated through a working prototype with measurable cost savings and a transparent, end-to-end cost breakdown.\n\nFor college level project purpose, first develop reimbursement system with assumed policies. But multi turn conversation, context storing, RAG are must. cost optimization with accuracy is the KPI.\n"
+      }
+    ]
+  }
+]

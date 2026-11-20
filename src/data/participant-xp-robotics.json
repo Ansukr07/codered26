@@ -1,0 +1,105 @@
+[
+  {
+    "number": 1,
+    "problem": "Build an autonomous robotic sorting system that uses a learned world model to pick up red, green and blue cubes and place each cube into the matching colored bin. Collect demonstrations with a leader and follower setup using LeRobot or an approved equivalent. The system must observe the current scene, predict relevant consequences of candidate actions, execute a short action segment, observe again and continue until sorting is complete. A world model must learn how task relevant state changes over time, conditioned on candidate robot actions — a simulator alone, a language model giving instructions, or color detection with fixed trajectories does not satisfy this requirement. Cube and bin order must be inferred from observations rather than a memorized left to right sequence.",
+    "audience": "Teams building physical AI systems: robotics and machine learning developers, hardware integrators and evaluators working with leader follower arm setups, cameras and real world sorting workspaces.",
+    "outcome": "An autonomous physical demonstration, a trained world model or adapted checkpoint, future prediction evidence, logs showing how predictions affect action choice, and held out evaluation results across randomized layouts, lighting, surface and base relocation changes.",
+    "required": [
+      { "title": "LeRobot leader and follower setup", "text": "One securely mounted follower arm and one leader arm for demonstrations; equivalent approved hardware is acceptable. The leader records demonstrations through teleoperation and the follower executes autonomously during judged trials." },
+      { "title": "Trained world model", "text": "Learn action conditioned transitions in visual latent or object state space, or adapt an approved pretrained world action model. Predictions must influence planning, action ranking, policy improvement or runtime action generation." },
+      { "title": "Planner and control", "text": "Candidate action generation, predicted outcome scoring, bounded execution and replanning. IK, collision checks and safety limits may support execution." },
+      { "title": "Logging", "text": "Episode records, action timestamps, predictions, chosen actions, actual outcomes, failures and checkpoint identity." },
+      { "title": "Generalization trials", "text": "25 scored trials across randomized cube and bin layouts, lighting variation, changed tabletop appearance, base relocation and combined changes — every scene must remain mechanically reachable and visually solvable." },
+      { "title": "World model ablation", "text": "Run 10 separate paired scenes using the full system and a prediction disabled baseline under the same action budget; report all outcomes." }
+    ],
+    "optional": [
+      { "title": "Wrist or RGB D camera", "text": "A second camera view is optional, provided all teams have equivalent access for scoring." },
+      { "title": "Pretrained world action models", "text": "ACT and SmolVLA may be comparison baselines or action proposal modules; adapt an approved pretrained world action model." },
+      { "title": "No-recalibration award", "text": "A stricter no-recalibration protocol can be scored separately rather than mixing protocols." }
+    ],
+    "workflow": "Collect 60 to 120 demonstrations with the leader arm across varied layouts → train the world model on action conditioned transitions → at runtime, observe the scene → sample candidate gripper motions → score predicted grasp and placement progress along with collision risk → execute the first short segment → observe again and replan until all three cubes are sorted.",
+    "deliverables": [
+      { "title": "Autonomous physical demonstration", "text": "The trained world model or adapted checkpoint driving autonomous sorting of three colored cubes into matching bins." },
+      { "title": "Future prediction evidence", "text": "Compare at least two candidate actions from the same observation and show that the predicted outcomes differ meaningfully; include both correct and incorrect predictions." },
+      { "title": "Held out evaluation results", "text": "Per-condition cube accuracy and full task success, completion time, retry count, emergency stops and planning latency." },
+      { "title": "World model ablation", "text": "10 paired scenes comparing the full system with a prediction disabled baseline; report all outcomes even if the world model does not improve success." },
+      { "title": "Training evidence", "text": "The objective, action representation, normalization, prediction horizon, parameter count and held out future prediction evaluation." }
+    ],
+    "success": [
+      { "title": "Autonomous sorting — 25", "text": "25 × standard scene full task success fraction." },
+      { "title": "Generalization — 25", "text": "25 × mean full task success fraction over the changed conditions." },
+      { "title": "World model use — 25", "text": "Prediction quality 10, traceable effect on action choice 10, honest paired ablation 5." },
+      { "title": "Engineering and reproducibility — 15", "text": "Runnable code 5, data and configs 5, latency and failure logs 5." },
+      { "title": "Technical explanation — 10", "text": "Architecture and results 5, limitations and failure analysis 5." }
+    ],
+    "constraints": [
+      { "title": "World model requirement", "text": "The transition function must be learned and evaluated; a detector followed only by analytic IK and hardcoded rules is a useful baseline but does not meet the requirement. Fixed low level safety controllers are allowed." },
+      { "title": "Autonomy only", "text": "No leader control, manual scene assistance or hidden remote operator is allowed during scored trials." },
+      { "title": "Freeze before scoring", "text": "Weights and code are frozen before the 25 scored trials; no gradient updates or new demonstrations are allowed after the scoring freeze." },
+      { "title": "Physical safety", "text": "Only trained operators may power or remount the arm; conservative speed and force limits, an accessible stop mechanism and a clear exclusion zone are required." }
+    ],
+    "scope": [
+      { "title": "In scope", "text": "Physical world model based sorting of red, green and blue cubes with a LeRobot leader follower setup, generalization trials and honest paired ablations." },
+      { "title": "Out of scope", "text": "Training a large foundation model from scratch; a video prediction demo without robot control; fixed movement replays; standalone ACT or SmolVLA policies." },
+      { "title": "Dataset budget", "text": "Start with 60 to 120 complete sorting episodes across varied layouts, including grasp failures and recovery attempts with explicit outcome labels; split by full episode and scene configuration so adjacent frames never cross training and test sets." }
+    ],
+    "resources": [
+      { "title": "LeRobot", "text": "The Hugging Face robotics software ecosystem — policies, datasets and hardware integrations." },
+      { "title": "SO 101 documentation", "text": "Leader and follower reference hardware, assembly and setup." },
+      { "title": "Agentic world action models", "text": "Research reference for predictive world action modeling with agentic planning." },
+      { "title": "Pinned stack", "text": "LeRobot, Python, PyTorch, OpenCV and dataset tools pinned for the event, plus a custom world model adapter if needed." }
+    ]
+  },
+  {
+    "number": 2,
+    "problem": "Build a reproducible pipeline that uses newly recorded human video demonstrations to post train a pretrained humanoid task policy. In NVIDIA Isaac Sim and Isaac Lab, the humanoid must pick up colored cubes from a table and sort them into three matching bins or designated receiving zones. The submission must show that information extracted from the team’s human demonstrations contributed to training and changed the policy’s behavior. Human video contains visual motion but usually lacks robot joint commands, gripper commands and calibrated metric depth — the bridge from these observations to robot training targets must be explained and implemented.",
+    "audience": "Teams working in embodied AI and simulation: machine learning developers, computer vision engineers and retargeting/pipeline builders using NVIDIA Isaac Sim, Isaac Lab and GR00T checkpoints.",
+    "outcome": "A validated pipeline and adapted checkpoint showing measurable improvement over the starting policy — traced from human clips through extracted targets, simulated trajectories, training records and final evaluation across 30 held out episodes.",
+    "required": [
+      { "title": "Human demonstration capture", "text": "Record first person or third person video of the sorting task with physical cubes and bins, clearly showing hands, objects, approach, grasp, transfer and release." },
+      { "title": "Task structure extraction", "text": "Detect and track cubes, bins and hand motion; identify approach, grasp, lift, transfer and release phases; recover camera geometry or normalized table coordinates and address scale ambiguity and occlusion." },
+      { "title": "Feasible robot supervision", "text": "Infer object goals, phase order and approximate end effector paths from human videos; transform them into simulator coordinates; solve IK and grasp constraints; generate and validate trajectories in Isaac." },
+      { "title": "GR00T post training", "text": "Fine tune the supplied GR00T N1.5 or N1.6 checkpoint with its supported recipe; adapter training or partial freezing is allowed only when supported by the pinned release." },
+      { "title": "Contribution proof", "text": "Evaluate the starting checkpoint, the adapted checkpoint and a matched training run without human derived supervision — keeping data, compute and evaluation seeds comparable." },
+      { "title": "Autonomous sorting rollouts", "text": "Closed loop inference against Isaac observations: pick up three colored cubes and sort them into three matching bins without falling or losing objects outside the workspace." }
+    ],
+    "optional": [
+      { "title": "Fourth yellow bin", "text": "Add a fourth color and cube, or category based sorting, only after the three color core task works; keep extension results separate." },
+      { "title": "Walking to the table", "text": "A stretch goal using the supplied controller to walk to the table before manipulation." },
+      { "title": "Both camera views", "text": "First person and third person recordings are optional for core scoring." }
+    ],
+    "workflow": "Record 30 to 60 complete demonstrations across at least 10 layouts → detect and segment cubes, bins and hand motion → recover camera geometry and table coordinates → infer object goals, phase order and end effector paths → retarget into simulator coordinates and validate trajectories → fine tune the GR00T checkpoint → run closed loop inference → prove the human data contribution with matched ablations.",
+    "deliverables": [
+      { "title": "Video-to-robot pipeline", "text": "Traceable extraction from human clips to valid robot training supervision, with camera and table transforms documented." },
+      { "title": "Adapted checkpoint", "text": "A saved task policy with a training log showing parameter updates and loss progression." },
+      { "title": "Autonomous rollouts", "text": "Closed loop sorting driven by the adapted checkpoint in Isaac Sim." },
+      { "title": "Provenance evidence", "text": "Human clip to supervision lineage, retargeting configuration and resulting simulator episode identifiers." },
+      { "title": "Evaluation results", "text": "Correct cubes out of 90, full successes out of 30, falls, drops, retries and successful completion times across 30 held out episodes." },
+      { "title": "Ablation", "text": "At least 10 matched held out seeds comparing the starting and final policies, with absolute percentage point changes reported." }
+    ],
+    "success": [
+      { "title": "Human video pipeline — 25", "text": "Traceable extraction 10, valid robot supervision 10, data QA 5." },
+      { "title": "Post-training evidence — 20", "text": "Actual adaptation 10, fair before and after comparison and ablation 10." },
+      { "title": "Autonomous sorting — 30", "text": "30 × full task success fraction across 30 final policy episodes." },
+      { "title": "Robustness and stability — 15", "text": "10 × success fraction in changed appearance scenes, 5 × non-fall fraction across all episodes." },
+      { "title": "Reproducibility and explanation — 10", "text": "Runnable artifacts 5, clear analysis and limitations 5." }
+    ],
+    "constraints": [
+      { "title": "Valid conversion only", "text": "Directly relabeling human wrist motion as humanoid joint actions is not a valid conversion." },
+      { "title": "Pinned stack", "text": "NVIDIA Isaac Sim, Isaac Lab, GR00T N1.5 or N1.6 with exact revisions and the organizer validated locomotion controller." },
+      { "title": "No privileged state", "text": "The evaluated policy uses approved cameras and proprioception; simulator state is for scoring only." },
+      { "title": "Data hygiene", "text": "Verify monotonic timestamps, aligned observations and actions, consistent dimensions, finite values and no train/test scene overlap; report rejected trajectories and why they failed." }
+    ],
+    "scope": [
+      { "title": "In scope", "text": "Human video to robot supervision pipelines, GR00T post training and autonomous humanoid sorting in Isaac Sim." },
+      { "title": "Out of scope", "text": "Training a large foundation model from scratch; simulator demonstrations unrelated to human recordings; learning walking from sorting videos." },
+      { "title": "Standing scope", "text": "Core scoring measures stable standing and manipulation at the table; a short operation of the supplied standing and walking controller is an integration check, not a learned skill." }
+    ],
+    "resources": [
+      { "title": "Isaac Sim and Isaac Lab", "text": "Simulation, task orchestration, controllers, sensors and evaluation workflows." },
+      { "title": "GR00T checkpoints", "text": "N1.5 or N1.6 with exact revisions, supported fine tuning recipes and modality configurations." },
+      { "title": "LeRobot", "text": "The robotics ecosystem, dataset format and hardware integrations." },
+      { "title": "GR00T fine tuning playbook", "text": "Official N1.6 setup and adaptation guidance, including release alignment." }
+    ]
+  }
+]

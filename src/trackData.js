@@ -5,6 +5,8 @@ import { createCassetteLabsTrack } from './cassetteLabsTrack.js'
 import { createSahasranshuTrack } from './sahasranshuTrack.js'
 import { createNiveusTrack } from './niveusTrack.js'
 import { createUnisysTrack } from './unisysTrack.js'
+import { createXpRoboticsTrack } from './xpRoboticsTrack.js'
+import { createGalentTrack } from './galentTrack.js'
 
 function createTrackBase({ title, slug, page, numeral, ...details }) {
   return {
@@ -42,8 +44,8 @@ const simpleEnergy = pendingTrack(createTrackBase({
 const agnesAI = createAgnesAITrack(createTrackBase({
   title: 'Agnes AI', slug: 'track-3', page: 'tracks/track-3', numeral: '03', briefOwner: 'agnes-ai',
 }))
-const xpRobotics = pendingTrack(createTrackBase({
-  title: 'XP Robotics', slug: 'track-4', page: 'tracks/track-4', numeral: '04',
+const xpRobotics = createXpRoboticsTrack(createTrackBase({
+  title: 'XP Robotics', slug: 'track-4', page: 'tracks/track-4', numeral: '04', briefOwner: 'xp-robotics',
 }))
 const unisys = createUnisysTrack({
   ...createTrackBase({ title: 'Unisys', slug: 'track-5', page: 'tracks/track-5', numeral: '05', briefOwner: 'unisys' }),
@@ -54,7 +56,7 @@ const startup = createTrackBase({
   category: 'Startup company challenges',
   subtitle: 'Explore the startup company tracks',
   summary: 'Choose a startup company to explore its challenges.',
-  cardDescription: 'Explore Think Robotics, MyStartupWave, Sahasranshu Technologies and Cassette Labs.',
+  cardDescription: 'Explore Think Robotics, MyStartupWave, Sahasranshu Technologies, Cassette Labs and Galent.',
 })
 
 // Keep a small parent identity on each company, without a circular route tree.
@@ -68,6 +70,7 @@ startup.subtracks = [
   ['MyStartupWave', 'mystartupwave', createMyStartupWaveTrack],
   ['Sahasranshu Technologies', 'sahasranshu-technologies', createSahasranshuTrack],
   ['Cassette Labs', 'cassette-labs', createCassetteLabsTrack],
+  ['Galent', 'galent', createGalentTrack],
 ].map(([title, slug, createTrack], index) => createTrack(createTrackBase({
   title, slug, page: `${startup.page}/${slug}`,
   numeral: String(index + 1).padStart(2, '0'),

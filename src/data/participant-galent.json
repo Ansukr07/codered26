@@ -1,0 +1,53 @@
+[
+  {
+    "number": 1,
+    "problem": "Organisations are increasingly adopting AI-powered chatbots to help employees access HR information relating to leave policies, payroll, employee benefits, insurance, reimbursements, onboarding and other HR processes. Retrieval-Augmented Generation (RAG) enables intelligent, context-aware responses, but the cost of operating these solutions becomes significant as employee adoption and query volumes grow. Design and develop a cost-efficient, scalable AI-powered HR Assistant that can handle a multi-step employee conversation at a very minimal targeted cost — including all associated costs such as LLM inference, embedding generation, vector database operations, document retrieval, reranking, context processing and an appropriate allocation of knowledge-base ingestion and infrastructure costs. For the college-level scope, first develop a reimbursement system with assumed policies: multi-turn conversation, context storing and RAG are mandatory, and cost optimization with accuracy is the KPI.",
+    "audience": "Enterprise AI and HR platform teams; developers building RAG assistants over policy documents; teams that must measure and reduce the operating cost of LLM applications.",
+    "outcome": "A working prototype HR assistant for the reimbursement scenario with measurable cost savings against an unoptimised baseline, and a transparent, end-to-end cost breakdown.",
+    "required": [
+      { "title": "RAG over assumed HR policies", "text": "Retrieve answers from your documented reimbursement policies using embeddings, a vector store, retrieval and reranking. RAG is mandatory — a prompt-only LLM without retrieval does not satisfy the brief." },
+      { "title": "Reimbursement system first", "text": "Build the reimbursement scenario with assumed policies as the demonstration domain, covering eligibility, limits, process steps and employee queries." },
+      { "title": "Multi-turn conversation", "text": "Handle multi-step employee conversations with context storing across turns — follow-ups, clarifying questions and continued threads must work." },
+      { "title": "Full cost accounting", "text": "Instrument every stage: LLM inference, embedding generation, vector database operations, document retrieval, reranking and context processing, plus an allocation of knowledge-base ingestion and infrastructure costs." },
+      { "title": "Cost optimization", "text": "Explore intelligent model selection, semantic caching, optimised retrieval, token consumption reduction and efficient infrastructure utilisation." },
+      { "title": "Quality maintained", "text": "Maintain high response accuracy, reliability, data security and employee experience while cutting cost — savings that degrade quality do not count." }
+    ],
+    "optional": [
+      { "title": "Broader HR coverage", "text": "Extend beyond reimbursement to leave, payroll, benefits or onboarding once the core system works." },
+      { "title": "Live cost dashboard", "text": "Show per-query cost accumulating in real time as conversations run." },
+      { "title": "Security guardrails", "text": "Data-security and privacy controls for sensitive employee information in the knowledge base." }
+    ],
+    "workflow": "Document the assumed reimbursement policies → build the RAG assistant with multi-turn conversation and context storing → instrument per-stage costs → measure an unoptimised baseline → apply model selection, semantic caching, retrieval and token optimizations → verify accuracy holds → report measurable savings and the end-to-end cost breakdown.",
+    "deliverables": [
+      { "title": "Working prototype", "text": "The reimbursement HR assistant demonstrated end to end with multi-turn RAG conversations." },
+      { "title": "Transparent cost breakdown", "text": "A per-query, end-to-end cost breakdown covering inference, embeddings, vector database, retrieval, reranking, context processing, ingestion and infrastructure allocations." },
+      { "title": "Cost savings evidence", "text": "Measured savings per conversation against the unoptimised baseline RAG stack." },
+      { "title": "Optimization writeup", "text": "The techniques applied — model selection, caching, retrieval tuning, token reduction — and the measured impact of each." },
+      { "title": "Quality report", "text": "Response accuracy, reliability and employee-experience checks showing quality held while cost dropped." }
+    ],
+    "success": [
+      { "title": "Working RAG assistant — gate", "text": "Multi-turn conversation, context storing and RAG all function on the reimbursement scenario." },
+      { "title": "Cost efficiency — primary KPI", "text": "Measurable, reproducible cost savings per conversation against the baseline." },
+      { "title": "Response accuracy", "text": "Answers stay accurate and grounded in the assumed policies while costs drop." },
+      { "title": "Scalability", "text": "The design handles increasing employee adoption and query volumes at controlled cost." },
+      { "title": "Transparency", "text": "A clear, honest, end-to-end cost breakdown accompanies the demo." }
+    ],
+    "constraints": [
+      { "title": "RAG mandatory", "text": "Multi-turn conversation, context storing and RAG are must-haves; the KPI is cost optimization with accuracy." },
+      { "title": "Assumed policies", "text": "College teams write the reimbursement policies themselves; they must be documented, consistent and supplied with the submission." },
+      { "title": "All-in cost model", "text": "The cost accounting must include LLM inference, embeddings, vector database operations, retrieval, reranking, context processing, knowledge-base ingestion and infrastructure allocations — not just the LLM API bill." },
+      { "title": "No quality trade-off", "text": "Cost cuts that degrade response accuracy, reliability, data security or employee experience are not valid savings." }
+    ],
+    "scope": [
+      { "title": "In scope", "text": "A cost-efficient RAG-based HR assistant prototype for the reimbursement scenario, with multi-turn conversation, context storing, per-stage cost accounting and optimization." },
+      { "title": "Out of scope", "text": "Integration with production HR or payroll systems and live employee data; training custom foundation models." },
+      { "title": "KPI note", "text": "Cost optimization with accuracy is the KPI — every claimed saving must be reported alongside the accuracy it preserves." }
+    ],
+    "resources": [
+      { "title": "RAG reference architectures", "text": "Retrieval, reranking and context-processing pipeline patterns to model the baseline and the optimised stack." },
+      { "title": "LLM pricing documentation", "text": "Token and model pricing for hosted and local models to build the cost model." },
+      { "title": "Vector database options", "text": "Vector stores and embedding services with their operational cost profiles." },
+      { "title": "Galent team", "text": "Clarify scope, cost accounting and evaluation with the challenge desk." }
+    ]
+  }
+]
