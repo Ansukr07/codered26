@@ -2,8 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { tracks, trackRoutes, getTrackRoute } from '../src/trackData.js'
 import { getParticipantBrief } from '../src/participantBriefs.js'
-import msw3 from '../src/data/participant-ps3.json' with { type: 'json' }
-import msw45 from '../src/data/participant-ps45.json' with { type: 'json' }
+import mswBriefs from '../src/data/participant-mystartupwave.json' with { type: 'json' }
 import thinkBriefs from '../src/data/participant-think-robotics.json' with { type: 'json' }
 import agnesBriefs from '../src/data/participant-agnes-ai.json' with { type: 'json' }
 import cassetteBriefs from '../src/data/participant-cassette-labs.json' with { type: 'json' }
@@ -22,7 +21,7 @@ const expectedParticipantCopy = new Map([
   ['XP Robotics', xpBriefs],
   ['Agnes AI', agnesBriefs],
   ['Think Robotics', thinkBriefs],
-  ['MyStartupWave', [...msw3, ...msw45]],
+  ['MyStartupWave', mswBriefs],
   ['Cassette Labs', cassetteBriefs],
   ['Sahasranshu Technologies', sahasranshuBriefs],
   ['Galent', galentBriefs],

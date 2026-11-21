@@ -176,7 +176,6 @@ function TrackHero({ track }) {
   const stageRef = useRef(null)
   const diagram = track.heroMode === 'diagram'
   const isOfficialBrief = Boolean(track.officialBrief)
-  const isRea = track.officialBrief?.company === 'MyStartupWave' && track.officialBrief.number === 1
   const demo = useDemoPrompt(track, stageRef, diagram)
   const anchor = useHeroLayout(stageRef, diagram, isOfficialBrief)
   useTrackEntrance(heroRef)
@@ -188,11 +187,11 @@ function TrackHero({ track }) {
     return `M ${x} ${y} C ${mid} ${y}, ${mid} ${anchor.y}, ${end} ${anchor.y}`
   })
 
-  return <section ref={heroRef} className={`td-hero${diagram ? '' : ' td-hero--scene'}${isOfficialBrief ? ' td-hero--brief' : ''}${isRea ? ' td-hero--rea' : ''}`} aria-labelledby="td-title">
+  return <section ref={heroRef} className={`td-hero${diagram ? '' : ' td-hero--scene'}${isOfficialBrief ? ' td-hero--brief' : ''}`} aria-labelledby="td-title">
     <div className="td-heading">
       <p className="td-kicker">{isOfficialBrief ? <>{track.parentTrackTitle}<span> / </span>{track.briefKind === 'open-challenge' ? 'Open challenge' : `PS ${track.problemNumber}`}</> : <>{track.problemNumber ? `${track.parentTrackTitle} · ${track.briefKind === 'open-challenge' ? 'Open challenge' : `PS ${track.problemNumber}`}` : `Track ${track.numeral}`} <span> / </span> {track.category}</>}</p>
       <h1 id="td-title"><span className="td-title-mask"><span>{track.title}</span></span></h1>
-      <p className="td-subtitle">{isRea ? 'Understand an app. Build a better version.' : track.subtitle}</p>
+      <p className="td-subtitle">{track.subtitle}</p>
     </div>
     <div ref={stageRef} className={`td-stage${demo.running ? ' td-stage--running' : ''}`}>
       {diagram ? <>

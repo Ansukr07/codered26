@@ -1,6 +1,6 @@
 [
-  {
-    "number": 3,
+{
+    "number": 1,
     "problem": "Small online sellers, D2C brands and catalog teams need affordable, consistent product listings, while buyers need images they can trust. Manual photography and copywriting are slow; generic AI tools can change a product’s colour, shape, branding or printed text. Standalone image detectors also struggle with edited images and rarely explain their verdicts. Build one platform that combines fast catalog creation with trustworthy authenticity analysis, helping sellers publish attractive listings without misrepresenting the real product.",
     "audience": "Small and medium sellers, D2C brands and independent vendors; also marketplace catalog and trust teams, agencies and buyers.",
     "outcome": "Turn minimal text or a phone photo into a complete, marketplace-ready listing, with product-faithful images and understandable authenticity reports in the same platform.",
@@ -156,6 +156,80 @@
         "title": "Branding and future collaboration",
         "text": "MyStartupWave branding requires written permission. Third-party brands, logos and marketplace names may be referenced only descriptively and must not create misleading imagery. Any later pilot, licensing, investment, employment or commercial collaboration requires mutual interest and a separate written agreement."
       }
+    ]
+  },
+{
+    "number": 2,
+    "problem": "Quick-commerce operators, dark-store managers and riders must keep deliveries fast and economical as demand grows. At peak times and during rain, stock-outs or rider shortages, nearest-store routing and first-available rider assignment can create delays, cancellations and uneven workloads. Forecasting, picking, inventory and dispatch are often optimised separately, leaving little visibility across the complete order journey. Design a logistics or ordering innovation that improves the end-to-end operation, and prove its impact through a realistic, reproducible simulation. Around 10-minute delivery promises provide the industry context; the evaluation targets below define the required improvement.",
+    "audience": "Operations teams and dark-store managers, with delivery riders, customers, inventory planners and replenishment teams as stakeholders.",
+    "outcome": "Fulfil more orders within their promised delivery window, especially during peaks and disruptions, while improving delivery time, rider utilisation and stock availability without increasing cost per order.",
+    "required": [
+      {
+        "title": "One clear operational innovation",
+        "text": "Innovate in at least one of five directions: demand forecasting and inventory placement, order batching, rider dispatch and routing, dark-store picking, or the customer ordering experience. Integrate it into an end-to-end order flow. You do not need to innovate in all five."
+      },
+      {
+        "title": "A realistic city-zone simulator",
+        "text": "Model at least 3 dark stores, 30+ riders and thousands of orders per day, including realistic road travel times, demand peaks and SKU-level inventory."
+      },
+      {
+        "title": "A fair baseline",
+        "text": "Implement a baseline policy, such as nearest store plus first-available rider, in the same simulator. Compare both systems on identical scenarios."
+      },
+      {
+        "title": "Live operations visibility",
+        "text": "Build a real-time dashboard showing orders, store load, rider positions and status, SLA breaches and key performance indicators."
+      },
+      {
+        "title": "Adaptive decisions",
+        "text": "Respond in real time to demand surges and disruptions such as rain, rider shortages and store stock-outs."
+      },
+      {
+        "title": "Customer delivery estimates",
+        "text": "Predict accurate delivery ETAs and show them to the customer when an order is placed."
+      }
+    ],
+    "optional": [
+      { "title": "Predictive positioning", "text": "Pre-position inventory or riders ahead of forecast demand." },
+      { "title": "Stock-out recovery", "text": "Split orders across stores or suggest substitutions when items are unavailable." },
+      { "title": "Rider-aware assignment", "text": "Include fairness and fatigue in rider allocation." },
+      { "title": "Ordering prototype", "text": "Add smart recommendations and delivery-slot nudges in a customer-facing prototype." },
+      { "title": "Real open maps", "text": "Use an actual open road network, such as OpenStreetMap data for an Indian city." }
+    ],
+    "workflow": "Customers place orders and see ETAs → the system assigns, batches and routes orders → riders receive optimised tasks → operators monitor the dashboard and intervene when alerts fire.",
+    "deliverables": [
+      { "title": "Comparable simulation runs", "text": "Run the baseline and proposed system on the same simulated day, including at least one demand surge and one disruption." },
+      { "title": "Live dashboard demonstration", "text": "Show the complete ordering, picking, dispatch and delivery flow, including the system’s adaptive response." },
+      { "title": "Evidence of improvement", "text": "Present a side-by-side KPI comparison and explain why the improvement occurs. Provide reproducible scenarios that judges can rerun." }
+    ],
+    "success": [
+      { "title": "A measurable delivery gain", "text": "Achieve at least 15% lower average delivery time OR at least 20% higher on-time, within-SLA delivery rate against the baseline on the same scenario, without increasing cost per order." },
+      { "title": "Fast, accurate decisions", "text": "Make dispatch and routing decisions in under 2 seconds per order at 500+ concurrent active orders. Keep ETA mean absolute error below 2 minutes and make results reproducible." },
+      { "title": "Operational value", "text": "Quantify cost per order and orders per rider-hour, and present a credible pilot plan. Show better rider utilisation, more reliable ETAs and a higher share of orders meeting the promised SLA." },
+      { "title": "Safe operations", "text": "Demonstrate end-to-end operation and adaptive responses without unsafe rider speeds or workloads. Respect workload and break limits throughout the simulation." }
+    ],
+    "constraints": [
+      { "title": "Real-time and reproducible", "text": "Any technology stack is allowed. Run the decision engine in real time inside the simulation and use fixed random seeds so judges can repeat the scenarios." },
+      { "title": "Private data stays out", "text": "Do not use live data from a quick-commerce company’s private systems. Location and customer records must be synthetic or anonymised." },
+      { "title": "Planning, not unsafe speeds", "text": "Keep simulated speeds within realistic urban limits and respect road-safety and labour norms. Delivery gains must come from better planning." },
+      { "title": "Accessible hardware", "text": "The system should run on a standard laptop or free cloud tier. The dashboard must run in a browser." },
+      { "title": "Document paid services", "text": "Use open-source optimisation and mapping tools where possible. Document any paid API usage." },
+      { "title": "Simulation limitations", "text": "The impact estimate assumes simulated demand and traffic represent real operations. State those assumptions; a successful simulation does not itself establish real-world performance." }
+    ],
+    "scope": [
+      { "title": "In scope", "text": "Your logistics or ordering innovation, simulator, baseline comparison, operations dashboard and ETA model." },
+      { "title": "Out of scope", "text": "Live-rider deployment, payments, procurement contracts and physical hardware. Drone or robot concepts may be discussed but must be simulated. A full customer app is optional, not required." },
+      { "title": "Reasonable simplifications", "text": "One city zone and a limited catalogue, such as 200–500 SKUs, are sufficient. You may approximate travel times from open road networks. You will need suitable map data, optimisation libraries and simulation compute." }
+    ],
+    "resources": [
+      { "title": "Tools you can use", "text": "OpenStreetMap, OSRM or GraphHopper, Google OR-Tools, SimPy and other APIs available to your team are permitted. Tools and API credits are not provided by the partner; permitted services are used at your own discretion and cost." },
+      { "title": "Data and test setup", "text": "Generate synthetic order, inventory and rider data, or use public grocery/delivery datasets and open road networks within their licences. Build your own simulation environment; no sandbox is provided." },
+      { "title": "Useful references", "text": "Google OR-Tools vehicle-routing documentation, OpenStreetMap and OSRM documentation, and research on dynamic vehicle routing and last-mile delivery." }
+    ],
+    "terms": [
+      { "title": "Data and platform permissions", "text": "Use synthetic data, openly licensed datasets and open maps within their terms. Do not scrape or reverse-engineer a quick-commerce company’s apps, APIs or private data." },
+      { "title": "Ownership and confidentiality", "text": "Your team retains ownership of the code, designs, models and other IP it creates. Participation transfers no ownership or commercial rights to MyStartupWave. This brief and shared challenge materials are non-confidential." },
+      { "title": "Branding and future collaboration", "text": "MyStartupWave’s name or branding requires written permission. Existing quick-commerce companies may be named only descriptively for market context. Any later pilot, licensing, investment, employment or commercial collaboration requires mutual interest and a separate written agreement." }
     ]
   }
 ]
