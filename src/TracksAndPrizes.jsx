@@ -434,6 +434,8 @@ export function FullPrizeSplitSection({ onNavigate }) {
             </article>
           ))}
         </div>
+
+
       </div>
     </section>
   );
