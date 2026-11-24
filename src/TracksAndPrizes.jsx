@@ -206,7 +206,7 @@ const SparkleSVG = ({ className, style, asset = '/assets-for-prize/stars.svg' })
   <img src={asset} alt="" aria-hidden="true" className={`prize-stars-asset ${className}`} style={style} />
 );
 
-const animatePrizeAsset = (event, isHovering) => {
+const _animatePrizeAsset = (event, isHovering) => {
   const image = event.currentTarget.querySelector('.prize-award-asset');
   if (!image || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
