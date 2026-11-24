@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import { TracksSection, PrizesSection } from './TracksAndPrizes'
+import { TracksSection, PrizesSection, FullPrizeSplitSection } from './TracksAndPrizes'
 import GallerySection from './GallerySection'
 import SponsorsSection from './SponsorsSection'
 import RegisterButton, { REGISTER_URL } from './components/RegisterButton'
@@ -252,7 +252,18 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
         <div className="shift-rail-status shift-countdown-panel anim-slide-up" style={{ transitionDelay: '0.4s' }}>
           <div className="shift-event-summary">
             <strong>National Level Hackathon</strong>
-            <div className="shift-prize-pool"><strong className="shift-prize-amount">₹2,25,000+<span className="shift-prize-asterisk">*</span></strong><span className="shift-prize-label">Prize pool</span></div>
+            <div className="shift-prize-pool">
+              <strong className="shift-prize-amount">₹2,25,000+<span className="shift-prize-asterisk">*</span></strong>
+              <span className="shift-prize-label">Prize pool</span>
+              <button
+                type="button"
+                className="shift-prize-split-cta"
+                onClick={() => onNavigate && onNavigate('prize-split')}
+              >
+                <span>View Full Split</span>
+                <span className="shift-prize-split-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
           </div>
           <div className="shift-rail-spacer" aria-hidden="true" />
           <div className="shift-finale-group">
@@ -267,7 +278,23 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
       <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national level hackathon, bringing together innovators, developers, and problem-solvers from across the nation. Participants collaborate to turn ideas into functional prototypes through hands-on development and industry mentorship. Taking innovation a step further, selected teams may qualify for VentureX, an event where they pitch their products, business models, and vision to investors, exploring the potential to turn products into ventures<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
       <div className="shift-info-grid">
         <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Six main tracks</li><li>Challenges available</li></ul></article>
-        <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}><li>₹2,25,000+* total prize pool</li><li>Opportunity to pitch at VENTUREX</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}>
+          <span className="shift-card-plus" aria-hidden="true">+</span>
+          <h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3>
+          <ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>
+            <li>₹2,25,000+* total prize pool</li>
+            <li>Opportunity to pitch at VENTUREX</li>
+            <li>
+              <button
+                type="button"
+                className="shift-card-action-link"
+                onClick={() => onNavigate && onNavigate('prize-split')}
+              >
+                View Full Split ↗
+              </button>
+            </li>
+          </ul>
+        </article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>24-hour overnight sprint</li><li>28–29 December 2026</li><li>Teams of 3–4</li><li>Top 60 teams at BMSIT&amp;M</li></ul></article>
       </div>
     </section>}
@@ -292,7 +319,8 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
 
     {show('tracks') && <TracksSection onNavigate={onNavigate} />}
     {show('partners') && <SponsorsSection />}
-    {show('prizes') && <PrizesSection />}
+    {show('prizes') && <PrizesSection onNavigate={onNavigate} />}
+    {page === 'prize-split' && <FullPrizeSplitSection onNavigate={onNavigate} />}
 
     {show('schedule') && <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">
       <div className="shift-timeline-intro anim-slide-up"><h2 id="timeline-title">The road to the finale.</h2></div>

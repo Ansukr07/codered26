@@ -242,6 +242,12 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-prize-pool .shift-prize-amount{font:600 clamp(32px,2.4vw,44px)/1.05 LilGrotesk,Helvetica,sans-serif;letter-spacing:-.03em;color:#f1eeeb;white-space:nowrap}
 .shift-prize-pool .shift-prize-asterisk{font-size:.45em;vertical-align:super}
 .shift-prize-label{font:500 13px/1.3 LilGrotesk,Helvetica,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#bdbdbd}
+.shift-prize-split-cta{display:inline-flex;align-items:center;gap:6px;margin-top:6px;background:transparent;border:none;border-bottom:1.5px solid rgba(241,238,235,.5);padding:2px 0 4px;color:#f1eeeb;font:700 clamp(10px,.78vw,12px)/1.2 Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:color .2s ease,border-color .2s ease,gap .2s ease}
+.shift-prize-split-cta:hover{color:var(--shift-red,#ED2024);border-bottom-color:var(--shift-red,#ED2024);gap:10px}
+.shift-prize-split-arrow{display:inline-block;font-size:1.15em;line-height:1;transition:transform .2s ease}
+.shift-prize-split-cta:hover .shift-prize-split-arrow{transform:translate(2px,-2px)}
+.shift-card-action-link{display:inline-flex;align-items:center;gap:4px;margin-top:6px;background:transparent;border:none;border-bottom:1px solid currentColor;padding:0 0 2px;color:var(--shift-red,#ED2024);font:700 11px/1.3 Consolas,monospace;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:gap .2s ease,opacity .2s ease}
+.shift-card-action-link:hover{opacity:.8;gap:8px}
 .shift-rail-spacer{flex:1 0 48px;min-height:48px;width:100%}
 .shift-finale-group{gap:24px}
 .shift-finale-group .shift-countdown-heading{width:100%;text-align:center}

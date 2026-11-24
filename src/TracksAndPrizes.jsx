@@ -231,12 +231,7 @@ const animatePrizeAsset = (event, isHovering) => {
   );
 };
 
-export function PrizesSection() {
-  const prizes = [
-    { place: '1st place', amount: '₹25,000', asset: '/assets-for-prize/1st.svg', sparkle: 's1' },
-    { place: '2nd place', amount: '₹20,000', asset: '/assets-for-prize/2nd.svg', sparkle: 's3', starAsset: '/assets-for-prize/black%20star.svg' },
-  ];
-
+export function PrizesSection({ onNavigate }) {
   return (
     <section id="prizes" className="tp-section tp-section--prizes">
       <div className="tp-container">
@@ -293,39 +288,149 @@ export function PrizesSection() {
 
         </div>
 
-        <div className="prizes-title-row">
-          <div className="prizes-title-text">
-            <h3 className="tp-h-regular prizes-title-main">Prize distribution</h3>
-            <h3 className="tp-h-regular tp-opacity-50">Applies to all the tracks (except Unisys and XP Robotics)</h3>
-          </div>
+        {/* Option to View Full Split */}
+        <div className="prizes-split-action-wrap" style={{ display: 'flex', justifyContent: 'center', margin: '2rem auto 0', maxWidth: '900px' }}>
+          <button
+            type="button"
+            className="prizes-view-split-button"
+            onClick={() => onNavigate && onNavigate('prize-split')}
+          >
+            <span>View Full Split</span>
+            <span className="prizes-view-split-arrow" aria-hidden="true">↗</span>
+          </button>
         </div>
-        <div className="prize-outer-container">
-          {prizes.map((prize, index) => (
-            <article
-              className={`prize-card prize-card-${index + 1}`}
-              key={prize.place}
-              onMouseEnter={event => animatePrizeAsset(event, true)}
-              onMouseLeave={event => animatePrizeAsset(event, false)}
+      </div>
+    </section>
+  );
+}
+
+export function FullPrizeSplitSection({ onNavigate }) {
+  const trackPrizeSplits = [
+    {
+      numeral: '01',
+      trackSlug: 'niveus',
+      trackName: 'Niveus Solutions',
+      totalPool: '₹45,000',
+      prizes: [
+        { place: '1st Prize', amount: '₹25,000', label: 'CASH', title: '1st Prize - Niveus Solutions' },
+        { place: '2nd Prize', amount: '₹20,000', label: 'CASH', title: '2nd Prize - Niveus Solutions' },
+      ],
+    },
+    {
+      numeral: '02',
+      trackSlug: 'simple-energy',
+      trackName: 'Simple Energy',
+      totalPool: '₹45,000',
+      prizes: [
+        { place: '1st Prize', amount: '₹25,000', label: 'CASH', title: '1st Prize - Simple Energy' },
+        { place: '2nd Prize', amount: '₹20,000', label: 'CASH', title: '2nd Prize - Simple Energy' },
+      ],
+    },
+    {
+      numeral: '03',
+      trackSlug: 'agnes-ai',
+      trackName: 'Agnes AI',
+      totalPool: '₹45,000',
+      prizes: [
+        { place: '1st Prize', amount: '₹25,000', label: 'CASH', title: '1st Prize - Agnes AI' },
+        { place: '2nd Prize', amount: '₹20,000', label: 'CASH', title: '2nd Prize - Agnes AI' },
+      ],
+    },
+    {
+      numeral: '04',
+      trackSlug: 'xp-robotics',
+      trackName: 'XP Robotics',
+      totalPool: '₹25,000',
+      prizes: [
+        { place: '1st Prize', amount: '₹25,000', label: 'CASH', title: '1st Prize - XP Robotics' },
+      ],
+    },
+    {
+      numeral: '05',
+      trackSlug: 'unisys',
+      trackName: 'Unisys Track',
+      totalPool: '₹25,000',
+      prizes: [
+        { place: '1st Prize', amount: '₹15,000', label: 'CASH', title: '1st Prize - Unisys Track' },
+        { place: '2nd Prize', amount: '₹10,000', label: 'CASH', title: '2nd Prize - Unisys Track' },
+      ],
+    },
+    {
+      numeral: '06',
+      trackSlug: 'startup-track',
+      trackName: 'Startup Track',
+      totalPool: '₹45,000',
+      prizes: [
+        { place: '1st Prize', amount: '₹25,000', label: 'CASH', title: '1st Prize - Startup Track' },
+        { place: '2nd Prize', amount: '₹20,000', label: 'CASH', title: '2nd Prize - Startup Track' },
+      ],
+    },
+  ];
+
+  return (
+    <section id="prize-split" className="tp-section tp-section--prizes tp-section--prize-split">
+      <div className="tp-container prize-split-container">
+        {onNavigate && (
+          <div className="prizes-breadcrumb" style={{ marginBottom: '2.5rem' }}>
+            <a
+              className="td-back"
+              href="/"
+              onClick={(e) => {
+                if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                e.preventDefault();
+                onNavigate('home');
+              }}
+              style={{
+                fontFamily: 'Consolas, monospace',
+                fontSize: '12px',
+                fontWeight: 700,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                color: '#1e1b18',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                opacity: 0.75,
+                transition: 'opacity 0.2s, gap 0.2s',
+                cursor: 'pointer'
+              }}
             >
-              <div className="prize-card-top">
-                <div className="prize-tag-container">
-                  <PrizePixelGrid />
-                  <div className="prize-tag-inner">
-                    <div className="prize-tag-hash">#</div>
-                    <div className="prize-tag-text">{prize.place}</div>
-                    <div className="prize-tag-bracket">{"}"}</div>
+              <span aria-hidden="true">←</span> Back to Home
+            </a>
+          </div>
+        )}
+
+        <div className="prize-split-head">
+          <span className="prize-split-badge">Official Prize Distribution</span>
+          <h1 className="prize-split-title">Track-Wise Prize Split</h1>
+          <p className="prize-split-subtitle">
+            Total prize pool of ₹2,25,000 cash awarded across all 6 challenge tracks.
+          </p>
+        </div>
+
+        <div className="prize-split-grid">
+          {trackPrizeSplits.map(track => (
+            <article className="prize-split-track-card" key={track.trackSlug}>
+              <header className="prize-split-track-header">
+                <div className="prize-split-track-name">
+                  <span className="prize-split-numeral">{track.numeral}</span>
+                  <span>{track.trackName}</span>
+                </div>
+                <span className="prize-split-track-total">{track.totalPool} POOL</span>
+              </header>
+              <div className="prize-split-items-list">
+                {track.prizes.map((prize, idx) => (
+                  <div className="prize-split-row" key={idx}>
+                    <div className="prize-split-amount-box">
+                      <span className="prize-split-amount">{prize.amount}</span>
+                      <span className="prize-split-cash-label">{prize.label}</span>
+                    </div>
+                    <div className="prize-split-desc-box">
+                      <span className="prize-split-desc-title">{prize.title}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="prize-illustration">
-                  <img className="prize-award-asset" src={prize.asset} alt={`${prize.place} prize illustration`} />
-                  <SparkleSVG className={prize.sparkle} asset={prize.starAsset} />
-                  <SparkleSVG className="s2" asset={prize.starAsset} />
-                  <SparkleSVG className="s4" asset={prize.starAsset} />
-                  <SparkleSVG className="s5" asset={prize.starAsset} />
-                </div>
-              </div>
-              <div className="prize-card-bottom">
-                <h4 className="prize-amount">{prize.amount}</h4>
+                ))}
               </div>
             </article>
           ))}
