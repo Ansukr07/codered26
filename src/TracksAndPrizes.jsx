@@ -402,7 +402,6 @@ export function FullPrizeSplitSection({ onNavigate }) {
         )}
 
         <div className="prize-split-head">
-          <span className="prize-split-badge">Official Prize Distribution</span>
           <h1 className="prize-split-title">Track-Wise Prize Split</h1>
           <p className="prize-split-subtitle">
             Total prize pool of ₹2,25,000 cash awarded across all 6 challenge tracks.
