@@ -7,6 +7,7 @@ const PPT_TEMPLATE_URL = 'https://docs.google.com/presentation/d/1vkKQvK9kMDYdVx
 const pageLinks = [
   ['home', 'Home'],
   ['tracks', 'Tracks'],
+  ['participant-perks', 'Participant Perks'],
   ['partners', 'Partners'],
   ['prizes', 'Prizes'],
   ['schedule', 'Schedule'],

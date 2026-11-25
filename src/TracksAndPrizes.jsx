@@ -176,6 +176,27 @@ export function TracksSection({ onNavigate }) {
             ))}
           </div>
         </div>
+
+        {/* Option to View Participant Perks */}
+        <div className="tracks-perks-action-wrap">
+          <div className="tracks-perks-banner">
+            <div className="tracks-perks-content">
+              <span className="tracks-perks-badge">EXCLUSIVE BENEFITS</span>
+              <h3 className="tracks-perks-title">CODERED ’26 Participant Perks</h3>
+              <p className="tracks-perks-desc">
+                AI credits, custom model training, .XYZ domains, and Fueler portfolio bundles for all participating teams.
+              </p>
+            </div>
+            <button
+              type="button"
+              className="tracks-perks-button"
+              onClick={() => onNavigate && onNavigate('participant-perks')}
+            >
+              <span>View Participant Perks</span>
+              <span className="tracks-perks-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { TracksSection, PrizesSection, FullPrizeSplitSection } from './TracksAndPrizes'
+import ParticipantPerks from './ParticipantPerks'
 import GallerySection from './GallerySection'
 import SponsorsSection from './SponsorsSection'
 import RegisterButton, { REGISTER_URL } from './components/RegisterButton'
@@ -277,7 +278,23 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
     {show('about') && <section id="about" className="shift-about" aria-labelledby="about-title">
       <div className="shift-about-top"><div className="shift-about-copy"><h2 id="about-title" className="anim-blur-reveal">What is<br />CODERED?</h2><p className="anim-blur-reveal" style={{ transitionDelay: '0.2s' }}><span className="shift-about-lead">Code Red ’26</span> is E-Cell BMSIT&amp;M’s national level hackathon, bringing together innovators, developers, and problem-solvers from across the nation. Participants collaborate to turn ideas into functional prototypes through hands-on development and industry mentorship. Taking innovation a step further, selected teams may qualify for VentureX, an event where they pitch their products, business models, and vision to investors, exploring the potential to turn products into ventures<span className="shift-period">.</span></p></div><div className="shift-about-side anim-slide-down"><img className="shift-about-element" src="/codered2026/codered2026/vector%20files/elements/Asset%2017.svg" alt="" aria-hidden="true" /></div></div>
       <div className="shift-info-grid">
-        <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}><li>Six main tracks</li><li>Challenges available</li></ul></article>
+        <article className="anim-slide-down" style={{ transitionDelay: '0.1s' }}>
+          <span className="shift-card-plus" aria-hidden="true">+</span>
+          <h3 className="anim-slide-up" style={{ transitionDelay: '0.2s' }}>Tracks</h3>
+          <ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>
+            <li>Six main tracks</li>
+            <li>Challenges available</li>
+            <li>
+              <button
+                type="button"
+                className="shift-card-action-link"
+                onClick={() => onNavigate && onNavigate('participant-perks')}
+              >
+                Participant Perks ↗
+              </button>
+            </li>
+          </ul>
+        </article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}>
           <span className="shift-card-plus" aria-hidden="true">+</span>
           <h3 className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>Prizes</h3>
@@ -321,6 +338,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
     {show('partners') && <SponsorsSection />}
     {show('prizes') && <PrizesSection onNavigate={onNavigate} />}
     {page === 'prize-split' && <FullPrizeSplitSection onNavigate={onNavigate} />}
+    {(page === 'participant-perks' || page === 'perks') && <ParticipantPerks onNavigate={onNavigate} />}
 
     {show('schedule') && <section id="timeline" className="shift-timeline" aria-labelledby="timeline-title">
       <div className="shift-timeline-intro anim-slide-up"><h2 id="timeline-title">The road to the finale.</h2></div>

@@ -44,12 +44,13 @@ const a = minRadius;
 const b = maxRadius - minRadius;
 const I_max = a * 1 + (b / 2) * 1 * 1;
 
-const pageNames = ['home', 'about', 'tracks', 'prizes', 'prize-split', 'schedule', 'previous-editions', 'partners', 'faq', 'team'];
+const pageNames = ['home', 'about', 'tracks', 'participant-perks', 'perks', 'prizes', 'prize-split', 'schedule', 'previous-editions', 'partners', 'faq', 'team'];
 
 function pageFromLocation() {
   if (typeof window === 'undefined') return 'home';
   const legacyHashPage = window.location.hash.startsWith('#/') ? window.location.hash.slice(2) : '';
   let page = legacyHashPage || window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
+  if (page === 'perks') page = 'participant-perks';
   if (legacyHashPage) {
     const cleanPath = page === 'home' ? '/' : `/${page}`;
     window.history.replaceState(null, '', `${cleanPath}${window.location.search}`);
