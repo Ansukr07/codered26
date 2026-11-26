@@ -284,15 +284,6 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
           <ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>
             <li>Six main tracks</li>
             <li>Challenges available</li>
-            <li>
-              <button
-                type="button"
-                className="shift-card-action-link"
-                onClick={() => onNavigate && onNavigate('participant-perks')}
-              >
-                Participant Perks ↗
-              </button>
-            </li>
           </ul>
         </article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}>

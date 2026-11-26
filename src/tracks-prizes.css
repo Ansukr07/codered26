@@ -33,6 +33,35 @@
   padding-top: 4rem;
 }
 
+.app-page--home #prizes {
+  box-sizing: border-box;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: 4rem;
+}
+.app-page--home #prizes > .tp-container {
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .app-page--home #prizes {
+    min-height: 100dvh;
+    scroll-margin-top: -30px;
+    padding-top: 80px;
+    padding-bottom: 16px;
+  }
+  .app-page--home #prizes .tp-title-row {
+    margin-bottom: 24px;
+  }
+  .app-page--home #prizes .prize-card {
+    margin-bottom: 0 !important;
+  }
+  .app-page--home #prizes .prizes-split-action-wrap {
+    margin-top: 24px !important;
+  }
+}
+
 .tp-container {
   max-width: 1350px;
   margin: 0 auto;
