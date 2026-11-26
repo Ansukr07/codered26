@@ -59,12 +59,11 @@ export default function SponsorsSection() {
         <div className="sponsors-bento">
           <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-two">
             <SponsorCard href="https://niveussolutions.com.au/" name="Niveus Solutions" logoSrc="/sponsors/niveus-solutions.png" logoClass="is-niveus-solutions" />
-            <SponsorCard href="https://www.simpleenergy.in/" name="Simple Energy" logoSrc="/sponsors/simple-energy.png" logoClass="is-simple-energy" />
+            <SponsorCard href="https://cassettelabs.in/" name="Cassette Labs" logoSrc="/sponsors/cassette-labs.png" logoClass="is-cassette-labs" />
           </div>
-          <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
+          <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-two">
             <SponsorCard href="https://agnes-ai.com/" name="Agnes AI" logoIconSrc="/sponsors/agnes-ai-icon.png" logoSrc="/sponsors/agnes-ai-wordmark.png" logoClass="is-agnes-ai" />
             <SponsorCard href="https://www.unisys.com/" name="Unisys" logoSrc="/sponsors/unisys3.png" logoClass="is-unisys" />
-            <SponsorCard href="https://cassettelabs.in/" name="Cassette Labs" logoSrc="/sponsors/cassette-labs.png" logoClass="is-cassette-labs" />
           </div>
           <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
             <SponsorCard href="https://thinkrobotics.com/" name="Think Robotics" logoSrc="/sponsors/think-robotics.png" logoClass="is-think-robotics" />

@@ -86,19 +86,6 @@ export default function ParticipantPerks({ onNavigate }) {
                 e.preventDefault();
                 onNavigate('home');
               }}
-              style={{
-                fontFamily: 'Consolas, monospace',
-                fontSize: '12px',
-                fontWeight: 700,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                color: '#1e1b18',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                cursor: 'pointer',
-              }}
             >
               <span aria-hidden="true">←</span> Back to Home
             </a>

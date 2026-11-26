@@ -339,12 +339,11 @@ export function FullPrizeSplitSection({ onNavigate }) {
     },
     {
       numeral: '02',
-      trackSlug: 'simple-energy',
-      trackName: 'Simple Energy',
-      totalPool: '₹45,000',
+      trackSlug: 'cassette-labs',
+      trackName: 'Cassette Labs',
+      totalPool: '₹25,000',
       prizes: [
-        { place: '1st Prize', amount: '₹25,000', label: 'CASH', title: '1st Prize - Simple Energy' },
-        { place: '2nd Prize', amount: '₹20,000', label: 'CASH', title: '2nd Prize - Simple Energy' },
+        { place: '1st Prize', amount: '₹25,000', label: 'CASH', title: '1st Prize - Cassette Labs' },
       ],
     },
     {
@@ -401,21 +400,6 @@ export function FullPrizeSplitSection({ onNavigate }) {
                 e.preventDefault();
                 onNavigate('home');
               }}
-              style={{
-                fontFamily: 'Consolas, monospace',
-                fontSize: '12px',
-                fontWeight: 700,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                color: '#1e1b18',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                opacity: 0.75,
-                transition: 'opacity 0.2s, gap 0.2s',
-                cursor: 'pointer'
-              }}
             >
               <span aria-hidden="true">←</span> Back to Home
             </a>
@@ -444,7 +428,6 @@ export function FullPrizeSplitSection({ onNavigate }) {
                   <div className="prize-split-row" key={idx}>
                     <div className="prize-split-amount-box">
                       <span className="prize-split-amount">{prize.amount}</span>
-                      <span className="prize-split-cash-label">{prize.label}</span>
                     </div>
                     <div className="prize-split-desc-box">
                       <span className="prize-split-desc-title">{prize.title}</span>
