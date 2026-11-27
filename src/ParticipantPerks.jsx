@@ -35,6 +35,18 @@ export default function ParticipantPerks({ onNavigate }) {
           actionLabel: 'Claim Your Adaption Credits',
           actionUrl: 'https://adaptionlabs.ai/app/auth/referral?ref=8b66d2720a0e828d616a3a29',
         },
+        {
+          id: 'agnes-ai',
+          title: 'Agnes AI',
+          tag: 'AI Models & Development Benefits',
+          description:
+            'Agnes AI is offering exclusive AI resources and premium development benefits to CODERED ’26 participants and top-performing teams.',
+          benefits: [
+            'Free AI model access for all participants through Agnes AI’s free-tier models.',
+            '$10 in Agnes AI credits for every team member selected for Round 3.',
+            'The five best projects that share their work on social media will receive a $20 Agnes Code subscription.',
+          ],
+        },
       ],
     },
     {

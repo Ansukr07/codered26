@@ -216,6 +216,9 @@
 .sponsors-logo.is-cassette-labs { width: 82%; max-width: 380px; }
 .sponsors-logo.is-cassette-labs img { min-width: 0; }
 .sponsors-logo.is-cassette-labs img:not(.sponsors-logo-mark) { filter: none; }
+.sponsors-logo.is-galent { width: 72%; max-width: 260px; gap: 14px; }
+.sponsors-logo.is-galent img { width: 34%; flex: none; filter: none; opacity: 1; }
+.sponsors-logo.is-galent .sponsors-logo-wordmark { flex: none; font: 600 clamp(20px, 2vw, 30px)/1.1 LilGrotesk, sans-serif; letter-spacing: .01em; color: #1e1b18; }
 .sponsors-logo.is-sahasranshu .sponsors-logo-wordmark { transition: color .35s ease; }
 .sponsors-logo:is(.is-think-robotics, .is-mystartupwave) img { filter: none; opacity: 1; }
 
@@ -331,6 +334,9 @@
     color: #ffffff;
   }
   .sponsors-grid__item:hover .sponsors-logo.is-sahasranshu .sponsors-logo-wordmark {
+    color: #ffffff;
+  }
+  .sponsors-grid__item:hover .sponsors-logo.is-galent .sponsors-logo-wordmark {
     color: #ffffff;
   }
   .sponsors-grid__item:hover .sponsors-coming-soon span {

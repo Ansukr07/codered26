@@ -65,10 +65,11 @@ export default function SponsorsSection() {
             <SponsorCard href="https://agnes-ai.com/" name="Agnes AI" logoIconSrc="/sponsors/agnes-ai-icon.png" logoSrc="/sponsors/agnes-ai-wordmark.png" logoClass="is-agnes-ai" />
             <SponsorCard href="https://www.unisys.com/" name="Unisys" logoSrc="/sponsors/unisys3.png" logoClass="is-unisys" />
           </div>
-          <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
+          <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-four">
             <SponsorCard href="https://thinkrobotics.com/" name="Think Robotics" logoSrc="/sponsors/think-robotics.png" logoClass="is-think-robotics" />
             <SponsorCard href="https://sahasranshu.com/" name="Sahasranshu Technologies" logoSrc="/sponsors/sahasranshu-technologies.png" logoClass="is-sahasranshu" wordmark />
             <SponsorCard href="https://xprobotics.ai/" name="XP Robotics" logoSrc="/sponsors/xp-robotics.png" logoClass="is-xp-robotics" />
+            <SponsorCard href="https://galent.com/" name="Galent" logoSrc="/sponsors/image.png" logoClass="is-galent" wordmark />
           </div>
           <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
             <SponsorCard href="https://www.mystartupwave.com/" name="MyStartupWave" logoSrc="/sponsors/mystartupwave.png" logoClass="is-mystartupwave" />
