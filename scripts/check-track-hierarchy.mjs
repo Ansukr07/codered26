@@ -12,9 +12,9 @@ import unisysBriefs from '../src/data/participant-unisys.json' with { type: 'jso
 import xpBriefs from '../src/data/participant-xp-robotics.json' with { type: 'json' }
 import galentBriefs from '../src/data/participant-galent.json' with { type: 'json' }
 
-const mainNames = ['Niveus Solutions', 'Simple Energy', 'Agnes AI', 'XP Robotics', 'Unisys', 'Startup Track']
-const companyNames = ['Think Robotics', 'MyStartupWave', 'Sahasranshu Technologies', 'Cassette Labs', 'Galent']
-const companySlugs = ['think-robotics', 'mystartupwave', 'sahasranshu-technologies', 'cassette-labs', 'galent']
+const mainNames = ['Niveus Solutions', 'Cassette Labs', 'Agnes AI', 'XP Robotics', 'Unisys', 'Startup Track']
+const companyNames = ['Think Robotics', 'MyStartupWave', 'Sahasranshu Technologies', 'Galent']
+const companySlugs = ['think-robotics', 'mystartupwave', 'sahasranshu-technologies', 'galent']
 const expectedParticipantCopy = new Map([
   ['Unisys', unisysBriefs],
   ['Niveus Solutions', niveusBriefs],
@@ -35,7 +35,7 @@ test('exactly six main tracks contain the requested startup hierarchy', () => {
   assert.deepEqual(startup().subtracks.map(track => track.title), companyNames)
   assert.deepEqual(startup().subtracks.map(track => track.slug), companySlugs)
   assert.equal(startup().problemStatements.length, 0, 'Startup Track lists companies, not invented PS')
-  assert.equal(startup().subtracks.reduce((sum, track) => sum + track.problemStatements.length, 0), 6)
+  assert.equal(startup().subtracks.reduce((sum, track) => sum + track.problemStatements.length, 0), 5)
 })
 
 test('main track numbers, links and resolved pages agree', () => {
@@ -68,18 +68,6 @@ test('each startup company stays beneath Startup Track with a resolvable return 
     assert.equal(getTrackRoute(company.page)?.track, company)
     assert.equal(getTrackRoute(company.problemsPage)?.track, company)
     assert.equal(getTrackRoute(company.startupParent.problemsPage)?.track, startup())
-  }
-})
-
-test('unprovided company briefs remain TBA without fabricated problem statements', () => {
-  const pendingNames = ['Simple Energy']
-  for (const name of pendingNames) {
-    const company = leaves().find(track => track.title === name)
-    assert(company, `${name}: company exists`)
-    assert.equal(company.hasPendingBriefs, true, `${name}: pending state`)
-    assert.equal(company.isMock, false, `${name}: real company name`)
-    assert.deepEqual(company.problemStatements, [], `${name}: unknown PS count is not fabricated`)
-    assert.equal(trackRoutes.some(route => route.kind === 'brief' && route.track === company), false)
   }
 })
 

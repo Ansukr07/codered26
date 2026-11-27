@@ -186,7 +186,6 @@
 
 .sponsors-grid-companies .sponsors-logo { margin-top: 20px; }
 .sponsors-grid-bottom .sponsors-logo:not(.is-give-my-certificate) { margin-top: 20px; }
-.sponsors-logo.is-simple-energy { width: clamp(240px, 28vw, 420px); }
 .sponsors-logo.is-think-robotics { width: clamp(260px, 32vw, 430px); }
 .sponsors-logo.is-agnes-ai {
   width: clamp(190px, 20vw, 270px);

@@ -62,13 +62,13 @@ Whether you're a developer, designer, entrepreneur, researcher, or someone who s
 The six main tracks are:
 
 1. Niveus Solutions
-2. Simple Energy
+2. Cassette Labs
 3. Agnes AI
 4. XP Robotics
 5. Unisys
 6. Startup Track
 
-Startup Track contains Think Robotics, MyStartupWave, Sahasranshu Technologies and Cassette Labs. Challenges not yet supplied are TBA.
+Startup Track contains Think Robotics, MyStartupWave, Sahasranshu Technologies and Galent. Challenges not yet supplied are TBA.
 
 ## **5\. Event Timeline & Execution Phases**
 
