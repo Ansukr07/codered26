@@ -278,8 +278,8 @@ export function PrizesSection({ onNavigate }) {
             padding: '8rem 2rem 3rem'
           }}>
 
-            {/* Tag - locked to a fixed size so it matches the other cards perfectly without stretching or breaking the grid! */}
-            <div className="prize-tag-container" style={{ width: '320px', aspectRatio: '12 / 4' }}>
+            {/* Keep the desktop tag size while fitting its full grid inside narrow cards. */}
+            <div className="prize-tag-container" style={{ width: 'min(320px, 100%)', aspectRatio: '12 / 4' }}>
               <PrizePixelGrid />
               <div className="prize-tag-inner">
                 <div className="prize-tag-hash">#</div>
