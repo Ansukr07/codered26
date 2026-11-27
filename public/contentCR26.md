@@ -87,7 +87,7 @@ Startup Track contains Think Robotics, MyStartupWave, Sahasranshu Technologies a
 **22nd October 2026 | CODE RED ’26 Launch and Registration**  
 Challenge briefs go live on the website and registrations open.
 
-**7th November 2026 | Round 1 — PPT Submissions**  
+**30th November 2026 | Round 1 — PPT Submissions**
 Registration closes; this is the deadline for idea submissions.
 
 **14th–15th November 2026 | Round 2 — Online Evaluation**  
