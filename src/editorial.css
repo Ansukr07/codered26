@@ -19,6 +19,7 @@
 .shift-timeline-intro span{font:700 16px/1.2 Consolas,monospace;letter-spacing:.04em;white-space:nowrap}
 .shift-timeline .shift-rounds{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;border:0}
 .shift-timeline .shift-rounds::-webkit-scrollbar{display:none}
+@media(max-width:1023px){.shift-timeline .shift-rounds{overflow-y:hidden;overscroll-behavior-x:contain;overscroll-behavior-y:auto}}
 .shift-timeline .shift-rounds article{flex:0 0 30vw;scroll-snap-align:start;--stripe:#f1eeeb;min-width:0;height:610px;padding:0 6vw 56px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border:0;border-right:1px solid #ffffff33;background:#1e1b18;color:#f1eeeb}
 .shift-timeline .shift-rounds article:nth-child(4n + 2){background:#ED2024;color:#f1eeeb}
 .shift-timeline .shift-rounds article:nth-child(4n + 3){--stripe:#1e1b18;background:#f1eeeb;color:#1e1b18}

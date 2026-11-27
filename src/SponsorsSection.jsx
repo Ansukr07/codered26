@@ -19,7 +19,7 @@ const DotArrowIcon = () => (
   </svg>
 );
 
-const SponsorCard = ({ href, name, logoSrc, logoIconSrc, logoClass, wordmark, isComingSoon }) => {
+const SponsorCard = ({ href, name, logoSrc, logoIconSrc, logoClass, wordmark, isComingSoon, textOnlyHover }) => {
   const isLink = Boolean(href);
   const Tag = isLink ? 'a' : 'div';
   const linkProps = isLink ? { href, target: "_blank", rel: "noopener noreferrer" } : {};
@@ -42,6 +42,7 @@ const SponsorCard = ({ href, name, logoSrc, logoIconSrc, logoClass, wordmark, is
         <div className={`sponsors-logo ${logoClass}`}>
           {logoIconSrc && <img className="sponsors-logo-mark" src={logoIconSrc} alt="" aria-hidden="true" loading="lazy" fetchPriority="low" decoding="async" />}
           <img src={logoSrc} alt={wordmark ? '' : name} loading="lazy" fetchPriority="low" decoding="async" />
+          {textOnlyHover && <img className="sponsors-logo-hover-text" src={logoSrc} alt="" aria-hidden="true" loading="lazy" fetchPriority="low" decoding="async" />}
           {wordmark && <span className="sponsors-logo-wordmark">{name}</span>}
         </div>
       )}
@@ -70,10 +71,11 @@ export default function SponsorsSection() {
             <SponsorCard href="https://sahasranshu.com/" name="Sahasranshu Technologies" logoSrc="/sponsors/sahasranshu-technologies.png" logoClass="is-sahasranshu" wordmark />
             <SponsorCard href="https://xprobotics.ai/" name="XP Robotics" logoSrc="/sponsors/xp-robotics.png" logoClass="is-xp-robotics" />
           </div>
-          <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-three">
+          <div className="sponsors-grid-top sponsors-grid-companies sponsors-grid-four">
             <SponsorCard href="https://www.mystartupwave.com/" name="MyStartupWave" logoSrc="/sponsors/mystartupwave.png" logoClass="is-mystartupwave" />
             <SponsorCard href="https://aigrants.in/" name="AI Grants India" logoSrc="/sponsors/aigi.png" logoClass="is-aigi" />
             <SponsorCard href="https://www.linkedin.com/company/heapify-global-community/home/" name="Heapify" logoSrc="/sponsors/heapify3.png" logoClass="is-heapify" />
+            <SponsorCard href="https://galent.com/" name="Galent" logoSrc="/sponsors/galent.png" logoClass="is-galent" textOnlyHover />
           </div>
           <div className="sponsors-grid-bottom sponsors-grid-four">
             <SponsorCard href="https://unstop.com/" name="Unstop" logoSrc="/sponsors/unstop.svg" logoClass="is-unstop" />
