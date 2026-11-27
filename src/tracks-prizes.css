@@ -48,17 +48,30 @@
   .app-page--home #prizes {
     min-height: 100dvh;
     scroll-margin-top: -30px;
-    padding-top: 80px;
-    padding-bottom: 16px;
+    align-items: stretch;
+    padding-top: 88px;
+    padding-bottom: 24px;
+  }
+  .app-page--home #prizes > .tp-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .app-page--home #prizes .tp-title-row {
-    margin-bottom: 24px;
+    margin-bottom: 32px;
+    position: relative;
+    top: 20px;
   }
   .app-page--home #prizes .prize-card {
+    flex: 0 0 auto;
+    width: 100%;
     margin-bottom: 0 !important;
+    top: -12px;
   }
   .app-page--home #prizes .prizes-split-action-wrap {
-    margin-top: 24px !important;
+    margin-top: 32px !important;
+    position: relative;
+    top: -150px;
   }
 }
 
