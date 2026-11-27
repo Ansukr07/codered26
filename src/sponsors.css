@@ -205,10 +205,20 @@
 .sponsors-logo.is-unisys img { filter: none; opacity: 1; }
 .sponsors-logo.is-aigi { width: clamp(120px, 14vw, 185px); }
 .sponsors-logo.is-aigi img { filter: none; opacity: 1; }
-.sponsors-logo.is-heapify { width: clamp(90px, 11vw, 140px); }
+.sponsors-logo.is-heapify { width: clamp(105px, 12.5vw, 160px); }
 .sponsors-logo.is-heapify img { filter: none; opacity: 1; }
 .sponsors-logo.is-xp-robotics { width: clamp(200px, 20vw, 280px); }
 .sponsors-logo.is-xp-robotics img { filter: none; }
+.sponsors-logo.is-galent { width: clamp(150px, 18vw, 240px); }
+.sponsors-logo.is-galent img { filter: none; opacity: 1; }
+.sponsors-logo.is-galent .sponsors-logo-hover-text {
+  position: absolute;
+  inset: 0;
+  /* The lettering starts after the coloured symbol in the official logo. */
+  clip-path: inset(0 0 0 42%);
+  filter: brightness(0) invert(1);
+  opacity: 0;
+}
 .sponsors-logo.is-niveus-solutions img { filter: none; }
 .sponsors-logo.is-sahasranshu { width: 84%; max-width: 350px; gap: 12px; }
 .sponsors-logo.is-sahasranshu img { width: 28%; flex: none; }
@@ -216,9 +226,6 @@
 .sponsors-logo.is-cassette-labs { width: 82%; max-width: 380px; }
 .sponsors-logo.is-cassette-labs img { min-width: 0; }
 .sponsors-logo.is-cassette-labs img:not(.sponsors-logo-mark) { filter: none; }
-.sponsors-logo.is-galent { width: 72%; max-width: 260px; gap: 14px; }
-.sponsors-logo.is-galent img { width: 34%; flex: none; filter: none; opacity: 1; }
-.sponsors-logo.is-galent .sponsors-logo-wordmark { flex: none; font: 600 clamp(20px, 2vw, 30px)/1.1 LilGrotesk, sans-serif; letter-spacing: .01em; color: #1e1b18; }
 .sponsors-logo.is-sahasranshu .sponsors-logo-wordmark { transition: color .35s ease; }
 .sponsors-logo:is(.is-think-robotics, .is-mystartupwave) img { filter: none; opacity: 1; }
 
@@ -327,6 +334,13 @@
   .sponsors-grid__item:hover .sponsors-logo.is-cassette-labs img {
     filter: none;
   }
+  .sponsors-grid__item:hover .sponsors-logo.is-galent img {
+    filter: none;
+  }
+  .sponsors-grid__item:hover .sponsors-logo.is-galent .sponsors-logo-hover-text {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+  }
   .sponsors-grid__item:hover .sponsors-logo.is-give-my-certificate img {
     filter: none;
   }
@@ -334,9 +348,6 @@
     color: #ffffff;
   }
   .sponsors-grid__item:hover .sponsors-logo.is-sahasranshu .sponsors-logo-wordmark {
-    color: #ffffff;
-  }
-  .sponsors-grid__item:hover .sponsors-logo.is-galent .sponsors-logo-wordmark {
     color: #ffffff;
   }
   .sponsors-grid__item:hover .sponsors-coming-soon span {
