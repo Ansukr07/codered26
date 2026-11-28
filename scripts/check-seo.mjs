@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFile, access } from 'node:fs/promises'
-import { pages, siteUrl } from '../src/seo.js'
+import { pages, siteUrl, browserTabTitle } from '../src/seo.js'
 
-const titles = new Set()
 for (const [page, info] of Object.entries(pages)) {
   const file = page === 'home' ? 'dist/index.html' : page === 'notFound' ? 'dist/404.html' : `dist${info.path}/index.html`
   const html = await readFile(file, 'utf8')
@@ -11,8 +10,7 @@ for (const [page, info] of Object.entries(pages)) {
   assert.equal((html.match(/name="description"/g) || []).length, 1, `${page}: one description`)
   assert(html.includes(`rel="canonical" href="${siteUrl}${info.path}"`), `${page}: canonical`)
   const title = html.match(/<title>(.*?)<\/title>/)[1]
-  assert(!titles.has(title), `${page}: unique title`)
-  titles.add(title)
+  assert.equal(title.replaceAll('&amp;', '&'), browserTabTitle, `${page}: consistent browser tab title`)
   const schema = JSON.parse(html.match(/id="site-schema" type="application\/ld\+json">(.*?)<\/script>/s)[1])
   assert.equal(schema['@context'], 'https://schema.org')
   assert(html.includes('id="root"><'), `${page}: pre-rendered content`)

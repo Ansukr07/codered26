@@ -251,6 +251,8 @@ html:not(.preloader-active) .anim-slide-up.is-visible {
 .shift-card-action-link:hover{opacity:.8;gap:8px}
 .shift-rail-spacer{flex:1 0 48px;min-height:48px;width:100%}
 .shift-finale-group{gap:24px}
+@media(min-width:701px){#home .shift-finale-group{position:relative;top:-12px}}
+@media(min-width:701px){#home .shift-event-summary{position:relative;top:12px}}
 .shift-finale-group .shift-countdown-heading{width:100%;text-align:center}
 .shift-finale-group .shift-countdown-heading>span{top:-8px;margin-bottom:8px}
 .shift-countdown-panel .shift-finale-group .shift-countdown-heading h2{top:0}

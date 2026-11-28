@@ -258,14 +258,6 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
             <div className="shift-prize-pool">
               <strong className="shift-prize-amount">₹2,25,000+<span className="shift-prize-asterisk">*</span></strong>
               <span className="shift-prize-label">Prize pool</span>
-              <button
-                type="button"
-                className="shift-prize-split-cta"
-                onClick={() => onNavigate && onNavigate('prize-split')}
-              >
-                <span>View Full Split</span>
-                <span className="shift-prize-split-arrow" aria-hidden="true">↗</span>
-              </button>
             </div>
           </div>
           <div className="shift-rail-spacer" aria-hidden="true" />

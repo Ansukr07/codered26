@@ -2,7 +2,7 @@ import { build } from 'vite'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { pages, siteUrl, structuredData } from '../src/seo.js'
+import { pages, siteUrl, structuredData, browserTabTitle } from '../src/seo.js'
 
 await build()
 await build({ build: { ssr: 'src/entry-server.jsx', outDir: 'dist-ssr' }, ssr: { noExternal: true } })
@@ -10,7 +10,7 @@ const { render } = await import(pathToFileURL(resolve('dist-ssr/entry-server.js'
 const template = await readFile('dist/index.html', 'utf8')
 const escape = (value) => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
 for (const [page, info] of Object.entries(pages)) {
-  const head = `<title>${escape(info.title)}</title>
+  const head = `<title>${escape(browserTabTitle)}</title>
     <meta name="description" content="${escape(info.description)}" />
     <meta name="robots" content="${page === 'notFound' || info.isMock ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
     <link rel="canonical" href="${siteUrl}${info.path}" />
