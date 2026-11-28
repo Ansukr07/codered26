@@ -1,6 +1,7 @@
 import { trackRoutes } from './trackData.js'
 
 export const siteUrl = 'https://www.codered26.xyz'
+export const browserTabTitle = 'Code Red 2026 | National Level Hackathon in Bengaluru | BMSIT&M'
 const trackPageTitle = ({ kind, track, brief }) => {
   if (kind === 'brief') return `${brief.fullTitle || brief.title} — ${track.title} ${track.briefKind === 'open-challenge' ? 'Open Challenge' : `PS ${brief.problemNumber}`} | Code Red 2026`
   if (kind === 'problems') return `${track.title} — ${track.subtracks?.length ? 'Company Tracks' : track.briefKind === 'open-challenge' ? 'Open Challenge' : 'Challenges'} | Code Red 2026`
@@ -38,7 +39,7 @@ export function structuredData(page) {
 
 export function updateSeo(page) {
   const info = pages[page]
-  document.title = info.title
+  document.title = browserTabTitle
   const setMeta = (attribute, name, content) => {
     let element = document.head.querySelector(`meta[${attribute}="${name}"]`)
     if (!element) { element = document.createElement('meta'); element.setAttribute(attribute, name); document.head.appendChild(element) }
