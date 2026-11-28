@@ -14,7 +14,7 @@
 
 @media (max-width: 700px) {
   html, body {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 }
 
@@ -31,6 +31,57 @@
 .tp-section--prizes {
   background-color: #f1eeeb; /* Off-white base */
   padding-top: 4rem;
+}
+
+.app-page--home #prizes {
+  box-sizing: border-box;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: 4rem;
+}
+.app-page--home #prizes > .tp-container {
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .app-page--home #prizes {
+    --prizes-action-gap: clamp(24px, 5.5svh, 46px);
+    min-height: 100svh;
+    scroll-margin-top: -30px;
+    align-items: stretch;
+    padding-top: clamp(80px, 12svh, 108px);
+    padding-bottom: clamp(24px, 8svh, 68px);
+  }
+  .app-page--home #prizes > .tp-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto auto minmax(0, 1fr);
+  }
+  .app-page--home #prizes .tp-title-row {
+    grid-row: 1;
+    margin: 0 0 var(--prizes-action-gap);
+  }
+  .app-page--home #prizes .prize-card {
+    grid-row: 3;
+    align-self: center;
+    width: 100%;
+    margin-bottom: 0 !important;
+  }
+  .app-page--home #prizes .prizes-split-action-wrap {
+    grid-row: 4;
+    margin-top: var(--prizes-action-gap) !important;
+  }
+}
+
+@media (hover: none) {
+  #prizes .prizes-view-split-button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  #prizes .prizes-view-split-button:hover .prizes-view-split-arrow {
+    transform: none;
+  }
 }
 
 .tp-container {
@@ -659,8 +710,28 @@
 /* Back to Home breadcrumb box */
 .prizes-breadcrumb {
   display: inline-flex;
+}
+.prizes-breadcrumb .td-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   border: 1px solid #1e1b18;
   padding: 10px 18px;
+  font: 700 12px/1.6 Consolas, monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #1e1b18;
+  background: transparent;
+  transition: color .2s ease, border-color .2s ease, background-color .2s ease;
+}
+.prizes-breadcrumb .td-back:is(:hover, :focus-visible) {
+  color: #ed2024;
+  border-color: #ed2024;
+  background-color: #ed202408;
+}
+@media (prefers-reduced-motion: reduce) {
+  .prizes-breadcrumb .td-back { transition: none; }
 }
 
 .prizes-title-row { margin-top: 5rem; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; }

@@ -128,7 +128,7 @@ assert routes == {
     'official': True, 'mock': False, 'mode': 'diagram',
     'order': [
         ['Niveus Solutions', 'track-1', '01'],
-        ['Simple Energy', 'track-2', '02'],
+        ['Cassette Labs', 'track-2', '02'],
         ['Agnes AI', 'track-3', '03'],
         ['Startup Track', 'track-4', '04'],
     ],

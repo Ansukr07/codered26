@@ -66,7 +66,7 @@ function Countdown() {
 
 const rounds = [
   ['01', '14 NOVEMBER', 'Code Red ’26 launch & registration', 'THE CHALLENGE BRIEFS GO LIVE ON THE WEBSITE AND REGISTRATION OPENS.'],
-  ['02', '27 NOVEMBER', 'Round 1 PPT submissions', 'REGISTRATION CLOSES. SUBMIT YOUR IDEA BY THE DEADLINE.'],
+  ['02', '30 NOVEMBER', 'Round 1 PPT submissions', 'REGISTRATION CLOSES. SUBMIT YOUR IDEA BY THE DEADLINE.'],
   ['03', '2 DECEMBER', 'Round 1 results', 'ROUND 1 RESULTS WILL BE PUBLISHED ON THE WEBSITE.'],
   ['04', '12–13 DECEMBER', 'Round 2 online evaluation', 'SHORTLISTED TEAMS ARE EVALUATED ONLINE VIA GOOGLE MEET.'],
   ['05', '14 DECEMBER', 'Top 60 teams announced', 'ROUND 2 RESULTS WILL BE PUBLISHED ON THE WEBSITE.'],
@@ -139,7 +139,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
   useGSAP(() => {
     let mm = gsap.matchMedia();
 
-    mm.add("(min-width: 701px)", () => {
+    mm.add("(min-width: 1024px) and (hover: hover) and (pointer: fine)", () => {
       if (!containerRef.current || !roundsRef.current) return;
       const timelineSection = containerRef.current.querySelector('#timeline');
       const roundsContainer = roundsRef.current;
@@ -172,6 +172,7 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
         gsap.set(roundsContainer, { clearProps: "width,overflow,flexWrap,x" });
       };
     });
+    return () => mm.revert();
   }, { scope: containerRef });
 
   useEffect(() => {
@@ -284,15 +285,6 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
           <ul className="anim-slide-up" style={{ transitionDelay: '0.3s' }}>
             <li>Six main tracks</li>
             <li>Challenges available</li>
-            <li>
-              <button
-                type="button"
-                className="shift-card-action-link"
-                onClick={() => onNavigate && onNavigate('participant-perks')}
-              >
-                Participant Perks ↗
-              </button>
-            </li>
           </ul>
         </article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.2s' }}>
@@ -301,15 +293,6 @@ export default function EditorialSections({ page = 'home', onNavigate }) {
           <ul className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>
             <li>₹2,25,000+* total prize pool</li>
             <li>Opportunity to pitch at VENTUREX</li>
-            <li>
-              <button
-                type="button"
-                className="shift-card-action-link"
-                onClick={() => onNavigate && onNavigate('prize-split')}
-              >
-                View Full Split ↗
-              </button>
-            </li>
           </ul>
         </article>
         <article className="anim-slide-down" style={{ transitionDelay: '0.3s' }}><span className="shift-card-plus" aria-hidden="true">+</span><h3 className="anim-slide-up" style={{ transitionDelay: '0.4s' }}>Details</h3><ul className="anim-slide-up" style={{ transitionDelay: '0.5s' }}><li>24-hour overnight sprint</li><li>28–29 December 2026</li><li>Teams of 3–4</li><li>Top 60 teams at BMSIT&amp;M</li></ul></article>

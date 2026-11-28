@@ -24,22 +24,11 @@ function createTrackBase({ title, slug, page, numeral, ...details }) {
   }
 }
 
-function pendingTrack(base) {
-  return {
-    ...base,
-    category: 'Challenges TBA',
-    subtitle: 'Challenges to be announced',
-    summary: 'Challenge details will be announced soon.',
-    cardDescription: 'Challenges will be announced soon.',
-    hasPendingBriefs: true,
-  }
-}
-
 const niveus = createNiveusTrack(createTrackBase({
   title: 'Niveus Solutions', slug: 'track-1', page: 'tracks/track-1', numeral: '01', briefOwner: 'niveus',
 }))
-const simpleEnergy = pendingTrack(createTrackBase({
-  title: 'Simple Energy', slug: 'track-2', page: 'tracks/track-2', numeral: '02',
+const cassetteLabs = createCassetteLabsTrack(createTrackBase({
+  title: 'Cassette Labs', slug: 'track-2', page: 'tracks/track-2', numeral: '02', briefOwner: 'cassette-labs',
 }))
 const agnesAI = createAgnesAITrack(createTrackBase({
   title: 'Agnes AI', slug: 'track-3', page: 'tracks/track-3', numeral: '03', briefOwner: 'agnes-ai',
@@ -56,7 +45,7 @@ const startup = createTrackBase({
   category: 'Startup company challenges',
   subtitle: 'Explore the startup company tracks',
   summary: 'Choose a startup company to explore its challenges.',
-  cardDescription: 'Explore Think Robotics, MyStartupWave, Sahasranshu Technologies, Cassette Labs and Galent.',
+  cardDescription: 'Explore Think Robotics, MyStartupWave, Sahasranshu Technologies and Galent.',
 })
 
 // Keep a small parent identity on each company, without a circular route tree.
@@ -69,7 +58,6 @@ startup.subtracks = [
   ['Think Robotics', 'think-robotics', createThinkRoboticsTrack],
   ['MyStartupWave', 'mystartupwave', createMyStartupWaveTrack],
   ['Sahasranshu Technologies', 'sahasranshu-technologies', createSahasranshuTrack],
-  ['Cassette Labs', 'cassette-labs', createCassetteLabsTrack],
   ['Galent', 'galent', createGalentTrack],
 ].map(([title, slug, createTrack], index) => createTrack(createTrackBase({
   title, slug, page: `${startup.page}/${slug}`,
@@ -78,7 +66,7 @@ startup.subtracks = [
   briefOwner: slug,
 })))
 
-export const tracks = [niveus, simpleEnergy, agnesAI, xpRobotics, unisys, startup]
+export const tracks = [niveus, cassetteLabs, agnesAI, xpRobotics, unisys, startup]
 export const allTracks = tracks.flatMap(track => [track, ...(track.subtracks || [])])
 export const getTrackByPage = page => allTracks.find(track => track.page === page)
 

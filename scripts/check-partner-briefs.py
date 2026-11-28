@@ -201,7 +201,7 @@ import assert from 'node:assert/strict';
 import { tracks, allTracks, trackRoutes, getTrackRoute } from './src/trackData.js';
 import { getParticipantBrief, participantBriefs } from './src/participantBriefs.js';
 assert.deepEqual(tracks.map(track => track.title), [
-  'Niveus Solutions', 'Simple Energy', 'Agnes AI', 'Startup Track',
+  'Niveus Solutions', 'Cassette Labs', 'Agnes AI', 'Startup Track',
 ]);
 assert.equal(new Set(trackRoutes.map(route => route.path)).size, trackRoutes.length, 'Duplicate route path');
 assert.equal(new Set(trackRoutes.map(route => route.page)).size, trackRoutes.length, 'Duplicate route page');
